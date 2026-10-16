@@ -229,11 +229,12 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
           fill: "forwards",
         },
       );
+      const sheetTransform = getComputedStyle(sheet).transform;
       const sheetAnimation = sheet.animate(
         [
           {
             opacity: 1,
-            transform: getComputedStyle(sheet).transform,
+            transform: sheetTransform,
           },
           {
             opacity: 0.12,
@@ -337,7 +338,9 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
         resetPreviews(false);
         return;
       }
-      const projected = current.offset + current.velocity * 180;
+      const elapsed = event ? event.timeStamp - current.lastAt : 0;
+      const velocity = elapsed > 100 ? 0 : current.velocity;
+      const projected = current.offset + velocity * 180;
       const threshold = Math.min(sheet.clientWidth * 0.12, 140);
       if (navigate && Math.abs(projected) >= threshold) {
         if (projected < 0) {
@@ -353,6 +356,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
 
     const down = (event: PointerEvent) => {
       if (event.button !== 0 || navigating.current || document.documentElement.dataset.panel) return;
+      if (dragRef.current) return;
       const target = event.target instanceof Element ? event.target : null;
       if (target?.closest("a, button")) return;
       dragRef.current = {
