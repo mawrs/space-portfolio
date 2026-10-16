@@ -1,0 +1,152 @@
+.portal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.28);
+}
+
+.hole {
+  pointer-events: none;
+  background: none;
+}
+
+.copyWrap {
+  position: relative;
+  width: min(42rem, calc(100% - 4rem));
+  pointer-events: none;
+}
+
+.lens {
+  position: relative;
+  width: min(52rem, calc(100vw - 4rem));
+  min-height: 32rem;
+  padding: 4.5rem 3.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(12, 12, 12, 0.28), rgba(0, 0, 0, 0.82) 72%);
+  box-shadow:
+    inset 0 0 0 1.4rem rgba(255, 255, 255, 0.08),
+    inset 0 0 5rem rgba(255, 255, 255, 0.06);
+}
+
+.ring {
+  position: absolute;
+  inset: -0.8rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-top-color: #fff;
+  animation: spin 12s linear infinite;
+  pointer-events: none;
+}
+
+.inner {
+  inset: 1.8rem;
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.6rem;
+  max-width: 34rem;
+  text-align: center;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+.awards {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  opacity: 0.78;
+}
+
+.copy ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem 2rem;
+  margin-top: 2.4rem;
+  list-style: none;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.copy a {
+  pointer-events: auto;
+}
+
+.hole .copy {
+  width: auto;
+  max-width: none;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.hole .awards {
+  margin-top: 2.6rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+@media (min-width: 650px) {
+  .copyWrap {
+    width: 60rem;
+  }
+
+  .hole .copy {
+    font-size: 1.5rem;
+  }
+}
+
+.form {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.form input {
+  width: min(22rem, 100%);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: transparent;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  outline: none;
+}
+
+.form button {
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  padding: 0.7rem 1.2rem;
+}
+
+.seo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}

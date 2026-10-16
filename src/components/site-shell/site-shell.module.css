@@ -1,0 +1,85 @@
+:global(html.lens) .floor {
+  opacity: 0;
+}
+
+.floor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 8rem 8rem;
+  mask-image: linear-gradient(to top, #000 0%, transparent 46%);
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: -0.4rem 0 0 -0.4rem;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+:global(html.grabbable) .cursor {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: -0.75rem 0 0 -0.75rem;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background: #000;
+}
+
+.loader span {
+  width: 0.35rem;
+  height: 4.4rem;
+  background: #fff;
+  transform-origin: center;
+  animation: pulse 0.9s ease-in-out infinite;
+}
+
+.loader span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.loader span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader span {
+    animation: none;
+    height: 2rem;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}

@@ -1,0 +1,349 @@
+.stage {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  color: #111;
+}
+
+.sheet {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  bottom: 1.5rem;
+  left: 2rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+  border-radius: 1.5rem;
+  animation: sheet-in 0.55s ease both;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-height: 100%;
+  padding: 3rem 2rem 7rem;
+}
+
+.copy {
+  display: grid;
+  align-content: start;
+  gap: 1.6rem;
+  animation: rise 0.7s 0.28s both;
+}
+
+.copy h1 {
+  max-width: 12ch;
+  font-size: 3.5rem;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.copy p {
+  max-width: 40rem;
+  font-size: 1.4rem;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  list-style: none;
+}
+
+.tags li,
+.tags a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.2rem;
+  padding: 0.35rem 0.9rem;
+  color: #111;
+  font-size: 1.2rem;
+  background: #eee;
+  border-radius: 999px;
+}
+
+.tags .award {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 4rem;
+  min-height: 4rem;
+  padding: 0;
+  color: #111;
+  background: #d9a441;
+  border-radius: 0.35rem;
+}
+
+.visit {
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: center;
+  width: fit-content;
+  color: #111;
+  font-size: 1.4rem;
+}
+
+.visitMark {
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  color: #fff;
+  background: #111;
+  border-radius: 50%;
+}
+
+.media {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ratio);
+  overflow: hidden;
+  background: transparent;
+  border-radius: 1.2rem;
+}
+
+.frame img,
+.frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:global(html.gl) .frame img,
+:global(html.gl) .frame video {
+  opacity: 0;
+}
+
+.close {
+  position: fixed;
+  right: 3.2rem;
+  bottom: 3rem;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  color: #fff;
+  font-size: 2.2rem;
+  line-height: 1;
+  background: #111;
+  border: 0;
+  border-radius: 50%;
+}
+
+.close:focus-visible,
+.prev button:focus-visible,
+.next button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+
+.prev button,
+.next button {
+  position: fixed;
+  z-index: 26;
+  color: transparent;
+  background: transparent;
+  border: 0;
+}
+
+.prev button {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.2rem;
+}
+
+.next button {
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2.2rem;
+}
+
+.prev aside,
+.next aside {
+  position: fixed;
+  right: 2rem;
+  left: 2rem;
+  z-index: 11;
+  height: 18rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  opacity: 0.3;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.4s ease;
+}
+
+.prev aside {
+  bottom: 0;
+  transform: translateY(calc(100% + 9rem));
+}
+
+.next aside {
+  top: 0;
+  transform: translateY(calc(-100% - 9rem));
+}
+
+.prev:hover aside,
+.prev:focus-within aside,
+.next:hover aside,
+.next:focus-within aside {
+  opacity: 0.9;
+}
+
+.prev:hover aside,
+.prev:focus-within aside {
+  transform: translateY(-1rem);
+}
+
+.next:hover aside,
+.next:focus-within aside {
+  transform: translateY(1rem);
+}
+
+.prev aside img,
+.next aside img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:global(html.gl) .prev aside img,
+:global(html.gl) .next aside img {
+  opacity: 0;
+}
+
+@media (min-width: 650px) {
+  .sheet {
+    top: 2rem;
+    right: 5rem;
+    bottom: 2rem;
+    left: 5rem;
+    border-radius: 2rem;
+  }
+
+  .row {
+    flex-direction: row;
+    gap: 10rem;
+    align-items: flex-start;
+    padding: 8rem 8rem 6rem;
+  }
+
+  .copy {
+    flex: 1;
+    padding-top: 2rem;
+  }
+
+  .copy h1 {
+    font-size: 4.5rem;
+  }
+
+  .copy p,
+  .visit {
+    font-size: 1.6rem;
+  }
+
+  .media {
+    width: 70rem;
+    flex: none;
+  }
+
+  .close {
+    top: 5rem;
+    right: 8rem;
+    bottom: auto;
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .prev button,
+  .next button {
+    top: 0;
+    bottom: 0;
+    width: 2.2rem;
+    height: auto;
+  }
+
+  .prev button {
+    left: 0;
+  }
+
+  .next button {
+    right: 0;
+    left: auto;
+  }
+
+  .prev aside,
+  .next aside {
+    top: 10rem;
+    bottom: 10rem;
+    left: auto;
+    width: 28rem;
+    height: auto;
+  }
+
+  .prev aside {
+    left: 0;
+    transform: translateX(calc(-100% - 7.5rem));
+  }
+
+  .next aside {
+    right: 0;
+    transform: translateX(calc(100% + 7.5rem));
+  }
+
+  .prev:hover aside,
+  .prev:focus-within aside {
+    transform: translateX(1.5rem);
+  }
+
+  .next:hover aside,
+  .next:focus-within aside {
+    transform: translateX(-1.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .copy,
+  .prev aside,
+  .next aside {
+    animation: none;
+    transition: none;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

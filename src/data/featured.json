@@ -1,0 +1,352 @@
+[
+  {
+    "slug": "nathan-riley",
+    "title": "Nathan Riley",
+    "summary": "Nathan is a UK-based digital creative specializing in art direction, surrealist 3D visuals, interactive experiences, and motion design.",
+    "year": "2023",
+    "awards": 0,
+    "liveUrl": "https://www.nrly.co/",
+    "credits": [],
+    "width": 2048,
+    "height": 1172,
+    "poster": "https://image.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/thumbnail.jpg",
+    "video": "https://stream.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/high.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/high.mp4",
+        "poster": "https://image.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/thumbnail.jpg",
+        "width": 2048,
+        "height": 1172,
+        "video": true
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207557-nathan-2.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-2.jpg?auto=format&fit=max&w=600",
+        "width": 1787,
+        "height": 900,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207557-nathan-1.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-1.jpg?auto=format&fit=max&w=600",
+        "width": 1798,
+        "height": 905,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207557-nathan-3.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-3.jpg?auto=format&fit=max&w=600",
+        "width": 1792,
+        "height": 904,
+        "video": false
+      }
+    ]
+  },
+  {
+    "slug": "casa-di-solare",
+    "title": "Casa Di Solare",
+    "summary": "Solare extends Nikolas Type\u2018s Font Catalogue with a timeless, hyper-useable quintessential variable font, suitable for a wide field of applications.",
+    "year": "2024",
+    "awards": 4,
+    "liveUrl": "https://casadisolare.com/",
+    "credits": [
+      {
+        "name": "Unseen",
+        "url": "https://unseen.co/"
+      }
+    ],
+    "width": 2048,
+    "height": 1204,
+    "poster": "https://image.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/thumbnail.jpg",
+    "video": "https://stream.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/high.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/high.mp4",
+        "poster": "https://image.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/thumbnail.jpg",
+        "width": 2048,
+        "height": 1204,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/R3vmn027401UtGEikdEo5clIi5MUU9aZs02/high.mp4",
+        "poster": "https://image.mux.com/R3vmn027401UtGEikdEo5clIi5MUU9aZs02/thumbnail.jpg",
+        "width": 1280,
+        "height": 596,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/iyDjwB2orEKXdIKP5u02RfT68xRnllt7a/high.mp4",
+        "poster": "https://image.mux.com/iyDjwB2orEKXdIKP5u02RfT68xRnllt7a/thumbnail.jpg",
+        "width": 1280,
+        "height": 644,
+        "video": true
+      }
+    ]
+  },
+  {
+    "slug": "the-lookback",
+    "title": "The Lookback",
+    "summary": "Digital capsule for Better Off\u00ae studio to document what inspired them and what they created over the last months/years.",
+    "year": "2026",
+    "awards": 3,
+    "liveUrl": "https://tlb.betteroff.studio/",
+    "credits": [
+      {
+        "name": "BetterOff\u00ae Studio",
+        "url": "https://betteroff.studio/"
+      },
+      {
+        "name": "Gil Huybrecht",
+        "url": "https://gilhuybrecht.com"
+      }
+    ],
+    "width": 1250,
+    "height": 720,
+    "poster": "https://image.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/thumbnail.jpg",
+    "video": "https://stream.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/high.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/high.mp4",
+        "poster": "https://image.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/thumbnail.jpg",
+        "width": 1250,
+        "height": 720,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/HofYkQ00DP02B202026iOjEsHVlOHoXqJB02y/high.mp4",
+        "poster": "https://image.mux.com/HofYkQ00DP02B202026iOjEsHVlOHoXqJB02y/thumbnail.jpg",
+        "width": 1620,
+        "height": 1080,
+        "video": true
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1785656629-image-39.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1785656629-image-39.jpg?auto=format&fit=max&w=600",
+        "width": 1500,
+        "height": 1897,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1785656633-tlb4.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1785656633-tlb4.jpg?auto=format&fit=max&w=600",
+        "width": 1500,
+        "height": 1000,
+        "video": false
+      }
+    ]
+  },
+  {
+    "slug": "book-of-happiness",
+    "title": "Book of Happiness",
+    "summary": "Helping leaders keep themselves and their people happy and mentally healthy.",
+    "year": "2024",
+    "awards": 4,
+    "liveUrl": "https://www.findworkhappiness.com/",
+    "credits": [
+      {
+        "name": "David Lubofsky",
+        "url": "https://www.davidlubofsky.com/"
+      }
+    ],
+    "width": 2048,
+    "height": 1114,
+    "poster": "https://image.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/thumbnail.jpg",
+    "video": "https://stream.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/high.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/high.mp4",
+        "poster": "https://image.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/thumbnail.jpg",
+        "width": 2048,
+        "height": 1114,
+        "video": true
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786210260-book-2.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786210260-book-2.jpg?auto=format&fit=max&w=600",
+        "width": 1565,
+        "height": 908,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786210260-book-3.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786210260-book-3.jpg?auto=format&fit=max&w=600",
+        "width": 1568,
+        "height": 906,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786210260-book-1.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786210260-book-1.jpg?auto=format&fit=max&w=600",
+        "width": 1571,
+        "height": 906,
+        "video": false
+      }
+    ]
+  },
+  {
+    "slug": "dogelon-mars",
+    "title": "Dogelon Mars",
+    "summary": "Follow the story of Dogelon Mars as he explores the greatest mysteries of the universe and seeks to return to the planet he once called home with the help of the friends he\u2019s made during his intergalactic travels.",
+    "year": "2024",
+    "awards": 3,
+    "liveUrl": "https://dogelonmars.com",
+    "credits": [
+      {
+        "name": "Griflan",
+        "url": "https://griflan.com"
+      }
+    ],
+    "width": 3360,
+    "height": 2200,
+    "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=600",
+    "video": "",
+    "media": [
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=600",
+        "width": 3360,
+        "height": 2200,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-1.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-1.jpg?auto=format&fit=max&w=600",
+        "width": 3360,
+        "height": 2200,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-4.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-4.jpg?auto=format&fit=max&w=600",
+        "width": 3420,
+        "height": 2201,
+        "video": false
+      },
+      {
+        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-3.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-3.jpg?auto=format&fit=max&w=600",
+        "width": 3360,
+        "height": 2200,
+        "video": false
+      }
+    ]
+  },
+  {
+    "slug": "gil-huybrecht",
+    "title": "Gil Huybrecht",
+    "summary": "Gil Huybrecht is a Belgian digital designer and art director, based around Antwerp. He specializes in typography-heavy web design, art direction, interaction design, and branding.",
+    "year": "2026",
+    "awards": 1,
+    "liveUrl": "https://gilhuybrecht.com",
+    "credits": [
+      {
+        "name": "Gil Huybrecht",
+        "url": "https://gilhuybrecht.com"
+      }
+    ],
+    "width": 1196,
+    "height": 720,
+    "poster": "https://image.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/thumbnail.jpg",
+    "video": "https://stream.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/high.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/high.mp4",
+        "poster": "https://image.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/thumbnail.jpg",
+        "width": 1196,
+        "height": 720,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/g12oqAEfwFRDxmxiuH02yJsALmVkKqsKA/high.mp4",
+        "poster": "https://image.mux.com/g12oqAEfwFRDxmxiuH02yJsALmVkKqsKA/thumbnail.jpg",
+        "width": 1280,
+        "height": 644,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/ONW93srqx6kGfiHTKQtV2pkqByQY01nF01/high.mp4",
+        "poster": "https://image.mux.com/ONW93srqx6kGfiHTKQtV2pkqByQY01nF01/thumbnail.jpg",
+        "width": 1280,
+        "height": 604,
+        "video": true
+      }
+    ]
+  },
+  {
+    "slug": "discoveryland",
+    "title": "Discoveryland",
+    "summary": "Partnered with Outpost and Discovery Land Company to create an immersive, storytelling brand experience that showcasing DLCs international portfolio and capabilities while acting as a seamless transition across their 23 properties.",
+    "year": "2026",
+    "awards": 0,
+    "liveUrl": "https://discoverylandco.com/",
+    "credits": [
+      {
+        "name": "Outpost",
+        "url": "https://outpost.design/"
+      }
+    ],
+    "width": 1372,
+    "height": 1029,
+    "poster": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=600",
+    "video": "",
+    "media": [
+      {
+        "src": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=1200",
+        "poster": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=600",
+        "width": 1372,
+        "height": 1029,
+        "video": false
+      },
+      {
+        "src": "https://stream.mux.com/BV6q01JxClCQwHfNI2sVS76jGjg5isqkq/high.mp4",
+        "poster": "https://image.mux.com/BV6q01JxClCQwHfNI2sVS76jGjg5isqkq/thumbnail.jpg",
+        "width": 1280,
+        "height": 642,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/wt002Ew1EVcKEXR5K4PkB9G5l1OoW9jiV/high.mp4",
+        "poster": "https://image.mux.com/wt002Ew1EVcKEXR5K4PkB9G5l1OoW9jiV/thumbnail.jpg",
+        "width": 1280,
+        "height": 642,
+        "video": true
+      }
+    ]
+  },
+  {
+    "slug": "griflan",
+    "title": "Griflan",
+    "summary": "Griflan is a creative studio at the intersection of design, strategy, and compelling storytelling, shaping brands that move culture and leave a lasting mark.",
+    "year": "2026",
+    "awards": 3,
+    "liveUrl": "https://griflan.com",
+    "credits": [],
+    "width": 1162,
+    "height": 720,
+    "poster": "https://image.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/thumbnail.jpg",
+    "video": "https://stream.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/high.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/high.mp4",
+        "poster": "https://image.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/thumbnail.jpg",
+        "width": 1162,
+        "height": 720,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/Hb00nsAmF7R01kcTOmRr2tgpX3WjZkVYPN/high.mp4",
+        "poster": "https://image.mux.com/Hb00nsAmF7R01kcTOmRr2tgpX3WjZkVYPN/thumbnail.jpg",
+        "width": 1022,
+        "height": 720,
+        "video": true
+      },
+      {
+        "src": "https://stream.mux.com/F7soo79aHLgeYDtjug6X599kMSZoBja4/high.mp4",
+        "poster": "https://image.mux.com/F7soo79aHLgeYDtjug6X599kMSZoBja4/thumbnail.jpg",
+        "width": 1280,
+        "height": 642,
+        "video": true
+      }
+    ]
+  }
+]
