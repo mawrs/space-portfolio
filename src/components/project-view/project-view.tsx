@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { CSSProperties, useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Project } from "@/data/projects";
 import { flight } from "@/lib/flight";
+import { sound } from "@/lib/sound";
 import styles from "./project-view.module.css";
 
 type ProjectViewProps = {
@@ -162,6 +163,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   const close = async () => {
     if (navigating.current) return;
     navigating.current = true;
+    sound.close();
     const sheet = sheetRef.current;
     const target = document.querySelector<HTMLElement>(
       `[data-gl="card"][data-id="${project.slug}"]`,
@@ -204,6 +206,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     async (slug: string, direction: PreviewSide) => {
       if (navigating.current) return;
       navigating.current = true;
+      sound.open();
       const sheet = sheetRef.current;
       const preview = document.querySelector<HTMLElement>(`[data-neighbor='${direction}']`);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
