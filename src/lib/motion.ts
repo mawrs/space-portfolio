@@ -5,7 +5,7 @@ export function startFlight() {
   if (flight.started || flight.mode === "idle") return false;
   const selector =
     flight.mode === "open"
-      ? `[data-gl="simple"][data-flight="1"][data-project="${flight.id}"]`
+      ? "[data-project-sheet]"
       : `[data-gl="card"][data-id="${flight.id}"]`;
   if (!document.querySelector(selector)) return false;
   flight.started = true;

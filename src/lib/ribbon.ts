@@ -5,6 +5,10 @@ export type Ribbon = {
   min: number;
   max: number;
   vertical: boolean;
+  cycle: number;
+  starts: number[];
+  extents: number[];
+  viewport: number;
 };
 
 export function isMobile() {
@@ -37,15 +41,24 @@ export function readRibbon(mobile = isMobile()): Ribbon | null {
       min: Math.min(0, viewport - (span(last) + extent(last) + gap)),
       max: 0,
       vertical: true,
+      cycle: span(last) + extent(last) + gap,
+      starts: sizes.map((_, index) => span(index)),
+      extents: sizes.map((_, index) => extent(index)),
+      viewport,
     };
   }
 
   const focus = Math.min(tokens.focusIndex, sizes.length - 1);
   const base = center(focus);
+  const last = sizes.length - 1;
   return {
     base,
     min: center(sizes.length - 1) - base,
     max: center(0) - base,
     vertical: false,
+    cycle: span(last) + extent(last) + gap,
+    starts: sizes.map((_, index) => span(index)),
+    extents: sizes.map((_, index) => extent(index)),
+    viewport,
   };
 }

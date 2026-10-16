@@ -58,9 +58,20 @@ function Cursor() {
     if (!node) return;
     const move = (event: PointerEvent) => {
       node.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+      const target = event.target instanceof Element ? event.target : null;
+      document.documentElement.classList.toggle(
+        "card-pointer",
+        Boolean(target?.closest("[data-gl='card'], [data-gl='simple']")),
+      );
     };
+    const leave = () => document.documentElement.classList.remove("card-pointer");
     window.addEventListener("pointermove", move);
-    return () => window.removeEventListener("pointermove", move);
+    document.documentElement.addEventListener("pointerleave", leave);
+    return () => {
+      window.removeEventListener("pointermove", move);
+      document.documentElement.removeEventListener("pointerleave", leave);
+      leave();
+    };
   }, []);
   return <div ref={ref} className={styles.cursor} aria-hidden="true" />;
 }

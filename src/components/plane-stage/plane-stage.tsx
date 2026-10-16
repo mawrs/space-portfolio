@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { tokens } from "@/data/tokens";
-import { flight, lerpRect } from "@/lib/flight";
+import { flight, galleryMotion, lerpRect } from "@/lib/flight";
 import { startFlight } from "@/lib/motion";
 import { isMobile } from "@/lib/ribbon";
 import { createBlackHole } from "./black-hole";
@@ -15,8 +15,7 @@ const gravityGlsl = `
   }
   float cardGravity(vec2 uv, vec2 pointer, float aspect) {
     vec2 q = (uv - pointer) * vec2(max(aspect, 0.001), 1.0);
-    float local = exp(-dot(q, q) * 3.4);
-    return cardPin(uv) * (0.28 + local);
+    return cardPin(uv) * exp(-dot(q, q) * 22.0);
   }
 `;
 
@@ -29,12 +28,17 @@ const vertexShader = `
   uniform float uHover;
   uniform float uCardH;
   uniform float uAspect;
+  uniform float uInteractive;
+  uniform float uVelocity;
   uniform vec2 uPointer;
   ${gravityGlsl}
   void main() {
     vUv = uv;
     vec3 bent = position;
-    bent.z -= uHover * uBend * 0.22 * uCardH * cardGravity(uv, uPointer, uAspect);
+    float gravity = cardGravity(uv, uPointer, uAspect);
+    vec2 pointerLocal = uPointer - 0.5;
+    bent.xy += (pointerLocal - bent.xy) * uHover * uInteractive * gravity * 0.16;
+    bent.z -= uHover * uInteractive * 0.1 * uCardH * gravity;
     vec4 world = modelMatrix * vec4(bent, 1.0);
     float along = mix(world.x, world.y, 1.0 - uCurve);
     float n = along / max(uHalf, 0.0001) * 1.15 - 0.2;
@@ -42,20 +46,25 @@ const vertexShader = `
     float sine = sin(3.14159265 * n);
     float bowl = 1.0 - n * n;
     float shape = mix(bowl, sine, uCurve) * gaussian;
+    float speed = min(abs(uVelocity), 1.0);
     float slope = mix(
       -2.0 * n * (1.0 + (1.0 - n * n)),
       3.14159265 * cos(3.14159265 * n) - 2.0 * n * sine,
       uCurve
     ) * gaussian;
-    float roll = -0.16 * slope / 3.14159265 * uCurve * uBend;
+    float roll = -0.16 * slope / 3.14159265 * uCurve * uBend * (1.0 + speed * 0.7);
     float cy = world.y;
     float cz = world.z;
     float cs = cos(roll);
     float sn = sin(roll);
     world.y = cy * cs - cz * sn;
     world.z = cy * sn + cz * cs;
-    world.z += -uDepth * shape * uBend;
-    world.y += 0.03 * world.x * uCurve * uBend;
+    float cardArc = sin(vUv.x * 3.14159265);
+    float cardSide = vUv.x * 2.0 - 1.0;
+    world.x += uVelocity * uCardH * 0.055 * cardArc * uBend;
+    world.y += uVelocity * uCardH * 0.035 * cardSide * cardArc * uBend;
+    world.z += -uDepth * shape * uBend * (1.0 + speed * 1.25);
+    world.y += 0.03 * world.x * uCurve * uBend * (1.0 + speed * 0.55);
     gl_Position = projectionMatrix * viewMatrix * world;
   }
 `;
@@ -70,30 +79,65 @@ const fragmentShader = `
   uniform float uHover;
   uniform float uAlpha;
   uniform vec2 uPointer;
+  uniform vec4 uClip;
+  uniform float uClipRadius;
+  uniform float uClipOn;
   ${gravityGlsl}
   void main() {
     if (uAlpha < 0.01) discard;
-    vec2 uv = (vUv - 0.5) * uCover + 0.5;
+    float gravity = cardGravity(vUv, uPointer, uAspect);
+    vec2 lensUv = vUv + (vUv - uPointer) * gravity * uHover * 0.16;
+    vec2 uv = (lensUv - 0.5) * uCover + 0.5;
     vec4 media = texture2D(uMap, uv);
-    vec4 overlay = texture2D(uOverlay, vUv);
+    vec4 overlay = texture2D(uOverlay, lensUv);
     vec3 color = mix(media.rgb, overlay.rgb, overlay.a);
-    float weight = uHover * cardGravity(vUv, uPointer, uAspect);
-    color = mix(color, vec3(0.02), weight * 0.62);
-    float reach = length((vUv - uPointer) * vec2(uAspect, 1.0));
-    float ring = smoothstep(0.08, 0.28, reach) * (1.0 - smoothstep(0.28, 0.62, reach));
-    color += uHover * cardPin(vUv) * ring * 0.28;
+    vec2 field = (vUv - uPointer) * vec2(uAspect, 1.0);
+    float shade = dot(field, normalize(vec2(-0.3, 1.0))) * gravity * uHover;
+    color *= 1.0 + clamp(shade * 0.65, -0.1, 0.1);
     vec2 p = (vUv - 0.5) * vec2(uAspect, 1.0);
     vec2 box = vec2(uAspect, 1.0) * 0.5;
     vec2 q = abs(p) - box + uRadius;
     float dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - uRadius;
     if (dist > 0.0) discard;
-    gl_FragColor = vec4(color, uAlpha);
+    float alpha = uAlpha;
+    if (uClipOn > 0.5) {
+      vec2 clipPoint = abs(gl_FragCoord.xy - uClip.xy) - uClip.zw + uClipRadius;
+      float clipDistance = length(max(clipPoint, 0.0))
+        + min(max(clipPoint.x, clipPoint.y), 0.0)
+        - uClipRadius;
+      alpha *= 1.0 - smoothstep(-1.5, 1.5, clipDistance);
+    }
+    if (alpha < 0.01) discard;
+    gl_FragColor = vec4(color, alpha);
   }
 `;
 
 function coverScale(mediaAspect: number, planeAspect: number) {
   if (mediaAspect > planeAspect) return { x: planeAspect / mediaAspect, y: 1 };
   return { x: 1, y: mediaAspect / planeAspect };
+}
+
+function visibleClip(element: HTMLElement, rect: DOMRect) {
+  const clip = getComputedStyle(element).clipPath;
+  const body = clip.match(/^inset\((.+?)(?:\s+round\s+.+)?\)$/)?.[1];
+  if (!body) return rect;
+  const values = body
+    .trim()
+    .split(/\s+/)
+    .map((value) => Number.parseFloat(value));
+  if (!values.length || values.some((value) => !Number.isFinite(value))) return rect;
+  const [top, right = top, bottom = top, left = right] =
+    values.length === 2
+      ? [values[0], values[1], values[0], values[1]]
+      : values.length === 3
+        ? [values[0], values[1], values[2], values[1]]
+        : values;
+  return new DOMRect(
+    rect.left + left,
+    rect.top + top,
+    Math.max(0, rect.width - left - right),
+    Math.max(0, rect.height - top - bottom),
+  );
 }
 
 function paintOverlay(title: string, aspect: number, fontFamily: string) {
@@ -161,6 +205,9 @@ export function PlaneStage() {
         uHalf: { value: 1 },
         uDepth: { value: 1 },
         uCurve: { value: 1 },
+        uVelocity: { value: 0 },
+        uClip: { value: new THREE.Vector4() },
+        uClipRadius: { value: 0 },
       };
       const fontFamily = getComputedStyle(document.body).fontFamily;
 
@@ -174,13 +221,17 @@ export function PlaneStage() {
         bend: { value: number };
         hover: { value: number };
         alpha: { value: number };
+        clipOn: { value: number };
         pointer: InstanceType<typeof THREE.Vector2>;
         cover: InstanceType<typeof THREE.Vector2>;
+        enteredAt: number;
+        reveal: number;
       };
 
       const blackHole = createBlackHole(THREE, renderer);
       const records = new Map<string, Record>();
       const pointer = { x: 0, y: 0, over: false, down: false };
+      const drawingSize = new THREE.Vector2();
 
       const placePointer = (event: PointerEvent) => {
         const bounds = renderer.domElement.getBoundingClientRect();
@@ -254,6 +305,7 @@ export function PlaneStage() {
         const aspect = { value: ratio };
         const radius = { value: 0.08 };
         const cardH = { value: 1 };
+        const clipOn = { value: 0 };
         const material = new THREE.ShaderMaterial({
           uniforms: {
             uMap: { value: map },
@@ -262,13 +314,18 @@ export function PlaneStage() {
             uHalf: shared.uHalf,
             uDepth: shared.uDepth,
             uCurve: shared.uCurve,
+            uVelocity: shared.uVelocity,
             uBend: bend,
             uHover: hover,
+            uInteractive: { value: role === "card" || role === "simple" ? 1 : 0 },
             uPointer: { value: pointerUv },
             uAspect: aspect,
             uRadius: radius,
             uCardH: cardH,
             uAlpha: alpha,
+            uClip: shared.uClip,
+            uClipRadius: shared.uClipRadius,
+            uClipOn: clipOn,
           },
           vertexShader,
           fragmentShader,
@@ -289,8 +346,13 @@ export function PlaneStage() {
           bend,
           hover,
           alpha,
+          clipOn,
           pointer: pointerUv,
           cover,
+          enteredAt:
+            performance.now() +
+            (role === "simple" ? 250 + (Number(node.dataset.stackIndex) || 0) * 100 : 0),
+          reveal: role === "simple" ? 0 : 1,
         };
         records.set(key, record);
         return record;
@@ -331,6 +393,27 @@ export function PlaneStage() {
         shared.uHalf.value = Math.max(half, 1);
         shared.uDepth.value = half * (mobile ? tokens.depthMobile : tokens.depth);
         shared.uCurve.value = mobile ? 0 : 1;
+        shared.uVelocity.value = mobile
+          ? 0
+          : THREE.MathUtils.clamp(galleryMotion.visualVelocity / 1.8, -1, 1);
+        const projectSheet = document.querySelector<HTMLElement>("[data-project-sheet]");
+        const sheetRect = projectSheet?.getBoundingClientRect();
+        const clipRect = projectSheet && sheetRect ? visibleClip(projectSheet, sheetRect) : null;
+        if (projectSheet && sheetRect && sheetRect.width > 1 && bounds.width > 1 && bounds.height > 1) {
+          const drawing = renderer.getDrawingBufferSize(drawingSize);
+          const scaleX = drawing.x / bounds.width;
+          const scaleY = drawing.y / bounds.height;
+          const visible = clipRect ?? sheetRect;
+          shared.uClip.value.set(
+            (visible.left - bounds.left + visible.width / 2) * scaleX,
+            (bounds.bottom - visible.top - visible.height / 2) * scaleY,
+            visible.width * scaleX * 0.5,
+            visible.height * scaleY * 0.5,
+          );
+          shared.uClipRadius.value =
+            (Number.parseFloat(getComputedStyle(projectSheet).borderTopLeftRadius) || 0) *
+            scaleY;
+        }
 
         if (flight.mode !== "idle") {
           if (!flight.started) {
@@ -351,8 +434,6 @@ export function PlaneStage() {
         const nodes = [
           ...document.querySelectorAll<HTMLElement>("[data-gl='card'], [data-gl='simple'], [data-gl='related']"),
         ];
-        const cloneKey = `card:${flight.id}`;
-        const clone = flight.mode === "open" ? records.get(cloneKey) : undefined;
         let hot: Record | null = null;
 
         nodes.forEach((node) => {
@@ -364,22 +445,12 @@ export function PlaneStage() {
           if (rect.width < 2 || rect.height < 2) return;
           const record = ensure(key, node, role);
           if (!record) return;
+          record.clipOn.value = role === "simple" && sheetRect ? 1 : 0;
           live.add(key);
           const current = { x: rect.left, y: rect.top, w: rect.width, h: rect.height };
           let pose = current;
           let bend = role === "card" && !mobile ? 1 : 0;
-          const openingHero =
-            flight.mode === "open" &&
-            role === "simple" &&
-            node.dataset.flight === "1" &&
-            node.dataset.project === flight.id &&
-            flight.from;
-          if (openingHero && flight.from) {
-            const amount = flight.progress.value;
-            pose = clone && amount < 0.999 ? current : lerpRect(flight.from, current, amount);
-            bend = (1 - amount) * (mobile ? 0 : 1);
-            record.alpha.value = clone && amount < 0.999 ? 0 : 1;
-          } else if (
+          if (
             flight.mode === "return" &&
             role === "card" &&
             id === flight.id &&
@@ -389,6 +460,14 @@ export function PlaneStage() {
             pose = lerpRect(flight.from, current, amount);
             bend = amount * (mobile ? 0 : 1);
             record.alpha.value = 1;
+          } else if (role === "simple") {
+            const progress = THREE.MathUtils.clamp((now - record.enteredAt) / 1250, 0, 1);
+            record.reveal = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            pose = {
+              ...current,
+              y: current.y + (1 - record.reveal) * (sheetRect?.height ?? bounds.height) * 0.5,
+            };
+            record.alpha.value = record.reveal;
           } else if (role === "related") {
             const opacity = Number.parseFloat(getComputedStyle(node).opacity);
             record.alpha.value = Number.isFinite(opacity) ? opacity : 0.3;
@@ -398,7 +477,12 @@ export function PlaneStage() {
           const radius = Number.parseFloat(getComputedStyle(node).borderTopLeftRadius) || rem * 1.2;
           place(record, pose, bounds, bend, radius);
 
-          if (role === "card" && record.alpha.value > 0.4 && flight.mode === "idle" && !pointer.down) {
+          if (
+            (role === "card" || role === "simple") &&
+            record.alpha.value > 0.4 &&
+            flight.mode === "idle" &&
+            !pointer.down
+          ) {
             const localX = pointer.x - (pose.x - bounds.left);
             const localY = pointer.y - (pose.y - bounds.top);
             if (localX >= 0 && localY >= 0 && localX <= pose.w && localY <= pose.h) {
@@ -407,34 +491,6 @@ export function PlaneStage() {
             }
           }
         });
-
-        if (flight.mode === "open" && flight.from && clone && flight.progress.value < 0.999) {
-          live.add(cloneKey);
-          const hero = document.querySelector<HTMLElement>(
-            `[data-gl="simple"][data-flight="1"][data-project="${flight.id}"]`,
-          );
-          const heroRect = hero?.getBoundingClientRect();
-          const target =
-            heroRect && heroRect.width > 2
-              ? { x: heroRect.left, y: heroRect.top, w: heroRect.width, h: heroRect.height }
-              : flight.from;
-          if (flight.frame && !flight.applied) {
-            const texture = new THREE.CanvasTexture(flight.frame);
-            texture.colorSpace = THREE.SRGBColorSpace;
-            texture.needsUpdate = true;
-            clone.material.uniforms.uMap.value = texture;
-            flight.applied = true;
-          }
-          const amount = flight.progress.value;
-          place(
-            clone,
-            lerpRect(flight.from, target, amount),
-            bounds,
-            (1 - amount) * (mobile ? 0 : 1),
-            rem * (2 - amount * 0.8),
-          );
-          clone.alpha.value = 1;
-        }
 
         records.forEach((record, key) => {
           if (live.has(key)) return;

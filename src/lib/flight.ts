@@ -4,7 +4,9 @@ export type Rect = { x: number; y: number; w: number; h: number };
 
 export const galleryMotion = {
   offset: 0,
-  velocity: 0,
+  target: 0,
+  momentum: 0,
+  visualVelocity: 0,
 };
 
 export const flight = {

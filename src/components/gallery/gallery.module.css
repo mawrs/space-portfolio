@@ -13,6 +13,7 @@
   display: flex;
   gap: 1rem;
   will-change: transform;
+  user-select: none;
 }
 
 .stacked {
@@ -26,23 +27,28 @@
 .card {
   position: relative;
   flex: none;
-  height: 43.5svh;
-  max-height: 55rem;
-  aspect-ratio: var(--ratio);
+  height: 46svh;
+  max-height: 58rem;
+  aspect-ratio: 16 / 9;
   border-radius: 2rem;
   overflow: hidden;
+  will-change: transform;
 }
 
 .stacked .card {
   width: 100%;
   height: auto;
   max-height: none;
+  aspect-ratio: 16 / 9;
 }
 
 .card a {
   position: absolute;
   inset: 0;
   display: block;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .card img,
@@ -52,6 +58,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 :global(html.gl) .card img,
