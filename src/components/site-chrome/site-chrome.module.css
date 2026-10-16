@@ -1,7 +1,10 @@
 .onSheet {
+  pointer-events: none;
+}
+
+.onSheet .row > :not(.sound) {
   visibility: hidden;
   opacity: 0;
-  pointer-events: none;
 }
 
 .chrome {

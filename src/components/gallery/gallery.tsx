@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { CSSProperties, MouseEvent, useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
 import { beginFlight, galleryMotion, snapshot } from "@/lib/flight";
+import { sound } from "@/lib/sound";
 import { readRibbon } from "@/lib/ribbon";
 import styles from "./gallery.module.css";
 
@@ -211,6 +212,7 @@ export function Gallery() {
     if (moved.current || document.documentElement.dataset.panel) return;
     const article = event.currentTarget.closest<HTMLElement>("[data-gl='card']");
     if (!article) return;
+    sound.open();
     beginFlight(slug, article.getBoundingClientRect(), snapshot(article));
     router.push(`/projects/${slug}`, { scroll: false });
   };
@@ -233,6 +235,7 @@ export function Gallery() {
               href={`/projects/${project.slug}`}
               draggable={false}
               onDragStart={(event) => event.preventDefault()}
+              onPointerEnter={() => sound.focus()}
               onClick={(event) => open(event, project.slug)}
             >
               {project.video ? (
