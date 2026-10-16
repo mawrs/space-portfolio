@@ -47,46 +47,41 @@
     ]
   },
   {
-    "slug": "casa-di-solare",
-    "title": "Casa Di Solare",
-    "summary": "Solare extends Nikolas Type‘s Font Catalogue with a timeless, hyper-useable quintessential variable font, suitable for a wide field of applications.",
-    "year": "2024",
-    "awards": 4,
-    "liveUrl": "https://casadisolare.com/",
-    "credits": [
-      {
-        "name": "Unseen",
-        "url": "https://unseen.co/"
-      }
-    ],
-    "width": 2048,
-    "height": 1204,
-    "poster": "https://image.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/thumbnail.jpg",
-    "video": "https://stream.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/high.mp4",
+    "slug": "facebook",
+    "title": "Facebook",
+    "summary": "The home feed, the notification panel, and the controls for what a Page sends you.",
+    "year": "2021",
+    "awards": 0,
+    "liveUrl": "https://www.facebook.com/",
+    "credits": [],
+    "width": 1920,
+    "height": 1080,
+    "poster": "https://image.mux.com/eXjQygxXwcaVcyc005U5uOJcDvAXvLtkjDrrQcw1K1j4/thumbnail.jpg?time=1",
+    "video": "https://stream.mux.com/eXjQygxXwcaVcyc005U5uOJcDvAXvLtkjDrrQcw1K1j4/720p.mp4",
     "media": [
       {
-        "src": "https://stream.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/high.mp4",
-        "poster": "https://image.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/thumbnail.jpg",
-        "width": 2048,
-        "height": 1204,
+        "src": "https://stream.mux.com/eXjQygxXwcaVcyc005U5uOJcDvAXvLtkjDrrQcw1K1j4/720p.mp4",
+        "poster": "https://image.mux.com/eXjQygxXwcaVcyc005U5uOJcDvAXvLtkjDrrQcw1K1j4/thumbnail.jpg?time=1",
+        "width": 1280,
+        "height": 720,
         "video": true,
-        "caption": "Casa Di Solare extends the Nikolas Type catalogue with a variable face built for a wide field of use. The site treats the typeface itself as the product."
+        "caption": "The sizzle: the volume of reaction, then the choice to turn the rest off."
       },
       {
-        "src": "https://stream.mux.com/R3vmn027401UtGEikdEo5clIi5MUU9aZs02/high.mp4",
-        "poster": "https://image.mux.com/R3vmn027401UtGEikdEo5clIi5MUU9aZs02/thumbnail.jpg",
-        "width": 1280,
-        "height": 596,
+        "src": "/projects/facebook.mp4",
+        "poster": "/projects/facebook-feed.jpg",
+        "width": 1920,
+        "height": 1080,
         "video": true,
-        "caption": "Specimens move through weight, width, and setting, so the font can be judged in motion rather than as a static sample."
+        "caption": "The home feed, then the notification panel with new comments, mentions, and follows."
       },
       {
-        "src": "https://stream.mux.com/iyDjwB2orEKXdIKP5u02RfT68xRnllt7a/high.mp4",
-        "poster": "https://image.mux.com/iyDjwB2orEKXdIKP5u02RfT68xRnllt7a/thumbnail.jpg",
-        "width": 1280,
-        "height": 644,
+        "src": "/projects/facebook-2.mp4",
+        "poster": "/projects/facebook-settings.jpg",
+        "width": 1920,
+        "height": 1080,
         "video": true,
-        "caption": "The closing film places the face in context — editorial, display, and everyday — without dressing it past what the letterforms can do."
+        "caption": "Page notification settings, where comments, likes, tags, posts, and shares can each be turned on or off."
       }
     ]
   },

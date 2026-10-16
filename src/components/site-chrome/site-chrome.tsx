@@ -43,14 +43,14 @@ export function SiteChrome({ panel, pathname, onPanel }: SiteChromeProps) {
             Full
           </Link>
         </nav>
-        <button
-          type="button"
+        <a
           className={styles.label}
-          aria-expanded={panel === "newsletter"}
-          onClick={() => toggle("newsletter")}
+          href="/martin-tejeda-resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          {panel === "newsletter" ? "Close" : "Resume"}
-        </button>
+          Resume
+        </a>
       </div>
     </header>
   );
