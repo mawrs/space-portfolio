@@ -17,35 +17,39 @@
         "poster": "https://image.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/thumbnail.jpg",
         "width": 2048,
         "height": 1172,
-        "video": true
+        "video": true,
+        "caption": "A portfolio for a practice that moves between art direction, surrealist 3D, and motion. The opening film lets the work set the tone before any explanation does."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786207557-nathan-2.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-2.jpg?auto=format&fit=max&w=600",
         "width": 1787,
         "height": 900,
-        "video": false
+        "video": false,
+        "caption": "Still studies from the same visual world. Each frame is composed to hold on its own, then sit inside a larger body of work."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786207557-nathan-1.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-1.jpg?auto=format&fit=max&w=600",
         "width": 1798,
         "height": 905,
-        "video": false
+        "video": false,
+        "caption": "The middle of the case keeps the interface quiet. Type and navigation step back so the imagery can carry the page."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786207557-nathan-3.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-3.jpg?auto=format&fit=max&w=600",
         "width": 1792,
         "height": 904,
-        "video": false
+        "video": false,
+        "caption": "Later pieces stay in that same discipline. The result reads as one authored practice, not a stack of unrelated projects."
       }
     ]
   },
   {
     "slug": "casa-di-solare",
     "title": "Casa Di Solare",
-    "summary": "Solare extends Nikolas Type\u2018s Font Catalogue with a timeless, hyper-useable quintessential variable font, suitable for a wide field of applications.",
+    "summary": "Solare extends Nikolas Type‘s Font Catalogue with a timeless, hyper-useable quintessential variable font, suitable for a wide field of applications.",
     "year": "2024",
     "awards": 4,
     "liveUrl": "https://casadisolare.com/",
@@ -65,34 +69,37 @@
         "poster": "https://image.mux.com/DrMKk9cqmTOu4Y4dJzCjEn5ny37s02001I/thumbnail.jpg",
         "width": 2048,
         "height": 1204,
-        "video": true
+        "video": true,
+        "caption": "Casa Di Solare extends the Nikolas Type catalogue with a variable face built for a wide field of use. The site treats the typeface itself as the product."
       },
       {
         "src": "https://stream.mux.com/R3vmn027401UtGEikdEo5clIi5MUU9aZs02/high.mp4",
         "poster": "https://image.mux.com/R3vmn027401UtGEikdEo5clIi5MUU9aZs02/thumbnail.jpg",
         "width": 1280,
         "height": 596,
-        "video": true
+        "video": true,
+        "caption": "Specimens move through weight, width, and setting, so the font can be judged in motion rather than as a static sample."
       },
       {
         "src": "https://stream.mux.com/iyDjwB2orEKXdIKP5u02RfT68xRnllt7a/high.mp4",
         "poster": "https://image.mux.com/iyDjwB2orEKXdIKP5u02RfT68xRnllt7a/thumbnail.jpg",
         "width": 1280,
         "height": 644,
-        "video": true
+        "video": true,
+        "caption": "The closing film places the face in context — editorial, display, and everyday — without dressing it past what the letterforms can do."
       }
     ]
   },
   {
     "slug": "the-lookback",
     "title": "The Lookback",
-    "summary": "Digital capsule for Better Off\u00ae studio to document what inspired them and what they created over the last months/years.",
+    "summary": "Digital capsule for Better Off® studio to document what inspired them and what they created over the last months/years.",
     "year": "2026",
     "awards": 3,
     "liveUrl": "https://tlb.betteroff.studio/",
     "credits": [
       {
-        "name": "BetterOff\u00ae Studio",
+        "name": "BetterOff® Studio",
         "url": "https://betteroff.studio/"
       },
       {
@@ -110,28 +117,32 @@
         "poster": "https://image.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/thumbnail.jpg",
         "width": 1250,
         "height": 720,
-        "video": true
+        "video": true,
+        "caption": "A digital capsule for Better Off, made to hold what the studio created and what inspired it. The opening film starts the record before the pages do."
       },
       {
         "src": "https://stream.mux.com/HofYkQ00DP02B202026iOjEsHVlOHoXqJB02y/high.mp4",
         "poster": "https://image.mux.com/HofYkQ00DP02B202026iOjEsHVlOHoXqJB02y/thumbnail.jpg",
         "width": 1620,
         "height": 1080,
-        "video": true
+        "video": true,
+        "caption": "Later sequences slow that record down. Process, reference, and finished work share one timeline instead of living in separate sections."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1785656629-image-39.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1785656629-image-39.jpg?auto=format&fit=max&w=600",
         "width": 1500,
         "height": 1897,
-        "video": false
+        "video": false,
+        "caption": "Archive stills keep the same framing as the films, so a photograph reads as part of the document rather than an aside."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1785656633-tlb4.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1785656633-tlb4.jpg?auto=format&fit=max&w=600",
         "width": 1500,
         "height": 1000,
-        "video": false
+        "video": false,
+        "caption": "The last spread closes the capsule. It stays specific to the months and years it covers, and leaves the studio’s record intact."
       }
     ]
   },
@@ -158,35 +169,39 @@
         "poster": "https://image.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/thumbnail.jpg",
         "width": 2048,
         "height": 1114,
-        "video": true
+        "video": true,
+        "caption": "A site for a practice that helps leaders keep themselves and their people mentally healthy. The opening film states the offer before the argument does."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786210260-book-2.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786210260-book-2.jpg?auto=format&fit=max&w=600",
         "width": 1565,
         "height": 908,
-        "video": false
+        "video": false,
+        "caption": "The pages that follow give the ideas room. Pace, type, and image are set so the subject can stay human."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786210260-book-3.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786210260-book-3.jpg?auto=format&fit=max&w=600",
         "width": 1568,
         "height": 906,
-        "video": false
+        "video": false,
+        "caption": "The work is shown plainly, with enough context to understand it and enough quiet to sit with it."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786210260-book-1.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786210260-book-1.jpg?auto=format&fit=max&w=600",
         "width": 1571,
         "height": 906,
-        "video": false
+        "video": false,
+        "caption": "The final frames return to the people the book is for — leaders, teams, and the daily work of staying well."
       }
     ]
   },
   {
     "slug": "dogelon-mars",
     "title": "Dogelon Mars",
-    "summary": "Follow the story of Dogelon Mars as he explores the greatest mysteries of the universe and seeks to return to the planet he once called home with the help of the friends he\u2019s made during his intergalactic travels.",
+    "summary": "Follow the story of Dogelon Mars as he explores the greatest mysteries of the universe and seeks to return to the planet he once called home with the help of the friends he’s made during his intergalactic travels.",
     "year": "2024",
     "awards": 3,
     "liveUrl": "https://dogelonmars.com",
@@ -206,28 +221,32 @@
         "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=600",
         "width": 3360,
         "height": 2200,
-        "video": false
+        "video": false,
+        "caption": "The story of Dogelon Mars, told as a world rather than a landing page. He is searching the universe for a way back to the planet he once called home."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-1.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-1.jpg?auto=format&fit=max&w=600",
         "width": 3360,
         "height": 2200,
-        "video": false
+        "video": false,
+        "caption": "Friends made on the journey become part of the narrative. Each scene extends the voyage without breaking the character’s world."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-4.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-4.jpg?auto=format&fit=max&w=600",
         "width": 3420,
         "height": 2201,
-        "video": false
+        "video": false,
+        "caption": "Stills hold the same visual language across the case: character, space, and story kept in one frame."
       },
       {
         "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-3.jpg?auto=format&fit=max&w=1200",
         "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-3.jpg?auto=format&fit=max&w=600",
         "width": 3360,
         "height": 2200,
-        "video": false
+        "video": false,
+        "caption": "The last image leaves the voyage open. The mystery is the point, and the site is built to keep following it."
       }
     ]
   },
@@ -254,21 +273,24 @@
         "poster": "https://image.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/thumbnail.jpg",
         "width": 1196,
         "height": 720,
-        "video": true
+        "video": true,
+        "caption": "A site for a Belgian designer whose work is built on type. Art direction, interaction, and branding are presented as one practice."
       },
       {
         "src": "https://stream.mux.com/g12oqAEfwFRDxmxiuH02yJsALmVkKqsKA/high.mp4",
         "poster": "https://image.mux.com/g12oqAEfwFRDxmxiuH02yJsALmVkKqsKA/thumbnail.jpg",
         "width": 1280,
         "height": 644,
-        "video": true
+        "video": true,
+        "caption": "Projects are shown in motion so typography can be read as behavior — scale, rhythm, and how a page actually moves."
       },
       {
         "src": "https://stream.mux.com/ONW93srqx6kGfiHTKQtV2pkqByQY01nF01/high.mp4",
         "poster": "https://image.mux.com/ONW93srqx6kGfiHTKQtV2pkqByQY01nF01/thumbnail.jpg",
         "width": 1280,
         "height": 604,
-        "video": true
+        "video": true,
+        "caption": "The final film keeps the focus on craft. Less explanation, more of the work doing the talking."
       }
     ]
   },
@@ -295,21 +317,24 @@
         "poster": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=600",
         "width": 1372,
         "height": 1029,
-        "video": false
+        "video": false,
+        "caption": "An immersive brand experience for Discovery Land Company, made with Outpost. It has to introduce an international portfolio and carry a visitor across 23 properties."
       },
       {
         "src": "https://stream.mux.com/BV6q01JxClCQwHfNI2sVS76jGjg5isqkq/high.mp4",
         "poster": "https://image.mux.com/BV6q01JxClCQwHfNI2sVS76jGjg5isqkq/thumbnail.jpg",
         "width": 1280,
         "height": 642,
-        "video": true
+        "video": true,
+        "caption": "Film handles the transition. Each property can feel distinct while the brand stays recognizable from one place to the next."
       },
       {
         "src": "https://stream.mux.com/wt002Ew1EVcKEXR5K4PkB9G5l1OoW9jiV/high.mp4",
         "poster": "https://image.mux.com/wt002Ew1EVcKEXR5K4PkB9G5l1OoW9jiV/thumbnail.jpg",
         "width": 1280,
         "height": 642,
-        "video": true
+        "video": true,
+        "caption": "The later sequences keep that handoff smooth: one story, many places, and no break in the experience."
       }
     ]
   },
@@ -331,21 +356,24 @@
         "poster": "https://image.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/thumbnail.jpg",
         "width": 1162,
         "height": 720,
-        "video": true
+        "video": true,
+        "caption": "A home for a studio working between design, strategy, and storytelling. The reel leads, because the work is the argument."
       },
       {
         "src": "https://stream.mux.com/Hb00nsAmF7R01kcTOmRr2tgpX3WjZkVYPN/high.mp4",
         "poster": "https://image.mux.com/Hb00nsAmF7R01kcTOmRr2tgpX3WjZkVYPN/thumbnail.jpg",
         "width": 1022,
         "height": 720,
-        "video": true
+        "video": true,
+        "caption": "Selected projects show how a brand is shaped — not only how it looks, but how it is meant to move."
       },
       {
         "src": "https://stream.mux.com/F7soo79aHLgeYDtjug6X599kMSZoBja4/high.mp4",
         "poster": "https://image.mux.com/F7soo79aHLgeYDtjug6X599kMSZoBja4/thumbnail.jpg",
         "width": 1280,
         "height": 642,
-        "video": true
+        "video": true,
+        "caption": "The closing film leaves a clear impression of the studio: precise, cultural, and built to last past a single campaign."
       }
     ]
   }

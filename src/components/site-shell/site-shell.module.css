@@ -38,6 +38,10 @@
   opacity: 0;
 }
 
+:global(body:has([data-project-sheet])) .cursor {
+  display: none;
+}
+
 .loader {
   position: fixed;
   inset: 0;
