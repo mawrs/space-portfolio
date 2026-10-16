@@ -82,6 +82,13 @@
   pointer-events: auto;
 }
 
+.copy a:hover,
+.copy a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+}
+
 .hole .copy {
   width: auto;
   max-width: none;

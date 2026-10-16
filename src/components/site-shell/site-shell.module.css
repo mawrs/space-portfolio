@@ -14,34 +14,6 @@
   mask-image: linear-gradient(to top, #000 0%, transparent 46%);
 }
 
-.cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 80;
-  width: 0.8rem;
-  height: 0.8rem;
-  margin: -0.4rem 0 0 -0.4rem;
-  border-radius: 50%;
-  background: #fff;
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
-
-:global(html.grabbable) .cursor {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin: -0.75rem 0 0 -0.75rem;
-}
-
-:global(html.card-pointer) .cursor {
-  opacity: 0;
-}
-
-:global(body:has([data-project-sheet])) .cursor {
-  display: none;
-}
-
 .loader {
   position: fixed;
   inset: 0;
@@ -67,12 +39,6 @@
 
 .loader span:nth-child(3) {
   animation-delay: 0.24s;
-}
-
-@media (pointer: coarse) {
-  .cursor {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

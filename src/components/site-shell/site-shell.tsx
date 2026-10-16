@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { PlaneStage } from "@/components/plane-stage/plane-stage";
 import { Portal } from "@/components/portal/portal";
 import { SiteChrome } from "@/components/site-chrome/site-chrome";
@@ -38,7 +38,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <PlaneStage />
       {children}
       <SiteChrome panel={panel} pathname={pathname} onPanel={setPanel} />
-      <Cursor />
       {panel ? <Portal kind={panel} onClose={() => setPanel(null)} /> : null}
       {booting ? (
         <div className={styles.loader} aria-hidden="true">
@@ -49,29 +48,4 @@ export function SiteShell({ children }: { children: ReactNode }) {
       ) : null}
     </>
   );
-}
-
-function Cursor() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const move = (event: PointerEvent) => {
-      node.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
-      const target = event.target instanceof Element ? event.target : null;
-      document.documentElement.classList.toggle(
-        "card-pointer",
-        Boolean(target?.closest("[data-gl='card'], [data-gl='simple']")),
-      );
-    };
-    const leave = () => document.documentElement.classList.remove("card-pointer");
-    window.addEventListener("pointermove", move);
-    document.documentElement.addEventListener("pointerleave", leave);
-    return () => {
-      window.removeEventListener("pointermove", move);
-      document.documentElement.removeEventListener("pointerleave", leave);
-      leave();
-    };
-  }, []);
-  return <div ref={ref} className={styles.cursor} aria-hidden="true" />;
 }

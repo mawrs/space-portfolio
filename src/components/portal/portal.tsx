@@ -48,7 +48,6 @@ export function Portal({ kind, onClose }: PortalProps) {
         {kind === "profile" ? (
           <div className={styles.copy}>
             <p>{site.profile}</p>
-            <p className={styles.awards}>{site.awards}</p>
             <ul>
               {site.socials.map((social) => (
                 <li key={social.label}>

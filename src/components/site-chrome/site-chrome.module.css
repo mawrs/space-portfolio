@@ -63,6 +63,15 @@
   opacity: 0.55;
 }
 
+.label:hover,
+.muted:hover,
+.label:focus-visible,
+.muted:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+}
+
 .muted:hover {
   opacity: 1;
 }

@@ -30,7 +30,7 @@ export function SiteChrome({ panel, pathname, onPanel }: SiteChromeProps) {
           aria-expanded={panel === "profile"}
           onClick={() => toggle("profile")}
         >
-          {panel === "profile" ? "Close" : "Profile"}
+          {panel === "profile" ? "Close" : "About"}
         </button>
       </div>
       <div className={styles.row}>
@@ -49,7 +49,7 @@ export function SiteChrome({ panel, pathname, onPanel }: SiteChromeProps) {
           aria-expanded={panel === "newsletter"}
           onClick={() => toggle("newsletter")}
         >
-          {panel === "newsletter" ? "Close" : "Newsletter"}
+          {panel === "newsletter" ? "Close" : "Resume"}
         </button>
       </div>
     </header>

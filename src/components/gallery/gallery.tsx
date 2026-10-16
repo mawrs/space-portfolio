@@ -117,7 +117,6 @@ export function Gallery() {
         pushGallery(current.delta * 12, mobile);
       }
       drag.current = null;
-      document.documentElement.classList.remove("grabbable");
     };
     const down = (event: PointerEvent) => {
       const ribbon = ribbonRef.current;
@@ -138,7 +137,6 @@ export function Gallery() {
         active: false,
       };
       moved.current = false;
-      document.documentElement.classList.add("grabbable");
     };
     const move = (event: PointerEvent) => {
       const current = drag.current;
