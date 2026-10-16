@@ -11,6 +11,7 @@ export type Media = {
   width: number;
   height: number;
   video: boolean;
+  caption: string;
 };
 
 export type Project = {

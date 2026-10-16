@@ -36,6 +36,16 @@ body {
   body {
     cursor: none;
   }
+
+  body:has([data-project-sheet]),
+  body:has([data-project-sheet]) * {
+    cursor: auto;
+  }
+
+  body:has([data-project-sheet]) a,
+  body:has([data-project-sheet]) button {
+    cursor: pointer;
+  }
 }
 
 * {

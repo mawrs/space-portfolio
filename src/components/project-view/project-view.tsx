@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { CSSProperties, useEffect, useLayoutEffect, useRef } from "react";
+import { CSSProperties, useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Project } from "@/data/projects";
-import { beginFlight, flight, snapshot } from "@/lib/flight";
+import { flight } from "@/lib/flight";
 import styles from "./project-view.module.css";
 
 type ProjectViewProps = {
@@ -12,18 +12,46 @@ type ProjectViewProps = {
   next: Project;
 };
 
+type CaseDragState = {
+  startX: number;
+  startY: number;
+  lastX: number;
+  lastAt: number;
+  offset: number;
+  velocity: number;
+  pointerId: number;
+  axis: "pending" | "horizontal";
+};
+
+type PreviewSide = "prev" | "next";
+
+type PreviewRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  radius: number;
+};
+
 export function ProjectView({ project, previous, next }: ProjectViewProps) {
   const router = useRouter();
+  const stageRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const sheetRef = useRef<HTMLElement>(null);
   const animationRef = useRef<Animation | null>(null);
+  const dragRef = useRef<CaseDragState | null>(null);
   const navigating = useRef(false);
 
   useEffect(() => {
     closeRef.current?.focus({ preventScroll: true });
   }, [project.slug]);
+
+  useEffect(() => {
+    router.prefetch(`/projects/${previous.slug}`);
+    router.prefetch(`/projects/${next.slug}`);
+  }, [next.slug, previous.slug, router]);
 
   useLayoutEffect(() => {
     const sheet = sheetRef.current;
@@ -33,16 +61,24 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     sheet.style.opacity = "1";
     sheet.style.transform = "";
     sheet.style.clipPath = "";
+    sheet.style.pointerEvents = "";
+    document.querySelectorAll<HTMLElement>("[data-neighbor]").forEach((node) => {
+      node.getAnimations().forEach((animation) => animation.cancel());
+      clearPreviewStyles(node);
+    });
+    const arrived = document.documentElement.dataset.caseArrived;
+    delete document.documentElement.dataset.caseArrived;
     const direction = document.documentElement.dataset.caseDirection as "prev" | "next" | undefined;
     delete document.documentElement.dataset.caseDirection;
+    if (arrived) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const sheetRect = sheet.getBoundingClientRect();
     const keyframes: Keyframe[] = direction
       ? [
           {
-            opacity: 0,
-            transform: `translateX(${direction === "next" ? 10 : -10}vw) scale(0.985)`,
+            opacity: 0.55,
+            transform: `translateX(${direction === "next" ? 6 : -6}vw) scale(0.99)`,
           },
           { opacity: 1, transform: "translateX(0) scale(1)" },
         ]
@@ -64,7 +100,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
             { opacity: 1, transform: "translateY(0) scale(1)" },
           ];
     const animation = sheet.animate(keyframes, {
-      duration: direction ? 650 : 900,
+      duration: direction ? 520 : 900,
       easing: "cubic-bezier(0.16, 1, 0.3, 1)",
       fill: "both",
     });
@@ -164,44 +200,229 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     router.push("/", { scroll: false });
   };
 
-  const go = async (
-    slug: string,
-    selector: string,
-    direction: "prev" | "next",
-  ) => {
-    if (navigating.current) return;
-    navigating.current = true;
-    const node = document.querySelector<HTMLElement>(selector);
-    const from = node?.getBoundingClientRect() ?? heroRect();
-    const frame = snapshot(node);
-    const sheet = sheetRef.current;
-    if (sheet && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      sheet.style.pointerEvents = "none";
+  const go = useCallback(
+    async (slug: string, direction: PreviewSide) => {
+      if (navigating.current) return;
+      navigating.current = true;
+      const sheet = sheetRef.current;
+      const preview = document.querySelector<HTMLElement>(`[data-neighbor='${direction}']`);
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!sheet || !preview || reduced) {
+        document.documentElement.dataset.caseDirection = direction;
+        router.push(`/projects/${slug}`, { scroll: false });
+        return;
+      }
+
       animationRef.current?.cancel();
-      const animation = sheet.animate(
+      sheet.style.pointerEvents = "none";
+      preview.style.zIndex = "14";
+      const start = preview.getBoundingClientRect();
+      const target = previewLayout(direction).center;
+      const previewAnimation = preview.animate(
         [
-          { opacity: 1, transform: "translateX(0) scale(1)" },
-          {
-            opacity: 0.15,
-            transform: `translateX(${direction === "next" ? -10 : 10}vw) scale(0.985)`,
-          },
+          previewKeyframe(start, readOpacity(preview), readRadius(preview)),
+          previewKeyframe(target, 1, target.radius),
         ],
         {
-          duration: 360,
-          easing: "cubic-bezier(0.7, 0, 0.2, 1)",
+          duration: 480,
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           fill: "forwards",
         },
       );
+      const sheetAnimation = sheet.animate(
+        [
+          {
+            opacity: 1,
+            transform: getComputedStyle(sheet).transform,
+          },
+          {
+            opacity: 0.12,
+            transform: `translateX(${direction === "next" ? -window.innerWidth : window.innerWidth}px) scale(0.985)`,
+          },
+        ],
+        {
+          duration: 480,
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          fill: "forwards",
+        },
+      );
+      animationRef.current = sheetAnimation;
+      await Promise.allSettled([previewAnimation.finished, sheetAnimation.finished]);
+      document.documentElement.dataset.caseArrived = "true";
+      router.push(`/projects/${slug}`, { scroll: false });
+    },
+    [router],
+  );
+
+  useEffect(() => {
+    const stage = stageRef.current;
+    const sheet = sheetRef.current;
+    if (!stage || !sheet) return;
+    const previousPreview = document.querySelector<HTMLElement>("[data-neighbor='prev']");
+    const nextPreview = document.querySelector<HTMLElement>("[data-neighbor='next']");
+
+    const revealPreview = (offset: number) => {
+      const side: PreviewSide = offset < 0 ? "next" : "prev";
+      const active = side === "next" ? nextPreview : previousPreview;
+      const inactive = side === "next" ? previousPreview : nextPreview;
+      if (!active || !offset) return;
+      clearPreviewStyles(inactive);
+      const { rest, center } = previewLayout(side);
+      const distance = Math.max(Math.abs(center.x - rest.x), 1);
+      const progress = Math.min(Math.abs(offset) / distance, 1);
+      setPreviewRect(active, mixPreviewRect(rest, center, progress), 0.3 + progress * 0.7);
+    };
+
+    const resetPreviews = (animate: boolean) => {
+      [previousPreview, nextPreview].forEach((node) => {
+        if (!node) return;
+        node.getAnimations().forEach((animation) => animation.cancel());
+        if (!animate || !node.style.width) {
+          clearPreviewStyles(node);
+          return;
+        }
+        const side = node.dataset.neighbor as PreviewSide;
+        const current = node.getBoundingClientRect();
+        const target = previewLayout(side).rest;
+        const animation = node.animate(
+          [
+            previewKeyframe(current, readOpacity(node), readRadius(node)),
+            previewKeyframe(target, 0.3, target.radius),
+          ],
+          {
+            duration: 420,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+            fill: "forwards",
+          },
+        );
+        animation.onfinish = () => {
+          clearPreviewStyles(node);
+          animation.cancel();
+        };
+      });
+    };
+
+    const settleSheet = (offset: number) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        sheet.style.transform = "";
+        return;
+      }
+      const animation = sheet.animate(
+        [
+          { transform: `translateX(${offset}px)` },
+          { transform: "translateX(0)" },
+        ],
+        {
+          duration: 420,
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+        },
+      );
       animationRef.current = animation;
-      await animation.finished.catch(() => undefined);
-    }
-    document.documentElement.dataset.caseDirection = direction;
-    beginFlight(slug, from, frame);
-    router.push(`/projects/${slug}`, { scroll: false });
-  };
+      animation.onfinish = () => {
+        sheet.style.transform = "";
+        animation.cancel();
+        if (animationRef.current === animation) animationRef.current = null;
+      };
+    };
+
+    const stop = (event: PointerEvent | null, navigate: boolean) => {
+      const current = dragRef.current;
+      if (!current || (event && event.pointerId !== current.pointerId)) return;
+      dragRef.current = null;
+      stage.removeAttribute("data-dragging");
+      if (stage.hasPointerCapture(current.pointerId)) {
+        stage.releasePointerCapture(current.pointerId);
+      }
+      if (current.axis !== "horizontal") {
+        resetPreviews(false);
+        return;
+      }
+      const projected = current.offset + current.velocity * 180;
+      const threshold = Math.min(sheet.clientWidth * 0.12, 140);
+      if (navigate && Math.abs(projected) >= threshold) {
+        if (projected < 0) {
+          go(next.slug, "next");
+        } else {
+          go(previous.slug, "prev");
+        }
+        return;
+      }
+      resetPreviews(true);
+      settleSheet(current.offset);
+    };
+
+    const down = (event: PointerEvent) => {
+      if (event.button !== 0 || navigating.current || document.documentElement.dataset.panel) return;
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest("a, button")) return;
+      dragRef.current = {
+        startX: event.clientX,
+        startY: event.clientY,
+        lastX: event.clientX,
+        lastAt: event.timeStamp,
+        offset: 0,
+        velocity: 0,
+        pointerId: event.pointerId,
+        axis: "pending",
+      };
+    };
+
+    const move = (event: PointerEvent) => {
+      const current = dragRef.current;
+      if (!current || current.pointerId !== event.pointerId) return;
+      if (event.pointerType === "mouse" && (event.buttons & 1) === 0) {
+        stop(null, false);
+        return;
+      }
+      const deltaX = event.clientX - current.startX;
+      const deltaY = event.clientY - current.startY;
+      if (current.axis === "pending") {
+        if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) <= 10) return;
+        if (Math.abs(deltaX) <= Math.abs(deltaY)) {
+          dragRef.current = null;
+          return;
+        }
+        current.axis = "horizontal";
+        animationRef.current?.cancel();
+        animationRef.current = null;
+        sheet.style.opacity = "1";
+        sheet.style.clipPath = "";
+        stage.dataset.dragging = "";
+        stage.setPointerCapture(event.pointerId);
+      }
+      event.preventDefault();
+      const elapsed = Math.max(event.timeStamp - current.lastAt, 1);
+      const velocity = (event.clientX - current.lastX) / elapsed;
+      current.velocity = current.velocity * 0.65 + velocity * 0.35;
+      current.lastX = event.clientX;
+      current.lastAt = event.timeStamp;
+      const limit = Math.max(sheet.clientWidth * 0.45, 1);
+      current.offset = Math.tanh(deltaX / limit) * limit;
+      sheet.style.transform = `translate3d(${current.offset}px, 0, 0)`;
+      revealPreview(current.offset);
+    };
+
+    const up = (event: PointerEvent) => stop(event, true);
+    const cancel = () => stop(null, false);
+    stage.addEventListener("pointerdown", down);
+    window.addEventListener("pointermove", move, { passive: false });
+    window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", cancel);
+    window.addEventListener("blur", cancel);
+    return () => {
+      stage.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", cancel);
+      window.removeEventListener("blur", cancel);
+      dragRef.current = null;
+      stage.removeAttribute("data-dragging");
+      resetPreviews(false);
+    };
+  }, [go, next.slug, previous.slug, project.slug]);
 
   return (
-    <main className={styles.stage}>
+    <main ref={stageRef} className={styles.stage}>
       <article
         ref={sheetRef}
         className={styles.sheet}
@@ -245,30 +466,35 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
             </div>
             <div className={styles.media}>
               {project.media.map((item, index) => (
-                <figure
-                  key={item.src}
-                  className={styles.frame}
-                  data-gl="simple"
-                  data-id={`${project.slug}-${index}`}
-                  data-project={project.slug}
-                  data-stack-index={index}
-                  style={{ "--ratio": `${item.width} / ${item.height}` } as CSSProperties}
-                >
-                  {item.video ? (
-                    <video
-                      src={item.src}
-                      poster={item.poster}
-                      muted
-                      loop
-                      playsInline
-                      autoPlay
-                      crossOrigin="anonymous"
-                    />
-                  ) : (
-                    // Sampled by the shared plane. next/image would hide the source element.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={item.src} alt="" crossOrigin="anonymous" />
-                  )}
+                <figure key={item.src} className={styles.block}>
+                  <div
+                    className={styles.frame}
+                    data-gl="simple"
+                    data-id={`${project.slug}-${index}`}
+                    data-project={project.slug}
+                    data-stack-index={index}
+                    style={{ "--ratio": `${item.width} / ${item.height}` } as CSSProperties}
+                  >
+                    {item.video ? (
+                      <video
+                        src={item.src}
+                        poster={item.poster}
+                        muted
+                        loop
+                        playsInline
+                        autoPlay
+                        crossOrigin="anonymous"
+                      draggable={false}
+                      />
+                    ) : (
+                      // Sampled by the shared plane. next/image would hide the source element.
+                      // eslint-disable-next-line @next/next/no-img-element
+                    <img src={item.src} alt="" crossOrigin="anonymous" draggable={false} />
+                    )}
+                  </div>
+                  <figcaption>
+                    <p>{item.caption}</p>
+                  </figcaption>
                 </figure>
               ))}
             </div>
@@ -290,12 +516,12 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       <Neighbor
         project={previous}
         side="prev"
-        onOpen={() => void go(previous.slug, "[data-neighbor='prev']", "prev")}
+        onOpen={() => go(previous.slug, "prev")}
       />
       <Neighbor
         project={next}
         side="next"
-        onOpen={() => void go(next.slug, "[data-neighbor='next']", "next")}
+        onOpen={() => go(next.slug, "next")}
       />
     </main>
   );
@@ -318,7 +544,7 @@ function Neighbor({
         onClick={onOpen}
         aria-label={`${side === "prev" ? "Previous" : "Next"}: ${project.title}`}
       />
-      <aside data-gl="related" data-id={`related-${project.slug}`} data-neighbor={side}>
+      <aside data-neighbor={side}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={project.poster} alt="" crossOrigin="anonymous" />
       </aside>
@@ -326,12 +552,95 @@ function Neighbor({
   );
 }
 
-function heroRect() {
-  return new DOMRect(window.innerWidth * 0.5, window.innerHeight * 0.35, 320, 180);
-}
-
 function box(rect: DOMRect) {
   return { x: rect.left, y: rect.top, w: rect.width, h: rect.height };
+}
+
+function previewLayout(side: PreviewSide) {
+  const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 10;
+  const desktop = window.matchMedia("(min-width: 650px)").matches;
+  const restWidth = Math.max(window.innerWidth - rem * 20, 1);
+  const restHeight = Math.max(window.innerHeight - rem * 20, 1);
+  const peek = rem * (desktop ? 2.5 : 1);
+  const centerX = rem * (desktop ? 5 : 2);
+  const centerY = rem * (desktop ? 2 : 1.5);
+  const radius = rem * (desktop ? 2 : 1.5);
+  const rest: PreviewRect = {
+    x: side === "next" ? window.innerWidth - peek : peek - restWidth,
+    y: rem * 10,
+    width: restWidth,
+    height: restHeight,
+    radius,
+  };
+  const center: PreviewRect = {
+    x: centerX,
+    y: centerY,
+    width: window.innerWidth - centerX * 2,
+    height: window.innerHeight - centerY * 2,
+    radius,
+  };
+  return { rest, center };
+}
+
+function mixPreviewRect(from: PreviewRect, to: PreviewRect, amount: number): PreviewRect {
+  return {
+    x: from.x + (to.x - from.x) * amount,
+    y: from.y + (to.y - from.y) * amount,
+    width: from.width + (to.width - from.width) * amount,
+    height: from.height + (to.height - from.height) * amount,
+    radius: from.radius + (to.radius - from.radius) * amount,
+  };
+}
+
+function setPreviewRect(node: HTMLElement, rect: PreviewRect, opacity: number) {
+  node.style.transition = "none";
+  node.style.transform = "none";
+  node.style.top = `${rect.y}px`;
+  node.style.left = `${rect.x}px`;
+  node.style.right = "auto";
+  node.style.bottom = "auto";
+  node.style.width = `${rect.width}px`;
+  node.style.height = `${rect.height}px`;
+  node.style.borderRadius = `${rect.radius}px`;
+  node.style.opacity = String(opacity);
+  node.style.zIndex = "14";
+}
+
+function clearPreviewStyles(node: HTMLElement | null) {
+  if (!node) return;
+  [
+    "transition",
+    "transform",
+    "top",
+    "left",
+    "right",
+    "bottom",
+    "width",
+    "height",
+    "border-radius",
+    "opacity",
+    "z-index",
+  ].forEach((property) => node.style.removeProperty(property));
+}
+
+function previewKeyframe(
+  rect: Pick<DOMRect, "x" | "y" | "width" | "height"> | PreviewRect,
+  opacity: number,
+  radius: number,
+): Keyframe {
+  return {
+    top: `${rect.y}px`,
+    left: `${rect.x}px`,
+    width: `${rect.width}px`,
+    height: `${rect.height}px`,
+    borderRadius: `${radius}px`,
+    opacity,
+    transform: "none",
+  };
+}
+
+function readOpacity(element: HTMLElement) {
+  return Number.parseFloat(getComputedStyle(element).opacity) || 0;
 }
 
 function readRadius(element: HTMLElement) {

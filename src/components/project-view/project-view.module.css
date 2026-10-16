@@ -3,6 +3,7 @@
   inset: 0;
   z-index: 10;
   color: #111;
+  touch-action: pan-y;
 }
 
 .sheet {
@@ -17,6 +18,10 @@
   background: #fff;
   border-radius: 1.5rem;
   will-change: clip-path, transform, opacity;
+}
+
+.stage[data-dragging] .sheet {
+  user-select: none;
 }
 
 .scroller {
@@ -137,7 +142,20 @@
 
 .media {
   display: grid;
-  gap: 1.2rem;
+  gap: 3.2rem;
+}
+
+.block {
+  display: grid;
+  gap: 1.4rem;
+  margin: 0;
+}
+
+.block p {
+  max-width: 48rem;
+  font-size: 1.35rem;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
 }
 
 .frame {
@@ -289,42 +307,44 @@
 }
 
 .prev button {
+  top: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 3rem;
+  width: 3.5rem;
+  height: auto;
 }
 
 .next button {
   top: 0;
+  bottom: 0;
   right: 0;
-  width: 100%;
-  height: 3rem;
+  width: 3.5rem;
+  height: auto;
 }
 
 .prev aside,
 .next aside {
   position: fixed;
-  right: 2rem;
-  left: 2rem;
+  top: 10rem;
+  bottom: 10rem;
   z-index: 11;
-  height: 18rem;
+  width: calc(100% - 20rem);
   overflow: hidden;
   border-radius: 1.5rem;
-  opacity: 0.45;
+  opacity: 0.3;
   transition:
     transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.4s ease;
 }
 
 .prev aside {
-  bottom: 0;
-  transform: translateY(calc(100% - 1.5rem));
+  left: 10rem;
+  transform: translateX(calc(-100% - 9rem));
 }
 
 .next aside {
-  top: 0;
-  transform: translateY(calc(-100% + 1.5rem));
+  right: 10rem;
+  transform: translateX(calc(100% + 9rem));
 }
 
 .prev:hover aside,
@@ -334,26 +354,11 @@
   opacity: 0.9;
 }
 
-.prev:hover aside,
-.prev:focus-within aside {
-  transform: translateY(calc(100% - 4.5rem));
-}
-
-.next:hover aside,
-.next:focus-within aside {
-  transform: translateY(calc(-100% + 4.5rem));
-}
-
 .prev aside img,
 .next aside img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-:global(html.gl) .prev aside img,
-:global(html.gl) .next aside img {
-  opacity: 0;
 }
 
 @media (min-width: 650px) {
@@ -389,6 +394,11 @@
   .media {
     width: 70rem;
     flex: none;
+    gap: 4.8rem;
+  }
+
+  .block p {
+    font-size: 1.5rem;
   }
 
   .close {
@@ -406,10 +416,7 @@
 
   .prev button,
   .next button {
-    top: 0;
-    bottom: 0;
-    width: 3rem;
-    height: auto;
+    width: 5rem;
   }
 
   .prev button {
@@ -423,31 +430,15 @@
 
   .prev aside,
   .next aside {
-    top: 10rem;
-    bottom: 10rem;
-    left: auto;
-    width: 28rem;
-    height: auto;
+    border-radius: 2rem;
   }
 
   .prev aside {
-    left: 0;
-    transform: translateX(calc(-100% + 1.5rem));
+    transform: translateX(calc(-100% - 7.5rem));
   }
 
   .next aside {
-    right: 0;
-    transform: translateX(calc(100% - 1.5rem));
-  }
-
-  .prev:hover aside,
-  .prev:focus-within aside {
-    transform: translateX(calc(-100% + 4.5rem));
-  }
-
-  .next:hover aside,
-  .next:focus-within aside {
-    transform: translateX(calc(100% - 4.5rem));
+    transform: translateX(calc(100% + 7.5rem));
   }
 }
 
