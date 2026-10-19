@@ -140,7 +140,7 @@ function visibleClip(element: HTMLElement, rect: DOMRect) {
   );
 }
 
-function paintOverlay(title: string, aspect: number, fontFamily: string) {
+function paintOverlay(title: string, aspect: number, titleFont: string, markFont: string) {
   const canvas = document.createElement("canvas");
   canvas.width = 1600;
   canvas.height = Math.max(1, Math.round(1600 / aspect));
@@ -153,15 +153,17 @@ function paintOverlay(title: string, aspect: number, fontFamily: string) {
   context.fillStyle = fade;
   context.fillRect(0, 0, canvas.width, canvas.height);
   context.fillStyle = "#fff";
-  context.font = `500 ${Math.round(canvas.height * 0.07)}px ${fontFamily}`;
+  context.font = `400 ${Math.round(canvas.height * 0.09)}px ${titleFont}`;
+  context.letterSpacing = "0.02em";
   context.textBaseline = "alphabetic";
-  context.fillText(title, 56, canvas.height - 72);
+  context.fillText(title.toLocaleUpperCase("en-US"), 56, canvas.height - 72);
+  context.letterSpacing = "0px";
   context.beginPath();
   context.arc(canvas.width - 84, canvas.height - 86, 30, 0, Math.PI * 2);
   context.fillStyle = "rgba(0,0,0,0.72)";
   context.fill();
   context.fillStyle = "#fff";
-  context.font = `500 30px ${fontFamily}`;
+  context.font = `500 30px ${markFont}`;
   context.textAlign = "center";
   context.textBaseline = "middle";
   context.fillText("↗", canvas.width - 84, canvas.height - 84);
@@ -180,6 +182,11 @@ export function PlaneStage() {
     const start = async () => {
       const THREE = await import("three");
       if (disposed || !mountRef.current) return;
+
+      const markFont = getComputedStyle(document.body).fontFamily;
+      await document.fonts.load("400 64px Neudron").catch(() => undefined);
+      const titleFont = document.fonts.check("400 64px Neudron") ? "Neudron" : markFont;
+
       document.documentElement.classList.add("gl");
 
       const renderer = new THREE.WebGLRenderer({
@@ -209,7 +216,6 @@ export function PlaneStage() {
         uClip: { value: new THREE.Vector4() },
         uClipRadius: { value: 0 },
       };
-      const fontFamily = getComputedStyle(document.body).fontFamily;
 
       type Record = {
         mesh: InstanceType<typeof THREE.Mesh>;
@@ -294,7 +300,7 @@ export function PlaneStage() {
         map.colorSpace = THREE.SRGBColorSpace;
         const title = node.dataset.title ?? "";
         const ratio = Number.parseFloat(node.dataset.aspect || "") || 16 / 9;
-        const overlayCanvas = title ? paintOverlay(title, ratio, fontFamily) : blank;
+        const overlayCanvas = title ? paintOverlay(title, ratio, titleFont, markFont) : blank;
         const overlay = new THREE.CanvasTexture(overlayCanvas);
         overlay.colorSpace = THREE.SRGBColorSpace;
         const cover = new THREE.Vector2(1, 1);
