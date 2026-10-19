@@ -1,52 +1,5 @@
 [
   {
-    "slug": "nathan-riley",
-    "title": "Nathan Riley",
-    "summary": "Nathan is a UK-based digital creative specializing in art direction, surrealist 3D visuals, interactive experiences, and motion design.",
-    "year": "2023",
-    "awards": 0,
-    "liveUrl": "https://www.nrly.co/",
-    "credits": [],
-    "width": 2048,
-    "height": 1172,
-    "poster": "https://image.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/thumbnail.jpg",
-    "video": "https://stream.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/high.mp4",
-    "media": [
-      {
-        "src": "https://stream.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/high.mp4",
-        "poster": "https://image.mux.com/qmEPTzOaDQBZL5258j01i2mMBkGh3G9BI/thumbnail.jpg",
-        "width": 2048,
-        "height": 1172,
-        "video": true,
-        "caption": "A portfolio for a practice that moves between art direction, surrealist 3D, and motion. The opening film lets the work set the tone before any explanation does."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786207557-nathan-2.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-2.jpg?auto=format&fit=max&w=600",
-        "width": 1787,
-        "height": 900,
-        "video": false,
-        "caption": "Still studies from the same visual world. Each frame is composed to hold on its own, then sit inside a larger body of work."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786207557-nathan-1.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-1.jpg?auto=format&fit=max&w=600",
-        "width": 1798,
-        "height": 905,
-        "video": false,
-        "caption": "The middle of the case keeps the interface quiet. Type and navigation step back so the imagery can carry the page."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786207557-nathan-3.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207557-nathan-3.jpg?auto=format&fit=max&w=600",
-        "width": 1792,
-        "height": 904,
-        "video": false,
-        "caption": "Later pieces stay in that same discipline. The result reads as one authored practice, not a stack of unrelated projects."
-      }
-    ]
-  },
-  {
     "slug": "facebook",
     "title": "Facebook",
     "summary": "The home feed, the notification panel, and the controls for what a Page sends you.",
@@ -82,293 +35,224 @@
         "height": 1080,
         "video": true,
         "caption": "Page notification settings, where comments, likes, tags, posts, and shares can each be turned on or off."
+      },
+      {
+        "src": "/projects/facebook/notifications.jpg",
+        "poster": "/projects/facebook/notifications.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "The notification stream on desktop and phone. Comments, mentions, and shares are separated before an admin opens one."
+      },
+      {
+        "src": "/projects/facebook/suggested.jpg",
+        "poster": "/projects/facebook/suggested.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "Suggested for You, tested in the feed and in notifications as a way to connect people with public figures."
       }
     ]
   },
   {
-    "slug": "the-lookback",
-    "title": "The Lookback",
-    "summary": "Digital capsule for Better Off® studio to document what inspired them and what they created over the last months/years.",
-    "year": "2026",
-    "awards": 3,
-    "liveUrl": "https://tlb.betteroff.studio/",
-    "credits": [
-      {
-        "name": "BetterOff® Studio",
-        "url": "https://betteroff.studio/"
-      },
-      {
-        "name": "Gil Huybrecht",
-        "url": "https://gilhuybrecht.com"
-      }
-    ],
-    "width": 1250,
+    "slug": "square",
+    "title": "Square",
+    "summary": "A consistent email system for Square sellers, so a message can be recognized before anyone follows it into the dashboard.",
+    "year": "2022",
+    "awards": 0,
+    "liveUrl": null,
+    "credits": [],
+    "width": 1280,
     "height": 720,
-    "poster": "https://image.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/thumbnail.jpg",
-    "video": "https://stream.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/high.mp4",
+    "poster": "https://image.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/thumbnail.jpg?time=1",
+    "video": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
     "media": [
       {
-        "src": "https://stream.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/high.mp4",
-        "poster": "https://image.mux.com/01CbIdBLVCiUlQLMC8Ct3vq014VS02lwCaq/thumbnail.jpg",
-        "width": 1250,
+        "src": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
+        "poster": "https://image.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/thumbnail.jpg?time=1",
+        "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "A digital capsule for Better Off, made to hold what the studio created and what inspired it. The opening film starts the record before the pages do."
+        "caption": "The sizzle: a seller email in the inbox, then the same kind of message before and after the system."
       },
       {
-        "src": "https://stream.mux.com/HofYkQ00DP02B202026iOjEsHVlOHoXqJB02y/high.mp4",
-        "poster": "https://image.mux.com/HofYkQ00DP02B202026iOjEsHVlOHoXqJB02y/thumbnail.jpg",
-        "width": 1620,
-        "height": 1080,
-        "video": true,
-        "caption": "Later sequences slow that record down. Process, reference, and finished work share one timeline instead of living in separate sections."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1785656629-image-39.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1785656629-image-39.jpg?auto=format&fit=max&w=600",
-        "width": 1500,
-        "height": 1897,
+        "src": "/projects/square/emails.jpg",
+        "poster": "/projects/square/emails.jpg",
+        "width": 1600,
+        "height": 802,
         "video": false,
-        "caption": "Archive stills keep the same framing as the films, so a photograph reads as part of the document rather than an aside."
+        "caption": "Two templates from the system: a card added to a wallet, and a card on its way."
       },
       {
-        "src": "https://www.datocms-assets.com/223669/1785656633-tlb4.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1785656633-tlb4.jpg?auto=format&fit=max&w=600",
-        "width": 1500,
-        "height": 1000,
+        "src": "/projects/square/system.jpg",
+        "poster": "/projects/square/system.jpg",
+        "width": 1600,
+        "height": 802,
         "video": false,
-        "caption": "The last spread closes the capsule. It stays specific to the months and years it covers, and leaves the studio’s record intact."
+        "caption": "Header, body, and footer as separate pieces, so every seller email can be recognized as Square."
       }
     ]
   },
   {
-    "slug": "book-of-happiness",
-    "title": "Book of Happiness",
-    "summary": "Helping leaders keep themselves and their people happy and mentally healthy.",
-    "year": "2024",
-    "awards": 4,
-    "liveUrl": "https://www.findworkhappiness.com/",
-    "credits": [
-      {
-        "name": "David Lubofsky",
-        "url": "https://www.davidlubofsky.com/"
-      }
-    ],
-    "width": 2048,
-    "height": 1114,
-    "poster": "https://image.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/thumbnail.jpg",
-    "video": "https://stream.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/high.mp4",
+    "slug": "slide",
+    "title": "Slide",
+    "summary": "A self-serve claim flow for Slide, so a policyholder can report a loss without waiting on a phone call.",
+    "year": "2022",
+    "awards": 0,
+    "liveUrl": null,
+    "credits": [],
+    "width": 1280,
+    "height": 720,
+    "poster": "https://image.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/thumbnail.jpg?time=1",
+    "video": "https://stream.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/720p.mp4",
     "media": [
       {
-        "src": "https://stream.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/high.mp4",
-        "poster": "https://image.mux.com/e79MwNWsJkhoNzhR02UVL3LRe1wexvcA9/thumbnail.jpg",
-        "width": 2048,
-        "height": 1114,
+        "src": "https://stream.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/720p.mp4",
+        "poster": "https://image.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/thumbnail.jpg?time=1",
+        "width": 1280,
+        "height": 720,
         "video": true,
-        "caption": "A site for a practice that helps leaders keep themselves and their people mentally healthy. The opening film states the offer before the argument does."
+        "caption": "The sizzle: the claim on a laptop and a phone, then the questions that replace the call."
       },
       {
-        "src": "https://www.datocms-assets.com/223669/1786210260-book-2.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786210260-book-2.jpg?auto=format&fit=max&w=600",
-        "width": 1565,
-        "height": 908,
+        "src": "/projects/slide/claim.jpg",
+        "poster": "/projects/slide/claim.jpg",
+        "width": 1600,
+        "height": 802,
         "video": false,
-        "caption": "The pages that follow give the ideas room. Pace, type, and image are set so the subject can stay human."
+        "caption": "The loss-type step at the two sizes a policyholder actually uses."
       },
       {
-        "src": "https://www.datocms-assets.com/223669/1786210260-book-3.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786210260-book-3.jpg?auto=format&fit=max&w=600",
-        "width": 1568,
-        "height": 906,
+        "src": "/projects/slide/flow.jpg",
+        "poster": "/projects/slide/flow.jpg",
+        "width": 1600,
+        "height": 802,
         "video": false,
-        "caption": "The work is shown plainly, with enough context to understand it and enough quiet to sit with it."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786210260-book-1.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786210260-book-1.jpg?auto=format&fit=max&w=600",
-        "width": 1571,
-        "height": 906,
-        "video": false,
-        "caption": "The final frames return to the people the book is for — leaders, teams, and the daily work of staying well."
+        "caption": "The rest of the product around that step: filing, tracking, payment, and the policy document."
       }
     ]
   },
   {
-    "slug": "dogelon-mars",
-    "title": "Dogelon Mars",
-    "summary": "Follow the story of Dogelon Mars as he explores the greatest mysteries of the universe and seeks to return to the planet he once called home with the help of the friends he’s made during his intergalactic travels.",
-    "year": "2024",
-    "awards": 3,
-    "liveUrl": "https://dogelonmars.com",
-    "credits": [
+    "slug": "true-see",
+    "title": "TRUE-See",
+    "summary": "An EHR-agnostic photo workflow for clinicians, built so the camera is a few steps away instead of a detour through the record.",
+    "year": "2025",
+    "awards": 0,
+    "liveUrl": null,
+    "credits": [],
+    "width": 1280,
+    "height": 720,
+    "poster": "https://image.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/thumbnail.jpg?time=1",
+    "video": "https://stream.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/720p.mp4",
+    "media": [
       {
-        "name": "Griflan",
-        "url": "https://griflan.com"
+        "src": "https://stream.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/720p.mp4",
+        "poster": "https://image.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/thumbnail.jpg?time=1",
+        "width": 1280,
+        "height": 720,
+        "video": true,
+        "caption": "The sizzle: the path into the camera, the capture screen, and the photograph it is for."
+      },
+      {
+        "src": "/projects/true-see/workflow.jpg",
+        "poster": "/projects/true-see/workflow.jpg",
+        "width": 1600,
+        "height": 676,
+        "video": false,
+        "caption": "Patient list to camera, without repeating the setup the old record required for every wound."
+      },
+      {
+        "src": "/projects/true-see/camera.jpg",
+        "poster": "/projects/true-see/camera.jpg",
+        "width": 1600,
+        "height": 800,
+        "video": false,
+        "caption": "The photograph the workflow is built around: a calibrated image a clinician can trust."
       }
-    ],
-    "width": 3360,
-    "height": 2200,
-    "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=600",
+    ]
+  },
+  {
+    "slug": "arcoscan",
+    "title": "Arcoscan",
+    "summary": "Age and liveness checks for onboarding, so a person can prove they are present without abandoning the flow.",
+    "year": "",
+    "awards": 0,
+    "liveUrl": null,
+    "credits": [],
+    "width": 1280,
+    "height": 720,
+    "poster": "/projects/arcoscan/poster.jpg",
     "video": "",
     "media": [
       {
-        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-2.jpg?auto=format&fit=max&w=600",
-        "width": 3360,
-        "height": 2200,
+        "src": "/projects/arcoscan/verification.jpg",
+        "poster": "/projects/arcoscan/verification.jpg",
+        "width": 1600,
+        "height": 1600,
         "video": false,
-        "caption": "The story of Dogelon Mars, told as a world rather than a landing page. He is searching the universe for a way back to the planet he once called home."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-1.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-1.jpg?auto=format&fit=max&w=600",
-        "width": 3360,
-        "height": 2200,
-        "video": false,
-        "caption": "Friends made on the journey become part of the narrative. Each scene extends the voyage without breaking the character’s world."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-4.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-4.jpg?auto=format&fit=max&w=600",
-        "width": 3420,
-        "height": 2201,
-        "video": false,
-        "caption": "Stills hold the same visual language across the case: character, space, and story kept in one frame."
-      },
-      {
-        "src": "https://www.datocms-assets.com/223669/1786207957-dogelon-3.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786207957-dogelon-3.jpg?auto=format&fit=max&w=600",
-        "width": 3360,
-        "height": 2200,
-        "video": false,
-        "caption": "The last image leaves the voyage open. The mystery is the point, and the site is built to keep following it."
+        "caption": "The check is the prompt. Open your mouth, prove you are present, and continue."
       }
     ]
   },
   {
-    "slug": "gil-huybrecht",
-    "title": "Gil Huybrecht",
-    "summary": "Gil Huybrecht is a Belgian digital designer and art director, based around Antwerp. He specializes in typography-heavy web design, art direction, interaction design, and branding.",
-    "year": "2026",
-    "awards": 1,
-    "liveUrl": "https://gilhuybrecht.com",
-    "credits": [
-      {
-        "name": "Gil Huybrecht",
-        "url": "https://gilhuybrecht.com"
-      }
-    ],
-    "width": 1196,
-    "height": 720,
-    "poster": "https://image.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/thumbnail.jpg",
-    "video": "https://stream.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/high.mp4",
-    "media": [
-      {
-        "src": "https://stream.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/high.mp4",
-        "poster": "https://image.mux.com/X3NsXaLph6rhK6M9kgi24PWL9vfH7SSf/thumbnail.jpg",
-        "width": 1196,
-        "height": 720,
-        "video": true,
-        "caption": "A site for a Belgian designer whose work is built on type. Art direction, interaction, and branding are presented as one practice."
-      },
-      {
-        "src": "https://stream.mux.com/g12oqAEfwFRDxmxiuH02yJsALmVkKqsKA/high.mp4",
-        "poster": "https://image.mux.com/g12oqAEfwFRDxmxiuH02yJsALmVkKqsKA/thumbnail.jpg",
-        "width": 1280,
-        "height": 644,
-        "video": true,
-        "caption": "Projects are shown in motion so typography can be read as behavior — scale, rhythm, and how a page actually moves."
-      },
-      {
-        "src": "https://stream.mux.com/ONW93srqx6kGfiHTKQtV2pkqByQY01nF01/high.mp4",
-        "poster": "https://image.mux.com/ONW93srqx6kGfiHTKQtV2pkqByQY01nF01/thumbnail.jpg",
-        "width": 1280,
-        "height": 604,
-        "video": true,
-        "caption": "The final film keeps the focus on craft. Less explanation, more of the work doing the talking."
-      }
-    ]
-  },
-  {
-    "slug": "discoveryland",
-    "title": "Discoveryland",
-    "summary": "Partnered with Outpost and Discovery Land Company to create an immersive, storytelling brand experience that showcasing DLCs international portfolio and capabilities while acting as a seamless transition across their 23 properties.",
+    "slug": "peridot",
+    "title": "Peridot",
+    "summary": "Search across interviews, with every insight linked back to the sentence and minute it came from.",
     "year": "2026",
     "awards": 0,
-    "liveUrl": "https://discoverylandco.com/",
-    "credits": [
-      {
-        "name": "Outpost",
-        "url": "https://outpost.design/"
-      }
-    ],
-    "width": 1372,
-    "height": 1029,
-    "poster": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=600",
+    "liveUrl": "https://askperidot.com",
+    "credits": [],
+    "width": 1280,
+    "height": 720,
+    "poster": "/projects/peridot/poster.jpg",
     "video": "",
     "media": [
       {
-        "src": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=1200",
-        "poster": "https://www.datocms-assets.com/223669/1786432901-dlc-thumbnail.jpg?auto=format&fit=max&w=600",
-        "width": 1372,
-        "height": 1029,
+        "src": "/projects/peridot/poster.jpg",
+        "poster": "/projects/peridot/poster.jpg",
+        "width": 1280,
+        "height": 720,
         "video": false,
-        "caption": "An immersive brand experience for Discovery Land Company, made with Outpost. It has to introduce an international portfolio and carry a visitor across 23 properties."
-      },
-      {
-        "src": "https://stream.mux.com/BV6q01JxClCQwHfNI2sVS76jGjg5isqkq/high.mp4",
-        "poster": "https://image.mux.com/BV6q01JxClCQwHfNI2sVS76jGjg5isqkq/thumbnail.jpg",
-        "width": 1280,
-        "height": 642,
-        "video": true,
-        "caption": "Film handles the transition. Each property can feel distinct while the brand stays recognizable from one place to the next."
-      },
-      {
-        "src": "https://stream.mux.com/wt002Ew1EVcKEXR5K4PkB9G5l1OoW9jiV/high.mp4",
-        "poster": "https://image.mux.com/wt002Ew1EVcKEXR5K4PkB9G5l1OoW9jiV/thumbnail.jpg",
-        "width": 1280,
-        "height": 642,
-        "video": true,
-        "caption": "The later sequences keep that handoff smooth: one story, many places, and no break in the experience."
+        "caption": "The earlier case shipped this cover with no product still behind it. The product is the citation: an insight that can be opened at the minute it was said."
       }
     ]
   },
   {
-    "slug": "griflan",
-    "title": "Griflan",
-    "summary": "Griflan is a creative studio at the intersection of design, strategy, and compelling storytelling, shaping brands that move culture and leave a lasting mark.",
-    "year": "2026",
-    "awards": 3,
-    "liveUrl": "https://griflan.com",
+    "slug": "southeast-bank",
+    "title": "SouthEast Bank",
+    "summary": "A refinance application and loan calculator for SouthEast Bank, then the deposit that opens the account.",
+    "year": "2025",
+    "awards": 0,
+    "liveUrl": "https://www.southeastbank.com/",
     "credits": [],
-    "width": 1162,
+    "width": 1280,
     "height": 720,
-    "poster": "https://image.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/thumbnail.jpg",
-    "video": "https://stream.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/high.mp4",
+    "poster": "https://image.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/thumbnail.jpg?time=1",
+    "video": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
     "media": [
       {
-        "src": "https://stream.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/high.mp4",
-        "poster": "https://image.mux.com/9AaOR02f5lWzxopxZCg54ZRXsxGe4SSE7/thumbnail.jpg",
-        "width": 1162,
-        "height": 720,
-        "video": true,
-        "caption": "A home for a studio working between design, strategy, and storytelling. The reel leads, because the work is the argument."
-      },
-      {
-        "src": "https://stream.mux.com/Hb00nsAmF7R01kcTOmRr2tgpX3WjZkVYPN/high.mp4",
-        "poster": "https://image.mux.com/Hb00nsAmF7R01kcTOmRr2tgpX3WjZkVYPN/thumbnail.jpg",
-        "width": 1022,
-        "height": 720,
-        "video": true,
-        "caption": "Selected projects show how a brand is shaped — not only how it looks, but how it is meant to move."
-      },
-      {
-        "src": "https://stream.mux.com/F7soo79aHLgeYDtjug6X599kMSZoBja4/high.mp4",
-        "poster": "https://image.mux.com/F7soo79aHLgeYDtjug6X599kMSZoBja4/thumbnail.jpg",
+        "src": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
+        "poster": "https://image.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/thumbnail.jpg?time=1",
         "width": 1280,
-        "height": 642,
+        "height": 720,
         "video": true,
-        "caption": "The closing film leaves a clear impression of the studio: precise, cultural, and built to last past a single campaign."
+        "caption": "The sizzle: how much to refinance, the payment the calculator recommends, then the deposit that opens the account."
+      },
+      {
+        "src": "/projects/southeast-bank/steps.jpg",
+        "poster": "/projects/southeast-bank/steps.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "The old form asked for everything on one page. The new one is four steps, and a student can move between them."
+      },
+      {
+        "src": "/projects/southeast-bank/calculator.jpg",
+        "poster": "/projects/southeast-bank/calculator.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "Amount and term on one side, monthly payment and APR on the other, before the application is finished."
       }
     ]
   }

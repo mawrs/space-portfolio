@@ -1,0 +1,845 @@
+{
+  "projects": [
+    "facebook",
+    "square",
+    "slide",
+    "arcoscan",
+    "true-see",
+    "peridot",
+    "southeast-bank"
+  ],
+  "reels": {
+    "square": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
+    "slide": "https://stream.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/720p.mp4",
+    "true-see": "https://stream.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/720p.mp4",
+    "arcoscan": "No reel. Only one thumbnail was published.",
+    "peridot": "No reel. The October case study has no product media.",
+    "facebook": "Existing Mux sizzle kept. Recovered stills were added to the case study.",
+    "southeast-bank": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4"
+  },
+  "files": [
+    {
+      "destination": "public/projects/arcoscan/card.png",
+      "width": 2560,
+      "height": 2560,
+      "bytes": 2483391,
+      "source": "https://martin-tejeda-portfolio.vercel.app/arcoscan_thumbnail.png",
+      "original": "arcoscan_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/arcoscan/poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 84150,
+      "derivedFrom": "public/projects/arcoscan/card.png",
+      "source": "https://martin-tejeda-portfolio.vercel.app/arcoscan_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/arcoscan/tau-card.png",
+      "width": 3487,
+      "height": 2622,
+      "bytes": 256421,
+      "source": "https://martin-portfolio-tau.vercel.app/images/arcoscan.png",
+      "original": "arcoscan.png"
+    },
+    {
+      "destination": "public/projects/arcoscan/verification.jpg",
+      "width": 1600,
+      "height": 1600,
+      "bytes": 150894,
+      "derivedFrom": "public/projects/arcoscan/card.png",
+      "source": "https://martin-tejeda-portfolio.vercel.app/arcoscan_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/facebook/notifications-1.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 431454,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-notifications/image1.webp",
+      "original": "image1.webp"
+    },
+    {
+      "destination": "public/projects/facebook/notifications-2.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 373788,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-notifications/image2.webp",
+      "original": "image2.webp"
+    },
+    {
+      "destination": "public/projects/facebook/notifications-cover.webp",
+      "width": 1201,
+      "height": 601,
+      "bytes": 51716,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-notifications/cover.webp",
+      "original": "cover.webp"
+    },
+    {
+      "destination": "public/projects/facebook/notifications-hero.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 335060,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-notifications/hero.webp",
+      "original": "hero.webp"
+    },
+    {
+      "destination": "public/projects/facebook/notifications.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 129767,
+      "derivedFrom": "public/projects/facebook/notifications-hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-notifications/hero.webp"
+    },
+    {
+      "destination": "public/projects/facebook/spf-1.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 248500,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-spf/image1.webp",
+      "original": "image1.webp"
+    },
+    {
+      "destination": "public/projects/facebook/spf-2.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 357848,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-spf/image2.webp",
+      "original": "image2.webp"
+    },
+    {
+      "destination": "public/projects/facebook/spf-cover.webp",
+      "width": 801,
+      "height": 801,
+      "bytes": 58348,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-spf/cover.webp",
+      "original": "cover.webp"
+    },
+    {
+      "destination": "public/projects/facebook/spf-hero.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 285810,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-spf/hero.webp",
+      "original": "hero.webp"
+    },
+    {
+      "destination": "public/projects/facebook/suggested.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 109927,
+      "derivedFrom": "public/projects/facebook/spf-hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/facebook-spf/hero.webp"
+    },
+    {
+      "destination": "public/projects/facebook/tau-thumbnail.png",
+      "width": 3487,
+      "height": 2655,
+      "bytes": 126918,
+      "source": "https://martin-portfolio-tau.vercel.app/images/facebook_thumbnail.png",
+      "original": "facebook_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/facebook/v2-card.png",
+      "width": 5800,
+      "height": 4416,
+      "bytes": 230470,
+      "source": "https://v2-portfolio-alpha.vercel.app/facebook.png",
+      "original": "facebook.png"
+    },
+    {
+      "destination": "public/projects/peridot/hero.jpg",
+      "width": 1600,
+      "height": 860,
+      "bytes": 81278,
+      "derivedFrom": "public/projects/peridot/page-screenshot.png",
+      "source": null,
+      "note": "Scaled copy of the full Peridot page screenshot."
+    },
+    {
+      "destination": "public/projects/peridot/page-screenshot.png",
+      "width": 3776,
+      "height": 2030,
+      "bytes": 208413,
+      "note": "Screenshot of https://october-portfolio-eight.vercel.app/projects/peridot. The page uses an empty data-cover placeholder and has no downloadable product media."
+    },
+    {
+      "destination": "public/projects/peridot/poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 24352,
+      "note": "16:9 crop of the Peridot page screenshot, kept because the source had no product image."
+    },
+    {
+      "destination": "public/projects/slide/claim.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 89360,
+      "derivedFrom": "public/projects/slide/hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/hero.webp"
+    },
+    {
+      "destination": "public/projects/slide/cover.webp",
+      "width": 1201,
+      "height": 601,
+      "bytes": 43316,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/cover.webp",
+      "original": "cover.webp"
+    },
+    {
+      "destination": "public/projects/slide/detail-1.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 401368,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/image1.webp",
+      "original": "image1.webp"
+    },
+    {
+      "destination": "public/projects/slide/detail-2.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 197726,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/image2.webp",
+      "original": "image2.webp"
+    },
+    {
+      "destination": "public/projects/slide/flow.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 117018,
+      "derivedFrom": "public/projects/slide/detail-1.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/image1.webp"
+    },
+    {
+      "destination": "public/projects/slide/hero.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 229372,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/hero.webp",
+      "original": "hero.webp"
+    },
+    {
+      "destination": "public/projects/slide/poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 74954,
+      "derivedFrom": "public/projects/slide/hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/hero.webp"
+    },
+    {
+      "destination": "public/projects/slide/responsive.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 78511,
+      "derivedFrom": "public/projects/slide/detail-2.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/slide/image2.webp"
+    },
+    {
+      "destination": "public/projects/slide/v2-card.png",
+      "width": 5800,
+      "height": 4416,
+      "bytes": 249246,
+      "source": "https://v2-portfolio-alpha.vercel.app/slide.png",
+      "original": "slide.png"
+    },
+    {
+      "destination": "public/projects/southeast-bank/application.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 67164,
+      "derivedFrom": "public/projects/southeast-bank/southeast-bank-application-hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/hero.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/calculator.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 66627,
+      "derivedFrom": "public/projects/southeast-bank/southeast-bank-calculator-hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-calculator/hero.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 56285,
+      "derivedFrom": "public/projects/southeast-bank/southeast-bank-application-hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/hero.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-application-cover.webp",
+      "width": 1201,
+      "height": 601,
+      "bytes": 36210,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/cover.webp",
+      "original": "cover.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-application-detail-1.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 212618,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/image1.webp",
+      "original": "image1.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-application-detail-2.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 189290,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/image2.webp",
+      "original": "image2.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-application-hero.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 181240,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/hero.webp",
+      "original": "hero.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-calculator-cover.webp",
+      "width": 801,
+      "height": 801,
+      "bytes": 25824,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-calculator/cover.webp",
+      "original": "cover.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-calculator-detail-1.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 241236,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-calculator/image1.webp",
+      "original": "image1.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-calculator-detail-2.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 168328,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-calculator/image2.webp",
+      "original": "image2.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/southeast-bank-calculator-hero.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 172264,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-calculator/hero.webp",
+      "original": "hero.webp"
+    },
+    {
+      "destination": "public/projects/southeast-bank/steps.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 80066,
+      "derivedFrom": "public/projects/southeast-bank/southeast-bank-application-detail-1.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/southeast-bank-application/image1.webp"
+    },
+    {
+      "destination": "public/projects/square/before.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 122145,
+      "derivedFrom": "public/projects/square/detail-1.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/image1.webp"
+    },
+    {
+      "destination": "public/projects/square/cover.webp",
+      "width": 801,
+      "height": 801,
+      "bytes": 38746,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/cover.webp",
+      "original": "cover.webp"
+    },
+    {
+      "destination": "public/projects/square/detail-1.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 325612,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/image1.webp",
+      "original": "image1.webp"
+    },
+    {
+      "destination": "public/projects/square/detail-2.webp",
+      "width": 4797,
+      "height": 2402,
+      "bytes": 290388,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/image2.webp",
+      "original": "image2.webp"
+    },
+    {
+      "destination": "public/projects/square/emails.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 107598,
+      "derivedFrom": "public/projects/square/hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/hero.webp"
+    },
+    {
+      "destination": "public/projects/square/hero.webp",
+      "width": 2399,
+      "height": 1201,
+      "bytes": 104524,
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/hero.webp",
+      "original": "hero.webp"
+    },
+    {
+      "destination": "public/projects/square/poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 90681,
+      "derivedFrom": "public/projects/square/hero.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/hero.webp"
+    },
+    {
+      "destination": "public/projects/square/system.jpg",
+      "width": 1600,
+      "height": 802,
+      "bytes": 92168,
+      "derivedFrom": "public/projects/square/detail-2.webp",
+      "source": "https://grid-portfolio-liard.vercel.app/images/projects/square/image2.webp"
+    },
+    {
+      "destination": "public/projects/square/tau-thumbnail.png",
+      "width": 3487,
+      "height": 2655,
+      "bytes": 101453,
+      "source": "https://martin-portfolio-tau.vercel.app/images/square_thumbnail.png",
+      "original": "square_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/square/v2-card.png",
+      "width": 5800,
+      "height": 4416,
+      "bytes": 171660,
+      "source": "https://v2-portfolio-alpha.vercel.app/square.png",
+      "original": "square.png"
+    },
+    {
+      "destination": "public/projects/true-see/after_final.png",
+      "width": 3988,
+      "height": 1971,
+      "bytes": 7008049,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/after_final.png",
+      "original": "after_final.png"
+    },
+    {
+      "destination": "public/projects/true-see/after_preview.png",
+      "width": 4086,
+      "height": 2052,
+      "bytes": 7054608,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/after_preview.png",
+      "original": "after_preview.png"
+    },
+    {
+      "destination": "public/projects/true-see/agnostic_workflow.png",
+      "width": 7736,
+      "height": 7216,
+      "bytes": 3913114,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/agnostic_workflow.png",
+      "original": "agnostic_workflow.png"
+    },
+    {
+      "destination": "public/projects/true-see/app_workflow.png",
+      "width": 6400,
+      "height": 2700,
+      "bytes": 6001155,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/app_workflow.png",
+      "original": "app_workflow.png"
+    },
+    {
+      "destination": "public/projects/true-see/before_final.png",
+      "width": 3988,
+      "height": 1971,
+      "bytes": 5347222,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/before_final.png",
+      "original": "before_final.png"
+    },
+    {
+      "destination": "public/projects/true-see/before_preview.png",
+      "width": 4072,
+      "height": 2094,
+      "bytes": 6739494,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/before_preview.png",
+      "original": "before_preview.png"
+    },
+    {
+      "destination": "public/projects/true-see/borders.png",
+      "width": 5349,
+      "height": 2310,
+      "bytes": 5302300,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/borders.png",
+      "original": "borders.png"
+    },
+    {
+      "destination": "public/projects/true-see/camera.jpg",
+      "width": 1600,
+      "height": 800,
+      "bytes": 73304,
+      "derivedFrom": "public/projects/true-see/hero.png",
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/hero.png"
+    },
+    {
+      "destination": "public/projects/true-see/capture.jpg",
+      "width": 1600,
+      "height": 790,
+      "bytes": 289173,
+      "derivedFrom": "public/projects/true-see/after_final.png",
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/after_final.png"
+    },
+    {
+      "destination": "public/projects/true-see/card.png",
+      "width": 910,
+      "height": 909,
+      "bytes": 643191,
+      "source": "https://martin-tejeda-portfolio.vercel.app/ts_thumbnail.png",
+      "original": "ts_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/true-see/hero.png",
+      "width": 6400,
+      "height": 3200,
+      "bytes": 13455566,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/hero.png",
+      "original": "hero.png"
+    },
+    {
+      "destination": "public/projects/true-see/new_UI.png",
+      "width": 3634,
+      "height": 2344,
+      "bytes": 5682150,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/new_UI.png",
+      "original": "new_UI.png"
+    },
+    {
+      "destination": "public/projects/true-see/old_UI.png",
+      "width": 3592,
+      "height": 2348,
+      "bytes": 4585524,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/old_UI.png",
+      "original": "old_UI.png"
+    },
+    {
+      "destination": "public/projects/true-see/old_workflow.png",
+      "width": 6459,
+      "height": 3201,
+      "bytes": 278605,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/old_workflow.png",
+      "original": "old_workflow.png"
+    },
+    {
+      "destination": "public/projects/true-see/poster.jpg",
+      "width": 1280,
+      "height": 720,
+      "bytes": 238503,
+      "derivedFrom": "public/projects/true-see/after_final.png",
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/after_final.png"
+    },
+    {
+      "destination": "public/projects/true-see/sketch_1.png",
+      "width": 2805,
+      "height": 2208,
+      "bytes": 5831687,
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/sketch_1.png",
+      "original": "sketch_1.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-ab_testing.png",
+      "width": 3800,
+      "height": 2204,
+      "bytes": 302773,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/ab_testing.png",
+      "original": "ab_testing.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-agnostic_workflow.png",
+      "width": 2210,
+      "height": 1810,
+      "bytes": 347982,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/agnostic_workflow.png",
+      "original": "agnostic_workflow.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-aha_moments.png",
+      "width": 2040,
+      "height": 2252,
+      "bytes": 1067110,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/aha_moments.png",
+      "original": "aha_moments.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-altera_workflow.png",
+      "width": 2282,
+      "height": 1388,
+      "bytes": 91124,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/altera_workflow.png",
+      "original": "altera_workflow.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-bootstrap_ui.png",
+      "width": 2176,
+      "height": 1696,
+      "bytes": 557650,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/bootstrap_ui.png",
+      "original": "bootstrap_ui.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-cursor.png",
+      "width": 2454,
+      "height": 1648,
+      "bytes": 566880,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/cursor.png",
+      "original": "cursor.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-design_annotations.png",
+      "width": 1945,
+      "height": 2160,
+      "bytes": 376860,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/design_annotations.png",
+      "original": "design_annotations.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-dr_stevenson.png",
+      "width": 641,
+      "height": 930,
+      "bytes": 576761,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/dr_stevenson.png",
+      "original": "dr_stevenson.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-final_1.png",
+      "width": 2220,
+      "height": 2234,
+      "bytes": 506952,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/final_1.png",
+      "original": "final_1.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-final_2.png",
+      "width": 2220,
+      "height": 2234,
+      "bytes": 1156426,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/final_2.png",
+      "original": "final_2.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-final_3.png",
+      "width": 2362,
+      "height": 2350,
+      "bytes": 2806768,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/final_3.png",
+      "original": "final_3.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-hero.png",
+      "width": 1748,
+      "height": 3536,
+      "bytes": 3821372,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/hero.png",
+      "original": "hero.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-metrics.png",
+      "width": 1661,
+      "height": 1386,
+      "bytes": 194342,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/metrics.png",
+      "original": "metrics.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-midfi_1.png",
+      "width": 2909,
+      "height": 1624,
+      "bytes": 1759847,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/midfi_1.png",
+      "original": "midfi_1.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-midfi_2.png",
+      "width": 2450,
+      "height": 1678,
+      "bytes": 1151372,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/midfi_2.png",
+      "original": "midfi_2.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-midfi_3.png",
+      "width": 3131,
+      "height": 1678,
+      "bytes": 2690760,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/midfi_3.png",
+      "original": "midfi_3.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-nurse_kim.png",
+      "width": 636,
+      "height": 930,
+      "bytes": 631897,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/nurse_kim.png",
+      "original": "nurse_kim.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-pain_points.png",
+      "width": 2130,
+      "height": 1388,
+      "bytes": 97380,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/pain_points.png",
+      "original": "pain_points.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-prototype.png",
+      "width": 1498,
+      "height": 1696,
+      "bytes": 1458723,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/prototype.png",
+      "original": "prototype.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_1.png",
+      "width": 938,
+      "height": 738,
+      "bytes": 941481,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_1.png",
+      "original": "sketch_1.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_2.png",
+      "width": 886,
+      "height": 731,
+      "bytes": 722250,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_2.png",
+      "original": "sketch_2.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_3.png",
+      "width": 986,
+      "height": 731,
+      "bytes": 908814,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_3.png",
+      "original": "sketch_3.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_4.png",
+      "width": 1074,
+      "height": 881,
+      "bytes": 1260313,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_4.png",
+      "original": "sketch_4.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_5.png",
+      "width": 1548,
+      "height": 866,
+      "bytes": 1655694,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_5.png",
+      "original": "sketch_5.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_6.png",
+      "width": 860,
+      "height": 875,
+      "bytes": 1015701,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_6.png",
+      "original": "sketch_6.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_7.png",
+      "width": 938,
+      "height": 878,
+      "bytes": 1194516,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_7.png",
+      "original": "sketch_7.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-sketch_bundle.png",
+      "width": 3461,
+      "height": 1671,
+      "bytes": 6952140,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/sketch_bundle.png",
+      "original": "sketch_bundle.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-team.png",
+      "width": 4036,
+      "height": 1774,
+      "bytes": 116378,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/team.png",
+      "original": "team.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-theme_colors.png",
+      "width": 1740,
+      "height": 2018,
+      "bytes": 140932,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/theme_colors.png",
+      "original": "theme_colors.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-thumbnail.png",
+      "width": 1498,
+      "height": 1122,
+      "bytes": 992702,
+      "source": "https://martin-portfolio-tau.vercel.app/images/ts_thumbnail.png",
+      "original": "ts_thumbnail.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-ts_logo.png",
+      "width": 540,
+      "height": 234,
+      "bytes": 45267,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/ts_logo.png",
+      "original": "ts_logo.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-ui_iterations.png",
+      "width": 2506,
+      "height": 1908,
+      "bytes": 2023840,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/ui_iterations.png",
+      "original": "ui_iterations.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-usability_script.png",
+      "width": 2038,
+      "height": 1772,
+      "bytes": 359808,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/usability_script.png",
+      "original": "usability_script.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-user_interviews.png",
+      "width": 2335,
+      "height": 1736,
+      "bytes": 678942,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/user_interviews.png",
+      "original": "user_interviews.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-ux_update_after.png",
+      "width": 1958,
+      "height": 946,
+      "bytes": 1346293,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/ux_update_after.png",
+      "original": "ux_update_after.png"
+    },
+    {
+      "destination": "public/projects/true-see/tau-ux_update_before.png",
+      "width": 1958,
+      "height": 946,
+      "bytes": 1347905,
+      "source": "https://martin-portfolio-tau.vercel.app/images/true-see/ux_update_before.png",
+      "original": "ux_update_before.png"
+    },
+    {
+      "destination": "public/projects/true-see/workflow.jpg",
+      "width": 1600,
+      "height": 676,
+      "bytes": 145148,
+      "derivedFrom": "public/projects/true-see/app_workflow.png",
+      "source": "https://martin-tejeda-portfolio.vercel.app/true-see/app_workflow.png"
+    }
+  ]
+}
