@@ -1,10 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { CSSProperties, useCallback, useEffect, useLayoutEffect, useRef } from "react";
+import { MouseEvent as ReactMouseEvent, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Project } from "@/data/projects";
 import { flight } from "@/lib/flight";
 import { sound } from "@/lib/sound";
+import { CaseBody } from "./case-body";
 import styles from "./project-view.module.css";
 
 type ProjectViewProps = {
@@ -44,6 +45,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   const animationRef = useRef<Animation | null>(null);
   const dragRef = useRef<CaseDragState | null>(null);
   const navigating = useRef(false);
+  const [active, setActive] = useState<string>(project.study.sections[0]?.id ?? "overview");
 
   useEffect(() => {
     closeRef.current?.focus({ preventScroll: true });
@@ -123,11 +125,21 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const progress = progressRef.current;
     if (!scroller || !progress) return;
     scroller.scrollTop = 0;
+    const ids = project.study.sections.map((section) => section.id);
     const sync = () => {
       const range = Math.max(scroller.scrollHeight - scroller.clientHeight, 0);
       const value = range > 0 ? Math.min(1, Math.max(0, scroller.scrollTop / range)) : 1;
-      progress.style.setProperty("--project-progress", `${value * 360}deg`);
+      progress.style.setProperty("--project-progress", String(value));
       progress.setAttribute("aria-valuenow", String(Math.round(value * 100)));
+      const line = scroller.getBoundingClientRect().top + 96;
+      const atEnd = range <= 0 || scroller.scrollTop >= range - 8;
+      let current = ids[0] ?? "";
+      for (const id of ids) {
+        const node = document.getElementById(`${project.slug}-${id}`);
+        if (node && node.getBoundingClientRect().top <= line) current = id;
+      }
+      if (atEnd && ids.length) current = ids[ids.length - 1];
+      setActive((previous) => (previous === current ? previous : current));
     };
     const observer = new ResizeObserver(sync);
     observer.observe(scroller);
@@ -138,6 +150,19 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       observer.disconnect();
       scroller.removeEventListener("scroll", sync);
     };
+  }, [project.slug, project.study.sections]);
+
+  const jump = useCallback((event: ReactMouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    const scroller = scrollRef.current;
+    const node = document.getElementById(`${project.slug}-${id}`);
+    if (!scroller || !node) return;
+    const nav = scroller.querySelector<HTMLElement>("[data-section-nav]");
+    const cover = window.matchMedia("(max-width: 649px)").matches ? (nav?.getBoundingClientRect().height ?? 0) : 0;
+    const top = node.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - cover - 16;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scroller.scrollTo({ top, behavior: reduced ? "auto" : "smooth" });
+    setActive(id);
   }, [project.slug]);
 
   useEffect(() => {
@@ -439,75 +464,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
         aria-labelledby={`project-${project.slug}-title`}
       >
         <div ref={scrollRef} className={styles.scroller} data-project-scroll="">
-          <div key={project.slug} className={styles.row}>
-            <div className={styles.copy} data-gl="text">
-              <h1 id={`project-${project.slug}-title`}>{project.title}</h1>
-              {project.summary.split(/\n\n+/).map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-              <ul className={styles.tags}>
-                {project.year ? <li>{project.year}</li> : null}
-                {project.credits.map((credit) => (
-                  <li key={credit.name}>
-                    {credit.url ? (
-                      <a href={credit.url} target="_blank" rel="noreferrer">
-                        {credit.name}
-                      </a>
-                    ) : (
-                      credit.name
-                    )}
-                  </li>
-                ))}
-                {project.awards > 0 ? (
-                  <li className={styles.award} aria-label={`${project.awards} awards`}>
-                    {project.awards}
-                  </li>
-                ) : null}
-              </ul>
-              {project.liveUrl ? (
-                <a className={styles.visit} data-gl="pill" href={project.liveUrl} target="_blank" rel="noreferrer">
-                  <span className={styles.visitMark} aria-hidden="true">
-                    ↗
-                  </span>
-                  <span>Visit</span>
-                </a>
-              ) : null}
-            </div>
-            <div className={styles.media}>
-              {project.media.map((item, index) => (
-                <figure key={item.src} className={styles.block}>
-                  <div
-                    className={styles.frame}
-                    data-gl="simple"
-                    data-id={`${project.slug}-${index}`}
-                    data-project={project.slug}
-                    data-stack-index={index}
-                    style={{ "--ratio": `${item.width} / ${item.height}` } as CSSProperties}
-                  >
-                    {item.video ? (
-                      <video
-                        src={item.src}
-                        poster={item.poster}
-                        muted
-                        loop
-                        playsInline
-                        autoPlay
-                        crossOrigin="anonymous"
-                      draggable={false}
-                      />
-                    ) : (
-                      // Sampled by the shared plane. next/image would hide the source element.
-                      // eslint-disable-next-line @next/next/no-img-element
-                    <img src={item.src} alt="" crossOrigin="anonymous" draggable={false} />
-                    )}
-                  </div>
-                  <figcaption>
-                    <p>{item.caption}</p>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
+          <CaseBody project={project} active={active} onJump={jump} />
         </div>
         <button ref={closeRef} className={styles.close} type="button" onClick={close} aria-label="Close project">
           <span aria-hidden="true">×</span>

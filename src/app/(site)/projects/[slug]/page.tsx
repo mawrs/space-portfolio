@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(slug);
   if (!project) return { title: site.name };
   return {
-    title: `${project.title} — ${site.name}`,
-    description: project.summary.split(/\n\n+/)[0],
+    title: `${project.study.headline} — ${site.name}`,
+    description: project.study.sections[0]?.blocks.find((block) => block.type === "p" && "text" in block)?.text ?? project.summary,
   };
 }
 
