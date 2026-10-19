@@ -182,6 +182,11 @@ export function PlaneStage() {
     const start = async () => {
       const THREE = await import("three");
       if (disposed || !mountRef.current) return;
+
+      const markFont = getComputedStyle(document.body).fontFamily;
+      await document.fonts.load("400 64px Neudron").catch(() => undefined);
+      const titleFont = document.fonts.check("400 64px Neudron") ? "Neudron" : markFont;
+
       document.documentElement.classList.add("gl");
 
       const renderer = new THREE.WebGLRenderer({
@@ -211,9 +216,6 @@ export function PlaneStage() {
         uClip: { value: new THREE.Vector4() },
         uClipRadius: { value: 0 },
       };
-      const markFont = getComputedStyle(document.body).fontFamily;
-      await document.fonts.load("400 64px Neudron").catch(() => undefined);
-      const titleFont = document.fonts.check("400 64px Neudron") ? "Neudron" : markFont;
 
       type Record = {
         mesh: InstanceType<typeof THREE.Mesh>;

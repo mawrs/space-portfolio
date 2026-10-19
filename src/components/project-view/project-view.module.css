@@ -277,6 +277,10 @@
   margin: 0;
 }
 
+.blocks > .block {
+  margin-top: var(--space-paragraph);
+}
+
 .block p {
   max-width: 48rem;
   font-size: 1.35rem;
