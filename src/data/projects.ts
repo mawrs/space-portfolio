@@ -1,3 +1,4 @@
+import { cases, type CaseStudy } from "./cases";
 import featured from "./featured.json";
 
 export type Credit = {
@@ -27,9 +28,14 @@ export type Project = {
   poster: string;
   video: string;
   media: Media[];
+  study: CaseStudy;
 };
 
-export const projects = featured as Project[];
+export const projects = (featured as Omit<Project, "study">[]).map((project) => {
+  const study = cases[project.slug];
+  if (!study) throw new Error(`Missing case study for ${project.slug}`);
+  return { ...project, study };
+});
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
