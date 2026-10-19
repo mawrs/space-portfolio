@@ -2,7 +2,7 @@
   {
     "slug": "facebook",
     "title": "Facebook",
-    "summary": "The home feed, the notification panel, and the controls for what a Page sends you.",
+    "summary": "Admins running three or more Pages received every comment, like, tag, post, and share in one stream, and missed the comments that needed a same-day answer.\n\nThe settings define which profiles an admin hears from and which notification types come through, with defaults for the majority who never open the screen. Filtering and sorting were tested internally and in an A/B test. It shipped as Cross-Profile Notifications.",
     "year": "2021",
     "awards": 0,
     "liveUrl": "https://www.facebook.com/",
@@ -18,7 +18,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "The sizzle: the volume of reaction, then the choice to turn the rest off."
+        "caption": "The volume of reaction on a Page, then the choice to turn the rest off. Comments, likes, tags, posts, and shares can each be silenced without swapping the whole account."
       },
       {
         "src": "/projects/facebook.mp4",
@@ -26,7 +26,7 @@
         "width": 1920,
         "height": 1080,
         "video": true,
-        "caption": "The home feed, then the notification panel with new comments, mentions, and follows."
+        "caption": "The home feed, then the notification panel. New comments, mentions, and follows arrive in one stream until an admin filters by Page."
       },
       {
         "src": "/projects/facebook-2.mp4",
@@ -34,7 +34,7 @@
         "width": 1920,
         "height": 1080,
         "video": true,
-        "caption": "Page notification settings, where comments, likes, tags, posts, and shares can each be turned on or off."
+        "caption": "Page notification settings. Each type can be turned on or off, and the defaults cover admins who never open this screen."
       },
       {
         "src": "/projects/facebook/notifications.jpg",
@@ -42,7 +42,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The notification stream on desktop and phone. Comments, mentions, and shares are separated before an admin opens one."
+        "caption": "The notification stream on desktop and phone. Comments, mentions, and shares are separated before an admin opens one, so a same-day reply is not buried under likes."
       },
       {
         "src": "/projects/facebook/suggested.jpg",
@@ -50,14 +50,14 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "Suggested for You, tested in the feed and in notifications as a way to connect people with public figures."
+        "caption": "Suggested for You, tested in the feed and in notifications as a way to connect people with public figures. A separate pass from the settings that shipped as Cross-Profile Notifications."
       }
     ]
   },
   {
     "slug": "square",
     "title": "Square",
-    "summary": "A consistent email system for Square sellers, so a message can be recognized before anyone follows it into the dashboard.",
+    "summary": "A spike in seller-reported phishing traced back to Square's own email. Every department had built its own template, and no two messages looked alike, so a seller could not tell a real one from a fake.\n\nThose templates were componentized into seven thematic buckets with the design system team. The highest-volume emails moved first, so other teams adopted the system on their own. Sender rules cover dynamic content, plain-text fallbacks, and messages that still read as Square when images are blocked.",
     "year": "2022",
     "awards": 0,
     "liveUrl": null,
@@ -73,7 +73,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "The sizzle: a seller email in the inbox, then the same kind of message before and after the system."
+        "caption": "A seller email in the inbox, then the same kind of message before and after the system. Recognition happens before anyone follows the link into the dashboard."
       },
       {
         "src": "/projects/square/emails.jpg",
@@ -81,7 +81,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "Two templates from the system: a card added to a wallet, and a card on its way."
+        "caption": "Two templates from the seven buckets: a card added to a wallet, and a card on its way. Same sender, same structure, different job."
       },
       {
         "src": "/projects/square/system.jpg",
@@ -89,14 +89,14 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "Header, body, and footer as separate pieces, so every seller email can be recognized as Square."
+        "caption": "Header, body, and footer as separate pieces. Seven buckets, one library, so every seller email can be recognized as Square, including the plain-text fallback and the version with images blocked."
       }
     ]
   },
   {
     "slug": "slide",
     "title": "Slide",
-    "summary": "A self-serve claim flow for Slide, so a policyholder can report a loss without waiting on a phone call.",
+    "summary": "Claims at Slide were a phone call, about 20 minutes each. A week in Tampa with the executive team mapped how agents triaged a loss, and that script became a flow a policyholder could finish on the site.\n\nChoosing the loss type and giving Slide the minimum it needs to start replaced the call. The average claim dropped to 8 minutes. In four months the flow processed more than 10,000 claims, and 45% of them never touched a phone.\n\nThe sprint secured a $300k contract extension and the green light to design the application. Months later Slide raised $35M to expand through Florida.",
     "year": "2022",
     "awards": 0,
     "liveUrl": null,
@@ -112,7 +112,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "The sizzle: the claim on a laptop and a phone, then the questions that replace the call."
+        "caption": "The claim on a laptop and a phone. Welcome, contact, then the loss type: the questions an agent used to read aloud on a 20-minute call."
       },
       {
         "src": "/projects/slide/claim.jpg",
@@ -120,7 +120,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The loss-type step at the two sizes a policyholder actually uses."
+        "caption": "The loss-type step at the two sizes a policyholder actually uses. Weather, water, fire or smoke, theft, other property damage, and liability, each with the definition from the phone script."
       },
       {
         "src": "/projects/slide/flow.jpg",
@@ -128,14 +128,14 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The rest of the product around that step: filing, tracking, payment, and the policy document."
+        "caption": "The rest of the product around that step: filing a claim through to a claim number, tracking it, making a payment, and previewing the policy. The intake is the piece that took 45% of claims off the phone."
       }
     ]
   },
   {
     "slug": "true-see",
     "title": "TRUE-See",
-    "summary": "An EHR-agnostic photo workflow for clinicians, built so the camera is a few steps away instead of a detour through the record.",
+    "summary": "Photographing a wound meant leaving the chart, signing into a second app, and rebuilding the patient. The EHR-agnostic path pulls the list from the record, then capture, wound type, measure, and save stay in one pass.\n\nAs sole designer, the work was the research, the workflow, and the interface, including the Bootstrap system the app shipped on. Photos can be found by hashtag, such as #ulcer, instead of selecting from a pile of unassigned images.\n\nThe photograph is color-calibrated and certified, so a clinician can compare the same wound later without guessing at the phone's color.",
     "year": "2025",
     "awards": 0,
     "liveUrl": null,
@@ -151,7 +151,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "The sizzle: the path into the camera, the capture screen, and the photograph it is for."
+        "caption": "The path into the camera, the capture screen, and the photograph it is for. The first session has to clear permissions, the camera, and the first upload."
       },
       {
         "src": "/projects/true-see/workflow.jpg",
@@ -159,7 +159,7 @@
         "width": 1600,
         "height": 676,
         "video": false,
-        "caption": "Patient list to camera, without repeating the setup the old record required for every wound."
+        "caption": "Patient list to camera. The old path signed a clinician into the EHR, then into TRUE-See, and asked for the patient again. The new path starts from the list the record already has."
       },
       {
         "src": "/projects/true-see/camera.jpg",
@@ -167,14 +167,14 @@
         "width": 1600,
         "height": 800,
         "video": false,
-        "caption": "The photograph the workflow is built around: a calibrated image a clinician can trust."
+        "caption": "The photograph the workflow is built around: a calibrated, certified image a clinician can trust, then send back to the chart, share, or assign a wound type."
       }
     ]
   },
   {
     "slug": "arcoscan",
     "title": "Arcoscan",
-    "summary": "Age and liveness checks for onboarding, so a person can prove they are present without abandoning the flow.",
+    "summary": "Biometric age verification, productized as a step inside onboarding. A face outline and one instruction, open your mouth, prove a person is present, and the flow continues.\n\nThe scan had lived as a technology demo built with SRI. The product version keeps the person in the same session: camera access, the prompt, a result, then the next screen, instead of a handoff to a separate verification site.",
     "year": "",
     "awards": 0,
     "liveUrl": null,
@@ -190,14 +190,14 @@
         "width": 1600,
         "height": 1600,
         "video": false,
-        "caption": "The check is the prompt. Open your mouth, prove you are present, and continue."
+        "caption": "The check is the prompt. Open your mouth, hold still inside the outline, and continue. Age and liveness are the same step, so onboarding does not stop for a second vendor."
       }
     ]
   },
   {
     "slug": "peridot",
     "title": "Peridot",
-    "summary": "Search across interviews, with every insight linked back to the sentence and minute it came from.",
+    "summary": "Search across interviews. Peridot transcribes the call, pulls themes, pain points, and feature requests, and answers a question with the sentence and the minute it came from.\n\nCalls can come from Zoom, Google Meet, Otter, or Dovetail, with surveys, support tickets, and sales calls beside them. A highlight or a quote can be opened without an account, and an insight can be turned into a Linear ticket.\n\nThe research is not used to train the models. Transcription and the write-up run through the providers, and the citation stays attached to the source.",
     "year": "2026",
     "awards": 0,
     "liveUrl": "https://askperidot.com",
@@ -213,14 +213,14 @@
         "width": 1280,
         "height": 720,
         "video": false,
-        "caption": "The earlier case shipped this cover with no product still behind it. The product is the citation: an insight that can be opened at the minute it was said."
+        "caption": "The product is the citation. An insight opens at the minute it was said, with the quote beside the recording, so a stakeholder gets the clip instead of a deck."
       }
     ]
   },
   {
     "slug": "southeast-bank",
     "title": "SouthEast Bank",
-    "summary": "A refinance application and loan calculator for SouthEast Bank, then the deposit that opens the account.",
+    "summary": "Opening an account meant sitting with a branch manager while they clicked through an internal tool. The customer-facing deposit flow runs from the first screen through funding, including insufficient funds, invalid KYC, a failed bank link, a transfer that stays pending for days, and a joint owner.\n\nChecking, savings, and CDs were scoped to open in one pass. That version was ruled out, so a customer opens one product at a time. That single-product flow is the intake in use today.\n\nStudents were abandoning the Elfi refinance application because the form asked them to choose fixed or variable before they knew the cost. The calculator shows both rates across the life of the loan, under the options they were already deciding between. It reached 80% adoption in the first month.",
     "year": "2025",
     "awards": 0,
     "liveUrl": "https://www.southeastbank.com/",
@@ -236,7 +236,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "The sizzle: how much to refinance, the payment the calculator recommends, then the deposit that opens the account."
+        "caption": "How much to refinance, the payment the calculator recommends, then the deposit that opens the account. One product at a time, from the first screen through funding."
       },
       {
         "src": "/projects/southeast-bank/steps.jpg",
@@ -244,7 +244,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The old form asked for everything on one page. The new one is four steps, and a student can move between them."
+        "caption": "The old Elfi form asked for the whole refinance on one page, including income, a co-signer, and the loan amount. The new one is four steps, starting with the school, and a student can move between them."
       },
       {
         "src": "/projects/southeast-bank/calculator.jpg",
@@ -252,7 +252,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "Amount and term on one side, monthly payment and APR on the other, before the application is finished."
+        "caption": "Amount and term on one side. Monthly payment, APR, total interest, and the payment timeline on the other, including a deferred grace period, before the application is finished."
       }
     ]
   }

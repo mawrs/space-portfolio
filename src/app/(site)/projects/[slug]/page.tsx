@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: site.name };
   return {
     title: `${project.title} — ${site.name}`,
-    description: project.summary,
+    description: project.summary.split(/\n\n+/)[0],
   };
 }
 

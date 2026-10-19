@@ -442,7 +442,9 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
           <div key={project.slug} className={styles.row}>
             <div className={styles.copy} data-gl="text">
               <h1 id={`project-${project.slug}-title`}>{project.title}</h1>
-              <p>{project.summary}</p>
+              {project.summary.split(/\n\n+/).map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
               <ul className={styles.tags}>
                 {project.year ? <li>{project.year}</li> : null}
                 {project.credits.map((credit) => (
