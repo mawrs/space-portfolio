@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import { site } from "@/data/site";
 import styles from "./full.module.css";
 
 export const metadata = {
-  title: "Full — Jesper Landberg",
+  title: `Full — ${site.name}`,
 };
 
 export default function FullPage() {

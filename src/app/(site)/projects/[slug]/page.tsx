@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ProjectView } from "@/components/project-view/project-view";
 import { getProject, neighbors, projects } from "@/data/projects";
+import { site } from "@/data/site";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -15,9 +16,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
-  if (!project) return { title: "Jesper Landberg" };
+  if (!project) return { title: site.name };
   return {
-    title: `${project.title} — Jesper Landberg`,
+    title: `${project.title} — ${site.name}`,
     description: project.summary,
   };
 }
