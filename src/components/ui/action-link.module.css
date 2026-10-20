@@ -1,0 +1,18 @@
+.link {
+  display: inline-flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  width: fit-content;
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  color: var(--text-white);
+  background: var(--background-dark);
+  border-radius: var(--radius-full);
+}

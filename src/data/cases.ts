@@ -43,7 +43,7 @@ export const cases: Record<string, CaseStudy> = {
   facebook: {
     title: "Three Pages, one account",
     headline: "Cross-profile notifications",
-    meta: "Facebook · Shipped 2021",
+    meta: "Facebook",
     role: "Page switch and notification settings",
     timeline: "Apr – Sep 2021",
     team: ["Page admin product"],
@@ -152,7 +152,7 @@ export const cases: Record<string, CaseStudy> = {
   square: {
     title: "Seven buckets, one Square",
     headline: "Email design",
-    meta: "Square · Shipped 2021",
+    meta: "Square",
     role: "Email system and sender identity",
     timeline: "Sep – Dec 2021",
     team: ["Square", "Underbelly"],
@@ -263,7 +263,7 @@ export const cases: Record<string, CaseStudy> = {
   slide: {
     title: "45% of claims, no call",
     headline: "Insurance claims intake",
-    meta: "Slide · Shipped 2022",
+    meta: "Slide",
     role: "Claims intake and service blueprint",
     timeline: "Jun – Oct 2022",
     team: ["Slide", "Underbelly"],
@@ -363,7 +363,7 @@ export const cases: Record<string, CaseStudy> = {
   "true-see": {
     title: "From the chart to the camera",
     headline: "EHR-agnostic capture",
-    meta: "TRUE-See · 2025",
+    meta: "TRUE-See",
     role: "Sole product designer",
     timeline: "2025",
     team: ["TRUE-See"],
@@ -557,7 +557,7 @@ export const cases: Record<string, CaseStudy> = {
   peridot: {
     title: "Cite the minute",
     headline: "Peridot",
-    meta: "Independent · Launched 2026",
+    meta: "Independent",
     role: "Solo 0→1 product design and development",
     timeline: "2025 – 2026",
     team: ["Solo"],
@@ -645,7 +645,7 @@ export const cases: Record<string, CaseStudy> = {
   "southeast-bank": {
     title: "One product at a time",
     headline: "Bank account opening",
-    meta: "SouthEast Bank · In market",
+    meta: "SouthEast Bank",
     role: "Deposit intake and the rate comparison",
     timeline: "Mar 2025 – Present",
     team: ["SouthEast Bank"],

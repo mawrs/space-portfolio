@@ -1,7 +1,25 @@
-import { CSSProperties, MouseEvent } from "react";
+import { CSSProperties, Fragment, MouseEvent } from "react";
 import { CaseBlock } from "@/data/cases";
 import { Project } from "@/data/projects";
+import { ActionLink } from "@/components/ui/action-link";
 import styles from "./project-view.module.css";
+
+function contentGroups(blocks: CaseBlock[]) {
+  const groups: { heading: string | null; items: CaseBlock[] }[] = [];
+
+  for (const block of blocks) {
+    if (block.type === "h3") {
+      groups.push({ heading: block.text, items: [] });
+      continue;
+    }
+
+    const current = groups.at(-1);
+    if (!current) groups.push({ heading: null, items: [block] });
+    else current.items.push(block);
+  }
+
+  return groups;
+}
 
 type CaseBodyProps = {
   project: Project;
@@ -37,12 +55,9 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
           <p className={styles.meta}>{study.meta}</p>
           <h1 id={`project-${project.slug}-title`}>{study.title}</h1>
           {project.liveUrl ? (
-            <a className={styles.visit} data-gl="pill" href={project.liveUrl} target="_blank" rel="noreferrer">
-              <span className={styles.visitMark} aria-hidden="true">
-                ↗
-              </span>
-              <span>Visit</span>
-            </a>
+            <ActionLink data-gl="pill" href={project.liveUrl} target="_blank" rel="noreferrer">
+              Visit
+            </ActionLink>
           ) : null}
           <figure className={styles.sizzle}>
             <div
@@ -72,30 +87,47 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
             </div>
           </figure>
         </header>
-        {study.sections.map((section) => (
-          <section key={section.id} id={`${project.slug}-${section.id}`} className={styles.section} data-section="">
-            <h2>{section.label}</h2>
-            <div className={styles.blocks}>
-              {section.blocks
-                .filter((block) => section.id !== "overview" || block.type !== "ul")
-                .map((block, index) => (
-                  <Block key={`${section.id}-${index}`} block={block} project={project} />
-                ))}
-            </div>
-            {section.id === "overview" ? (
-              <dl className={styles.facts}>
-                {facts.map((fact) => (
-                  <div key={fact.label}>
-                    <dt>{fact.label}</dt>
-                    {fact.values.map((value) => (
-                      <dd key={value}>{value}</dd>
-                    ))}
-                  </div>
-                ))}
-              </dl>
-            ) : null}
-          </section>
-        ))}
+        {study.sections.map((section) => {
+          const blocks = section.blocks.filter(
+            (block) => block.type !== "stats" && (section.id !== "overview" || block.type !== "ul"),
+          );
+          const stats = section.blocks.filter((block) => block.type === "stats");
+
+          const groups = contentGroups(blocks);
+
+          return (
+            <section key={section.id} id={`${project.slug}-${section.id}`} className={styles.section} data-section="">
+              <h2>{section.label}</h2>
+              {groups.map((group, index) => (
+                <Fragment key={`${section.id}-${index}`}>
+                  {group.heading ? <h3>{group.heading}</h3> : null}
+                  {group.items.length > 0 ? (
+                    <div className={styles.blocks}>
+                      {group.items.map((block, itemIndex) => (
+                        <Block key={`${section.id}-${index}-${itemIndex}`} block={block} project={project} />
+                      ))}
+                    </div>
+                  ) : null}
+                </Fragment>
+              ))}
+              {stats.map((block, index) => (
+                <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
+              ))}
+              {section.id === "overview" ? (
+                <dl className={styles.facts}>
+                  {facts.map((fact) => (
+                    <div key={fact.label}>
+                      <dt>{fact.label}</dt>
+                      {fact.values.map((value) => (
+                        <dd key={value}>{value}</dd>
+                      ))}
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
+            </section>
+          );
+        })}
       </article>
     </div>
   );
@@ -127,12 +159,9 @@ function Block({ block, project }: { block: CaseBlock; project: Project }) {
   }
   if (block.type === "link") {
     return (
-      <a className={styles.visit} href={block.href} target="_blank" rel="noreferrer">
-        <span className={styles.visitMark} aria-hidden="true">
-          ↗
-        </span>
-        <span>{block.label}</span>
-      </a>
+      <ActionLink href={block.href} target="_blank" rel="noreferrer">
+        {block.label}
+      </ActionLink>
     );
   }
   const item = project.media[block.index];

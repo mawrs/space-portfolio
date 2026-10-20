@@ -219,7 +219,7 @@ export function Gallery() {
 
   return (
     <main className={styles.gallery}>
-      <h1 className={styles.seo}>Featured</h1>
+      <h1 className="srOnly">Featured</h1>
       <div ref={ribbonRef} className={`${styles.ribbon} ${mobile ? styles.stacked : ""}`} data-ribbon="">
         {projects.map((project) => (
           <article
@@ -255,7 +255,7 @@ export function Gallery() {
                 <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
               )}
               <h2>{project.title}</h2>
-              <p className={styles.seo}>{project.summary}</p>
+              <p className="srOnly">{project.summary}</p>
             </a>
           </article>
         ))}

@@ -4,17 +4,17 @@
 
 .onSheet .row > :not(.sound) {
   visibility: hidden;
-  opacity: 0;
+  opacity: var(--opacity-hidden);
 }
 
 .chrome {
   position: fixed;
   inset: 0;
-  z-index: 40;
+  z-index: var(--layer-chrome);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2.5rem 4rem;
+  padding: var(--spacing-xl) var(--spacing-xxl);
   pointer-events: none;
 }
 
@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.7rem;
+  gap: var(--spacing-xs);
 }
 
 .modes {
@@ -33,16 +33,16 @@
 .label,
 .muted {
   position: relative;
-  border: 0;
+  border: var(--border-width-0);
   background: none;
   color: inherit;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0.04em;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-caption);
+  letter-spacing: var(--tracking-caption);
   text-transform: uppercase;
   pointer-events: auto;
-  transition: opacity 0.35s ease;
+  transition: opacity var(--duration-base) var(--easing-fade);
 }
 
 .label::before,
@@ -53,17 +53,17 @@
 }
 
 .label {
-  opacity: 1;
+  opacity: var(--opacity-visible);
 }
 
 .muted {
-  opacity: 0.5;
+  opacity: var(--opacity-muted);
 }
 
 .label:hover,
 .muted:hover,
 .label[aria-expanded="true"] {
-  opacity: 0.55;
+  opacity: var(--opacity-secondary);
 }
 
 .label:hover,
@@ -76,11 +76,11 @@
 }
 
 .muted:hover {
-  opacity: 1;
+  opacity: var(--opacity-visible);
 }
 
-@media (min-width: 650px) {
+@media (min-width: 640px) {
   .chrome {
-    padding: 4rem 8rem;
+    padding: var(--spacing-xxl) var(--spacing-xxxl);
   }
 }
