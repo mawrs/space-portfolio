@@ -16,11 +16,10 @@ type SiteChromeProps = {
 
 export function SiteChrome({ panel, pathname, onPanel }: SiteChromeProps) {
   const onSheet = pathname.startsWith("/projects");
-  const [on, setOn] = useState(true);
+  const [on, setOn] = useState(soundIsOn);
   const toggle = (next: Exclude<Panel, null>) => onPanel(panel === next ? null : next);
 
   useEffect(() => {
-    setOn(soundIsOn());
     return subscribeSound(setOn);
   }, []);
 

@@ -1,0 +1,54 @@
+:root {
+  --background-white: var(--color-white);
+  --background-black: var(--color-black);
+  --background-extra-light: var(--color-gray-off-white);
+  --background-light: var(--color-gray-mist);
+  --background-brand-soft: var(--color-primary-periwinkle);
+  --background-brand: var(--color-primary-indigo);
+  --background-brand-hover: var(--color-primary-violet);
+  --background-success: var(--color-green-50);
+  --background-danger: var(--color-red-50);
+  --background-warning: var(--color-yellow-50);
+  --background-dark: var(--color-gray-midnight);
+
+  --text-white: var(--color-white);
+  --text-black: var(--color-black);
+  --text-primary: var(--color-gray-midnight);
+  --text-secondary: var(--color-gray-slate);
+  --text-tertiary: var(--color-gray-smoke);
+  --text-brand: var(--color-primary-indigo);
+  --text-success: var(--color-green-900);
+  --text-danger: var(--color-red-600);
+  --text-warning: var(--color-yellow-900);
+
+  --stroke-dark: var(--color-gray-midnight);
+  --stroke-light: var(--color-gray-frost);
+  --stroke-success: var(--color-green-600);
+  --stroke-danger: var(--color-red-600);
+  --stroke-warning: var(--color-yellow-600);
+  --stroke-brand: var(--color-primary-indigo);
+
+  --font-family-ui: "GT America", var(--font-geist-sans), sans-serif;
+  --font-family-display: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-family-heading: Neudron, var(--font-geist-sans), sans-serif;
+  --font-family-body: "TWK Lausanne Pan", var(--font-geist-sans), sans-serif;
+
+  --layout-xs: 380px;
+  --layout-sm: var(--breakpoint-sm);
+  --layout-md: var(--breakpoint-md);
+  --layout-lg: var(--breakpoint-lg);
+  --layout-xl: var(--breakpoint-xl);
+  --layout-2xl: var(--breakpoint-2xl);
+
+  --max-width-xs: var(--layout-xs);
+  --max-width-sm: var(--container-sm);
+  --max-width-md: var(--container-md);
+  --max-width-lg: var(--container-lg);
+  --max-width-xl: var(--container-xl);
+  --max-width-2xl: var(--container-2xl);
+  --max-width-3xl: var(--container-3xl);
+  --max-width-4xl: var(--container-4xl);
+  --max-width-5xl: var(--container-5xl);
+  --max-width-6xl: var(--container-6xl);
+  --max-width-7xl: var(--container-7xl);
+}

@@ -140,7 +140,15 @@ function visibleClip(element: HTMLElement, rect: DOMRect) {
   );
 }
 
-function paintOverlay(title: string, aspect: number, titleFont: string, markFont: string) {
+function paintOverlay(
+  title: string,
+  aspect: number,
+  titleFont: string,
+  markFont: string,
+  textColor: string,
+  overlayColor: string,
+  overlayOpacity: number,
+) {
   const canvas = document.createElement("canvas");
   canvas.width = 1600;
   canvas.height = Math.max(1, Math.round(1600 / aspect));
@@ -148,11 +156,13 @@ function paintOverlay(title: string, aspect: number, titleFont: string, markFont
   if (!context) return canvas;
   context.clearRect(0, 0, canvas.width, canvas.height);
   const fade = context.createLinearGradient(0, canvas.height * 0.62, 0, canvas.height);
-  fade.addColorStop(0, "rgba(0,0,0,0)");
-  fade.addColorStop(1, "rgba(0,0,0,0.72)");
+  fade.addColorStop(0, "transparent");
+  fade.addColorStop(1, overlayColor);
   context.fillStyle = fade;
+  context.globalAlpha = overlayOpacity;
   context.fillRect(0, 0, canvas.width, canvas.height);
-  context.fillStyle = "#fff";
+  context.globalAlpha = 1;
+  context.fillStyle = textColor;
   context.font = `400 ${Math.round(canvas.height * 0.09)}px ${titleFont}`;
   context.letterSpacing = "0.02em";
   context.textBaseline = "alphabetic";
@@ -160,9 +170,11 @@ function paintOverlay(title: string, aspect: number, titleFont: string, markFont
   context.letterSpacing = "0px";
   context.beginPath();
   context.arc(canvas.width - 84, canvas.height - 86, 30, 0, Math.PI * 2);
-  context.fillStyle = "rgba(0,0,0,0.72)";
+  context.fillStyle = overlayColor;
+  context.globalAlpha = overlayOpacity;
   context.fill();
-  context.fillStyle = "#fff";
+  context.globalAlpha = 1;
+  context.fillStyle = textColor;
   context.font = `500 30px ${markFont}`;
   context.textAlign = "center";
   context.textBaseline = "middle";
@@ -184,6 +196,10 @@ export function PlaneStage() {
       if (disposed || !mountRef.current) return;
 
       const markFont = getComputedStyle(document.body).fontFamily;
+      const rootStyles = getComputedStyle(document.documentElement);
+      const textColor = rootStyles.getPropertyValue("--text-white").trim();
+      const overlayColor = rootStyles.getPropertyValue("--background-black").trim();
+      const overlayOpacity = Number(rootStyles.getPropertyValue("--opacity-secondary-strong").trim());
       await document.fonts.load("400 64px Neudron").catch(() => undefined);
       const titleFont = document.fonts.check("400 64px Neudron") ? "Neudron" : markFont;
 
@@ -300,7 +316,9 @@ export function PlaneStage() {
         map.colorSpace = THREE.SRGBColorSpace;
         const title = node.dataset.title ?? "";
         const ratio = Number.parseFloat(node.dataset.aspect || "") || 16 / 9;
-        const overlayCanvas = title ? paintOverlay(title, ratio, titleFont, markFont) : blank;
+        const overlayCanvas = title
+          ? paintOverlay(title, ratio, titleFont, markFont, textColor, overlayColor, overlayOpacity)
+          : blank;
         const overlay = new THREE.CanvasTexture(overlayCanvas);
         overlay.colorSpace = THREE.SRGBColorSpace;
         const cover = new THREE.Vector2(1, 1);

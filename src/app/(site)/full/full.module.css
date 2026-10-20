@@ -1,47 +1,43 @@
 .full {
   position: absolute;
   inset: 0;
-  z-index: 5;
+  z-index: var(--layer-content);
   overflow: auto;
-  padding: 12rem 4rem 8rem;
+  padding: var(--spacing-xxxl) var(--spacing-xxl);
 }
 
 .full h1 {
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  margin-bottom: var(--spacing-l);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-caption);
   text-transform: uppercase;
 }
 
 .full ul {
   display: grid;
-  gap: 0.8rem;
+  gap: var(--spacing-xs);
   list-style: none;
 }
 
 .full li {
   display: flex;
-  gap: 1.6rem;
+  gap: var(--spacing-s);
   align-items: baseline;
   justify-content: space-between;
   max-width: 46rem;
-  font-size: 2.4rem;
-  letter-spacing: -0.04em;
+  font-size: var(--font-size-heading);
+  letter-spacing: var(--tracking-heading);
 }
 
 .full span {
-  font-size: 1.2rem;
-  letter-spacing: 0;
-  opacity: 0.55;
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--tracking-caption);
+  opacity: var(--opacity-secondary);
 }
 
-@media (min-width: 650px) {
+@media (min-width: 640px) {
   .full {
-    padding: 14rem 8rem;
-  }
-
-  .full li {
-    font-size: 3.2rem;
+    padding: var(--spacing-xxxl) var(--spacing-xxxl);
   }
 }

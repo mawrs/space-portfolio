@@ -524,7 +524,7 @@ function box(rect: DOMRect) {
 
 function previewLayout(side: PreviewSide) {
   const rem = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 10;
-  const desktop = window.matchMedia("(min-width: 650px)").matches;
+  const desktop = window.matchMedia("(min-width: 640px)").matches;
   const restWidth = Math.max(window.innerWidth - rem * 20, 1);
   const restHeight = Math.max(window.innerHeight - rem * 20, 1);
   const peek = rem * (desktop ? 2.5 : 1);

@@ -17,14 +17,30 @@
 @font-face {
   font-family: "GT America";
   src: url("/fonts/gt-america-medium.otf") format("opentype");
-  font-weight: 500;
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TWK Lausanne Pan";
+  src: url("/fonts/twk-lausanne-pan-300.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TWK Lausanne Pan";
+  src: url("/fonts/twk-lausanne-pan-400.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --background: #000;
-  --foreground: #fff;
+  --background: var(--background-black);
+  --foreground: var(--text-white);
 }
 
 html {
@@ -33,7 +49,7 @@ html {
   font-size: 10px;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 640px) {
   html {
     font-size: calc(100vw / 150);
   }
@@ -50,7 +66,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-display);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
@@ -78,6 +94,6 @@ a {
 }
 
 ::selection {
-  color: #000;
-  background: #fff;
+  color: var(--text-black);
+  background: var(--background-white);
 }

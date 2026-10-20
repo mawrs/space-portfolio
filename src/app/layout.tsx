@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Newsreader } from "next/font/google";
 import { site } from "@/data/site";
+import "@/styles/primitives.css";
+import "@/styles/themes.css";
+import "@/styles/components.css";
 import "./globals.css";
 
 const geistSans = Geist({
