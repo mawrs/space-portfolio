@@ -643,109 +643,80 @@ export const cases: Record<string, CaseStudy> = {
     ),
   },
   "southeast-bank": {
-    title: "One product at a time",
-    headline: "Bank account opening",
-    meta: "SouthEast Bank",
-    role: "Deposit intake and the rate comparison",
+    title: "Understanding fixed vs variable rates",
+    headline: "Student loan application",
+    meta: "ELFI",
+    role: "Refinance application and the rate comparison",
     timeline: "Mar 2025 – Present",
-    team: ["SouthEast Bank"],
+    team: ["ELFI"],
     skills: ["End-to-end product design", "Research", "Flows"],
     sections: sections(
       [
         {
           type: "p",
-          text: "SouthEast Bank had an account-opening tool. Customers were not allowed to touch it. A branch manager drove, and the customer watched. There was no version a person could finish alone, for checking, savings, or a CD.",
+          text: "Students were leaving the ELFI refinance application. The form asked them to choose fixed or variable before they knew what either would cost over the life of the loan. Fixed sounds safe. Variable sounds like a trick. Without a picture of the movement, both are a guess, and a guess is a reason to close the tab.",
         },
         {
           type: "p",
-          text: "I was hired to turn this internal intake into a customer-facing flow, including funding, identity checks, and joint owners. The original plan was to open checking, savings, and CDs in one application. The system could not support that reliably, so we changed the flow to one product per application. That is the intake customers use today.",
+          text: "ELFI is the student-loan division of SouthEast Bank. The refinance asked for the whole application on one page: income, a co-signer, and the loan amount, then a rate type with no picture of the payment. I split it into four steps, starting with the school, and put both rates under the choice students were already making.",
         },
         {
           type: "p",
-          text: "I owned the end-to-end customer journey, interaction design, prototype validation, and engineering-ready specifications for desktop and mobile. I worked with product, compliance, operations, and engineering to turn core-banking rules into a flow customers could complete without branch staff.",
+          text: "I owned student research, the application flow, the comparison model, and prototype feedback. I worked with lending product, compliance, and engineering so the explanation stayed accurate and shipped on the existing application instead of waiting for a rebuild.",
         },
         {
           type: "ul",
           items: [
-            "Role: end-to-end product design of the deposit intake.",
+            "Role: end-to-end design of the refinance application and the rate comparison.",
+            "Who it was for: students choosing between a fixed and a variable rate.",
             "Timeline: March 2025 to present.",
-            "Outcome: one product at a time, in market, from the first screen to funding.",
+            "Outcome: four steps, both rates shown before the choice. The comparison reached 80% adoption in the first month.",
           ],
-        },
-        { type: "h3", text: "Both rates, before the guess" },
-        {
-          type: "p",
-          text: "Students were leaving the loan application, so the bank first treated it as a form problem. My research showed the form was not the issue: students could fill it out, but they could not confidently choose between fixed and variable rates.",
-        },
-        {
-          type: "p",
-          text: "Students were being asked to pick fixed or variable without understanding what either would cost them over the life of the loan. Fixed sounds safe. Variable sounds like a trick. Without a picture of the movement, both are a guess, and a guess is a reason to close the tab.",
-        },
-        {
-          type: "p",
-          text: "I owned student research, the comparison model, interface design, and prototype feedback. I worked with lending product, compliance, and engineering to keep the explanation accurate and add it to the existing application instead of waiting for a full rebuild.",
         },
       ],
       [
-        { type: "h3", text: "The internal tool was the only product" },
-        {
-          type: "p",
-          text: "If you wanted an account, you sat with someone who knew which screen came next. The knowledge was in the branch, not in the interface. That works until the bank wants a customer to start without an appointment, or finish on a phone after they leave.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "3", label: "Products in the original brief: checking, savings, and CDs, in one pass." },
-            { value: "1", label: "Product per application, after the multi-product flow would not hold." },
-            { value: "3", label: "Failure states designed in, not bolted on: funds, KYC, and joint owners." },
-          ],
-        },
-        { type: "h3", text: "All three at once did not survive the system" },
-        {
-          type: "p",
-          text: "Opening every product in one pass sounded simpler for customers, but funding, ownership, and product rules did not work reliably together. We changed the experience so customers open one product at a time.",
-        },
         { type: "h3", text: "The form was finishable. The decision was not." },
         {
           type: "p",
-          text: "I interviewed students who had abandoned the application to identify where and why they stopped. They were not stuck on labels, field order, or the length of the form. They could not price the choice between fixed and variable rates. That choice is only meaningful if they can see what a variable rate does over the years they would be paying.",
+          text: "The first read was that students were stuck on the form. I interviewed people who had abandoned the application to find where they stopped. They were not stuck on labels, field order, or the length of the page. They could not price the choice between fixed and variable. That choice is only meaningful if they can see what a variable rate does over the years they would be paying.",
         },
         {
           type: "stats",
           items: [
+            { value: "1 page", label: "The old refinance form held income, a co-signer, and the loan amount before the rate." },
             { value: "2", label: "Rate types on the decision: fixed and variable, previously unexplained as costs." },
-            { value: "1", label: "Screen we kept. The calculator went under the options already there." },
             { value: "Months", label: "What a full rebuild of that screen would have taken. We did not have them." },
           ],
         },
+        { type: "h3", text: "The screen explained the product. It did not explain the money." },
         {
           type: "p",
-          text: "The screen they were leaving explained the products. It did not explain the money. Rebuilding the entire application around a new decision model would have taken months the team did not have, and it would have moved the choice away from the place students were already making it.",
+          text: "The screen they were leaving described the loan. It did not show the payment. Rebuilding the application around a new decision model would have taken months the team did not have, and it would have moved the choice away from the place students were already making it.",
         },
       ],
       [
         {
           type: "p",
-          text: "I designed the deposit flow from the first screen to funding, on desktop and on a phone. The happy path was the smaller part of the work. The flow had to keep going when the money was short, when identity checks failed, and when a second person was on the account.",
+          text: "The design question was how a student finishes the application and still sees the cost before choosing. A separate calculator, a new route, or a full rebuild would make them leave the decision at the moment they needed help.",
         },
-        { type: "h3", text: "Sequence the products instead of stacking them" },
+        { type: "h3", text: "Four steps, starting with the school" },
         {
           type: "p",
-          text: "Cutting the multi-product pass was the decision that made the rest designable. A customer picks checking, or savings, or a CD. They do not assemble a bundle the core system cannot open in one transaction. A second product is a second pass, not a branch in the middle of the first one.",
+          text: "The old form asked for the whole refinance at once. The new one is four steps, starting with the school, and a student can move between them. Income, a co-signer, and the loan amount are no longer one wall in front of the rate.",
         },
         {
           type: "media",
-          index: 0,
-          caption: "Study of the single-product intake on desktop and on a phone.",
+          index: 1,
+          caption: "The old ELFI form asked for the whole refinance on one page. The new one is four steps, and a student can move between them.",
         },
         { type: "h3", text: "Repair the decision. Leave the screen alone." },
         {
           type: "p",
-          text: "Students were already deciding between fixed and variable rates on the existing application screen. I put the comparison on that screen because a separate calculator, new route, or full rebuild would make them leave the decision at the moment they needed help.",
+          text: "Students were already deciding between fixed and variable on the existing application screen. I put the comparison on that screen. Amount and term on one side. Monthly payment, APR, total interest, and the payment timeline on the other, including a deferred grace period, before the application is finished.",
         },
         {
           type: "p",
-          text: "I designed the comparison to answer one question: what does variable actually mean when it moves, set next to a fixed rate that does not. Not a lecture on rate types. A side-by-side over the life of the loan.",
+          text: "The comparison answers one question: what does variable actually mean when it moves, set next to a fixed rate that does not. Not a lecture on rate types. A side-by-side over the life of the loan.",
         },
         {
           type: "media",
@@ -756,72 +727,39 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "The shipped intake is a single-product deposit flow a customer can finish without a branch manager driving the mouse.",
+          text: "The application a student finishes is four steps, with the cost of both rates visible before they choose.",
         },
         {
           type: "ul",
           items: [
-            "Product choice up front: checking, savings, or CD, one at a time.",
-            "The path from the first screen through funding.",
-            "Insufficient funds, so a failed transfer is a state, not a dead end.",
-            "Invalid KYC, so an identity failure explains itself and offers a next step.",
-            "Joint owners, so a second person is part of the flow instead of a follow-up call.",
-            "Desktop and mobile of the same flow.",
-          ],
-        },
-        {
-          type: "p",
-          text: "The calculator shipped under the options students were already choosing between.",
-        },
-        {
-          type: "ul",
-          items: [
+            "Four steps, starting with the school, instead of one page for the whole refinance.",
+            "A student can move between steps.",
             "Fixed and variable, shown together, not as two definitions on two screens.",
-            "Estimated fixed and variable costs shown side by side across the loan term.",
+            "Estimated costs side by side across the loan term, including a deferred grace period.",
             "Placed under the existing loan options, so the decision stays where it already was.",
             "No rebuild of the surrounding application.",
           ],
         },
-        {
-          type: "media",
-          index: 1,
-          caption: "The old Elfi form asked for the whole refinance on one page. The new one is four steps, and a student can move between them.",
-        },
       ],
       [
         {
           type: "p",
-          text: "The single-product flow is now the customer-facing intake. Customers can open an account without a branch manager, including when funds are insufficient, identity checks fail, or a joint owner is added.",
+          text: "The comparison shipped under the existing rate options and reached 80% adoption in the first month. Students can see fixed and variable costs over the life of the loan before choosing. The missing pricing information was added without a months-long rebuild.",
         },
         {
           type: "stats",
           items: [
-            { value: "In market", label: "Customer-facing account opening is live." },
-            { value: "1 product", label: "Each application opens checking, savings, or a CD—not all three." },
-            { value: "3", label: "Edge cases designed into the live flow: funds, identity, and joint owners." },
-          ],
-        },
-        {
-          type: "p",
-          text: "The comparison shipped under the existing rate options. Students can now see fixed and variable costs over the life of the loan before choosing. The form stayed; the missing pricing information was added without a months-long rebuild.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "Shipped", label: "The comparison was added to the live loan application." },
+            { value: "80%", label: "Adoption of the comparison in the first month." },
+            { value: "4 steps", label: "The refinance starts with the school. A student can move between steps." },
             { value: "2 rates", label: "Fixed and variable costs are shown side by side." },
-            { value: "0", label: "Extra screens needed; the comparison sits under the existing options." },
+            { value: "0", label: "Extra screens. The comparison sits under the existing options." },
           ],
         },
       ],
       [
         {
           type: "p",
-          text: "The brief was everything in one pass. The useful decision was to sequence the products instead of stacking them. A customer-facing bank flow is mostly the unhappy path. If funding, identity, and joint ownership are follow-up tickets, the customer is back in the branch you were trying to get them out of.",
-        },
-        {
-          type: "p",
-          text: "A choice without a consequence is a guess, and people do not like to guess with a loan. The research was short and it changed the brief: stop redrawing the form, and show the cost. Meeting students at the moment of doubt was faster than redrawing the application around it, and it was the more honest fix. The form was not what they were afraid of.",
+          text: "A choice without a consequence is a guess, and people do not like to guess with a loan. The research was short and it changed the brief for the rate: stop redrawing that screen, and show the cost. Meeting students at the moment of doubt was faster than rebuilding the application around it, and it was the more honest fix. The form was not what they were afraid of.",
         },
       ],
     ),

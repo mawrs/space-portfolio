@@ -9,7 +9,7 @@
     "credits": [],
     "width": 1920,
     "height": 1080,
-    "poster": "https://image.mux.com/eXjQygxXwcaVcyc005U5uOJcDvAXvLtkjDrrQcw1K1j4/thumbnail.jpg?time=1",
+    "poster": "/projects/facebook/poster.png",
     "video": "https://stream.mux.com/eXjQygxXwcaVcyc005U5uOJcDvAXvLtkjDrrQcw1K1j4/720p.mp4",
     "media": [
       {
@@ -64,7 +64,7 @@
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "https://image.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/thumbnail.jpg?time=1",
+    "poster": "/projects/square/poster.png",
     "video": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
     "media": [
       {
@@ -103,7 +103,7 @@
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "https://image.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/thumbnail.jpg?time=1",
+    "poster": "/projects/slide/poster.png",
     "video": "https://stream.mux.com/W0102sMY00Z7j263nKuTyUNWPgzqiDdx01WpgULwqvRB8RE/720p.mp4",
     "media": [
       {
@@ -142,7 +142,7 @@
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "https://image.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/thumbnail.jpg?time=1",
+    "poster": "/projects/true-see/poster.png",
     "video": "https://stream.mux.com/BDhetXrmz800tZuINds2bZVrKGq5n3MvElYfQl9128ag/720p.mp4",
     "media": [
       {
@@ -181,7 +181,7 @@
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "/projects/arcoscan/poster.jpg",
+    "poster": "/projects/arcoscan/poster.png",
     "video": "",
     "media": [
       {
@@ -204,12 +204,12 @@
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "/projects/peridot/poster.jpg",
+    "poster": "/projects/peridot/poster.png",
     "video": "",
     "media": [
       {
-        "src": "/projects/peridot/poster.jpg",
-        "poster": "/projects/peridot/poster.jpg",
+        "src": "/projects/peridot/poster.png",
+        "poster": "/projects/peridot/poster.png",
         "width": 1280,
         "height": 720,
         "video": false,
@@ -219,15 +219,15 @@
   },
   {
     "slug": "southeast-bank",
-    "title": "SouthEast Bank",
-    "summary": "Opening an account meant sitting with a branch manager while they clicked through an internal tool. The customer-facing deposit flow runs from the first screen through funding, including insufficient funds, invalid KYC, a failed bank link, a transfer that stays pending for days, and a joint owner.\n\nChecking, savings, and CDs were scoped to open in one pass. That version was ruled out, so a customer opens one product at a time. That single-product flow is the intake in use today.\n\nStudents were abandoning the Elfi refinance application because the form asked them to choose fixed or variable before they knew the cost. The calculator shows both rates across the life of the loan, under the options they were already deciding between. It reached 80% adoption in the first month.",
+    "title": "ELFI",
+    "summary": "Students were abandoning the ELFI refinance application. The form asked them to choose fixed or variable before they knew what either would cost over the life of the loan.\n\nThe refinance became four steps, starting with the school, so a student can move between them. Both rates sit under the options they were already deciding between, instead of a separate calculator or a rebuilt application.\n\nThe comparison reached 80% adoption in the first month.",
     "year": "2025",
     "awards": 0,
-    "liveUrl": "https://www.southeastbank.com/",
+    "liveUrl": "https://www.elfi.com/",
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "https://image.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/thumbnail.jpg?time=1",
+    "poster": "/projects/southeast-bank/poster.png",
     "video": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
     "media": [
       {
@@ -236,7 +236,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "How much to refinance, the payment the calculator recommends, then the deposit that opens the account. One product at a time, from the first screen through funding."
+        "caption": "How much to refinance, then the payment the calculator recommends, before the application is finished."
       },
       {
         "src": "/projects/southeast-bank/steps.jpg",
@@ -244,7 +244,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The old Elfi form asked for the whole refinance on one page, including income, a co-signer, and the loan amount. The new one is four steps, starting with the school, and a student can move between them."
+        "caption": "The old ELFI form asked for the whole refinance on one page, including income, a co-signer, and the loan amount. The new one is four steps, starting with the school, and a student can move between them."
       },
       {
         "src": "/projects/southeast-bank/calculator.jpg",

@@ -238,22 +238,9 @@ export function Gallery() {
               onPointerEnter={() => sound.focus()}
               onClick={(event) => open(event, project.slug)}
             >
-              {project.video ? (
-                <video
-                  src={project.video}
-                  poster={project.poster}
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  crossOrigin="anonymous"
-                  draggable={false}
-                />
-              ) : (
-                // The plane samples this element; next/image would wrap it.
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
-              )}
+              {/* The plane samples this element; next/image would wrap it. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
               <h2>{project.title}</h2>
               <p className="srOnly">{project.summary}</p>
             </a>
