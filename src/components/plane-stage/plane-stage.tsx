@@ -313,14 +313,14 @@ export function PlaneStage() {
           map = loader.load(image.currentSrc || image.src);
         }
         if (!map) return null;
-        map.colorSpace = THREE.SRGBColorSpace;
+        map.colorSpace = THREE.NoColorSpace;
         const title = node.dataset.title ?? "";
         const ratio = Number.parseFloat(node.dataset.aspect || "") || 16 / 9;
         const overlayCanvas = title
           ? paintOverlay(title, ratio, titleFont, markFont, textColor, overlayColor, overlayOpacity)
           : blank;
         const overlay = new THREE.CanvasTexture(overlayCanvas);
-        overlay.colorSpace = THREE.SRGBColorSpace;
+        overlay.colorSpace = THREE.NoColorSpace;
         const cover = new THREE.Vector2(1, 1);
         const pointerUv = new THREE.Vector2(0.5, 0.5);
         const hover = { value: 0 };

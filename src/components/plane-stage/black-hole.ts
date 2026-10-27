@@ -126,7 +126,7 @@ export function createBlackHole(
     depthBuffer: true,
     stencilBuffer: false,
   });
-  target.texture.colorSpace = THREE.SRGBColorSpace;
+  target.texture.colorSpace = THREE.NoColorSpace;
 
   const material = new THREE.ShaderMaterial({
     uniforms: {
