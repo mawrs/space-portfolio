@@ -27,6 +27,7 @@ type CaseDragState = {
 
 let neighborArrival = false;
 let arrivalGeneration = 0;
+let neighborEntrance: { generation: number; rect: PreviewRect } | null = null;
 
 export function clearNeighborArrival() {
   neighborArrival = false;
@@ -95,6 +96,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     });
     if (fromNeighbor) {
       const generation = arrivalGeneration;
+      const entrance = neighborEntrance?.generation === generation ? neighborEntrance.rect : null;
       arrival.current = { slug: project.slug, instant: true };
       sheet.dataset.arrived = "";
       requestAnimationFrame(() => {
@@ -105,8 +107,40 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
           delete document.documentElement.dataset.caseHandoff;
         });
       });
+      if (entrance && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const to = sheet.getBoundingClientRect();
+        const scaleX = to.width > 0 ? entrance.width / to.width : 1;
+        const scaleY = to.height > 0 ? entrance.height / to.height : 1;
+        sheet.style.transformOrigin = "top left";
+        const animation = sheet.animate(
+          [
+            {
+              transformOrigin: "top left",
+              transform: `translate(${entrance.x - to.x}px, ${entrance.y - to.y}px) scale(${scaleX}, ${scaleY})`,
+            },
+            { transformOrigin: "top left", transform: "translate(0px, 0px) scale(1, 1)" },
+          ],
+          {
+            duration: 780,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+            fill: "both",
+          },
+        );
+        animationRef.current = animation;
+        animation.onfinish = () => {
+          if (neighborEntrance?.generation === generation) neighborEntrance = null;
+          sheet.style.transformOrigin = "";
+          sheet.style.transform = "";
+          animation.cancel();
+          if (animationRef.current === animation) animationRef.current = null;
+        };
+        return () => {
+          if (animationRef.current === animation) animation.cancel();
+        };
+      }
       return;
     }
+    neighborEntrance = null;
     delete sheet.dataset.arrived;
     delete document.documentElement.dataset.caseArrived;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -256,61 +290,32 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   };
 
   const go = useCallback(
-    async (slug: string, direction: PreviewSide) => {
+    (slug: string, direction: PreviewSide) => {
       if (navigating.current) return;
       navigating.current = true;
       sound.open();
-      const handoff = () => {
-        arrivalGeneration += 1;
-        neighborArrival = true;
-        document.documentElement.dataset.caseArrived = "true";
-        router.push(`/projects/${slug}`, { scroll: false });
-      };
-      const sheet = sheetRef.current;
-      const preview = stageRef.current?.querySelector<HTMLElement>(`[data-neighbor='${direction}']`) ?? null;
+      arrivalGeneration += 1;
+      neighborArrival = true;
+      document.documentElement.dataset.caseArrived = "true";
+      delete document.documentElement.dataset.caseHandoff;
+      const preview = stageRef.current?.querySelector<HTMLElement>(`[data-neighbor='${direction}']`);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (!sheet || !preview || reduced) {
-        handoff();
-        return;
-      }
-
-      animationRef.current?.cancel();
-      sheet.style.pointerEvents = "none";
-      document.documentElement.dataset.caseHandoff = "true";
-      preview.getAnimations().forEach((animation) => animation.cancel());
-      preview.style.transition = "none";
-      preview.style.zIndex = "14";
-      const start = preview.getBoundingClientRect();
-      const target = previewLayout(direction).center;
-      const previewAnimation = preview.animate(
-        [
-          previewKeyframe(start, readOpacity(preview), readRadius(preview)),
-          previewKeyframe(target, 1, target.radius),
-        ],
-        {
-          duration: 780,
-          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-          fill: "forwards",
-        },
-      );
-      const sheetTransform = getComputedStyle(sheet).transform;
-      const sheetAnimation = sheet.animate(
-        [
-          { opacity: 1, transform: sheetTransform },
-          {
-            opacity: 0,
-            transform: `translateX(${direction === "next" ? -6 : 6}vw) scale(0.985)`,
+      if (preview && !reduced) {
+        const rect = preview.getBoundingClientRect();
+        neighborEntrance = {
+          generation: arrivalGeneration,
+          rect: {
+            x: rect.x,
+            y: rect.y,
+            width: rect.width,
+            height: rect.height,
+            radius: readRadius(preview),
           },
-        ],
-        {
-          duration: 780,
-          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-          fill: "forwards",
-        },
-      );
-      animationRef.current = sheetAnimation;
-      await Promise.allSettled([previewAnimation.finished, sheetAnimation.finished]);
-      handoff();
+        };
+      } else {
+        neighborEntrance = null;
+      }
+      router.push(`/projects/${slug}`, { scroll: false });
     },
     [router],
   );
