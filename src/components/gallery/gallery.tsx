@@ -8,22 +8,38 @@ import { sound } from "@/lib/sound";
 import { readRibbon } from "@/lib/ribbon";
 import styles from "./gallery.module.css";
 
+type Sample = { t: number; p: number };
+
 type DragState = {
   startX: number;
   startY: number;
   last: number;
-  delta: number;
   movedAt: number;
   pointerId: number;
   active: boolean;
+  samples: Sample[];
 };
 
-function pushGallery(delta: number, mobile: boolean) {
-  galleryMotion.target += delta;
-  if (mobile) return;
-  const limit = Math.max(window.innerWidth, 1);
-  const gap = galleryMotion.target - galleryMotion.offset;
-  galleryMotion.target = galleryMotion.offset + Math.tanh(gap / limit) * limit;
+const coastMs = 400;
+const wheelNotch = 0.004;
+
+function moveRibbon(delta: number) {
+  galleryMotion.offset += delta;
+  galleryMotion.target = galleryMotion.offset;
+}
+
+function releaseSpeed(samples: Sample[], now: number) {
+  const last = samples[samples.length - 1];
+  if (!last || now - last.t > 80) return 0;
+  let first = last;
+  for (let index = samples.length - 1; index >= 0; index -= 1) {
+    if (last.t - samples[index].t > 64) break;
+    first = samples[index];
+  }
+  const dt = last.t - first.t;
+  const distance = last.p - first.p;
+  if (dt < 8 || Math.abs(distance) < 6) return 0;
+  return distance / dt;
 }
 
 export function Gallery() {
@@ -31,6 +47,7 @@ export function Gallery() {
   const ribbonRef = useRef<HTMLDivElement>(null);
   const drag = useRef<DragState | null>(null);
   const moved = useRef(false);
+  const wheelGlide = useRef({ speed: 0, at: 0 });
   const [mobile, setMobile] = useState(false);
 
   useEffect(() => {
@@ -52,25 +69,26 @@ export function Gallery() {
       last = now;
       const row = readRibbon(mobile);
       if (row) {
-        const ratio = step / (1000 / 60);
-        const release = 1 - Math.pow(0.78, Math.min(ratio, 4));
-        const coast = galleryMotion.momentum * release;
-        galleryMotion.momentum -= coast;
-        if (Math.abs(galleryMotion.momentum) < 0.01) galleryMotion.momentum = 0;
-        if (coast) pushGallery(coast, mobile);
+        const dragging = drag.current?.active ?? false;
+        const glide = wheelGlide.current;
+        if (!dragging && glide.speed && now - glide.at > 48) {
+          const speed = glide.speed;
+          glide.speed = 0;
+          if (Math.abs(speed) >= 0.15) galleryMotion.momentum = speed;
+        }
+        if (!dragging && galleryMotion.momentum) {
+          galleryMotion.offset += galleryMotion.momentum * step;
+          galleryMotion.momentum *= Math.exp(-step / coastMs);
+          if (Math.abs(galleryMotion.momentum) < 0.02) galleryMotion.momentum = 0;
+        }
         if (row.vertical) {
-          const clamped = Math.min(row.max, Math.max(row.min, galleryMotion.target));
-          if (clamped !== galleryMotion.target) galleryMotion.momentum = 0;
-          galleryMotion.target = clamped;
+          const clamped = Math.min(row.max, Math.max(row.min, galleryMotion.offset));
+          if (clamped !== galleryMotion.offset) galleryMotion.momentum = 0;
+          galleryMotion.offset = clamped;
         }
-        const ease = 1 - Math.pow(0.9, Math.min(ratio, 2));
-        galleryMotion.offset += (galleryMotion.target - galleryMotion.offset) * ease;
-        if (Math.abs(galleryMotion.target - galleryMotion.offset) < 0.01) {
-          galleryMotion.offset = galleryMotion.target;
-        }
+        galleryMotion.target = galleryMotion.offset;
         const cards = [...ribbon.children] as HTMLElement[];
         if (row.vertical) {
-          galleryMotion.offset = Math.min(row.max, Math.max(row.min, galleryMotion.offset));
           ribbon.style.transform = `translate3d(0px, ${row.base + galleryMotion.offset}px, 0px)`;
           cards.forEach((card) => {
             card.style.transform = "";
@@ -104,18 +122,15 @@ export function Gallery() {
   useEffect(() => {
     const panel = () => document.documentElement.dataset.panel ?? "";
     let lastWheelAt = 0;
-    let rapidWheelAt = -500;
     const stop = (event: PointerEvent | null, fling: boolean) => {
       const current = drag.current;
       if (!current) return;
-      if (
-        fling &&
-        current.active &&
-        current.delta &&
-        event &&
-        event.timeStamp - current.movedAt < 100
-      ) {
-        pushGallery(current.delta * 12, mobile);
+      wheelGlide.current.speed = 0;
+      if (fling && current.active && event) {
+        const speed = releaseSpeed(current.samples, event.timeStamp);
+        galleryMotion.momentum = Math.abs(speed) < 0.05 ? 0 : speed;
+      } else {
+        galleryMotion.momentum = 0;
       }
       drag.current = null;
     };
@@ -127,15 +142,16 @@ export function Gallery() {
         if (target.closest("header, [data-portal-control]")) return;
       } else if (!ribbon.contains(target)) return;
       galleryMotion.momentum = 0;
+      wheelGlide.current.speed = 0;
       const position = mobile ? event.clientY : event.clientX;
       drag.current = {
         startX: event.clientX,
         startY: event.clientY,
         last: position,
-        delta: 0,
         movedAt: 0,
         pointerId: event.pointerId,
         active: false,
+        samples: [],
       };
       moved.current = false;
     };
@@ -143,7 +159,7 @@ export function Gallery() {
       const current = drag.current;
       if (!current || current.pointerId !== event.pointerId) return;
       if (event.pointerType === "mouse" && (event.buttons & 1) === 0) {
-        stop(null, false);
+        stop(event, true);
         return;
       }
       const along = Math.abs(
@@ -157,16 +173,24 @@ export function Gallery() {
         if (along <= 10 || along <= across) return;
         current.active = true;
         current.last = position;
+        current.movedAt = event.timeStamp;
+        current.samples = [{ t: event.timeStamp, p: position }];
         moved.current = true;
+        galleryMotion.momentum = 0;
+        wheelGlide.current.speed = 0;
+        return;
       }
       event.preventDefault();
-      current.delta = (position - current.last) * 1.5;
+      current.samples.push({ t: event.timeStamp, p: position });
+      const cutoff = event.timeStamp - 80;
+      while (current.samples.length > 2 && current.samples[0].t < cutoff) current.samples.shift();
+      const delta = position - current.last;
       current.last = position;
       current.movedAt = event.timeStamp;
-      if (current.delta) pushGallery(current.delta, mobile);
+      if (delta) moveRibbon(delta);
     };
     const wheel = (event: WheelEvent) => {
-      if (panel() === "newsletter") return;
+      if (panel() === "newsletter" || drag.current?.active) return;
       event.preventDefault();
       const delta = mobile
         ? event.deltaY
@@ -175,17 +199,16 @@ export function Gallery() {
           : event.deltaY;
       const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
       const normalized = delta * scale;
-      const gap = event.timeStamp - lastWheelAt;
-      if (gap < 30) rapidWheelAt = event.timeStamp;
-      const coarse =
-        Math.abs(normalized) >= 40 &&
-        gap >= 30 &&
-        event.timeStamp - rapidWheelAt >= 500;
+      const gap = lastWheelAt ? event.timeStamp - lastWheelAt : 1000;
       lastWheelAt = event.timeStamp;
-      if (coarse) {
-        galleryMotion.momentum -= normalized * 2.5;
+      if (Math.abs(normalized) < 40 && gap < 40) {
+        moveRibbon(-normalized);
+        wheelGlide.current.speed = -normalized / Math.max(gap, 8);
+        wheelGlide.current.at = event.timeStamp;
+        galleryMotion.momentum = 0;
       } else {
-        pushGallery(-normalized * 1.25, mobile);
+        wheelGlide.current.speed = 0;
+        galleryMotion.momentum -= normalized * wheelNotch;
       }
     };
     const up = (event: PointerEvent) => stop(event, true);
