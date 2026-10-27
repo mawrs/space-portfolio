@@ -420,8 +420,17 @@ export function PlaneStage() {
         shared.uVelocity.value = mobile
           ? 0
           : THREE.MathUtils.clamp(galleryMotion.visualVelocity / 1.8, -1, 1);
-        const projectSheet = document.querySelector<HTMLElement>("[data-project-sheet]");
+        const projectSheet =
+          [...document.querySelectorAll<HTMLElement>("[data-project-sheet]")]
+            .filter((sheet) => {
+              const stage = sheet.closest("main");
+              if (stage && getComputedStyle(stage).display === "none") return false;
+              const rect = sheet.getBoundingClientRect();
+              return rect.width > 1 && rect.height > 1;
+            })
+            .at(-1) ?? null;
         const sheetRect = projectSheet?.getBoundingClientRect();
+        const caseHandoff = document.documentElement.dataset.caseHandoff === "true";
         const clipRect = projectSheet && sheetRect ? visibleClip(projectSheet, sheetRect) : null;
         if (projectSheet && sheetRect && sheetRect.width > 1 && bounds.width > 1 && bounds.height > 1) {
           const drawing = renderer.getDrawingBufferSize(drawingSize);
@@ -485,13 +494,26 @@ export function PlaneStage() {
             bend = amount * (mobile ? 0 : 1);
             record.alpha.value = 1;
           } else if (role === "simple") {
-            const progress = THREE.MathUtils.clamp((now - record.enteredAt) / 1250, 0, 1);
-            record.reveal = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-            pose = {
-              ...current,
-              y: current.y + (1 - record.reveal) * (sheetRect?.height ?? bounds.height) * 0.5,
-            };
-            record.alpha.value = record.reveal;
+            const owner = node.closest<HTMLElement>("[data-project-sheet]");
+            const visibleCase = !owner || owner === projectSheet;
+            if (caseHandoff || !visibleCase) {
+              record.reveal = 1;
+              record.alpha.value = 0;
+            } else if (
+              owner?.hasAttribute("data-arrived") ||
+              document.documentElement.dataset.caseArrived === "true"
+            ) {
+              record.reveal = 1;
+              record.alpha.value = 1;
+            } else {
+              const progress = THREE.MathUtils.clamp((now - record.enteredAt) / 1250, 0, 1);
+              record.reveal = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+              pose = {
+                ...current,
+                y: current.y + (1 - record.reveal) * (sheetRect?.height ?? bounds.height) * 0.5,
+              };
+              record.alpha.value = record.reveal;
+            }
           } else if (role === "related") {
             const opacity = Number.parseFloat(getComputedStyle(node).opacity);
             record.alpha.value = Number.isFinite(opacity) ? opacity : 0.3;

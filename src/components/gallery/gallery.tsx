@@ -213,6 +213,7 @@ export function Gallery() {
     const article = event.currentTarget.closest<HTMLElement>("[data-gl='card']");
     if (!article) return;
     sound.open();
+    delete document.documentElement.dataset.caseArrived;
     beginFlight(slug, article.getBoundingClientRect(), snapshot(article));
     router.push(`/projects/${slug}`, { scroll: false });
   };
