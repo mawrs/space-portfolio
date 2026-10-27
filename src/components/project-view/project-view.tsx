@@ -28,6 +28,10 @@ type CaseDragState = {
 let neighborArrival = false;
 let arrivalGeneration = 0;
 
+export function clearNeighborArrival() {
+  neighborArrival = false;
+}
+
 type PreviewSide = "prev" | "next";
 
 type PreviewRect = {
@@ -73,7 +77,13 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const sheet = sheetRef.current;
     if (!sheet) return;
     navigating.current = false;
-    delete document.documentElement.dataset.caseHandoff;
+    const fromNeighbor =
+      arrival.current.instant ||
+      neighborArrival ||
+      document.documentElement.dataset.caseArrived === "true";
+    if (!fromNeighbor) {
+      delete document.documentElement.dataset.caseHandoff;
+    }
     animationRef.current?.cancel();
     sheet.style.opacity = "1";
     sheet.style.transform = "";
@@ -83,10 +93,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       node.getAnimations().forEach((animation) => animation.cancel());
       clearPreviewStyles(node);
     });
-    const fromNeighbor =
-      arrival.current.instant ||
-      neighborArrival ||
-      document.documentElement.dataset.caseArrived === "true";
     if (fromNeighbor) {
       const generation = arrivalGeneration;
       arrival.current = { slug: project.slug, instant: true };
@@ -96,6 +102,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
           if (generation !== arrivalGeneration) return;
           neighborArrival = false;
           delete document.documentElement.dataset.caseArrived;
+          delete document.documentElement.dataset.caseHandoff;
         });
       });
       return;
