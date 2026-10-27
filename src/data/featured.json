@@ -2,7 +2,7 @@
   {
     "slug": "facebook",
     "title": "Facebook",
-    "summary": "Admins running three or more Pages received every comment, like, tag, post, and share in one stream, and missed the comments that needed a same-day answer.\n\nThe settings define which profiles an admin hears from and which notification types come through, with defaults for the majority who never open the screen. Filtering and sorting were tested internally and in an A/B test. It shipped as Cross-Profile Notifications.",
+    "summary": "Checking a Page's activity meant switching into that Page, which kept admins from liking and commenting as themselves. I joined the work from Underbelly, on a project that was already underway.\n\nThe panel they already used became the place to look. All activity in one tab, a tab per Page beside it, and a dot instead of a count. Opening a tab changes the list. It does not change who is logged in. Settings, which I took on once that direction was set, decide which Pages can notify an admin and which categories.\n\nThis version did not reach a public launch. I was not in that decision.",
     "year": "2021",
     "awards": 0,
     "liveUrl": "https://www.facebook.com/",
@@ -34,7 +34,7 @@
         "width": 1920,
         "height": 1080,
         "video": true,
-        "caption": "Page notification settings. Each type can be turned on or off, and the defaults cover admins who never open this screen."
+        "caption": "Page notification settings. Which Pages can send notifications, and which categories for that Page."
       },
       {
         "src": "/projects/facebook/notifications.jpg",
@@ -42,7 +42,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The notification stream on desktop and phone. Comments, mentions, and shares are separated before an admin opens one, so a same-day reply is not buried under likes."
+        "caption": "An exploration of the panel, including a Highlights stack. That direction did not survive critique."
       },
       {
         "src": "/projects/facebook/suggested.jpg",
@@ -50,7 +50,7 @@
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "Suggested for You, tested in the feed and in notifications as a way to connect people with public figures. A separate pass from the settings that shipped as Cross-Profile Notifications."
+        "caption": "Suggested for You, in the feed and in notifications. Separate from the Page notification panel."
       }
     ]
   },
@@ -220,7 +220,7 @@
   {
     "slug": "southeast-bank",
     "title": "ELFI",
-    "summary": "Students were abandoning the ELFI refinance application. The form asked them to choose fixed or variable before they knew what either would cost over the life of the loan.\n\nThe refinance became four steps, starting with the school, so a student can move between them. Both rates sit under the options they were already deciding between, instead of a separate calculator or a rebuilt application.\n\nThe comparison reached 80% adoption in the first month.",
+    "summary": "Students were qualifying for an ELFI loan and leaving before the application. Pre-qualification to application start sat at about 40%. The rate view was the place to look: repayment plans, fixed and variable, and an APR, with the total behind a click.\n\nI tested the application with students, then tried the fixes as versions inside the product. What shipped puts repayment plans and interest rates on separate screens, the total in the table, and a plain explanation of APR.\n\nPre-qualification to signup moved from 40% to 67%.",
     "year": "2025",
     "awards": 0,
     "liveUrl": "https://www.elfi.com/",

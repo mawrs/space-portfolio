@@ -41,110 +41,141 @@ const sections = (
 
 export const cases: Record<string, CaseStudy> = {
   facebook: {
-    title: "Three Pages, one account",
-    headline: "Cross-profile notifications",
+    title: "Check, then switch",
+    headline: "Page notifications",
     meta: "Facebook",
-    role: "Page switch and notification settings",
-    timeline: "Apr – Sep 2021",
-    team: ["Page admin product"],
-    skills: ["Interaction design", "Settings", "Prototyping"],
+    role: "Product designer",
+    timeline: "6 months",
+    team: ["Underbelly", "Facebook"],
+    skills: ["Interaction design", "Notifications", "Prototyping"],
     sections: sections(
       [
         {
           type: "p",
-          text: "Page admins do not run one Page. The people this was for were running three or more, and every Page produced its own stream of comments, messages, and reviews. Facebook treated that as one pile attached to one account. Reading it meant either drowning, or logging out and back in as a different Page.",
+          text: "I joined this from Underbelly, embedded with the Pages team. The project was already underway, and the team was still exploring what checking a Page's activity could look like. I came in for three months. It became six, and most of that time was this work.",
         },
         {
           type: "p",
-          text: "I worked on the interaction that lets an admin move between those streams without swapping the account, and on the settings where they decide which kinds of notifications are worth a ping, and from which Pages.",
+          text: "Checking a Page meant switching into that Page. That step kept admins from liking and commenting as themselves. The opportunity was the notification panel they already had open. Browse activity across Pages, see what needed a response, and switch into a Page only when opening a notification.",
         },
         {
           type: "p",
-          text: "I owned the Page switch and notification settings from existing-flow mapping through prototypes and engineering handoff. The Pages PM, content design, and engineering set scope and technical constraints; I designed the interaction and its states.",
+          text: "The interaction goal was to make the activity easy to check and keep a consistent profile presence. I worked with a design partner, a design manager, a PM, and a researcher.",
         },
         {
           type: "ul",
           items: [
-            "Role: Product designer on the Page-switching interaction and notification settings.",
-            "Who it was for: admins running three or more Pages.",
-            "Timeline: April to September 2021.",
-            "Outcome: shipped as Cross-Profile Notifications.",
+            "Role: product designer on the notification panel and, later, the settings.",
+            "Who it was for: Page admins who had to switch into a Page just to see its activity.",
+            "Timeline: six months. It started as three.",
+            "Outcome: a panel and a settings model. This version did not reach a public launch.",
           ],
         },
       ],
       [
-        { type: "h3", text: "The notification list was organized around the wrong thing" },
+        { type: "h3", text: "Switching was the tax on a reply" },
         {
           type: "p",
-          text: "A comment on a shop Page and a review on a studio Page are different jobs, but Facebook showed them in one account-level list. The work happened at the Page level. As admins added Pages, the list grew but the interface did not help them separate the work.",
+          text: "The question the team was holding was how to raise the percentage of eligible admins who respond to at least one Page comment in a week. The friction in front of that was the switch. An admin could not see a Page's likes and comments without becoming that Page. The engagement Facebook wanted happened after a step that changed who they were.",
+        },
+        { type: "h3", text: "The work was already on the table" },
+        {
+          type: "p",
+          text: "When I joined, my design partner had two concepts she wanted to test. Before I drew my own, I spent about a week with the researchers, the PM, and the design manager. I read the PRD with the PM, to find the assignment and where there was room. The researchers had already shared readouts and clips on how admins used and managed Pages. I went through that before I contributed a screen.",
         },
         {
           type: "stats",
           items: [
-            { value: "3+", label: "Pages was the point where the single pile stopped being manageable." },
-            { value: "1", label: "Account. The useful switch did not require a second login." },
-            { value: "2", label: "Surfaces I owned: the Page switch, and the settings behind it." },
+            { value: "6 months", label: "Joined for three. The extension covered another project too. Most of the time was this one." },
+            { value: "1 week", label: "With research, the PM, and the design manager before I drew my own concepts." },
+            { value: "1 panel", label: "The notification panel admins already used. That was the place to look." },
           ],
-        },
-        { type: "h3", text: "Why we did not build a new notification inbox" },
-        {
-          type: "p",
-          text: "Switching the whole Facebook account just to see another Page's notifications was too disruptive. I explored several control models with the team and chose an in-place Page switch because it changed notification context without making admins leave their account.",
         },
       ],
       [
         {
           type: "p",
-          text: "The design question was: what is the smallest change that lets an admin switch context? A new inbox would have created a second product. A Page switch works inside the notification list admins already use.",
+          text: "Two things had to be true at once. An admin should see which Pages had something new. And comments should show up early, because a comment is what they might answer.",
         },
-        { type: "h3", text: "Separate the stream from the settings" },
+        { type: "h3", text: "Tuesday, then Thursday" },
         {
           type: "p",
-          text: "Switching and filtering are different jobs. Switching says which Page you are looking at right now. Settings say which types of events, from which Pages, are allowed to interrupt you at all. Putting both in one control would have made every glance into a configuration task. They shipped as a pair: a switch on the stream, and a settings model underneath it.",
+          text: "Crit was twice a week. Tuesday was the design org, a show and tell. Thursday was the team. I would bring a version, take the note, and draw the next one.",
+        },
+        {
+          type: "p",
+          text: "The first versions I brought treated the count badge as given. Facebook already showed how many notifications a Page had, and I designed the panel around that. In crit, the badges were competing with the Page names in a space that was already tight. In a 1:1 with my design partner we moved to dots. A dot does not say how many. It says which Pages have something new.",
+        },
+        {
+          type: "p",
+          text: "A second direction came out of a conversation with the PM: a digest of the notifications that were most relevant, shown as cards. We never agreed on what most relevant meant. In the version we tried, the highlights were other public figures with huge followings. What felt relevant to an admin was not the same as a reply to a fan, and a reply to a fan was the behavior we were trying to move. The cards were also far enough from the panel that crit shut them down almost immediately.",
         },
         {
           type: "media",
           index: 3,
-          caption: "Study of the Page switch. The account stays. The stream changes.",
+          caption: "A pass at surfacing the most relevant notifications as cards. Crit ended it. We could not agree on relevant, and a highlight was not the same as a reply to a fan.",
         },
-        { type: "media", index: 0 },
-        { type: "media", index: 2 },
+        { type: "h3", text: "The panel they already open" },
+        {
+          type: "p",
+          text: "The direction that stayed put the first look inside the existing notification panel. All brings every Page's activity together. A Page tab narrows the list. The tabs scroll sideways. A full-screen notifications page for Pages was the other option, and engineering did not have the bandwidth to build it.",
+        },
+        {
+          type: "p",
+          text: "Opening a Page's tab changes which notifications an admin is reading. It does not change the profile they are using. They are still on Facebook as themselves. A dot on another tab says that Page has something new before they open it. They switch into the Page when they open a notification.",
+        },
       ],
       [
         {
           type: "p",
-          text: "Cross-Profile Notifications is the name it shipped under. An admin stays in the account they are already using, moves between Page notification streams in place, and chooses notification types per Page.",
+          text: "The panel and the settings are two parts. One is a way to check activity. The other is a way to decide what arrives.",
         },
         {
           type: "ul",
           items: [
-            "A Page switch on the notification stream, so context changes without an account swap.",
-            "Settings for which types of notifications arrive.",
-            "Those settings scoped per Page, so a noisy Page can be quiet without silencing the others.",
-            "Each notification identifies its source Page before an admin opens it.",
+            "All, then a tab per Page, in a horizontal scroll.",
+            "Dots for which Pages have new activity, instead of a count badge.",
+            "Selecting a Page filters the list. The active profile stays.",
+            "An admin switches into the Page when they open a notification.",
+            "Settings for which Pages can notify them, and which categories, per Page.",
           ],
         },
-        { type: "media", index: 1 },
-        { type: "media", index: 4 },
+        {
+          type: "p",
+          text: "The settings were a solo pass I took once the panel's direction was set. Choose the Pages, then set comments, likes, tags, and the rest for one Page at a time.",
+        },
+        {
+          type: "media",
+          index: 2,
+          caption: "Notification settings for one Page. Which Pages can reach an admin, and which kinds of activity, set separately.",
+        },
+        {
+          type: "p",
+          text: "When the direction was defined, my design partner and I documented the screens and the design-system components in Figma, and refined them together. With engineering I followed up in messages and on calls, mostly to pin down a behavior that was easy to miss in the file.",
+        },
       ],
       [
         {
           type: "p",
-          text: "It shipped as Cross-Profile Notifications in 2021. Admins could switch Page notification streams and manage notification settings without leaving the Facebook account they were already using.",
+          text: "To my recollection, this version did not reach a public launch. I was not part of the release decision, so I cannot say why. What we left was the model: check activity across Pages without becoming the Page, and a settings screen for what each Page is allowed to send.",
         },
         {
           type: "stats",
           items: [
-            { value: "Shipped", label: "Cross-Profile Notifications launched in 2021." },
-            { value: "1 account", label: "Admins switch Pages without swapping Facebook accounts." },
-            { value: "Per Page", label: "Notification settings can be managed independently for each Page." },
+            { value: "No launch", label: "This version did not reach the public, as I remember it. I was not in the release decision." },
+            { value: "Dots", label: "A count badge gave way. You can see which Pages are active. You cannot see how many." },
+            { value: "2 parts", label: "A panel for checking activity, and settings for what each Page sends." },
           ],
         },
       ],
       [
         {
           type: "p",
-          text: "The temptation was a new notification center. The useful change was smaller. Scope the switch, not the whole product. People already knew how to be in Facebook. They needed a way to change which Page they were responsible for without starting over.",
+          text: "What stayed with me was how to contribute on a team that was already in motion. I got more confident explaining a decision, working a note from crit, and bringing my own idea into a conversation that had started without me.",
+        },
+        {
+          type: "p",
+          text: "I also learned the difference between holding a position and hearing one. I had treated the count badge as standard. The tight space was the actual problem. The habits I kept are smaller than the panel: understand the context before drawing, say why a version is the way it is, and pick up the piece the experience is missing. The settings were that piece.",
         },
       ],
     ),
@@ -643,123 +674,131 @@ export const cases: Record<string, CaseStudy> = {
     ),
   },
   "southeast-bank": {
-    title: "Understanding fixed vs variable rates",
-    headline: "Student loan application",
+    title: "Fixed meant two things",
+    headline: "Student loan rates",
     meta: "ELFI",
-    role: "Refinance application and the rate comparison",
-    timeline: "Mar 2025 – Present",
-    team: ["ELFI"],
-    skills: ["End-to-end product design", "Research", "Flows"],
+    role: "Sole designer",
+    timeline: "5 months",
+    team: ["Product", "Engineering", "Underwriting"],
+    skills: ["Research", "Product design", "Prototyping"],
     sections: sections(
       [
         {
           type: "p",
-          text: "Students were leaving the ELFI refinance application. The form asked them to choose fixed or variable before they knew what either would cost over the life of the loan. Fixed sounds safe. Variable sounds like a trick. Without a picture of the movement, both are a guess, and a guess is a reason to close the tab.",
+          text: "ELFI is the student-loan division of SouthEast Bank. It offers private student loans and refinancing. Students were getting through pre-qualification and then leaving. About 40% continued from pre-qualification into the application.",
         },
         {
           type: "p",
-          text: "ELFI is the student-loan division of SouthEast Bank. The refinance asked for the whole application on one page: income, a co-signer, and the loan amount, then a rate type with no picture of the payment. I split it into four steps, starting with the school, and put both rates under the choice students were already making.",
+          text: "The Head of Product thought the rates were the reason, and that the rate view was where to look. Repayment plans, fixed and variable tables, and APR were all on that screen, and the total of the loan was behind a click. I was the only designer. I owned the research and the design, with a PM, the Head of Product, engineers, underwriters, and business analysts keeping the explanation compliant and on brand.",
         },
         {
           type: "p",
-          text: "I owned student research, the application flow, the comparison model, and prototype feedback. I worked with lending product, compliance, and engineering so the explanation stayed accurate and shipped on the existing application instead of waiting for a rebuild.",
+          text: "I spent five months on one question. If a student could tell those pieces apart, would they have enough confidence to continue?",
         },
         {
           type: "ul",
           items: [
-            "Role: end-to-end design of the refinance application and the rate comparison.",
-            "Who it was for: students choosing between a fixed and a variable rate.",
-            "Timeline: March 2025 to present.",
-            "Outcome: four steps, both rates shown before the choice. The comparison reached 80% adoption in the first month.",
+            "Role: sole designer. Research, the rate view, and the versions the team reviewed.",
+            "Who it was for: students deciding what they would owe.",
+            "Timeline: five months.",
+            "Outcome: pre-qualification to signup moved from 40% to 67%.",
           ],
         },
       ],
       [
-        { type: "h3", text: "The form was finishable. The decision was not." },
+        { type: "h3", text: "A rate, and a short note" },
         {
           type: "p",
-          text: "The first read was that students were stuck on the form. I interviewed people who had abandoned the application to find where they stopped. They were not stuck on labels, field order, or the length of the page. They could not price the choice between fixed and variable. That choice is only meaningful if they can see what a variable rate does over the years they would be paying.",
+          text: "Work at the bank usually started as a short note, or a call from the CTO naming the problem and who might know more. This one came from the Head of Product, just after I had moved onto ELFI from another initiative. Pre-qualification to application start was about 40%. Application start to submit was about 70%, and that second figure only counted a finished submit, so a co-signer who left never showed up in it. A pre-qualification took two to five minutes.",
+        },
+        {
+          type: "p",
+          text: "His note said the gap was likely the rates students were shown, and that the rate view could help. I wrote back that I would start there.",
+        },
+        { type: "h3", text: "Fixed meant two different things" },
+        {
+          type: "p",
+          text: "I tested the application we already had. The instruction was plain: take out a loan with ELFI. The sessions ran in a demo that replicated the rate terms. I was looking for the moment they dropped. What showed up was that they could not read the decision.",
+        },
+        {
+          type: "p",
+          text: "The repayment options were not clearly labeled. The fixed and variable tables were hard to follow. APR was not a term everyone knew. The total they would owe was hidden behind a click. Fixed was the name of a repayment plan and the name of a rate, and students were treating them as the same word. The questions were the same from session to session. What are these tabs for? What is fixed, and what is variable? What is APR? How much would I owe?",
         },
         {
           type: "stats",
           items: [
-            { value: "1 page", label: "The old refinance form held income, a co-signer, and the loan amount before the rate." },
-            { value: "2", label: "Rate types on the decision: fixed and variable, previously unexplained as costs." },
-            { value: "Months", label: "What a full rebuild of that screen would have taken. We did not have them." },
+            { value: "40%", label: "Pre-qualification to application start, when the work began." },
+            { value: "70%", label: "Application start to submit. A co-signer who left never counted." },
+            { value: "2–5 min", label: "How long a pre-qualification took." },
           ],
         },
-        { type: "h3", text: "The screen explained the product. It did not explain the money." },
+      ],
+      [
         {
           type: "p",
-          text: "The screen they were leaving described the loan. It did not show the payment. Rebuilding the application around a new decision model would have taken months the team did not have, and it would have moved the choice away from the place students were already making it.",
+          text: "The hypothesis was narrow. Clear the four points of confusion, and see whether a student has enough confidence to keep going. The thing to change was the rate view.",
+        },
+        { type: "h3", text: "Versions in the product" },
+        {
+          type: "p",
+          text: "I kept the work visible while it was still moving. A highlight reel from the interviews, a mid-week note to whoever needed it, and a Loom when there was a flow to watch.",
+        },
+        {
+          type: "p",
+          text: "To try alternatives I cloned the demo into Cursor and worked from the interview notes. The versions lived in the product, as V1 through V4 in the top navigation, so there was one place to switch between them. I described the version I wanted, then let it propose others, and cut the ones that would not hold up. A pass sometimes produced eight. Four stayed. Each one was aimed at the same ideas: repayment plans, interest types, APR, and the total.",
+        },
+        {
+          type: "p",
+          text: "The team got one link and clicked through. We talked about what we would keep. The version that held up split repayment plans and interest types into two steps. One theme on a screen, the related numbers beside each other. That was already how the application was built. No single screen had to explain the whole loan.",
+        },
+        { type: "h3", text: "Then the file the engineers inspect" },
+        {
+          type: "p",
+          text: "Engineers still read Figma. I gave ChatGPT the repo and the Vercel build so it could turn the screens into frames, with auto layout and names, and I rebuilt those frames in the design system. Paint by numbers. If they had been fine with me polishing in the repo and opening the pull requests, we would have stayed out of Figma.",
         },
       ],
       [
         {
           type: "p",
-          text: "The design question was how a student finishes the application and still sees the cost before choosing. A separate calculator, a new route, or a full rebuild would make them leave the decision at the moment they needed help.",
-        },
-        { type: "h3", text: "Four steps, starting with the school" },
-        {
-          type: "p",
-          text: "The old form asked for the whole refinance at once. The new one is four steps, starting with the school, and a student can move between them. Income, a co-signer, and the loan amount are no longer one wall in front of the rate.",
-        },
-        {
-          type: "media",
-          index: 1,
-          caption: "The old ELFI form asked for the whole refinance on one page. The new one is four steps, and a student can move between them.",
-        },
-        { type: "h3", text: "Repair the decision. Leave the screen alone." },
-        {
-          type: "p",
-          text: "Students were already deciding between fixed and variable on the existing application screen. I put the comparison on that screen. Amount and term on one side. Monthly payment, APR, total interest, and the payment timeline on the other, including a deferred grace period, before the application is finished.",
-        },
-        {
-          type: "p",
-          text: "The comparison answers one question: what does variable actually mean when it moves, set next to a fixed rate that does not. Not a lecture on rate types. A side-by-side over the life of the loan.",
-        },
-        {
-          type: "media",
-          index: 2,
-          caption: "Study of the comparison sitting under the existing loan options.",
-        },
-      ],
-      [
-        {
-          type: "p",
-          text: "The application a student finishes is four steps, with the cost of both rates visible before they choose.",
+          text: "What shipped is a combination of a couple of the versions.",
         },
         {
           type: "ul",
           items: [
-            "Four steps, starting with the school, instead of one page for the whole refinance.",
-            "A student can move between steps.",
-            "Fixed and variable, shown together, not as two definitions on two screens.",
-            "Estimated costs side by side across the loan term, including a deferred grace period.",
-            "Placed under the existing loan options, so the decision stays where it already was.",
-            "No rebuild of the surrounding application.",
+            "Repayment plans and interest rates on separate pages.",
+            "The grand total in the table, in the open.",
+            "The existing tooltip rewritten so it said more.",
+            "A tooltip for what APR means.",
+            "The summary along the bottom rewritten as a sentence.",
           ],
+        },
+        {
+          type: "p",
+          text: "There was pushback on the second screen. The rate a student sees depends on the repayment plan they already chose, and the worry was that they would forget the plan by the time they chose the rate. The summary at the top of that screen is the answer to that note.",
         },
       ],
       [
         {
           type: "p",
-          text: "The comparison shipped under the existing rate options and reached 80% adoption in the first month. Students can see fixed and variable costs over the life of the loan before choosing. The missing pricing information was added without a months-long rebuild.",
+          text: "After launch, pre-qualification to signup moved from 40% to 67%. I cannot isolate which change did it. The screens shipped together. The path was clearer, and more students continued.",
         },
         {
           type: "stats",
           items: [
-            { value: "80%", label: "Adoption of the comparison in the first month." },
-            { value: "4 steps", label: "The refinance starts with the school. A student can move between steps." },
-            { value: "2 rates", label: "Fixed and variable costs are shown side by side." },
-            { value: "0", label: "Extra screens. The comparison sits under the existing options." },
+            { value: "40% → 67%", label: "Pre-qualification to signup after launch." },
+            { value: "27 points", label: "The screens shipped together, so the lift is not pinned to one of them." },
+            { value: "2 steps", label: "Repayment plans, then interest rates, with the earlier choice still on screen." },
           ],
         },
       ],
       [
         {
           type: "p",
-          text: "A choice without a consequence is a guess, and people do not like to guess with a loan. The research was short and it changed the brief for the rate: stop redrawing that screen, and show the cost. Meeting students at the moment of doubt was faster than rebuilding the application around it, and it was the more honest fix. The form was not what they were afraid of.",
+          text: "A rate is a hard thing to agree to, and the idea of one does not expire when the application does. A student who can read fixed next to variable is in a better position the next time that choice shows up, on a business loan or a mortgage.",
+        },
+        {
+          type: "p",
+          text: "Success, for me, was a student knowing what they were signing. I took out loans I did not fully understand. Confidence comes from understanding the decision. The conversion rate was how we noticed.",
         },
       ],
     ),
