@@ -6,6 +6,7 @@ import { projects } from "@/data/projects";
 import { beginFlight, galleryMotion, snapshot } from "@/lib/flight";
 import { sound } from "@/lib/sound";
 import { readRibbon } from "@/lib/ribbon";
+import { clearNeighborArrival } from "@/components/project-view/project-view";
 import styles from "./gallery.module.css";
 
 type DragState = {
@@ -213,6 +214,8 @@ export function Gallery() {
     const article = event.currentTarget.closest<HTMLElement>("[data-gl='card']");
     if (!article) return;
     sound.open();
+    delete document.documentElement.dataset.caseArrived;
+    clearNeighborArrival();
     beginFlight(slug, article.getBoundingClientRect(), snapshot(article));
     router.push(`/projects/${slug}`, { scroll: false });
   };

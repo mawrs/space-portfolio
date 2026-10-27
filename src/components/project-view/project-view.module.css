@@ -93,6 +93,16 @@
   animation-delay: 280ms;
 }
 
+.sheet[data-arrived],
+:global(html[data-case-arrived]) .sheet {
+  opacity: var(--opacity-visible);
+}
+
+.sheet[data-arrived] .intro,
+:global(html[data-case-arrived]) .intro {
+  animation: none;
+}
+
 .meta {
   color: color-mix(in srgb, var(--text-primary) calc(var(--opacity-secondary) * 100%), transparent);
   font-size: var(--font-size-body);
@@ -293,6 +303,11 @@
 :global(html.gl) .frame img,
 :global(html.gl) .frame video {
   opacity: var(--opacity-hidden);
+}
+
+:global(html[data-case-handoff]) .frame img,
+:global(html[data-case-handoff]) .frame video {
+  opacity: var(--opacity-visible);
 }
 
 .close {

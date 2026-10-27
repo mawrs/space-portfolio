@@ -25,6 +25,13 @@ type CaseDragState = {
   axis: "pending" | "horizontal";
 };
 
+let neighborArrival = false;
+let arrivalGeneration = 0;
+
+export function clearNeighborArrival() {
+  neighborArrival = false;
+}
+
 type PreviewSide = "prev" | "next";
 
 type PreviewRect = {
@@ -45,7 +52,17 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   const animationRef = useRef<Animation | null>(null);
   const dragRef = useRef<CaseDragState | null>(null);
   const navigating = useRef(false);
+  const arrival = useRef({ slug: "", instant: false });
   const [active, setActive] = useState<string>(project.study.sections[0]?.id ?? "overview");
+
+  const fromNeighbor =
+    neighborArrival ||
+    (typeof document !== "undefined" && document.documentElement.dataset.caseArrived === "true");
+  if (arrival.current.slug !== project.slug) {
+    arrival.current = { slug: project.slug, instant: fromNeighbor };
+  } else if (fromNeighbor) {
+    arrival.current.instant = true;
+  }
 
   useEffect(() => {
     closeRef.current?.focus({ preventScroll: true });
@@ -60,6 +77,13 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const sheet = sheetRef.current;
     if (!sheet) return;
     navigating.current = false;
+    const fromNeighbor =
+      arrival.current.instant ||
+      neighborArrival ||
+      document.documentElement.dataset.caseArrived === "true";
+    if (!fromNeighbor) {
+      delete document.documentElement.dataset.caseHandoff;
+    }
     animationRef.current?.cancel();
     sheet.style.opacity = "1";
     sheet.style.transform = "";
@@ -69,23 +93,27 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       node.getAnimations().forEach((animation) => animation.cancel());
       clearPreviewStyles(node);
     });
-    const arrived = document.documentElement.dataset.caseArrived;
+    if (fromNeighbor) {
+      const generation = arrivalGeneration;
+      arrival.current = { slug: project.slug, instant: true };
+      sheet.dataset.arrived = "";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (generation !== arrivalGeneration) return;
+          neighborArrival = false;
+          delete document.documentElement.dataset.caseArrived;
+          delete document.documentElement.dataset.caseHandoff;
+        });
+      });
+      return;
+    }
+    delete sheet.dataset.arrived;
     delete document.documentElement.dataset.caseArrived;
-    const direction = document.documentElement.dataset.caseDirection as "prev" | "next" | undefined;
-    delete document.documentElement.dataset.caseDirection;
-    if (arrived) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const sheetRect = sheet.getBoundingClientRect();
-    const keyframes: Keyframe[] = direction
-      ? [
-          {
-            opacity: 0.55,
-            transform: `translateX(${direction === "next" ? 6 : -6}vw) scale(0.99)`,
-          },
-          { opacity: 1, transform: "translateX(0) scale(1)" },
-        ]
-      : flight.mode === "open" && flight.from
+    const keyframes: Keyframe[] =
+      flight.mode === "open" && flight.from
         ? [
             {
               opacity: 0.55,
@@ -103,7 +131,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
             { opacity: 1, transform: "translateY(0) scale(1)" },
           ];
     const animation = sheet.animate(keyframes, {
-      duration: direction ? 520 : 900,
+      duration: 900,
       easing: "cubic-bezier(0.16, 1, 0.3, 1)",
       fill: "both",
     });
@@ -232,17 +260,25 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       if (navigating.current) return;
       navigating.current = true;
       sound.open();
+      const handoff = () => {
+        arrivalGeneration += 1;
+        neighborArrival = true;
+        document.documentElement.dataset.caseArrived = "true";
+        router.push(`/projects/${slug}`, { scroll: false });
+      };
       const sheet = sheetRef.current;
-      const preview = document.querySelector<HTMLElement>(`[data-neighbor='${direction}']`);
+      const preview = stageRef.current?.querySelector<HTMLElement>(`[data-neighbor='${direction}']`) ?? null;
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (!sheet || !preview || reduced) {
-        document.documentElement.dataset.caseDirection = direction;
-        router.push(`/projects/${slug}`, { scroll: false });
+        handoff();
         return;
       }
 
       animationRef.current?.cancel();
       sheet.style.pointerEvents = "none";
+      document.documentElement.dataset.caseHandoff = "true";
+      preview.getAnimations().forEach((animation) => animation.cancel());
+      preview.style.transition = "none";
       preview.style.zIndex = "14";
       const start = preview.getBoundingClientRect();
       const target = previewLayout(direction).center;
@@ -252,7 +288,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
           previewKeyframe(target, 1, target.radius),
         ],
         {
-          duration: 480,
+          duration: 780,
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           fill: "forwards",
         },
@@ -260,25 +296,21 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       const sheetTransform = getComputedStyle(sheet).transform;
       const sheetAnimation = sheet.animate(
         [
+          { opacity: 1, transform: sheetTransform },
           {
-            opacity: 1,
-            transform: sheetTransform,
-          },
-          {
-            opacity: 0.12,
-            transform: `translateX(${direction === "next" ? -window.innerWidth : window.innerWidth}px) scale(0.985)`,
+            opacity: 0,
+            transform: `translateX(${direction === "next" ? -6 : 6}vw) scale(0.985)`,
           },
         ],
         {
-          duration: 480,
+          duration: 780,
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
           fill: "forwards",
         },
       );
       animationRef.current = sheetAnimation;
       await Promise.allSettled([previewAnimation.finished, sheetAnimation.finished]);
-      document.documentElement.dataset.caseArrived = "true";
-      router.push(`/projects/${slug}`, { scroll: false });
+      handoff();
     },
     [router],
   );
@@ -287,8 +319,8 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const stage = stageRef.current;
     const sheet = sheetRef.current;
     if (!stage || !sheet) return;
-    const previousPreview = document.querySelector<HTMLElement>("[data-neighbor='prev']");
-    const nextPreview = document.querySelector<HTMLElement>("[data-neighbor='next']");
+    const previousPreview = stage.querySelector<HTMLElement>("[data-neighbor='prev']");
+    const nextPreview = stage.querySelector<HTMLElement>("[data-neighbor='next']");
 
     const revealPreview = (offset: number) => {
       const side: PreviewSide = offset < 0 ? "next" : "prev";
@@ -459,6 +491,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
         ref={sheetRef}
         className={styles.sheet}
         data-project-sheet=""
+        data-arrived={arrival.current.instant ? "" : undefined}
         role="dialog"
         aria-modal="true"
         aria-labelledby={`project-${project.slug}-title`}
