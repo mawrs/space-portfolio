@@ -11,6 +11,7 @@ import {
   useState,
 } from "react";
 import { Project } from "@/data/projects";
+import { site } from "@/data/site";
 import { flight } from "@/lib/flight";
 import { sound } from "@/lib/sound";
 import { CaseBody } from "./case-body";
@@ -83,6 +84,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   }, [project.slug]);
 
   useEffect(() => {
+    router.prefetch("/");
     router.prefetch(`/projects/${previous.slug}`);
     router.prefetch(`/projects/${next.slug}`);
   }, [next.slug, previous.slug, router]);
@@ -276,22 +278,9 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     navigating.current = true;
     sound.close();
     const sheet = sheetRef.current;
-    const target = document.querySelector<HTMLElement>(
-      `[data-gl="card"][data-id="${project.slug}"]`,
-    );
     if (sheet && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       sheet.style.pointerEvents = "none";
       animationRef.current?.cancel();
-      const end: Keyframe = target
-        ? {
-            opacity: 0.25,
-            clipPath: clipFor(sheet.getBoundingClientRect(), box(target.getBoundingClientRect())),
-            transform: "scale(0.985)",
-          }
-        : {
-            opacity: 0,
-            transform: "translateY(1.5rem) scale(0.985)",
-          };
       const animation = sheet.animate(
         [
           {
@@ -299,11 +288,14 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
             clipPath: `inset(0px 0px 0px 0px round ${readRadius(sheet)}px)`,
             transform: "scale(1)",
           },
-          end,
+          {
+            opacity: 0,
+            transform: "translateY(0.75rem) scale(0.99)",
+          },
         ],
         {
-          duration: 620,
-          easing: "cubic-bezier(0.7, 0, 0.2, 1)",
+          duration: 280,
+          easing: "cubic-bezier(0.4, 0, 1, 1)",
           fill: "forwards",
         },
       );
@@ -339,7 +331,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       } else {
         neighborEntrance = null;
       }
-      router.push(`/projects/${slug}`, { scroll: false });
+      router.replace(`/projects/${slug}`, { scroll: false });
     },
     [router],
   );
@@ -437,6 +429,13 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       const targetProject = side === "next" ? next : previous;
       if (!active || settling || navigating.current) return;
       settling = true;
+      History.prototype.pushState.call(
+        window.history,
+        window.history.state,
+        "",
+        `/projects/${targetProject.slug}`,
+      );
+      document.title = `${targetProject.study.headline} — ${site.name}`;
       window.clearTimeout(wheelTimer);
       stage.removeAttribute("data-dragging");
       stage.dataset.settling = "";
@@ -726,6 +725,10 @@ function Neighbor({
       </button>
       <aside data-neighbor={side} aria-hidden="true">
         <CasePreview project={project} />
+        <div className={styles.close}>
+          <span>×</span>
+        </div>
+        <div className={styles.progress} />
       </aside>
     </div>
   );
@@ -770,10 +773,6 @@ function CasePreview({ project }: { project: Project }) {
       </article>
     </div>
   );
-}
-
-function box(rect: DOMRect) {
-  return { x: rect.left, y: rect.top, w: rect.width, h: rect.height };
 }
 
 function previewLayout(side: PreviewSide, sheet: PreviewRect) {

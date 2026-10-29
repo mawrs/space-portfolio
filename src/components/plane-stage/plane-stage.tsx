@@ -478,6 +478,7 @@ export function PlaneStage() {
           if (rect.width < 2 || rect.height < 2) return;
           const record = ensure(key, node, role);
           if (!record) return;
+          record.mesh.visible = true;
           record.clipOn.value = role === "simple" && sheetRect ? 1 : 0;
           live.add(key);
           const current = { x: rect.left, y: rect.top, w: rect.width, h: rect.height };
@@ -540,6 +541,12 @@ export function PlaneStage() {
 
         records.forEach((record, key) => {
           if (live.has(key)) return;
+          if (record.role === "card") {
+            record.mesh.visible = false;
+            record.alpha.value = 0;
+            record.hover.value = 0;
+            return;
+          }
           scene.remove(record.mesh);
           record.mesh.geometry.dispose();
           const map = record.material.uniforms.uMap.value as { dispose?: () => void };
