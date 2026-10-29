@@ -29,6 +29,10 @@ let neighborArrival = false;
 let arrivalGeneration = 0;
 let neighborEntrance: { generation: number; rect: PreviewRect } | null = null;
 
+function handoffCaseMedia() {
+  document.documentElement.dataset.caseHandoff = "true";
+}
+
 export function clearNeighborArrival() {
   neighborArrival = false;
 }
@@ -99,12 +103,12 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       const entrance = neighborEntrance?.generation === generation ? neighborEntrance.rect : null;
       arrival.current = { slug: project.slug, instant: true };
       sheet.dataset.arrived = "";
+      handoffCaseMedia();
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           if (generation !== arrivalGeneration) return;
           neighborArrival = false;
           delete document.documentElement.dataset.caseArrived;
-          delete document.documentElement.dataset.caseHandoff;
         });
       });
       if (entrance && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -143,7 +147,10 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     neighborEntrance = null;
     delete sheet.dataset.arrived;
     delete document.documentElement.dataset.caseArrived;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      handoffCaseMedia();
+      return;
+    }
 
     const sheetRect = sheet.getBoundingClientRect();
     const keyframes: Keyframe[] =
@@ -174,6 +181,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       sheet.style.opacity = "1";
       sheet.style.transform = "";
       sheet.style.clipPath = "";
+      handoffCaseMedia();
       animation.cancel();
       if (animationRef.current === animation) animationRef.current = null;
     };
@@ -204,12 +212,15 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       setActive((previous) => (previous === current ? previous : current));
     };
     const observer = new ResizeObserver(sync);
+    const handoff = () => handoffCaseMedia();
     observer.observe(scroller);
     if (scroller.firstElementChild) observer.observe(scroller.firstElementChild);
+    scroller.addEventListener("wheel", handoff, { passive: true });
     scroller.addEventListener("scroll", sync, { passive: true });
     sync();
     return () => {
       observer.disconnect();
+      scroller.removeEventListener("wheel", handoff);
       scroller.removeEventListener("scroll", sync);
     };
   }, [project.slug, project.study.sections]);
@@ -223,6 +234,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const cover = window.matchMedia("(max-width: 649px)").matches ? (nav?.getBoundingClientRect().height ?? 0) : 0;
     const top = node.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - cover - 16;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    handoffCaseMedia();
     scroller.scrollTo({ top, behavior: reduced ? "auto" : "smooth" });
     setActive(id);
   }, [project.slug]);
@@ -230,6 +242,9 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (document.documentElement.dataset.panel) return;
+      if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) {
+        handoffCaseMedia();
+      }
       if (event.key === "Escape") {
         event.preventDefault();
         closeRef.current?.click();
@@ -297,7 +312,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       arrivalGeneration += 1;
       neighborArrival = true;
       document.documentElement.dataset.caseArrived = "true";
-      delete document.documentElement.dataset.caseHandoff;
+      handoffCaseMedia();
       const preview = stageRef.current?.querySelector<HTMLElement>(`[data-neighbor='${direction}']`);
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (preview && !reduced) {
@@ -424,6 +439,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       if (dragRef.current) return;
       const target = event.target instanceof Element ? event.target : null;
       if (target?.closest("a, button")) return;
+      handoffCaseMedia();
       dragRef.current = {
         startX: event.clientX,
         startY: event.clientY,

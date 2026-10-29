@@ -459,7 +459,7 @@
   width: calc(100% - 20rem);
   overflow: hidden;
   border-radius: var(--radius-lg);
-  opacity: var(--opacity-overlay);
+  opacity: var(--opacity-secondary-strong);
   transition:
     transform var(--duration-slower) var(--easing-enter),
     opacity var(--duration-slow) var(--easing-fade);
