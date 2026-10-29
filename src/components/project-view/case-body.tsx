@@ -54,11 +54,6 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
         <header className={styles.intro}>
           <p className={styles.meta}>{study.meta}</p>
           <h1 id={`project-${project.slug}-title`}>{study.title}</h1>
-          {project.liveUrl ? (
-            <ActionLink data-gl="pill" href={project.liveUrl} target="_blank" rel="noreferrer">
-              Visit
-            </ActionLink>
-          ) : null}
           <figure className={styles.sizzle}>
             <div
               className={styles.frame}

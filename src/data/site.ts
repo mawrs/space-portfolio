@@ -1,5 +1,5 @@
 const profile =
-  "Martin Tejeda is a product designer based in Salt Lake City, specializing in animation, motion, and prototyping. Background in development and research. Usually the lead or sole designer. Lover of sci-fi and space.";
+  "Martin is a product designer at Robinhood, specializing in product, motion, and prototyping. Lover of sci-fi and space.";
 
 export const site = {
   name: "Martin Tejeda",

@@ -21,7 +21,6 @@ export type Project = {
   summary: string;
   year: string;
   awards: number;
-  liveUrl: string | null;
   credits: Credit[];
   width: number;
   height: number;
