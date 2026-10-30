@@ -29,11 +29,11 @@ type CaseBodyProps = {
 
 export function CaseBody({ project, active, onJump }: CaseBodyProps) {
   const study = project.study;
-  const facts = [
-    { label: "Role", values: [study.role] },
-    { label: "Timeline", values: [study.timeline] },
-    { label: "Team", values: study.team },
-    { label: "Skills", values: study.skills },
+  const overviewFacts = [
+    { label: "Role", value: study.role },
+    { label: "Teams", value: study.team.join(", ") },
+    { label: "Timeline", value: study.timeline },
+    { label: "Skills", value: study.skills.join(", ") },
   ];
 
   return (
@@ -95,7 +95,6 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
               <h2>{section.label}</h2>
               {groups.map((group, index) => (
                 <Fragment key={`${section.id}-${index}`}>
-                  {group.heading ? <h3>{group.heading}</h3> : null}
                   {group.items.length > 0 ? (
                     <div className={styles.blocks}>
                       {group.items.map((block, itemIndex) => (
@@ -109,16 +108,15 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
                 <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
               ))}
               {section.id === "overview" ? (
-                <dl className={styles.facts}>
-                  {facts.map((fact) => (
-                    <div key={fact.label}>
-                      <dt>{fact.label}</dt>
-                      {fact.values.map((value) => (
-                        <dd key={value}>{value}</dd>
-                      ))}
-                    </div>
-                  ))}
-                </dl>
+                <div className={styles.blocks}>
+                  <ul>
+                    {overviewFacts.map((item) => (
+                      <li key={item.label}>
+                        <span className={styles.factLabel}>{item.label}:</span> {item.value}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ) : null}
             </section>
           );
@@ -129,7 +127,7 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
 }
 
 function Block({ block, project }: { block: CaseBlock; project: Project }) {
-  if (block.type === "h3") return <h3>{block.text}</h3>;
+  if (block.type === "h3") return null;
   if (block.type === "p") return <p>{block.text}</p>;
   if (block.type === "ul") {
     return (

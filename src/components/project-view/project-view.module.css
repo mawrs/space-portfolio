@@ -157,10 +157,15 @@
   letter-spacing: var(--tracking-body);
 }
 
-.blocks p {
+.blocks p,
+.blocks li {
   font-size: var(--font-size-body-lg);
   font-weight: 300;
   line-height: var(--line-height-body-lg);
+}
+
+.factLabel {
+  font-weight: 400;
 }
 
 .blocks > * {

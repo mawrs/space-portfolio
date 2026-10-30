@@ -88,6 +88,14 @@
         "height": 802,
         "video": false,
         "caption": "Header, body, and footer as separate pieces. Seven buckets, one library, so every seller email can be recognized as Square, including the plain-text fallback and the version with images blocked."
+      },
+      {
+        "src": "/projects/square/before.jpg",
+        "poster": "/projects/square/before.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "Seller mail before the system. A signup, an account notice, and a refund. Same company, three different senders."
       }
     ]
   },
@@ -132,7 +140,7 @@
   {
     "slug": "true-see",
     "title": "TRUE-See",
-    "summary": "Photographing a wound meant leaving the chart, signing into a second app, and rebuilding the patient. The EHR-agnostic path pulls the list from the record, then capture, wound type, measure, and save stay in one pass.\n\nAs sole designer, the work was the research, the workflow, and the interface, including the Bootstrap system the app shipped on. Photos can be found by hashtag, such as #ulcer, instead of selecting from a pile of unassigned images.\n\nThe photograph is color-calibrated and certified, so a clinician can compare the same wound later without guessing at the phone's color.",
+    "summary": "TRUE-See lived inside one record, Altera, and the integration only went one way. A nurse who had not added the patient took the photos on her iPhone and Airdropped them to the doctor.\n\nThe redesign is a phone-first camera that can sit next to any EHR. Twelve weeks, February to a June pilot. It has not launched. What we know is from the prototype, three physicians, and a few letters of intent.",
     "year": "2025",
     "awards": 0,
     "credits": [],
@@ -147,7 +155,7 @@
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "The path into the camera, the capture screen, and the photograph it is for. The first session has to clear permissions, the camera, and the first upload."
+        "caption": "From the patient list into the camera. Alignment, then assign, measure, note, and share on the photo just taken."
       },
       {
         "src": "/projects/true-see/workflow.jpg",
@@ -155,15 +163,31 @@
         "width": 1600,
         "height": 676,
         "video": false,
-        "caption": "Patient list to camera. The old path signed a clinician into the EHR, then into TRUE-See, and asked for the patient again. The new path starts from the list the record already has."
+        "caption": "Three clicks to the camera. Home, the list, the patient, then the shot."
       },
       {
-        "src": "/projects/true-see/camera.jpg",
-        "poster": "/projects/true-see/camera.jpg",
-        "width": 1600,
-        "height": 800,
+        "src": "/projects/true-see/tau-midfi_1.png",
+        "poster": "/projects/true-see/tau-midfi_1.png",
+        "width": 2909,
+        "height": 1624,
         "video": false,
-        "caption": "The photograph the workflow is built around: a calibrated, certified image a clinician can trust, then send back to the chart, share, or assign a wound type."
+        "caption": "From the patient list into the camera, then assign, measure, note, and share on the photo just taken."
+      },
+      {
+        "src": "/projects/true-see/tau-final_1.png",
+        "poster": "/projects/true-see/tau-final_1.png",
+        "width": 2220,
+        "height": 2234,
+        "video": false,
+        "caption": "The list, before and after. Share and analyze sit on the row."
+      },
+      {
+        "src": "/projects/true-see/tau-final_2.png",
+        "poster": "/projects/true-see/tau-final_2.png",
+        "width": 2220,
+        "height": 2234,
+        "video": false,
+        "caption": "The patient page leads with the wound. A missing type is flagged. Another photo of that wound skips assignment."
       }
     ]
   },
