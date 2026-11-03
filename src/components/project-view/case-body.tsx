@@ -1,4 +1,4 @@
-import { CSSProperties, Fragment, MouseEvent } from "react";
+import { CSSProperties, Fragment } from "react";
 import { CaseBlock } from "@/data/cases";
 import { Project } from "@/data/projects";
 import { ActionLink } from "@/components/ui/action-link";
@@ -21,13 +21,42 @@ function contentGroups(blocks: CaseBlock[]) {
   return groups;
 }
 
-type CaseBodyProps = {
-  project: Project;
-  active: string;
-  onJump: (event: MouseEvent<HTMLAnchorElement>, id: string) => void;
-};
+export function CaseHero({ project, preview = false }: { project: Project; preview?: boolean }) {
+  const study = project.study;
 
-export function CaseBody({ project, active, onJump }: CaseBodyProps) {
+  return (
+    <header className={styles.hero}>
+      <div className={styles.heroCopy}>
+        <p className={styles.meta}>{study.meta}</p>
+        <h1 id={preview ? undefined : `project-${project.slug}-title`}>{study.title}</h1>
+      </div>
+      <figure className={styles.sizzle}>
+        <div
+          className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
+          data-gl={preview ? undefined : "simple"}
+          data-id={preview ? undefined : `${project.slug}-sizzle`}
+          data-project={preview ? undefined : project.slug}
+          data-stack-index={preview ? undefined : 0}
+          style={{ "--ratio": `${project.width} / ${project.height}` } as CSSProperties}
+        >
+          {/* Same still as the home thumbnail. The plane samples this element. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
+        </div>
+      </figure>
+    </header>
+  );
+}
+
+function visibleMedia(project: Project, blocks: CaseBlock[]) {
+  return blocks.filter((block): block is Extract<CaseBlock, { type: "media" }> => {
+    if (block.type !== "media") return false;
+    const item = project.media[block.index];
+    return Boolean(item && item.src !== project.video && (project.video || item.src !== project.poster));
+  });
+}
+
+export function CaseBody({ project }: { project: Project }) {
   const study = project.study;
   const overviewFacts = [
     { label: "Role", value: study.role },
@@ -38,86 +67,56 @@ export function CaseBody({ project, active, onJump }: CaseBodyProps) {
 
   return (
     <div key={project.slug} className={styles.case}>
-      <nav className={styles.nav} data-section-nav="" aria-label="Case study sections">
-        {study.sections.map((section) => (
-          <a
-            key={section.id}
-            href={`#${project.slug}-${section.id}`}
-            aria-current={active === section.id ? "true" : undefined}
-            onClick={(event) => onJump(event, section.id)}
-          >
-            {section.label}
-          </a>
-        ))}
-      </nav>
+      <CaseHero project={project} />
       <article className={styles.article}>
-        <header className={styles.intro}>
-          <p className={styles.meta}>{study.meta}</p>
-          <h1 id={`project-${project.slug}-title`}>{study.title}</h1>
-          <figure className={styles.sizzle}>
-            <div
-              className={styles.frame}
-              data-gl="simple"
-              data-id={`${project.slug}-sizzle`}
-              data-project={project.slug}
-              data-stack-index={0}
-              style={{ "--ratio": `${project.width} / ${project.height}` } as CSSProperties}
-            >
-              {project.video ? (
-                <video
-                  src={project.video}
-                  poster={project.poster}
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  crossOrigin="anonymous"
-                  draggable={false}
-                />
-              ) : (
-                // Sampled by the shared plane. next/image would hide the source element.
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
-              )}
-            </div>
-          </figure>
-        </header>
         {study.sections.map((section) => {
+          const media = visibleMedia(project, section.blocks);
           const blocks = section.blocks.filter(
-            (block) => block.type !== "stats" && (section.id !== "overview" || block.type !== "ul"),
+            (block) =>
+              block.type !== "stats" &&
+              block.type !== "media" &&
+              (section.id !== "overview" || block.type !== "ul"),
           );
           const stats = section.blocks.filter((block) => block.type === "stats");
-
           const groups = contentGroups(blocks);
 
           return (
             <section key={section.id} id={`${project.slug}-${section.id}`} className={styles.section} data-section="">
-              <h2>{section.label}</h2>
-              {groups.map((group, index) => (
-                <Fragment key={`${section.id}-${index}`}>
-                  {group.items.length > 0 ? (
-                    <div className={styles.blocks}>
-                      {group.items.map((block, itemIndex) => (
-                        <Block key={`${section.id}-${index}-${itemIndex}`} block={block} project={project} />
+              <div className={styles.slideCopy}>
+                <h2>{section.label}</h2>
+                {groups.map((group, index) => (
+                  <Fragment key={`${section.id}-${index}`}>
+                    {group.items.length > 0 ? (
+                      <div className={styles.blocks}>
+                        {group.items.map((block, itemIndex) => (
+                          <Block key={`${section.id}-${index}-${itemIndex}`} block={block} project={project} />
+                        ))}
+                      </div>
+                    ) : null}
+                  </Fragment>
+                ))}
+                {stats.map((block, index) => (
+                  <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
+                ))}
+                {section.id === "overview" ? (
+                  <div className={styles.blocks}>
+                    <ul>
+                      {overviewFacts.map((item) => (
+                        <li key={item.label}>
+                          <span className={styles.factLabel}>{item.label}:</span> {item.value}
+                        </li>
                       ))}
-                    </div>
-                  ) : null}
-                </Fragment>
-              ))}
-              {stats.map((block, index) => (
-                <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
-              ))}
-              {section.id === "overview" ? (
-                <div className={styles.blocks}>
-                  <ul>
-                    {overviewFacts.map((item) => (
-                      <li key={item.label}>
-                        <span className={styles.factLabel}>{item.label}:</span> {item.value}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+              <div className={styles.slideMedia}>
+                {media.length > 0 ? (
+                  media.map((block) => <Block key={block.index} block={block} project={project} />)
+                ) : (
+                  <div className={styles.placeholder} aria-hidden="true" />
+                )}
+              </div>
             </section>
           );
         })}

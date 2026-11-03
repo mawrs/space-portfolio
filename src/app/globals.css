@@ -94,6 +94,6 @@ a {
 }
 
 ::selection {
-  color: var(--text-black);
-  background: var(--background-white);
+  color: var(--text-white);
+  background: var(--background-brand);
 }
