@@ -52,145 +52,164 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "I joined this from Underbelly, embedded with the Pages team. The project was already underway, and the team was still exploring what checking a Page's activity could look like. I came in for three months. It became six, and most of that time was this work.",
+          text: "This is a project that I’m very proud of, because we made a very difficult life decision more understandable.",
         },
         {
           type: "p",
-          text: "Checking a Page meant switching into that Page. That step kept admins from liking and commenting as themselves. The opportunity was the notification panel they already had open. Browse activity across Pages, see what needed a response, and switch into a Page only when opening a notification.",
+          text: "And with something like rates, the concept of rates is not going anywhere. If we were able to educate students about rates, they will probably make better financial decisions in the future when taking out a business loan or a mortgage.",
         },
         {
           type: "p",
-          text: "The interaction goal was to make the activity easy to check and keep a consistent profile presence. I worked with a design partner, a design manager, a PM, and a researcher.",
+          text: "If I really think about this project, success to me wasn’t getting every student to apply for an ELFI loan. Success to me was knowing that these students understand what they are signing up for.",
         },
         {
           type: "p",
-          text: "Admins often looked after more than one Page. Checking any of them meant leaving the profile their friends knew, doing the work as the Page, and coming back. A like or a comment was a small job wrapped in a change of identity.",
+          text: "Having been a student who didn’t fully understand my own loans, this felt like a very meaningful experience to contribute to.",
         },
         {
-          type: "ul",
-          items: [
-            "Role: product designer on the notification panel and, later, the settings.",
-            "Who it was for: Page admins who had to switch into a Page just to see its activity.",
-            "Timeline: six months. It started as three.",
-            "Outcome: a panel and a settings model. This version did not reach a public launch.",
-          ],
-        },
-      ],
-      [
-        { type: "h3", text: "Switching was the tax on a reply" },
-        {
-          type: "p",
-          text: "The question the team was holding was how to raise the percentage of eligible admins who respond to at least one Page comment in a week. The friction in front of that was the switch. An admin could not see a Page's likes and comments without becoming that Page. The engagement Facebook wanted happened after a step that changed who they were.",
-        },
-        {
-          type: "p",
-          text: "That weekly number sat behind the costume change. An admin who never became the Page never showed up as someone who replied, even if they had already seen the comment and decided it could wait.",
-        },
-        { type: "h3", text: "The work was already on the table" },
-        {
-          type: "p",
-          text: "When I joined, my design partner had two concepts she wanted to test. Before I drew my own, I spent about a week with the researchers, the PM, and the design manager. I read the PRD with the PM, to find the assignment and where there was room. The researchers had already shared readouts and clips on how admins used and managed Pages. I went through that before I contributed a screen.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "6 months", label: "Joined for three. The extension covered another project too. Most of the time was this one." },
-            { value: "1 week", label: "With research, the PM, and the design manager before I drew my own concepts." },
-            { value: "1 panel", label: "The notification panel admins already used. That was the place to look." },
-          ],
+          type: "media",
+          index: 5,
+          caption: "Select profile. A personal account, then each Page and how many notifications it has.",
         },
       ],
       [
         {
           type: "p",
-          text: "Two things had to be true at once. An admin should see which Pages had something new. And comments should show up early, because a comment is what they might answer.",
-        },
-        { type: "h3", text: "Tuesday, then Thursday" },
-        {
-          type: "p",
-          text: "Crit was twice a week. Tuesday was the design org, a show and tell. Thursday was the team. I would bring a version, take the note, and draw the next one.",
+          text: "When I joined, my design partner had already outlined two concepts she wanted to test for this new notification panel.",
         },
         {
           type: "p",
-          text: "The first versions I brought treated the count badge as given. Facebook already showed how many notifications a Page had, and I designed the panel around that. In crit, the badges were competing with the Page names in a space that was already tight. In a 1:1 with my design partner we moved to dots. A dot does not say how many. It says which Pages have something new.",
+          text: "Before contributing my own designs, I spent about a week in calls with the researchers, the PM, and the design manager to understand the goal of the project.",
         },
         {
           type: "p",
-          text: "A second direction came out of a conversation with the PM: a digest of the notifications that were most relevant, shown as cards. We never agreed on what most relevant meant. In the version we tried, the highlights were other public figures with huge followings. What felt relevant to an admin was not the same as a reply to a fan, and a reply to a fan was the behavior we were trying to move. The cards were also far enough from the panel that crit shut them down almost immediately.",
+          text: "I reviewed the existing research on how admins used and managed Pages. The researchers had shared readout presentations and clips from the recordings. I went through that material to understand the context behind the project.",
+        },
+        {
+          type: "media",
+          index: 6,
+          caption: "The two concepts already outlined. The notification panel on the personal profile, and the same panel under Pages You Manage.",
+        },
+      ],
+      [
+        {
+          type: "p",
+          text: "Once I gained a better understanding of the project, I started developing my own concepts for this notification panel, and I explored the interaction states that would make the design come to life.",
+        },
+        {
+          type: "p",
+          text: "I was tip-toeing between two thoughts. The first was catering to an admin's ability to see which Pages had new notifications. The second was showing comments as soon as possible, so they were more likely to click and interact with a fan.",
+        },
+        {
+          type: "p",
+          text: "These are some of my personal contributions.",
         },
         {
           type: "media",
           index: 3,
-          caption: "A pass at surfacing the most relevant notifications as cards. Crit ended it. We could not agree on relevant, and a highlight was not the same as a reply to a fan.",
-        },
-        { type: "h3", text: "The panel they already open" },
-        {
-          type: "p",
-          text: "The direction that stayed put the first look inside the existing notification panel. All brings every Page's activity together. A Page tab narrows the list. The tabs scroll sideways. A full-screen notifications page for Pages was the other option, and engineering did not have the bandwidth to build it. The panel was also the only surface they could actually staff. A new destination for Page notifications would have been a product of its own.",
+          caption: "States of the panel. A tab for every Page, and filters so comments, mentions, and shares can sit at the front of the list.",
         },
         {
           type: "p",
-          text: "Opening a Page's tab changes which notifications an admin is reading. It does not change the profile they are using. They are still on Facebook as themselves. A dot on another tab says that Page has something new before they open it. They switch into the Page when they open a notification.",
+          text: "The most interesting approach came out of a conversation with the PM. She mentioned a digest of the notifications that were most relevant. We never agreed on what most relevant meant. In this example, the highlights were notifications from other public figures with huge followings.",
+        },
+        {
+          type: "p",
+          text: "Based on conversations with my design partner, the most promising approach was a simple horizontal scroll that spelled out every Page the admin managed, and how many notifications were on that Page.",
         },
       ],
       [
         {
           type: "p",
-          text: "The panel and the settings are two parts. One is a way to check activity. The other is a way to decide what arrives.",
-        },
-        {
-          type: "ul",
-          items: [
-            "All, then a tab per Page, in a horizontal scroll.",
-            "Dots for which Pages have new activity, instead of a count badge.",
-            "Selecting a Page filters the list. The active profile stays.",
-            "An admin switches into the Page when they open a notification.",
-            "Settings for which Pages can notify them, and which categories, per Page.",
-          ],
+          text: "We had design critiques every Tuesday and Thursday, so there was a pretty steady rhythm to the work. Tuesday was the design org, so that was more of a show and tell. Thursday was our individual team. I’d develop something, bring it into critique, get feedback, and then work through the next version.",
         },
         {
           type: "p",
-          text: "The settings were a solo pass I took once the panel's direction was set. Choose the Pages, then set comments, likes, tags, and the rest for one Page at a time. The panel only helps if the right activity arrives. Someone running several Pages does not want a like from all of them, and does want a comment on the one that needs a reply.",
+          text: "Two designs I brought to crit were centered around the notification badges themselves. Historically, we offered a way for users to see how many notifications were within that Page. I designed the notification panel, not thinking twice about the notification badge itself, since that was pretty standard. The feedback was that the badges were competing with the names in an already tight space.",
+        },
+        {
+          type: "p",
+          text: "Through a 1:1 with my design partner, we decided to move forward with dots instead of badges. With dots, you lost the exact count, but you could still tell which Pages had new activity. That was the trade-off we were dealing with.",
         },
         {
           type: "media",
-          index: 2,
-          caption: "Notification settings for one Page. Which Pages can reach an admin, and which kinds of activity, set separately.",
-        },
-        {
-          type: "p",
-          text: "When the direction was defined, my design partner and I documented the screens and the design-system components in Figma, and refined them together. With engineering I followed up in messages and on calls, mostly to pin down a behavior that was easy to miss in the file.",
+          index: 7,
+          caption: "Count badges on the filters, and a dot on the Page tab. The number competed with the name. The dot still showed which Page had something new.",
         },
       ],
       [
         {
           type: "p",
-          text: "To my recollection, this version did not reach a public launch. I was not part of the release decision, so I cannot say why. What we left was the model: check activity across Pages without becoming the Page, and a settings screen for what each Page is allowed to send.",
+          text: "This is where we landed on the final design.",
         },
         {
           type: "p",
-          text: "Inside the team, the direction was specific enough to argue with. Dots instead of counts. A switch that happens when a notification is opened, not when a tab is. Settings that treat each Page as its own sender.",
+          text: "We stuck with a horizontal scroll instead of a See more. Engineering did not have the bandwidth to build a full-screen notifications page for Pages.",
         },
         {
-          type: "stats",
-          items: [
-            { value: "No launch", label: "This version did not reach the public, as I remember it. I was not in the release decision." },
-            { value: "Dots", label: "A count badge gave way. You can see which Pages are active. You cannot see how many." },
-            { value: "2 parts", label: "A panel for checking activity, and settings for what each Page sends." },
-          ],
+          type: "p",
+          text: "All brought every Page's activity together. The tabs beside it narrowed that list. If she selected Will Smith, she would see notifications for that Page, and she would still be using Facebook as herself.",
+        },
+        {
+          type: "p",
+          text: "That distinction mattered. At this point she was only changing which notifications she was looking at. She had not switched her active identity.",
+        },
+        {
+          type: "p",
+          text: "The dots also let her see that another Page had new activity before she opened its tab.",
+        },
+        {
+          type: "media",
+          index: 8,
+          caption: "All, then a tab for each Page. Will Smith's notifications, while she is still on Facebook as herself.",
         },
       ],
       [
         {
           type: "p",
-          text: "What stayed with me was how to contribute on a team that was already in motion. I got more confident explaining a decision, working a note from crit, and bringing my own idea into a conversation that had started without me.",
+          text: "Alongside this, I contributed to how we organized the notification settings. Someone could choose which Pages they received notifications from, and then adjust the notification categories for an individual Page.",
         },
         {
           type: "p",
-          text: "I also learned the difference between holding a position and hearing one. I had treated the count badge as standard. The tight space was the actual problem. The habits I kept are smaller than the panel: understand the context before drawing, say why a version is the way it is, and pick up the piece the experience is missing. The settings were that piece. The panel was the assignment. The settings were what I noticed was missing once the panel made sense.",
+          text: "There were two parts to the experience. A quick way to check activity, and a place to control what activity you received.",
+        },
+        {
+          type: "p",
+          text: "This was effectively a solo project I took on once we understood the direction of the main surface we were going to pursue.",
+        },
+        {
+          type: "media",
+          index: 9,
+          caption: "Which Pages send notifications, and the categories for one Page. With Page Interactions off, that Page stays quiet.",
         },
       ],
-    ),
+    ).map((section) => {
+      if (section.id === "overview") return { ...section, label: "Switching between Pages" };
+      if (section.id === "background") return { ...section, label: "Understanding the existing work" };
+      if (section.id === "approach") return { ...section, label: "Exploring the options" };
+      if (section.id === "solution") return { ...section, label: "Refining the details" };
+      if (section.id === "outcomes") return { ...section, label: "Where we landed" };
+      if (section.id === "reflection") return { ...section, label: "Notification settings" };
+      return section;
+    }).concat({
+      id: "close",
+      label: "Working through the handoff",
+      blocks: [
+        {
+          type: "p",
+          text: "When the direction was more defined, I documented the screens and the design-system components we were using in Figma. My design partner and I refined the work together.",
+        },
+        {
+          type: "p",
+          text: "My involvement with engineering included follow-up messages and calls to clarify the interactions. The calls also helped the engineers understand the small nuances of a particular behavior.",
+        },
+        {
+          type: "media",
+          index: 10,
+          caption: "The panel annotated for handoff. The header, the horizontal Page tabs, a notification row, and the selected Page.",
+        },
+      ],
+    }),
   },
   square: {
     title: "Enhanced email security",
