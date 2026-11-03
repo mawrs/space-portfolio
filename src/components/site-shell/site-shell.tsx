@@ -5,7 +5,6 @@ import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
 import { PlaneStage } from "@/components/plane-stage/plane-stage";
 import { Portal } from "@/components/portal/portal";
 import { SiteChrome } from "@/components/site-chrome/site-chrome";
-import { setBed, startSound } from "@/lib/sound";
 import styles from "./site-shell.module.css";
 
 type Panel = "profile" | "newsletter" | null;
@@ -16,11 +15,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const [booting, setBooting] = useState(true);
   const [loaderExiting, setLoaderExiting] = useState(false);
 
-  useEffect(() => startSound(), []);
-
   useEffect(() => {
     document.documentElement.dataset.panel = panel ?? "";
-    setBed(panel === "profile");
   }, [panel]);
 
   useEffect(() => {

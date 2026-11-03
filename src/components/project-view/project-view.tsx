@@ -5,7 +5,6 @@ import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Project } from "@/data/projects";
 import { site } from "@/data/site";
 import { flight } from "@/lib/flight";
-import { sound } from "@/lib/sound";
 import { CaseBody, CaseHero } from "./case-body";
 import styles from "./project-view.module.css";
 
@@ -239,7 +238,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   const close = async () => {
     if (navigating.current) return;
     navigating.current = true;
-    sound.close();
     const sheet = sheetRef.current;
     if (sheet && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       sheet.style.pointerEvents = "none";
@@ -272,7 +270,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     (slug: string, direction: PreviewSide) => {
       if (navigating.current) return;
       navigating.current = true;
-      sound.open();
       arrivalGeneration += 1;
       neighborArrival = true;
       document.documentElement.dataset.caseArrived = "true";

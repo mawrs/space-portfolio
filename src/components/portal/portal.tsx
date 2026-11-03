@@ -4,7 +4,6 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { site } from "@/data/site";
 import { motion } from "@/data/tokens";
-import { sound } from "@/lib/sound";
 import styles from "./portal.module.css";
 
 type PortalProps = {
@@ -58,7 +57,6 @@ export function Portal({ kind, onClose }: PortalProps) {
                     href={social.href}
                     target={social.href.startsWith("mailto:") ? undefined : "_blank"}
                     rel="noreferrer"
-                    onPointerEnter={() => sound.hover()}
                   >
                     {social.label}
                   </a>

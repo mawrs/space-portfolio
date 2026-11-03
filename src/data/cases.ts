@@ -7,7 +7,7 @@ export type CaseBlock =
   | { type: "media"; index: number; caption?: string };
 
 export type CaseSection = {
-  id: "overview" | "background" | "approach" | "solution" | "outcomes" | "reflection";
+  id: "overview" | "background" | "approach" | "solution" | "outcomes" | "reflection" | "close" | "end" | "follow" | "last";
   label: string;
   blocks: CaseBlock[];
 };
@@ -754,7 +754,7 @@ export const cases: Record<string, CaseStudy> = {
     ),
   },
   "southeast-bank": {
-    title: "Fixed meant two things",
+    title: "Understanding fixed rates",
     headline: "Student loan rates",
     meta: "ELFI",
     role: "Sole designer",
@@ -765,15 +765,19 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "ELFI is the student-loan division of SouthEast Bank. It offers private student loans and refinancing. Students were getting through pre-qualification and then leaving. About 40% continued from pre-qualification into the application.",
+          text: "ELFI offered private student loans and student loan refinancing.",
         },
         {
           type: "p",
-          text: "The Head of Product thought the rates were the reason, and that the rate view was where to look. Repayment plans, fixed and variable tables, and APR were all on that screen, and the total of the loan was behind a click. I was the only designer. I owned the research and the design, with a PM, the Head of Product, engineers, underwriters, and business analysts keeping the explanation compliant and on brand.",
+          text: "As the sole designer, I owned all-things research and design.",
         },
         {
           type: "p",
-          text: "I spent five months on one question. If a student could tell those pieces apart, would they have enough confidence to continue? The drop was early. Students finished a short pre-qualification and then did not start the application. The rate screen was the suspect, and it was also a pile of words that meant two things at once.",
+          text: "New projects typically started with a phone call with the CTO or an email with the Head of Product, describing their pain points and anyone I could talk to in order to kick off the new initiative.",
+        },
+        {
+          type: "p",
+          text: "For this particular project, a stakeholder flagged low pre-qualification rates on our student loan application. The question I could investigate became, “Did students understand the options well enough to continue?”",
         },
         {
           type: "ul",
@@ -784,103 +788,281 @@ export const cases: Record<string, CaseStudy> = {
             "Outcome: pre-qualification to signup moved from 40% to 67%.",
           ],
         },
-      ],
-      [
-        { type: "h3", text: "A rate, and a short note" },
         {
-          type: "p",
-          text: "Work at the bank usually started as a short note, or a call from the CTO naming the problem and who might know more. This one came from the Head of Product, just after I had moved onto ELFI from another initiative. Pre-qualification to application start was about 40%. Application start to submit was about 70%, and that second figure only counted a finished submit, so a co-signer who left never showed up in it. A pre-qualification took two to five minutes.",
-        },
-        {
-          type: "p",
-          text: "His note said the gap was likely the rates students were shown, and that the rate view could help. I wrote back that I would start there.",
-        },
-        { type: "h3", text: "Fixed meant two different things" },
-        {
-          type: "p",
-          text: "I tested the application we already had. The instruction was plain: take out a loan with ELFI. The sessions ran in a demo that replicated the rate terms. I was looking for the moment they dropped. What showed up was that they could not read the decision.",
-        },
-        {
-          type: "p",
-          text: "The repayment options were not clearly labeled. The fixed and variable tables were hard to follow. APR was not a term everyone knew. The total they would owe was hidden behind a click. Fixed was the name of a repayment plan and the name of a rate, and students were treating them as the same word. The questions were the same from session to session. What are these tabs for? What is fixed, and what is variable? What is APR? How much would I owe? The sessions ran on a demo of the terms we already showed. The task was ordinary, take out a loan, and the stall was always a word.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "40%", label: "Pre-qualification to application start, when the work began." },
-            { value: "70%", label: "Application start to submit. A co-signer who left never counted." },
-            { value: "2–5 min", label: "How long a pre-qualification took." },
-          ],
+          type: "media",
+          index: 3,
+          caption: "Example of an email from the Head of Product. Only 40% continue from the pre-qualification stage, which became my new initiative to improve.",
         },
       ],
       [
         {
           type: "p",
-          text: "The hypothesis was narrow. Clear the four points of confusion, and see whether a student has enough confidence to keep going. The thing to change was the rate view.",
-        },
-        { type: "h3", text: "Versions in the product" },
-        {
-          type: "p",
-          text: "I kept the work visible while it was still moving. A highlight reel from the interviews, a mid-week note to whoever needed it, and a Loom when there was a flow to watch.",
+          text: "To kick off this new initiative, I ran a few usability tests on the existing application to understand where students were dropping off, and why.",
         },
         {
           type: "p",
-          text: "To try alternatives I cloned the demo into Cursor and worked from the interview notes. The versions lived in the product, as V1 through V4 in the top navigation, so there was one place to switch between them. I described the version I wanted, then let it propose others, and cut the ones that would not hold up. A pass sometimes produced eight. Four stayed. Each one was aimed at the same ideas: repayment plans, interest types, APR, and the total.",
+          text: "I didn’t know exactly what I was looking for, so the instructions were straightforward. I told students to “take out a loan using ELFI.” We used a demo environment that replicated our rate terms.",
         },
         {
           type: "p",
-          text: "The team got one link and clicked through. We talked about what we would keep. The version that held up split repayment plans and interest types into two steps. One theme on a screen, the related numbers beside each other. That was already how the application was built. No single screen had to explain the whole loan. Four versions stayed because each one was a theory about the same confusion. The total in the open. APR named. The plan separated from the rate. The team picked by clicking, not by reading a deck.",
+          text: "What I found were much broader comprehension problems, and those were what led to the drop-off.",
         },
-        { type: "h3", text: "Then the file the engineers inspect" },
         {
           type: "p",
-          text: "Engineers still read Figma. I gave ChatGPT the repo and the Vercel build so it could turn the screens into frames, with auto layout and names, and I rebuilt those frames in the design system. Paint by numbers. If they had been fine with me polishing in the repo and opening the pull requests, we would have stayed out of Figma.",
+          text: "The repayment options up top were not clearly labeled. The fixed and variable rate tables were not easy to understand. APR was not universally understood. The grand total of a loan was hidden behind a click.",
+        },
+        {
+          type: "p",
+          text: "The question for me then became, “Could fixing these points of confusion help students understand such a critical decision, and have enough confidence to continue?”",
+        },
+        {
+          type: "media",
+          index: 4,
+          caption: "The rate screen from the tests, marked where students got stuck.",
         },
       ],
       [
         {
           type: "p",
-          text: "What shipped is a combination of a couple of the versions.",
+          text: "Took those findings and created a highlight reel based on the feedback I received.",
+        },
+        {
+          type: "p",
+          text: "As part of my design process, something I do very frequently is provide updates to whoever needed them:",
         },
         {
           type: "ul",
           items: [
-            "Repayment plans and interest rates on separate pages.",
-            "The grand total in the table, in the open.",
-            "The existing tooltip rewritten so it said more.",
-            "A tooltip for what APR means.",
-            "The summary along the bottom rewritten as a sentence.",
+            "I shared highlight reels from interviews.",
+            "I provided mid-week updates via email to stakeholders.",
+            "And shared demos via Loom based on whatever updates they might want to see.",
           ],
         },
         {
-          type: "p",
-          text: "There was pushback on the second screen. The rate a student sees depends on the repayment plan they already chose, and the worry was that they would forget the plan by the time they chose the rate. The summary at the top of that screen is the answer to that note. It is a sentence, not a second table. The rate they are about to pick only means something next to the plan they already chose.",
+          type: "media",
+          index: 5,
+          caption: "A highlight reel from the usability tests, with the notes on what students said about the rates.",
+        },
+        {
+          type: "media",
+          index: 6,
+          caption: "A mid-week update to Tom, the CTO, and his reply.",
         },
       ],
       [
         {
           type: "p",
-          text: "After launch, pre-qualification to signup moved from 40% to 67%. I cannot isolate which change did it. The screens shipped together. The path was clearer, and more students continued. I would not claim a single tooltip did it. The plan and the rate stopped sharing a word, the total came out of hiding, and more students went on.",
+          text: "This is where my design process gets a little unorthodox, living in this AI world where processes in general have been turned on their head.",
         },
         {
-          type: "stats",
+          type: "p",
+          text: "My process was as follows:",
+        },
+        {
+          type: "ul",
           items: [
-            { value: "40% → 67%", label: "Pre-qualification to signup after launch." },
-            { value: "27 points", label: "The screens shipped together, so the lift is not pinned to one of them." },
-            { value: "2 steps", label: "Repayment plans, then interest rates, with the earlier choice still on screen." },
+            "My first step was to clone our demo environment and bring it down to Cursor (if I don't have it already).",
+            "I would then begin chatting with Cursor about the feedback I received from my interviews.",
+            "I would then create a space somewhere in the UI for the stakeholders to easily toggle between my design explorations.",
           ],
+        },
+        {
+          type: "p",
+          text: "I like having this within the UI to have one central area to look at.",
+        },
+        {
+          type: "p",
+          text: "In this particular case, I added the versions to the top nav as \"V1\" \"V2\" \"V3\" \"V4\".",
+        },
+        {
+          type: "media",
+          index: 7,
+          caption: "V1 through V4 lived in the product. What shipped was a combination of a couple of them.",
         },
       ],
       [
         {
           type: "p",
-          text: "A rate is a hard thing to agree to, and the idea of one does not expire when the application does. A student who can read fixed next to variable is in a better position the next time that choice shows up, on a business loan or a mortgage.",
+          text: "Once I have a place in the UI to showcase my design iterations, I'll:",
+        },
+        {
+          type: "ul",
+          items: [
+            "Articulate to Cursor what it is I'm thinking of building for each version.",
+            "Once I've exhausted ideas that I have, I'll let Cursor take the wheel for a minute to see what it can come up with.",
+            "Sometimes I'll end up with 8 different versions, but the chances of having 8 feasible versions is very low.",
+            "So I'll eliminate a few towards the end of the exploration process.",
+          ],
         },
         {
           type: "p",
-          text: "Success, for me, was a student knowing what they were signing. I took out loans I did not fully understand. Confidence comes from understanding the decision. The conversion rate was how we noticed. The work was a chance to make the next person's fog smaller, and the bank could see that as a conversion rate.",
+          text: "This approach let me explore a wide array of designs that I have thought of and have not thought of, which is fantastic.",
+        },
+        {
+          type: "p",
+          text: "As a result of this process, I'm able to send one link to my teammates and they can click around the various versions. We'll then get together and discuss what they liked and did not like about them.",
+        },
+        {
+          type: "p",
+          text: "The 4 iterations were all focused on making it easier to understand those 4 key ideas:",
+        },
+        {
+          type: "ul",
+          items: ["Repayment plans", "Interest types", "APR", "Total amounts"],
+        },
+        {
+          type: "media",
+          index: 8,
+          caption: "Repayment plans, each one named and explained, before a student picks a rate.",
+        },
+        {
+          type: "media",
+          index: 9,
+          caption: "The grand total in the table, in the open.",
         },
       ],
-    ),
+      [
+        {
+          type: "p",
+          text: "One iteration we liked as a group was breaking up the Repayment Plan and the Interest Types into two separate steps.",
+        },
+        {
+          type: "p",
+          text: "It played well into the core user experience we offered, which was breaking up the content thematically so that no single screen is overwhelming, but all related information is next to each other.",
+        },
+        {
+          type: "media",
+          index: 10,
+          caption: "Part 1. The rate, with a note that the repayment plan comes next.",
+        },
+        {
+          type: "media",
+          index: 11,
+          caption: "Part 2. The repayment plan, with the rate they already chose still on screen.",
+        },
+      ],
+    ).map((section) => {
+      if (section.id === "overview") return { ...section, label: "Business goals without a cause" };
+      if (section.id === "background") return { ...section, label: "Fixed meant two different things" };
+      if (section.id === "approach") return { ...section, label: "Continually getting buy-in" };
+      if (section.id === "solution") return { ...section, label: "Using AI to explore alternatives" };
+      if (section.id === "outcomes") return { ...section, label: "Iterating on what matters" };
+      if (section.id === "reflection") return { ...section, label: "Considering our ecosystem to finalize the design" };
+      return section;
+    }).concat({
+      id: "close",
+      label: "Using ChatGPT as my junior designer",
+      blocks: [
+        {
+          type: "p",
+          text: "My final step in this new AI design process is to feed ChatGPT the GitHub repo and the Vercel build.",
+        },
+        {
+          type: "p",
+          text: "I give ChatGPT access to the repo so it can detect the screens and turn them into Figma designs that are entirely editable. GPT is also really good at applying Auto Layout and naming each frame.",
+        },
+        {
+          type: "p",
+          text: "Once the GPT designs are in my Figma file, I reference those designs to rebuild them using our proper design system. I call this the “Paint by Numbers” approach.",
+        },
+        {
+          type: "p",
+          text: "I’m only doing this because our engineers still like to inspect designs in Figma and have that source of truth. If our engineers were okay with me polishing in Cursor and pushing the PRs myself, I don’t even think we’d be in Figma nearly as often.",
+        },
+        {
+          type: "media",
+          index: 12,
+          caption: "The thread with ChatGPT. Keep pasting the screens into Figma, including the components.",
+        },
+        {
+          type: "media",
+          index: 13,
+          caption: "The file after that pass. Users, email, configuration, authentication, and the component set.",
+        },
+      ],
+    },
+    {
+      id: "end",
+      label: "End result with some polish",
+      blocks: [
+        {
+          type: "p",
+          text: "What we ended up shipping was a version that combines a few aspects of a couple different versions.",
+        },
+        {
+          type: "ul",
+          items: [
+            "We kept the separate pages for repayment and interest rates.",
+            "We added the grand total directly in the table.",
+            "We got a bit more descriptive with the existing tooltip.",
+            "We added a tooltip to explain what APR was.",
+            "We turned the summary along the bottom into a sentence that was much easier to read.",
+          ],
+        },
+        {
+          type: "p",
+          text: "There was initial pushback on the second screen. The concern was that students might forget their rate selection, which is significantly affected by the repayment plan they chose.",
+        },
+        {
+          type: "p",
+          text: "So we added a summary of their selection to the top of the next screen.",
+        },
+        {
+          type: "media",
+          index: 14,
+          caption: "What shipped. The grand total sits in the table, and the summary along the bottom is a sentence.",
+        },
+        {
+          type: "media",
+          index: 15,
+          caption: "The next screen. The rate they already chose stays at the top, next to the repayment plan.",
+        },
+      ],
+    },
+    {
+      id: "follow",
+      label: "Solid numbers reported after launch",
+      blocks: [
+        {
+          type: "p",
+          text: "We kept a close eye on the numbers after launch, and what we observed was a 27% increase in conversion from the Pre-Qualification to Signup.",
+        },
+        {
+          type: "p",
+          text: "One nit-picky downside of these results is that I can't isolate the exact design contribution that impacted the %.",
+        },
+        {
+          type: "p",
+          text: "I just know the design changes as a whole created a much clearer experience that results in a 27% conversion increase.",
+        },
+        {
+          type: "media",
+          index: 16,
+          caption: "Pre-qualification to signup after launch. The lift was 27%, across the changes as a whole.",
+        },
+      ],
+    },
+    {
+      id: "last",
+      label: "Key takeaways",
+      blocks: [
+        {
+          type: "p",
+          text: "This is a project that I’m very proud of, because we made a very difficult life decision more understandable.",
+        },
+        {
+          type: "p",
+          text: "And with something like rates, the concept of rates is not going anywhere. If we were able to educate students about rates, they will probably make better financial decisions in the future when taking out a business loan or a mortgage.",
+        },
+        {
+          type: "p",
+          text: "If I really think about this project, success to me wasn’t getting every student to apply for an ELFI loan. Success to me was knowing that these students understand what they are signing up for.",
+        },
+        {
+          type: "p",
+          text: "Having been a student who didn’t fully understand my own loans, this felt like a very meaningful experience to contribute to.",
+        },
+      ],
+    }),
   },
 };

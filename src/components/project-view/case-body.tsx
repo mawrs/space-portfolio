@@ -23,12 +23,27 @@ function contentGroups(blocks: CaseBlock[]) {
 
 export function CaseHero({ project, preview = false }: { project: Project; preview?: boolean }) {
   const study = project.study;
+  const facts = [
+    { label: "Role", value: study.role },
+    { label: "Teams", value: study.team.join(", ") },
+    { label: "Timeline", value: study.timeline },
+    { label: "Skills", value: study.skills.join(", ") },
+  ];
 
   return (
     <header className={styles.hero}>
       <div className={styles.heroCopy}>
         <p className={styles.meta}>{study.meta}</p>
         <h1 id={preview ? undefined : `project-${project.slug}-title`}>{study.title}</h1>
+        {preview ? null : (
+          <ul className={styles.heroFacts}>
+            {facts.map((item) => (
+              <li key={item.label}>
+                <span className={styles.factLabel}>{item.label}:</span> {item.value}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
       <figure className={styles.sizzle}>
         <div
@@ -58,12 +73,6 @@ function visibleMedia(project: Project, blocks: CaseBlock[]) {
 
 export function CaseBody({ project }: { project: Project }) {
   const study = project.study;
-  const overviewFacts = [
-    { label: "Role", value: study.role },
-    { label: "Teams", value: study.team.join(", ") },
-    { label: "Timeline", value: study.timeline },
-    { label: "Skills", value: study.skills.join(", ") },
-  ];
 
   return (
     <div key={project.slug} className={styles.case}>
@@ -98,17 +107,6 @@ export function CaseBody({ project }: { project: Project }) {
                 {stats.map((block, index) => (
                   <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
                 ))}
-                {section.id === "overview" ? (
-                  <div className={styles.blocks}>
-                    <ul>
-                      {overviewFacts.map((item) => (
-                        <li key={item.label}>
-                          <span className={styles.factLabel}>{item.label}:</span> {item.value}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ) : null}
               </div>
               <div className={styles.slideMedia}>
                 {media.length > 0 ? (

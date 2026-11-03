@@ -92,6 +92,7 @@
 .hole .copy {
   width: auto;
   max-width: none;
+  padding: var(--spacing-xl) 14%;
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
 }

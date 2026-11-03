@@ -2,7 +2,7 @@
   pointer-events: none;
 }
 
-.onSheet .row > :not(.sound) {
+.onSheet .row > :not(.ai) {
   visibility: hidden;
   opacity: var(--opacity-hidden);
 }

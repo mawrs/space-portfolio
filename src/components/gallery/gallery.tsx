@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { CSSProperties, MouseEvent, useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
 import { beginFlight, galleryMotion, snapshot } from "@/lib/flight";
-import { sound } from "@/lib/sound";
 import { readRibbon } from "@/lib/ribbon";
 import { clearNeighborArrival } from "@/components/project-view/project-view";
 import styles from "./gallery.module.css";
@@ -213,7 +212,6 @@ export function Gallery() {
     if (moved.current || document.documentElement.dataset.panel) return;
     const article = event.currentTarget.closest<HTMLElement>("[data-gl='card']");
     if (!article) return;
-    sound.open();
     delete document.documentElement.dataset.caseArrived;
     clearNeighborArrival();
     beginFlight(slug, article.getBoundingClientRect(), snapshot(article));
@@ -238,7 +236,6 @@ export function Gallery() {
               href={`/projects/${project.slug}`}
               draggable={false}
               onDragStart={(event) => event.preventDefault()}
-              onPointerEnter={() => sound.focus()}
               onClick={(event) => open(event, project.slug)}
             >
               {/* The plane samples this element; next/image would wrap it. */}

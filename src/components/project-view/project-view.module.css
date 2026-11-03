@@ -95,9 +95,23 @@
   font-size: clamp(56px, 18vw, 84px);
   font-weight: var(--font-weight-normal);
   line-height: 0.86;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.00em;
   text-transform: uppercase;
   text-wrap: balance;
+}
+
+.heroFacts {
+  display: grid;
+  gap: var(--spacing-xs);
+  max-width: 68rem;
+  margin-top: var(--spacing-xl);
+  padding-left: 1.6rem;
+  color: var(--text-white);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  font-weight: 300;
+  line-height: var(--line-height-body);
+  letter-spacing: var(--tracking-body);
 }
 
 .article {
