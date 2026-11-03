@@ -1,37 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import {
-  CSSProperties,
-  MouseEvent as ReactMouseEvent,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Project } from "@/data/projects";
 import { site } from "@/data/site";
 import { flight } from "@/lib/flight";
 import { sound } from "@/lib/sound";
-import { CaseBody } from "./case-body";
+import { CaseBody, CaseHero } from "./case-body";
 import styles from "./project-view.module.css";
 
 type ProjectViewProps = {
   project: Project;
   previous: Project;
   next: Project;
-};
-
-type CaseDragState = {
-  startX: number;
-  startY: number;
-  lastX: number;
-  lastAt: number;
-  offset: number;
-  velocity: number;
-  pointerId: number;
-  axis: "pending" | "horizontal";
 };
 
 let neighborArrival = false;
@@ -64,11 +45,9 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   const progressRef = useRef<HTMLDivElement>(null);
   const sheetRef = useRef<HTMLElement>(null);
   const animationRef = useRef<Animation | null>(null);
-  const dragRef = useRef<CaseDragState | null>(null);
   const moveRef = useRef<(side: PreviewSide) => void>(() => undefined);
   const navigating = useRef(false);
   const arrival = useRef({ slug: "", instant: false });
-  const [active, setActive] = useState<string>(project.study.sections[0]?.id ?? "overview");
 
   const fromNeighbor =
     neighborArrival ||
@@ -206,21 +185,19 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const progress = progressRef.current;
     if (!scroller || !progress) return;
     scroller.scrollTop = 0;
-    const ids = project.study.sections.map((section) => section.id);
     const sync = () => {
-      const range = Math.max(scroller.scrollHeight - scroller.clientHeight, 0);
-      const value = range > 0 ? Math.min(1, Math.max(0, scroller.scrollTop / range)) : 1;
+      const section = scroller.querySelector<HTMLElement>("[data-section]");
+      const start = section
+        ? section.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop
+        : scroller.scrollHeight;
+      const range = Math.max(scroller.scrollHeight - scroller.clientHeight - start, 0);
+      const traveled = Math.max(0, scroller.scrollTop - start);
+      const value = range > 0 ? Math.min(1, traveled / range) : traveled > 0 ? 1 : 0;
+      const visible = scroller.scrollTop >= start - 1;
       progress.style.setProperty("--project-progress", String(value));
       progress.setAttribute("aria-valuenow", String(Math.round(value * 100)));
-      const line = scroller.getBoundingClientRect().top + 96;
-      const atEnd = range <= 0 || scroller.scrollTop >= range - 8;
-      let current = ids[0] ?? "";
-      for (const id of ids) {
-        const node = document.getElementById(`${project.slug}-${id}`);
-        if (node && node.getBoundingClientRect().top <= line) current = id;
-      }
-      if (atEnd && ids.length) current = ids[ids.length - 1];
-      setActive((previous) => (previous === current ? previous : current));
+      progress.toggleAttribute("data-visible", visible);
+      progress.setAttribute("aria-hidden", visible ? "false" : "true");
     };
     const observer = new ResizeObserver(sync);
     const handoff = () => handoffCaseMedia();
@@ -234,20 +211,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       scroller.removeEventListener("wheel", handoff);
       scroller.removeEventListener("scroll", sync);
     };
-  }, [project.slug, project.study.sections]);
-
-  const jump = useCallback((event: ReactMouseEvent<HTMLAnchorElement>, id: string) => {
-    event.preventDefault();
-    const scroller = scrollRef.current;
-    const node = document.getElementById(`${project.slug}-${id}`);
-    if (!scroller || !node) return;
-    const nav = scroller.querySelector<HTMLElement>("[data-section-nav]");
-    const cover = window.matchMedia("(max-width: 649px)").matches ? (nav?.getBoundingClientRect().height ?? 0) : 0;
-    const top = node.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - cover - 16;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    handoffCaseMedia();
-    scroller.scrollTo({ top, behavior: reduced ? "auto" : "smooth" });
-    setActive(id);
   }, [project.slug]);
 
   useEffect(() => {
@@ -343,8 +306,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const previousPreview = stage.querySelector<HTMLElement>("[data-neighbor='prev']");
     const nextPreview = stage.querySelector<HTMLElement>("[data-neighbor='next']");
     let settling = false;
-    let wheelOffset = 0;
-    let wheelTimer = 0;
 
     const baseRect = (offset: number): PreviewRect => {
       const rect = sheet.getBoundingClientRect();
@@ -360,70 +321,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     const layoutFor = (side: PreviewSide, offset: number) =>
       previewLayout(side, baseRect(offset));
 
-    const revealPreview = (offset: number) => {
-      const side: PreviewSide = offset < 0 ? "next" : "prev";
-      const active = side === "next" ? nextPreview : previousPreview;
-      const inactive = side === "next" ? previousPreview : nextPreview;
-      if (!active || !offset) return;
-      clearPreviewStyles(inactive);
-      const { rest, center } = layoutFor(side, offset);
-      const distance = Math.max(Math.abs(center.x - rest.x), 1);
-      const progress = Math.min(Math.abs(offset) / distance, 1);
-      setPreviewRect(active, mixPreviewRect(rest, center, progress), Math.min(1, Math.abs(offset) / 80));
-    };
-
-    const resetPreviews = (animate: boolean, offset = 0) => {
-      [previousPreview, nextPreview].forEach((node) => {
-        if (!node) return;
-        node.getAnimations().forEach((animation) => animation.cancel());
-        if (!animate || !node.style.width) {
-          clearPreviewStyles(node);
-          return;
-        }
-        const side = node.dataset.neighbor as PreviewSide;
-        const current = node.getBoundingClientRect();
-        const target = layoutFor(side, offset).rest;
-        const animation = node.animate(
-          [
-            previewKeyframe(current, readOpacity(node), readRadius(node)),
-            previewKeyframe(target, 0, target.radius),
-          ],
-          {
-            duration: 280,
-            easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-            fill: "forwards",
-          },
-        );
-        animation.onfinish = () => {
-          clearPreviewStyles(node);
-          animation.cancel();
-        };
-      });
-    };
-
-    const settleSheet = (offset: number) => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        sheet.style.transform = "";
-        return;
-      }
-      const animation = sheet.animate(
-        [
-          { transform: `translateX(${offset}px)` },
-          { transform: "translateX(0)" },
-        ],
-        {
-          duration: 280,
-          easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
-        },
-      );
-      animationRef.current = animation;
-      animation.onfinish = () => {
-        sheet.style.transform = "";
-        animation.cancel();
-        if (animationRef.current === animation) animationRef.current = null;
-      };
-    };
-
     const navigate = (offset: number, side: PreviewSide) => {
       const active = side === "next" ? nextPreview : previousPreview;
       const targetProject = side === "next" ? next : previous;
@@ -436,8 +333,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
         `/projects/${targetProject.slug}`,
       );
       document.title = `${targetProject.study.headline} — ${site.name}`;
-      window.clearTimeout(wheelTimer);
-      stage.removeAttribute("data-dragging");
       stage.dataset.settling = "";
       const { rest, center } = layoutFor(side, offset);
       if (!active.style.width) setPreviewRect(active, rest, 0);
@@ -449,7 +344,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
 
       const current = active.getBoundingClientRect();
       const currentOpacity = readOpacity(active);
-      const distance = Math.max(Math.abs(center.x - rest.x), 1);
       const destinationOffset =
         side === "next"
           ? -(center.x + center.width + 1)
@@ -493,134 +387,6 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       });
     };
 
-    const stop = (event: PointerEvent | null, shouldNavigate: boolean) => {
-      const current = dragRef.current;
-      if (!current || (event && event.pointerId !== current.pointerId)) return;
-      dragRef.current = null;
-      stage.removeAttribute("data-dragging");
-      if (stage.hasPointerCapture(current.pointerId)) {
-        stage.releasePointerCapture(current.pointerId);
-      }
-      if (current.axis !== "horizontal") {
-        resetPreviews(false);
-        return;
-      }
-      const elapsed = event ? event.timeStamp - current.lastAt : 0;
-      const velocity = elapsed > 100 ? 0 : current.velocity;
-      const projected = current.offset + velocity * 160;
-      const threshold = Math.min(sheet.clientWidth * 0.2, 220);
-      if (shouldNavigate && Math.abs(projected) >= threshold) {
-        const side: PreviewSide = projected < 0 ? "next" : "prev";
-        navigate(current.offset, side);
-        return;
-      }
-      resetPreviews(true, current.offset);
-      settleSheet(current.offset);
-    };
-
-    const down = (event: PointerEvent) => {
-      if (
-        event.button !== 0 ||
-        navigating.current ||
-        settling ||
-        document.documentElement.dataset.panel
-      ) {
-        return;
-      }
-      if (dragRef.current) return;
-      const target = event.target instanceof Element ? event.target : null;
-      if (target?.closest("a, button")) return;
-      handoffCaseMedia();
-      dragRef.current = {
-        startX: event.clientX,
-        startY: event.clientY,
-        lastX: event.clientX,
-        lastAt: event.timeStamp,
-        offset: 0,
-        velocity: 0,
-        pointerId: event.pointerId,
-        axis: "pending",
-      };
-    };
-
-    const move = (event: PointerEvent) => {
-      const current = dragRef.current;
-      if (!current || current.pointerId !== event.pointerId) return;
-      if (event.pointerType === "mouse" && (event.buttons & 1) === 0) {
-        stop(null, false);
-        return;
-      }
-      const deltaX = event.clientX - current.startX;
-      const deltaY = event.clientY - current.startY;
-      if (current.axis === "pending") {
-        if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) <= 10) return;
-        if (Math.abs(deltaX) <= Math.abs(deltaY)) {
-          dragRef.current = null;
-          return;
-        }
-        current.axis = "horizontal";
-        animationRef.current?.cancel();
-        animationRef.current = null;
-        sheet.style.opacity = "1";
-        sheet.style.clipPath = "";
-        stage.dataset.dragging = "";
-        stage.setPointerCapture(event.pointerId);
-      }
-      event.preventDefault();
-      const elapsed = Math.max(event.timeStamp - current.lastAt, 1);
-      const velocity = (event.clientX - current.lastX) / elapsed;
-      current.velocity = current.velocity * 0.65 + velocity * 0.35;
-      current.lastX = event.clientX;
-      current.lastAt = event.timeStamp;
-      const side: PreviewSide = deltaX < 0 ? "next" : "prev";
-      const { rest, center } = layoutFor(side, 0);
-      const limit = Math.max(Math.abs(center.x - rest.x), 1);
-      current.offset = Math.max(-limit, Math.min(limit, deltaX));
-      sheet.style.transform = `translate3d(${current.offset}px, 0, 0)`;
-      revealPreview(current.offset);
-    };
-
-    const wheel = (event: WheelEvent) => {
-      if (
-        navigating.current ||
-        settling ||
-        document.documentElement.dataset.panel ||
-        Math.abs(event.deltaX) <= Math.abs(event.deltaY) ||
-        Math.abs(event.deltaX) < 2
-      ) {
-        return;
-      }
-      const candidate = wheelOffset - event.deltaX;
-      const side: PreviewSide = candidate < 0 ? "next" : "prev";
-      event.preventDefault();
-      handoffCaseMedia();
-      if (!wheelOffset) {
-        animationRef.current?.cancel();
-        animationRef.current = null;
-        sheet.style.opacity = "1";
-        sheet.style.clipPath = "";
-        stage.dataset.dragging = "";
-      }
-      const { rest, center } = layoutFor(side, wheelOffset);
-      const limit = Math.max(Math.abs(center.x - rest.x), 1);
-      wheelOffset = Math.max(-limit, Math.min(limit, candidate));
-      sheet.style.transform = `translate3d(${wheelOffset}px, 0, 0)`;
-      revealPreview(wheelOffset);
-      window.clearTimeout(wheelTimer);
-      wheelTimer = window.setTimeout(() => {
-        stage.removeAttribute("data-dragging");
-        const offset = wheelOffset;
-        wheelOffset = 0;
-        const threshold = Math.min(sheet.clientWidth * 0.2, 220);
-        if (Math.abs(offset) >= threshold) {
-          navigate(offset, offset < 0 ? "next" : "prev");
-          return;
-        }
-        resetPreviews(true, offset);
-        settleSheet(offset);
-      }, 100);
-    };
-
     const moveFromControl = (side: PreviewSide) => {
       if (navigating.current || settling) return;
       handoffCaseMedia();
@@ -632,30 +398,13 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
     };
     moveRef.current = moveFromControl;
 
-    const up = (event: PointerEvent) => stop(event, true);
-    const cancel = () => stop(null, false);
-    stage.addEventListener("pointerdown", down);
-    stage.addEventListener("wheel", wheel, { passive: false });
-    window.addEventListener("pointermove", move, { passive: false });
-    window.addEventListener("pointerup", up);
-    window.addEventListener("pointercancel", cancel);
-    window.addEventListener("blur", cancel);
     return () => {
       settling = false;
-      window.clearTimeout(wheelTimer);
-      stage.removeEventListener("pointerdown", down);
-      stage.removeEventListener("wheel", wheel);
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerup", up);
-      window.removeEventListener("pointercancel", cancel);
-      window.removeEventListener("blur", cancel);
-      dragRef.current = null;
       moveRef.current = () => undefined;
-      stage.removeAttribute("data-dragging");
       stage.removeAttribute("data-settling");
-      resetPreviews(false);
+      [previousPreview, nextPreview].forEach((node) => clearPreviewStyles(node));
     };
-  }, [go, next.slug, previous.slug, project.slug]);
+  }, [go, next, previous, project.slug]);
 
   return (
     <main ref={stageRef} className={styles.stage}>
@@ -669,20 +418,26 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
         aria-labelledby={`project-${project.slug}-title`}
       >
         <div ref={scrollRef} className={styles.scroller} data-project-scroll="">
-          <CaseBody project={project} active={active} onJump={jump} />
+          <CaseBody project={project} />
         </div>
         <button ref={closeRef} className={styles.close} type="button" onClick={close} aria-label="Close project">
           <span aria-hidden="true">×</span>
         </button>
         <div
           ref={progressRef}
-          className={styles.progress}
+          className={styles.readingBar}
           role="progressbar"
           aria-label="Case study progress"
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={0}
-        />
+          aria-hidden="true"
+        >
+          <p>
+            {project.title}: {project.study.title}
+          </p>
+          <div className={styles.progress} />
+        </div>
       </article>
       <Neighbor
         project={previous}
@@ -728,7 +483,6 @@ function Neighbor({
         <div className={styles.close}>
           <span>×</span>
         </div>
-        <div className={styles.progress} />
       </aside>
     </div>
   );
@@ -739,35 +493,19 @@ function CasePreview({ project }: { project: Project }) {
 
   return (
     <div className={`${styles.case} ${styles.previewCase}`}>
-      <nav className={`${styles.nav} ${styles.previewNav}`}>
-        {project.study.sections.map((section, index) => (
-          <span key={section.id} data-current={index === 0 ? "" : undefined}>
-            {section.label}
-          </span>
-        ))}
-      </nav>
+      <CaseHero project={project} preview />
       <article className={styles.article}>
-        <header className={styles.intro}>
-          <p className={styles.meta}>{project.study.meta}</p>
-          <h1>{project.study.title}</h1>
-          <figure className={styles.sizzle}>
-            <div
-              className={`${styles.frame} ${styles.previewFrame}`}
-              style={{ "--ratio": `${project.width} / ${project.height}` } as CSSProperties}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
-            </div>
-          </figure>
-        </header>
         {overview ? (
           <section className={styles.section}>
-            <h2>{overview.label}</h2>
-            <div className={styles.blocks}>
-              {overview.blocks.map((block, index) =>
-                block.type === "p" ? <p key={index}>{block.text}</p> : null,
-              )}
+            <div className={styles.slideCopy}>
+              <h2>{overview.label}</h2>
+              <div className={styles.blocks}>
+                {overview.blocks.map((block, index) =>
+                  block.type === "p" ? <p key={index}>{block.text}</p> : null,
+                )}
+              </div>
             </div>
+            <div className={styles.placeholder} />
           </section>
         ) : null}
       </article>
@@ -783,16 +521,6 @@ function previewLayout(side: PreviewSide, sheet: PreviewRect) {
     x: side === "next" ? sheet.x + sheet.width + gap : sheet.x - sheet.width - gap,
   };
   return { rest, center: sheet };
-}
-
-function mixPreviewRect(from: PreviewRect, to: PreviewRect, amount: number): PreviewRect {
-  return {
-    x: from.x + (to.x - from.x) * amount,
-    y: from.y + (to.y - from.y) * amount,
-    width: from.width + (to.width - from.width) * amount,
-    height: from.height + (to.height - from.height) * amount,
-    radius: from.radius + (to.radius - from.radius) * amount,
-  };
 }
 
 function setPreviewRect(node: HTMLElement, rect: PreviewRect, opacity: number) {
