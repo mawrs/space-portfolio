@@ -451,134 +451,286 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "TRUE-See makes clinical photos. Capture, share, analyze. The app lived inside one record, Altera, and the integration only went one way. I led the redesign that pulls it out, so a photo does not depend on that vendor.",
+          text: "TRUE-See is a healthtech startup building smarter tools for capturing, sharing, and analyzing clinical photos.",
         },
         {
           type: "p",
-          text: "We started in February 2025. It was a twelve-week remote project, research through QA. Ten weeks in, two left to code the screens. It has not launched. We are piloting in June, and what we know so far is from the prototype.",
-        },
-        {
-          type: "p",
-          text: "I was the only designer. In-house was the CEO, the CPO, and an onboarding specialist. With me, a PM, and an engineering team in India: two architects and four engineers.",
-        },
-        {
-          type: "p",
-          text: "A wound photo is a clinical record. The phone in a nurse's pocket was already good enough to take it. The product in front of them was not fast enough to be the place they did.",
-        },
-      ],
-      [
-        { type: "h3", text: "She had not added the patient in Altera" },
-        {
-          type: "p",
-          text: "A nurse had a new patient. The chart had not been updated, so TRUE-See could not see them. She took the photos on her iPhone and Airdropped them to the doctor. The doctor emailed them to herself to get them into the EHR. That was the workflow we were replacing.",
-        },
-        {
-          type: "p",
-          text: "Twenty-two hospitals and private practices in the Southeast. About 115 photos a day. 59% of people who opened the app took a photo. The integration was custom, not bidirectional, and not FHIR. One vendor, and only the patient data that vendor had already sent. It took three clicks just to reach the camera.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "22", label: "Hospitals and private practices in the Southeast." },
-            { value: "115", label: "Photos a day, on average." },
-            { value: "59%", label: "Of people who opened the app took a photo." },
-          ],
-        },
-        {
-          type: "media",
-          index: 1,
-          caption: "Three clicks to the camera. Home, the list, the patient, then the shot.",
-        },
-        { type: "h3", text: "Nurses take the photo. Doctors read it." },
-        {
-          type: "p",
-          text: "Eight interviews. The two founders, the onboarding specialist, and five physicians, fifteen to thirty minutes each. Nurses were the ones taking the photos. Doctors were looking at the images and the notes. When a doctor had to take the photo, they used their iPhone, Airdropped it to a specialist, and updated the chart back at the office. That lines up with the 59%. I am not sure if it is correlation or causation. It is a HIPAA problem either way.",
-        },
-        {
-          type: "p",
-          text: "Reshoots slowed the nurses down. Sharing in the moment mattered to the doctors. Analysis was an eyeball test. Nothing, including TRUE-See, could put two photos side by side. Altera was the partner that got the app into clinics, and the reason a patient added in TRUE-See never showed up in the chart. The nurse's workaround was the honest map of that limit.",
-        },
-      ],
-      [
-        {
-          type: "p",
-          text: "The goal was a phone-first photo that still lands in the chart, and an app that can sit next to any EHR, not the next custom integration.",
-        },
-        { type: "h3", text: "The camera first, then what you do with the photo" },
-        {
-          type: "p",
-          text: "I sketched from what already worked, and from what people asked for. Take the photo. Share it. The prototype put a camera on the global tab, so the shot does not start inside a chart. The sync was going to be bidirectional, which means a new patient can be added in the app and written back to the record.",
-        },
-        {
-          type: "p",
-          text: "Before the tests we still had open questions. Assign had to cover the patient and the wound type. We might not be able to show wound info in the camera until the session was saved. Nurses needed notes immediately. Share, with nothing attached to the photo, might not be useful.",
-        },
-        {
-          type: "p",
-          text: "Both architects already built in Bootstrap, so I designed in that kit, and prototyped in Cursor to find the gaps while handoff was still a conversation and not a document. The twelve weeks were remote, founders in one time zone and engineers in another. I demoed the prototype as it moved, including to people who were not users yet.",
-        },
-        {
-          type: "media",
-          index: 2,
-          caption: "The global camera. Take the photos, then assign, measure, note, and share.",
-        },
-        {
-          type: "p",
-          text: "We tested with three physicians in private practice. Shoot in a row, assign, search, analyze, share. Selecting photos to assign was the friction. Hashtags were the part people liked. A doctor who lectures at Duke said she would use them to group wounds before a talk. A real use. Not clear it matters to most people.",
-        },
-        {
-          type: "p",
-          text: "Selection became one click, on every image. You can no longer tap a photo to expand it. Speed, or visibility. Both are how this product earns trust, and for v1 it was not clear which one would win. Share was the other open question. The base was small, so I tested button variants one session at a time.",
-        },
-      ],
-      [
-        {
-          type: "p",
-          text: "In the mock, a physician opens the app, takes the photos, closes it, and assigns them when she is back at her office. That is the path the interviews described. Phone out, photos taken, gloves changed. The filing happens at a desk. The other half is what a doctor does once the photo exists: share it, and put it next to an older one.",
+          text: "The problem we were facing was that there was too much friction around our photo-capturing experience.",
         },
         {
           type: "ul",
           items: [
-            "A global camera, so the photo does not start in the chart.",
-            "Add a patient in the app, and it writes back to the record.",
-            "Share and analyze on the row. The patient page leads with the wound.",
-            "Another photo of an existing wound skips assignment.",
-            "A border when the frame is off, so the reshoot happens in the room.",
-            "Hashtags, kept for the lecture case, with the question of how widely they get used still open.",
-            "Side-by-side analysis, which the record could not do.",
+            "Getting to the camera took too long",
+            "Taking photos took too long",
+            "Managing those photos was counterintuitive",
           ],
+        },
+        {
+          type: "p",
+          text: "I led the end-to-end of this project, from the user research through the prototyping & development handoff.",
+        },
+        {
+          type: "p",
+          text: "There were 11 people on this project:",
+        },
+        {
+          type: "ul",
+          items: [
+            "2x founders (CEO & COO)",
+            "an onboarding specialist",
+            "a product designer (me)",
+            "a PM",
+            "6x engineers",
+          ],
+        },
+        { type: "media", index: 5 },
+      ],
+      [
+        {
+          type: "p",
+          text: "Just a bit more context around how the company operates.",
+        },
+        {
+          type: "p",
+          text: "A lot of the Electronic Health Record software doesn't come with built-in media modules.",
+        },
+        {
+          type: "p",
+          text: "Some of the bigger ones do. But for the most part, these smaller EHRs rely on specialty tools like TRUE-See to handle the photo capturing aspects of it.",
+        },
+        {
+          type: "p",
+          text: "Those photos that are taken on TRUE-See get sent to the EHR to complete the patient's chart.",
+        },
+        {
+          type: "media",
+          index: 1,
+          caption: "TRUE-See and Altera. Photos taken in the app are sent to the record to complete the chart.",
+        },
+      ],
+      [
+        {
+          type: "p",
+          text: "To kickoff this project, I interviewed 8 stakeholders & users to understand the purpose, opportunity, and challenges with the existing workflows.",
+        },
+        {
+          type: "p",
+          text: "There were several insights from our conversations.",
+        },
+        {
+          type: "p",
+          text: "The most revealing insights were around the photo-taking process.",
+        },
+        {
+          type: "p",
+          text: "And it turns out that some doctors end up just using their iPhone to take photos and they later Airdrop or email themselves the photos & upload them to the EHR manually.",
+        },
+        {
+          type: "p",
+          text: "This not only hurts our bottom line, but it's also a massive HIPAA violation.",
+        },
+        { type: "media", index: 2 },
+      ],
+      [
+        {
+          type: "p",
+          text: "Once I began mapping out the existing workflow, it became very clear why users were bypassing TRUE-See.",
+        },
+        {
+          type: "p",
+          text: "With this flow, you can see how long it takes to go from the health record, into the TRUE-See app, and then start taking pictures.",
+        },
+        {
+          type: "p",
+          text: "You can't really start taking photos until step 6.",
+        },
+        {
+          type: "p",
+          text: "To put it into a different context, that's three clicks before you can get into the camera.",
+        },
+        {
+          type: "p",
+          text: "If you're a physician going room to room and talking to 5 or 6 patients in rapid succession, those clicks add up.",
+        },
+        {
+          type: "p",
+          text: "Not to mention the fact that if a single patient has multiple wounds, you have to repeat the last 2 steps to add a separate wound and take new pictures of that wound.",
+        },
+        {
+          type: "p",
+          text: "It may only be a few seconds of work, but it takes a huge toll on their overall sentiment towards the application.",
+        },
+        {
+          type: "p",
+          text: "It becomes less trustworthy, less appealing, and less used.",
         },
         {
           type: "media",
           index: 3,
-          caption: "The list, before and after. Share and analyze sit on the row.",
+          caption: "Six steps before a photo. Sign in to the record, add the patient, then sign in to TRUE-See and open them before the camera is available.",
         },
         {
           type: "media",
-          index: 4,
-          caption: "The patient page leads with the wound. A missing type is flagged. Another photo of that wound skips assignment.",
+          index: 6,
+          caption: "Three clicks to the camera. Open TRUE-See, pick the patient, add the wound, then the shot. Another wound repeats the last two.",
         },
       ],
       [
         {
           type: "p",
-          text: "It has not launched. A few letters of intent came off the prototype demos. Adoption, core use, retention, performance, and conversion are in PostHog for the beta. The small UI changes are what make the photo faster to take, share, and look at. Private beta is the next read. The prototype already showed a faster capture. The metrics are waiting on real sessions: whether people open it, whether they use the camera and the share, and whether they come back.",
+          text: "TRUE-See already had a goal of becoming EHR-agnostic. But that was primarily for business reasons and to expand into new markets.",
         },
         {
-          type: "stats",
-          items: [
-            { value: "12 weeks", label: "Research through QA. Ten weeks in, two left to code the screens." },
-            { value: "3", label: "Physicians in private practice, on the moderated prototype tests." },
-            { value: "PostHog", label: "Adoption, use, retention, performance, and conversion, set before launch." },
-          ],
+          type: "p",
+          text: "I was originally brought on to the project to build the standalone app, which was going to be a replica of their existing app, with cosmetic upgrades and new APIs under the hood.",
+        },
+        {
+          type: "p",
+          text: "But through research we found major opportunities to overhaul the camera experience, and streamline that photo-taking process.",
+        },
+        {
+          type: "media",
+          index: 7,
+          caption: "Sign in and take the photo inside TRUE-See. The patient list, the wound, and the measurement sync both ways with the record.",
         },
       ],
       [
         {
           type: "p",
-          text: "I was the only designer on it. The part I cared about was getting the rest of the team to make design calls in critique, in the tests, and in QA. The product call I am still holding is the small one. One click to select a photo, and no way to open it. We put the speed in the prototype. We do not know yet which one clinicians will trust. The Duke lecture was a reminder that a feature can be loved for a reason you did not design. Hashtags stayed in. The open question is whether a clinic, not a lecture hall, will use them.",
+          text: "To understand what the photo-taking experience could potentially look like, I sketched out several screens for the camera UI.",
         },
+        {
+          type: "p",
+          text: "The first was for the action bar on the camera, which was the user interface for our camera experience.",
+        },
+        {
+          type: "p",
+          text: "I then sketched the Preview mode once a photo was taken.",
+        },
+        {
+          type: "p",
+          text: "Something not already in the existing application, but our migration to a standalone app afforded us some discovery in this direction.",
+        },
+        {
+          type: "p",
+          text: "And I sketched these green & red borders that depicted photo alignment.",
+        },
+        {
+          type: "p",
+          text: "Photo alignment was something already offered by TRUE-See, but in a very different visual language.",
+        },
+        { type: "media", index: 8 },
+        { type: "media", index: 9 },
+        { type: "media", index: 10 },
       ],
+    ).map((section) => {
+      if (section.id === "overview") return { ...section, label: "Capturing, sharing, and analysing photos" };
+      if (section.id === "background") return { ...section, label: "How we partner with EHR vendors" };
+      if (section.id === "approach") return { ...section, label: "Purpose, opportunity, and challenges" };
+      if (section.id === "solution") return { ...section, label: "Far too many steps" };
+      if (section.id === "outcomes") return { ...section, label: "The real opportunity" };
+      if (section.id === "reflection") return { ...section, label: "Three key components" };
+      return section;
+    }).concat(
+      {
+        id: "close",
+        label: "The job-to-be-done was clunky",
+        blocks: [
+          {
+            type: "p",
+            text: "On the old UI, you can see how empty the camera interface looked.",
+          },
+          {
+            type: "p",
+            text: "There was a little green square in the middle of the calibration slate. It would turn red if the photo was not aligned correctly.",
+          },
+          {
+            type: "p",
+            text: "The calibration slate in the middle is actually a separate value proposition of TRUE-Sees to provide more accurate wound observations. This was a constraint I had to work with, given that I wasn't going to remove one of the things that makes TRUE-See unique.",
+          },
+          {
+            type: "p",
+            text: "On the right, you can see some of the additions & changes we were proposing.",
+          },
+          {
+            type: "p",
+            text: "The photo previews on the bottom left invited users to take multiple images of multiple wounds, BEFORE ending the session. Something not possible before. This invited a lot of growth potential to one of our KPIs of having more photos taken daily.",
+          },
+          {
+            type: "p",
+            text: "Calibration states were also moved outside of the image frame, taking up the border & some of the top of the screen.",
+          },
+          {
+            type: "p",
+            text: "And the action bar remained fairly empty, only showing the Camera button and the End Session button.",
+          },
+          { type: "media", index: 11 },
+          { type: "media", index: 12 },
+        ],
+      },
+      {
+        id: "end",
+        label: "Introducing colored borders",
+        blocks: [
+          {
+            type: "p",
+            text: "These borders were my 3rd attempt at replacing the green & red squares with something different.",
+          },
+          {
+            type: "p",
+            text: "I felt like the old UI was not adding a ton of value for the end user, when their main goal was to take clinical photos.",
+          },
+          {
+            type: "p",
+            text: "I understood the purpose of the square & translated that to something a bit more visually apparent.",
+          },
+          {
+            type: "p",
+            text: "So I came up with these borders & alignment states that instructed them how fix a misaligned photo.",
+          },
+          { type: "media", index: 13 },
+          { type: "media", index: 14 },
+        ],
+      },
+      {
+        id: "follow",
+        label: "Significant improvements",
+        blocks: [
+          {
+            type: "p",
+            text: "Overall, the feedback from users has been overwhelmingly positive.",
+          },
+          {
+            type: "p",
+            text: "As a contractor on this project, I could argue that it's been a successful project already. I've gotten two project extensions as a result of my work.",
+          },
+          {
+            type: "p",
+            text: "This project was originally supposed to be a 1-month design sprint. And we are now on Month 3.",
+          },
+          {
+            type: "p",
+            text: "But I care about the metrics just as much as the qualitative feedback. So we're hoping to launch this new app in June of 2025 & begin tracking those numbers.",
+          },
+          {
+            type: "p",
+            text: "We've made some projections based on all of the qualitative feedback we received from tests.",
+          },
+          {
+            type: "p",
+            text: "And we believe we can triple our # of photos taken daily by bringing in a more streamlined photo-taking experience, and complimentary features like Photo Previews.",
+          },
+          {
+            type: "p",
+            text: "This flow would turn a 6-step process into a 2-step process.",
+          },
+          {
+            type: "p",
+            text: "And we project very conservatively that we can get at least 75% of users to take photos when they open the TRUE-See app.",
+          },
+          { type: "media", index: 15 },
+        ],
+      },
     ),
   },
   arcoscan: {

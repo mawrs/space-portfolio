@@ -206,28 +206,28 @@
         "caption": "From the patient list into the camera. Alignment, then assign, measure, note, and share on the photo just taken."
       },
       {
-        "src": "/projects/true-see/workflow.jpg",
-        "poster": "/projects/true-see/workflow.jpg",
-        "width": 1600,
-        "height": 676,
+        "src": "/projects/true-see/ts-2.png",
+        "poster": "/projects/true-see/ts-2.png",
+        "width": 1768,
+        "height": 542,
         "video": false,
-        "caption": "Three clicks to the camera. Home, the list, the patient, then the shot."
+        "caption": "TRUE-See and Altera. Photos taken in the app are sent to the record to complete the chart."
       },
       {
-        "src": "/projects/true-see/tau-midfi_1.png",
-        "poster": "/projects/true-see/tau-midfi_1.png",
-        "width": 2909,
-        "height": 1624,
+        "src": "/projects/true-see/ts-3.png",
+        "poster": "/projects/true-see/ts-3.png",
+        "width": 822,
+        "height": 667,
         "video": false,
-        "caption": "From the patient list into the camera, then assign, measure, note, and share on the photo just taken."
+        "caption": ""
       },
       {
-        "src": "/projects/true-see/tau-final_1.png",
-        "poster": "/projects/true-see/tau-final_1.png",
-        "width": 2220,
-        "height": 2234,
+        "src": "/projects/true-see/ts-4.png",
+        "poster": "/projects/true-see/ts-4.png",
+        "width": 1920,
+        "height": 797,
         "video": false,
-        "caption": "The list, before and after. Share and analyze sit on the row."
+        "caption": "Six steps before a photo. Sign in to the record, add the patient, then sign in to TRUE-See and open them before the camera is available."
       },
       {
         "src": "/projects/true-see/tau-final_2.png",
@@ -236,6 +236,94 @@
         "height": 2234,
         "video": false,
         "caption": "The patient page leads with the wound. A missing type is flagged. Another photo of that wound skips assignment."
+      },
+      {
+        "src": "/projects/true-see/ts-1.png",
+        "poster": "/projects/true-see/ts-1.png",
+        "width": 867,
+        "height": 856,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-4.1.png",
+        "poster": "/projects/true-see/ts-4.1.png",
+        "width": 1913,
+        "height": 778,
+        "video": false,
+        "caption": "Three clicks to the camera. Open TRUE-See, pick the patient, add the wound, then the shot. Another wound repeats the last two."
+      },
+      {
+        "src": "/projects/true-see/ts-5.png",
+        "poster": "/projects/true-see/ts-5.png",
+        "width": 1236,
+        "height": 1081,
+        "video": false,
+        "caption": "Sign in and take the photo inside TRUE-See. The patient list, the wound, and the measurement sync both ways with the record."
+      },
+      {
+        "src": "/projects/true-see/ts-6.png",
+        "poster": "/projects/true-see/ts-6.png",
+        "width": 1870,
+        "height": 1472,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-6.1.png",
+        "poster": "/projects/true-see/ts-6.1.png",
+        "width": 1741,
+        "height": 1434,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-6.2.png",
+        "poster": "/projects/true-see/ts-6.2.png",
+        "width": 1754,
+        "height": 1437,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-7.png",
+        "poster": "/projects/true-see/ts-7.png",
+        "width": 907,
+        "height": 587,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-7.1.png",
+        "poster": "/projects/true-see/ts-7.1.png",
+        "width": 1029,
+        "height": 586,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-8.png",
+        "poster": "/projects/true-see/ts-8.png",
+        "width": 1074,
+        "height": 485,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-8.1.png",
+        "poster": "/projects/true-see/ts-8.1.png",
+        "width": 655,
+        "height": 770,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/true-see/ts-9.png",
+        "poster": "/projects/true-see/ts-9.png",
+        "width": 1141,
+        "height": 560,
+        "video": false,
+        "caption": ""
       }
     ]
   },

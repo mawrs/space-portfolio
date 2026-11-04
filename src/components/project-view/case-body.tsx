@@ -84,26 +84,31 @@ export function CaseBody({ project }: { project: Project }) {
             (block) =>
               block.type !== "stats" &&
               block.type !== "media" &&
-              (section.id !== "overview" || block.type !== "ul"),
+              !(section.id === "overview" && block.type === "ul" && project.slug !== "true-see"),
           );
           const stats = section.blocks.filter((block) => block.type === "stats");
           const groups = contentGroups(blocks);
+          const hasCopy = groups.some((group) => group.items.length > 0);
 
           return (
             <section key={section.id} id={`${project.slug}-${section.id}`} className={styles.section} data-section="">
               <div className={styles.slideCopy}>
                 <h2>{section.label}</h2>
-                {groups.map((group, index) => (
-                  <Fragment key={`${section.id}-${index}`}>
-                    {group.items.length > 0 ? (
-                      <div className={styles.blocks}>
-                        {group.items.map((block, itemIndex) => (
-                          <Block key={`${section.id}-${index}-${itemIndex}`} block={block} project={project} />
-                        ))}
-                      </div>
-                    ) : null}
-                  </Fragment>
-                ))}
+                {hasCopy ? (
+                  groups.map((group, index) => (
+                    <Fragment key={`${section.id}-${index}`}>
+                      {group.items.length > 0 ? (
+                        <div className={styles.blocks}>
+                          {group.items.map((block, itemIndex) => (
+                            <Block key={`${section.id}-${index}-${itemIndex}`} block={block} project={project} />
+                          ))}
+                        </div>
+                      ) : null}
+                    </Fragment>
+                  ))
+                ) : (
+                  <div className={styles.blocks} />
+                )}
                 {stats.map((block, index) => (
                   <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
                 ))}
@@ -156,6 +161,7 @@ function Block({ block, project }: { block: CaseBlock; project: Project }) {
   }
   const item = project.media[block.index];
   if (!item || item.src === project.video || (!project.video && item.src === project.poster)) return null;
+  const caption = block.caption ?? item.caption;
   return (
     <figure className={styles.block}>
       <div
@@ -183,9 +189,11 @@ function Block({ block, project }: { block: CaseBlock; project: Project }) {
           <img src={item.src} alt="" crossOrigin="anonymous" draggable={false} />
         )}
       </div>
-      <figcaption>
-        <p>{block.caption ?? item.caption}</p>
-      </figcaption>
+      {caption ? (
+        <figcaption>
+          <p>{caption}</p>
+        </figcaption>
+      ) : null}
     </figure>
   );
 }
