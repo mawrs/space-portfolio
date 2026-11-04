@@ -1324,96 +1324,140 @@ export const cases: Record<string, CaseStudy> = {
         blocks: [
           {
             type: "p",
-            text: "This is a process note, not one product case study. It shows how I use AI tools to take an idea from research through a tested implementation.",
+            text: "I'm going to walk you through a realistic example of how I use AI in my design process. It's proven to be an effective way to start the conversation and get stakeholders to have an opinion, sooner rather than later.",
           },
           {
             type: "p",
-            text: "I built this workflow to reduce the time between a product question and a testable answer, while keeping research evidence and design-system quality in the loop. I own the workflow from framing the opportunity through research, prototyping, testing, and documenting the decision.",
+            text: "My process was as follows:",
           },
           {
             type: "p",
-            text: "Previously, validating a direction required a brief, several design rounds, and engineering handoff. Now I can put a realistic prototype in front of users earlier, then invest in polish once the direction is supported by evidence.",
+            text: "My first step was to clone our demo environment and bring it down to Cursor (if I don't have it already).",
           },
           {
             type: "p",
-            text: "I use the workflow with product and engineering partners to frame the question, review feasibility, and align on the final direction through Figma documentation and preview feedback.",
+            text: "I would then begin chatting with Cursor about the feedback I received from my interviews.",
           },
+          {
+            type: "p",
+            text: "I would then create a space somewhere in the UI for the stakeholders to easily toggle between my design explorations.",
+          },
+          {
+            type: "p",
+            text: "I like having this within the UI to have one central area to look at.",
+          },
+          {
+            type: "p",
+            text: 'In this particular case, I added the versions to the top nav as "V1", "V2", "V3", and "V4".',
+          },
+          { type: "media", index: 0 },
         ],
       },
       {
         id: "background",
-        label: "Research",
+        label: "Honing in on specific UI elements",
         blocks: [
           {
             type: "p",
-            text: "I use Claude to speed up research work. For competitor analysis, I use reusable skills to map the market around a new feature or product space.",
+            text: "Once I have a place in the UI to showcase my design iterations, I'll:",
+          },
+          {
+            type: "ul",
+            items: [
+              "Articulate to Cursor what it is I'm thinking of building for each version.",
+              "Once I've exhausted the ideas that I have, I'll let Cursor take the wheel for a minute to see what it can come up with.",
+              "Sometimes I'll end up with 8 different versions, but the chances of having 8 feasible versions are very low.",
+              "So I'll eliminate a few towards the end of the exploration process.",
+            ],
           },
           {
             type: "p",
-            text: "I also use Claude to draft discussion guides to prepare for user interviews.",
+            text: "This approach let me explore a wide array of designs that I have thought of and have not thought of, which is fantastic.",
           },
           {
             type: "p",
-            text: "For research synthesis, I use Peridot, a tool I built to find user-feedback evidence and retrieve the supporting clips.",
+            text: "As a result of this process, I'm able to send one link to my teammates and they can click around the various versions. We'll then get together and discuss what they liked and did not like about them.",
           },
-          { type: "media", index: 0, caption: "Analyzing the competitive landscape in Claude" },
-          { type: "media", index: 1, caption: "Pulling user insights & creating a highlight reel" },
+          {
+            type: "p",
+            text: "The 4 iterations were all focused on making it easier to understand those 4 key ideas:",
+          },
+          {
+            type: "ul",
+            items: ["Repayment Plans", "Interest Types", "APR", "Total Amounts"],
+          },
+          { type: "media", index: 1 },
+          { type: "media", index: 2 },
         ],
       },
       {
         id: "approach",
-        label: "Exploration",
+        label: "Refining the selected elements",
         blocks: [
           {
             type: "p",
-            text: "When I am testing a feature idea, I build a working version in Cursor. A concrete version makes the product tradeoffs easier to see than a description or wireframe alone.",
+            text: "One iteration we liked as a group was breaking up the Repayment Plan and the Interest Types into two separate steps.",
           },
           {
             type: "p",
-            text: "I prototype in code when I need to test behavior or feasibility. When the direction is less defined, I use the first build as a starting point in Figma Make and generate variations to compare a broader range of visual directions.",
+            text: "It played well into the core user experience we offered, which was breaking up the content thematically so that no single screen is overwhelming, but all related information is next to each other.",
           },
-          { type: "media", index: 2, caption: "Generating a new design in Cursor" },
-          { type: "media", index: 3, caption: "Creating design variations in Figma Make" },
+          { type: "media", index: 3 },
+          { type: "media", index: 4 },
         ],
       },
       {
         id: "solution",
-        label: "Refinement",
+        label: "Create Figma screens with ChatGPT",
         blocks: [
           {
             type: "p",
-            text: "Once I choose a direction, I specify the final design with the design system.",
+            text: "My final step in this new AI design process is actually to feed ChatGPT the GitHub repo and the Vercel build.",
           },
           {
             type: "p",
-            text: "Using Figma's MCP, I bring that design back into Cursor and refactor the prototype into components that match our production styles.",
+            text: "The reason I want to give ChatGPT access to view this repo is because it can detect the screens and turn those screens into Figma designs that are entirely editable. GPT is also really good at applying Auto Layout and naming each frame.",
           },
           {
             type: "p",
-            text: "I document the final design and the alternatives in Figma so the team can see what changed, why I chose the direction, and what we could revisit later.",
+            text: 'Once the GPT designs are in my Figma file, I then reference those designs to rebuild them using our proper design system. I call this the "Paint by Numbers" approach.',
           },
-          { type: "media", index: 4, caption: "Converting designs into code with the Figma MCP" },
-          { type: "media", index: 5, caption: "Documenting designs in Figma" },
+          {
+            type: "p",
+            text: "I'm only doing this because our engineers still like to inspect designs in Figma and have that source of truth. If our engineers were okay with me polishing in Cursor and pushing the PRs myself, I don't even think we'd be in Figma nearly as often.",
+          },
+          { type: "media", index: 5 },
+          { type: "media", index: 6 },
         ],
       },
       {
         id: "outcomes",
-        label: "User Testing",
+        label: "End with some polish",
         blocks: [
           {
             type: "p",
-            text: "After I open a pull request, I use Macroscope to review the code and flag potential issues.",
+            text: "What we ended up shipping was a version that combines a few aspects of a couple different versions.",
+          },
+          {
+            type: "ul",
+            items: [
+              "We kept the separate pages for Repayment and Interest Rates.",
+              "We added the Grand Total directly in the table.",
+              "We got a bit more descriptive with our existing tooltip.",
+              "We added an additional tooltip to explain what APR was.",
+              "We turned the summary at the bottom into a sentence that was much easier to read.",
+            ],
           },
           {
             type: "p",
-            text: "Each pull request has a Vercel Preview I can share with users. I use that feedback to iterate on the same working version.",
+            text: "There was initial pushback on the second screen because there was concern that students might forget their rate selection, which is significantly affected by the repayment plan they chose.",
           },
           {
             type: "p",
-            text: "I tested keeping a separate demo repository, but it created unnecessary maintenance because the design had to stay in sync in two places.",
+            text: "So we ended up adding a summary of their selection to the top of the next screen.",
           },
-          { type: "media", index: 6, caption: "Debugging with Macroscope" },
-          { type: "media", index: 7, caption: "Testing out the latest updates in Vercel Preview" },
+          { type: "media", index: 7 },
+          { type: "media", index: 8 },
         ],
       },
     ],
