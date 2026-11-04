@@ -32,7 +32,7 @@ export function SiteChrome({ panel, pathname, onPanel }: SiteChromeProps) {
         </button>
       </div>
       <div className={styles.row}>
-        <button type="button" className={`${styles.label} ${styles.ai}`}>
+        <button type="button" className={styles.label}>
           Artificial intelligence
         </button>
         <a
