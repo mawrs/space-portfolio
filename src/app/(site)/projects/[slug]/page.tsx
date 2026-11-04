@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { ProjectView } from "@/components/project-view/project-view";
-import { getProject, neighbors, projects } from "@/data/projects";
+import { aiProject, getProject, neighbors, projects } from "@/data/projects";
 import { site } from "@/data/site";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return [...projects, aiProject].map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -35,6 +35,8 @@ async function ProjectSheet({ params }: Props) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+  const inGallery = projects.some((item) => item.slug === slug);
+  if (!inGallery) return <ProjectView project={project} />;
   const { previous, next } = neighbors(slug);
   return <ProjectView project={project} previous={previous} next={next} />;
 }

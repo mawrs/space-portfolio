@@ -36,7 +36,26 @@ export const projects = (featured as Omit<Project, "study">[]).map((project) => 
   return { ...project, study };
 });
 
+const aiStudy = cases["artificial-intelligence"];
+if (!aiStudy) throw new Error("Missing case study for artificial-intelligence");
+
+export const aiProject: Project = {
+  slug: "artificial-intelligence",
+  title: "Artificial intelligence",
+  summary: "",
+  year: "",
+  awards: 0,
+  credits: [],
+  width: 1280,
+  height: 720,
+  poster: "",
+  video: "",
+  media: [],
+  study: aiStudy,
+};
+
 export function getProject(slug: string) {
+  if (slug === aiProject.slug) return aiProject;
   return projects.find((project) => project.slug === slug);
 }
 

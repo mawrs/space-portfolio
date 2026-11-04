@@ -223,117 +223,113 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "Square's email system came out of a sharp uptick in phishing attempts on sellers in 2020 and 2021. Business owners were receiving Covid checks, and they were the target of fraud across the U.S. The mail Square itself sent made that worse. Every department had its own template, so a seller had no reliable way to tell a real message from a fake one.",
+          text: "In 2020, Square sellers experienced a significant uptick in phishing scams via email, directly correlated to an uptick in scams for COVID relief checks during COVID.",
         },
         {
           type: "p",
-          text: "I was on the Risk team. The job was the connective tissue between every department that sent email, and a clear read on how sellers perceived those messages when they arrived.",
+          text: "As part of the Risk team, it was our priority to address this in any way possible.",
         },
         {
           type: "p",
-          text: "With the design system team, that became one email system: seven thematic buckets, shared components, and sender rules that still read as Square when the hard cases show up. I owned the component library, the bucket model, and those sender rules. The design system team and the email owners set which messages moved first.",
-        },
-        {
-          type: "p",
-          text: "A seller checking their phone between customers does not compare headers. They recognize a shape. When that shape changes with every department, the real mail and the fake mail start to look like the same kind of surprise.",
-        },
-        {
-          type: "ul",
-          items: [
-            "Role: product designer on the email system and sender identity.",
-            "Who it was for: Square sellers who could not tell a real message from a phishing attempt.",
-            "Timeline: September to December 2021.",
-            "Outcome: seven thematic buckets, adopted by moving the highest-volume emails first.",
-          ],
-        },
-      ],
-      [
-        { type: "h3", text: "The brand was not a reliable signal" },
-        {
-          type: "p",
-          text: "A seller learns what Square looks like from the mail they already get. When every team ships a different header, a different footer, and a different sender, the real messages train people to trust the fakes. The phishing reports were a design-system failure showing up in an inbox.",
-        },
-        {
-          type: "p",
-          text: "On a given morning the three messages might be a signup, a notice that an account was under review, and a refund. None of them looked related. A phish only had to look as official as the plainest of the three.",
+          text: "Sellers sent us various fake emails pretending to come from Square, and some were pretty compelling.",
         },
         {
           type: "media",
-          index: 3,
-          caption: "Seller mail before the system. A signup, an account notice, and a refund. Same company, three different senders.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "7", label: "Thematic buckets. Every seller email had to land in one of them." },
-            { value: "1", label: "Library. Header, body, and footer as pieces, not a new template per team." },
-            { value: "First", label: "Highest-volume emails moved first, so the rest of the company would follow." },
-          ],
-        },
-        { type: "h3", text: "Adoption had to be voluntary" },
-        {
-          type: "p",
-          text: "A mandate to redraw every email would have stalled. The teams sending the most mail moved first. Once those messages were recognizable, the other templates had a reason to match them. I sat with the people who owned the templates. Each one had a reason theirs looked the way it did. The work was finding the pieces that could be shared without taking the job of the email away.",
+          index: 4,
+          caption: "Emails sellers forwarded to Risk. A bank-account change, and a $1,200 refund Square never sent.",
         },
       ],
       [
         {
           type: "p",
-          text: "The design question was: what does a seller need to see, before they click, to know this is Square? A shared illustration style was not enough. The structure of the message had to be the same even when the job of the email changed.",
-        },
-        { type: "h3", text: "Design the message that still works with images off" },
-        {
-          type: "p",
-          text: "Phishing hides in the cases a template ignores. Dynamic content, a plain-text fallback, and a client that blocks images all have to read as the same sender. Those were the rules, not a polish pass at the end. A seller who blocks images still has to see Square. A seller reading the plain-text version has to see the same sender. If either of those looks like a different company, the system has not done the job.",
+          text: "After interviewing internal departments about their experience with sellers reaching out about this problem, we slowly realized that every team was sending outgoing emails using very different templates. Some of which were outdated and did not match our latest brand updates.",
         },
         {
           type: "media",
-          index: 1,
-          caption: "Two templates from the system: a card added to a wallet, and a card on its way. Same sender, different job.",
+          index: 5,
+          caption: "Three templates from different teams. A bank-account change, an account hold, and a terms update.",
         },
-        { type: "media", index: 0 },
       ],
       [
         {
           type: "p",
-          text: "The system is a small set of pieces and a rule for which bucket a message belongs in. A seller can recognize Square before they follow anything into the dashboard. A new email does not start from a blank file. It joins a bucket, takes the shared header and footer, and fills a body that already knows what to do when the image is missing.",
+          text: "Through this process, I worked with the PM and design system team to update our outgoing email documentation.",
         },
         {
-          type: "ul",
-          items: [
-            "Header, body, and footer as separate pieces, shared across teams.",
-            "Seven thematic buckets, so a new email joins a family instead of inventing one.",
-            "Sender rules for dynamic content, plain-text fallbacks, and images blocked.",
-            "Highest-volume emails migrated first, so adoption was something teams chose.",
-          ],
+          type: "p",
+          text: "Through this process, we clearly labeled 5 email buckets that most of our emails fell within. Of course, there were edge cases where certain emails did not fit. But we tried our best to document as much as we could.",
         },
         {
           type: "media",
-          index: 2,
-          caption: "Header, body, and footer as separate pieces, so every seller email can be recognized as Square.",
+          index: 6,
+          caption: "Five email buckets. Lead driver, instructional, transactional, letter, and operational.",
         },
       ],
       [
         {
           type: "p",
-          text: "The highest-volume seller emails moved onto the system. A message could be recognized as Square before anyone opened the dashboard, including the versions where the images never load. The change a seller would feel was quiet. The next email, from a different team, arrived in a shape they had already learned. For the teams, it was a template they could join instead of one they had to invent.",
+          text: "In collaboration with the design system team, I built several components for the Headers, Body, and Footers of these email templates we were going to use moving forward.",
         },
         {
-          type: "stats",
-          items: [
-            { value: "7 buckets", label: "Templates were grouped so no two departments invented their own Square." },
-            { value: "Images off", label: "The sender still reads as Square when a client blocks the pictures." },
-            { value: "Voluntary", label: "Other teams followed after the highest-volume mail moved first." },
-          ],
+          type: "p",
+          text: "Each component used existing primitives from our newly established Market Design System. We ended up creating a pseudo design system with these new email components to tweak in the future if needed.",
+        },
+        {
+          type: "media",
+          index: 7,
+          caption: "The email component library, grouped by bucket.",
+        },
+        {
+          type: "media",
+          index: 8,
+          caption: "Transactional components. Header and body pieces, and the old PAF email next to the new one.",
         },
       ],
       [
         {
           type: "p",
-          text: "The phishing reports looked like a security incident. The fix was a design system. Sellers were not failing to spot a fake. They had been taught, by Square's own mail, that Square can look like anything. Risk had been asked to stop the fraud. The lever in reach was the mail Square sent every day.",
+          text: "Once we had our components in place, we held short calls with the stakeholders of each department to present the components and the new design template they will be using for their outgoing emails.",
+        },
+        {
+          type: "media",
+          index: 9,
+          caption: "A savings email, before and after the new template.",
+        },
+        {
+          type: "media",
+          index: 10,
+          caption: "A signup email, before and after the new template.",
+        },
+        {
+          type: "media",
+          index: 11,
+          caption: "A card-arrival email, before and after the new template.",
         },
       ],
-    ),
+      [
+        {
+          type: "p",
+          text: "The results are a more cohesive and effective approach for reducing phishing scams by increasing consistency and clarity.",
+        },
+        {
+          type: "p",
+          text: "Our components also made department-wide adoption much easier to implement.",
+        },
+        {
+          type: "media",
+          index: 12,
+          caption: "The finished card-arrival email.",
+        },
+      ],
+    ).map((section) => {
+      if (section.id === "overview") return { ...section, label: "Uptick in phishing attempts" };
+      if (section.id === "background") return { ...section, label: "Emails varied drastically by department" };
+      if (section.id === "approach") return { ...section, label: "Updating our email documentation" };
+      if (section.id === "solution") return { ...section, label: "Creating the key components" };
+      if (section.id === "outcomes") return { ...section, label: "Putting together the finished product" };
+      if (section.id === "reflection") return { ...section, label: "The results were widely appreciated" };
+      return section;
+    }),
   },
   slide: {
     title: "45% of claims, no call",
@@ -1001,102 +997,6 @@ export const cases: Record<string, CaseStudy> = {
       },
     ),
   },
-  peridot: {
-    title: "Cite the minute",
-    headline: "Peridot",
-    meta: "Independent",
-    role: "Solo 0→1 product design and development",
-    timeline: "2025 – 2026",
-    team: ["Solo"],
-    skills: ["0→1 product", "Research", "Interface"],
-    sections: sections(
-      [
-        {
-          type: "p",
-          text: "I spoke with hundreds of researchers, designers, and PMs while building Peridot. The same problem kept appearing: teams had highlights and summaries, but could not get back to the sentence or recording that supported them.",
-        },
-        {
-          type: "p",
-          text: "Peridot makes interviews searchable and keeps every insight connected to the moment in the call it came from. A team can then turn that cited insight into a Linear ticket without losing the source.",
-        },
-        {
-          type: "p",
-          text: "I owned the 0→1 product from discovery through public launch: user interviews, the citation model, prototypes, design, and development. The central decision was that every generated insight must link to a moment in the call. Fast output is not useful if a team cannot verify its source.",
-        },
-        {
-          type: "p",
-          text: "The people I talked to already had too many summaries. They could generate a highlight. They could not defend it in a meeting, because the recording was a file and the finding was a slide.",
-        },
-        { type: "link", href: "https://askperidot.com", label: "askperidot.com" },
-      ],
-      [
-        { type: "h3", text: "Synthesis was disappearing into decks" },
-        {
-          type: "p",
-          text: "A finding without a citation is a claim. Teams were making more of them, faster, and could not get back to who said it or when. That is a retrieval problem dressed up as an insight problem. The models were happy to write the summary. They were not being asked to keep the timestamp. A deck of quotes with no minute attached is how a team loses an afternoon. Someone asks who said it. Someone else scrubs a ninety-minute call.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "100s", label: "Conversations with researchers, designers, and PMs while it was being built." },
-            { value: "1", label: "Click back to the moment in the call the insight came from." },
-            { value: "2026", label: "Public launch, including on Product Hunt." },
-          ],
-        },
-      ],
-      [
-        {
-          type: "p",
-          text: "The line I kept coming back to: do not automate the conversation. Automate everything around it. The interview is the part a person should still do. The finding, the citation, and the handoff into the backlog are the parts that were eating the week.",
-        },
-        { type: "h3", text: "A memory, not a summary" },
-        {
-          type: "p",
-          text: "Search is useful only if the result can be audited. An insight in Peridot points at the moment in the recording. If you cannot land on the sentence, it does not ship as a finding. That rule kept the product from becoming another generator of plausible paragraphs. I built it as well as designed it, and the rule lives in the data. An insight without a moment in the call does not get to look like a finding.",
-        },
-        {
-          type: "media",
-          index: 0,
-          caption: "Study of a cited insight, and the handoff from that citation into a ticket.",
-        },
-      ],
-      [
-        {
-          type: "ul",
-          items: [
-            "Interviews become searchable insights, not a folder of recordings nobody reopens.",
-            "Each insight cites the moment in the call.",
-            "An insight can become a Linear ticket with a summary and a goal, still tied to that moment.",
-            "The conversation itself stays human. The product starts when the call ends.",
-          ],
-        },
-        {
-          type: "p",
-          text: "The handoff is what teams asked for once they trusted the citation. A finding can become a ticket with a summary and a goal, and the ticket still points at the minute it came from.",
-        },
-      ],
-      [
-        {
-          type: "p",
-          text: "Peridot launched publicly in 2026, including on Product Hunt, at askperidot.com. Users can search an interview, open the supporting sentence or moment in the call, and turn that evidence into a backlog item. On a first day, that is the whole product. Search the call, land on the sentence, and send it into the backlog without retyping it.",
-        },
-        {
-          type: "stats",
-          items: [
-            { value: "Public launch", label: "Peridot launched in 2026, including on Product Hunt." },
-            { value: "1 click", label: "Each insight links back to the sentence or moment that supports it." },
-            { value: "Linear", label: "Cited insights can become backlog tickets without losing their source." },
-          ],
-        },
-      ],
-      [
-        {
-          type: "p",
-          text: "Observations can be found. Insights still belong to a person who was in the room, or who can get back to the sentence in one click. The hundreds of conversations did not ask for more output. They asked for a way to trust the output they already had, which means being able to check it. People were already drowning in plausible text. What they wanted was a way back to the person who said it.",
-        },
-      ],
-    ),
-  },
   "southeast-bank": {
     title: "Understanding fixed rates",
     headline: "Student loan rates",
@@ -1408,5 +1308,22 @@ export const cases: Record<string, CaseStudy> = {
         },
       ],
     }),
+  },
+  "artificial-intelligence": {
+    title: "Artificial intelligence",
+    headline: "Artificial intelligence",
+    meta: "Artificial intelligence",
+    role: "Product designer",
+    timeline: "Timeline",
+    team: ["Team"],
+    skills: ["Artificial intelligence"],
+    sections: sections(
+      [{ type: "p", text: "Overview." }],
+      [{ type: "p", text: "Background." }],
+      [{ type: "p", text: "Approach." }],
+      [{ type: "p", text: "Solution." }],
+      [{ type: "p", text: "Outcomes." }],
+      [{ type: "p", text: "Reflection." }],
+    ),
   },
 };

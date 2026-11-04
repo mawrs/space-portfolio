@@ -10,8 +10,8 @@ import styles from "./project-view.module.css";
 
 type ProjectViewProps = {
   project: Project;
-  previous: Project;
-  next: Project;
+  previous?: Project;
+  next?: Project;
 };
 
 let neighborArrival = false;
@@ -63,9 +63,9 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
 
   useEffect(() => {
     router.prefetch("/");
-    router.prefetch(`/projects/${previous.slug}`);
-    router.prefetch(`/projects/${next.slug}`);
-  }, [next.slug, previous.slug, router]);
+    if (previous) router.prefetch(`/projects/${previous.slug}`);
+    if (next) router.prefetch(`/projects/${next.slug}`);
+  }, [next, previous, router]);
 
   useLayoutEffect(() => {
     const sheet = sheetRef.current;
@@ -299,7 +299,7 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
   useEffect(() => {
     const stage = stageRef.current;
     const sheet = sheetRef.current;
-    if (!stage || !sheet) return;
+    if (!stage || !sheet || !previous || !next) return;
     const previousPreview = stage.querySelector<HTMLElement>("[data-neighbor='prev']");
     const nextPreview = stage.querySelector<HTMLElement>("[data-neighbor='next']");
     let settling = false;
@@ -436,16 +436,10 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
           <div className={styles.progress} />
         </div>
       </article>
-      <Neighbor
-        project={previous}
-        side="prev"
-        onOpen={() => moveRef.current("prev")}
-      />
-      <Neighbor
-        project={next}
-        side="next"
-        onOpen={() => moveRef.current("next")}
-      />
+      {previous ? (
+        <Neighbor project={previous} side="prev" onOpen={() => moveRef.current("prev")} />
+      ) : null}
+      {next ? <Neighbor project={next} side="next" onOpen={() => moveRef.current("next")} /> : null}
     </main>
   );
 }

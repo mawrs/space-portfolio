@@ -46,18 +46,22 @@ export function CaseHero({ project, preview = false }: { project: Project; previ
         )}
       </div>
       <figure className={styles.sizzle}>
-        <div
-          className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
-          data-gl={preview ? undefined : "simple"}
-          data-id={preview ? undefined : `${project.slug}-sizzle`}
-          data-project={preview ? undefined : project.slug}
-          data-stack-index={preview ? undefined : 0}
-          style={{ "--ratio": `${project.width} / ${project.height}` } as CSSProperties}
-        >
-          {/* Same still as the home thumbnail. The plane samples this element. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
-        </div>
+        {project.poster ? (
+          <div
+            className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
+            data-gl={preview ? undefined : "simple"}
+            data-id={preview ? undefined : `${project.slug}-sizzle`}
+            data-project={preview ? undefined : project.slug}
+            data-stack-index={preview ? undefined : 0}
+            style={{ "--ratio": `${project.width} / ${project.height}` } as CSSProperties}
+          >
+            {/* Same still as the home thumbnail. The plane samples this element. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={project.poster} alt="" crossOrigin="anonymous" draggable={false} />
+          </div>
+        ) : (
+          <div className={styles.heroPlaceholder} aria-hidden="true" />
+        )}
       </figure>
     </header>
   );
