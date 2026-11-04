@@ -23,15 +23,28 @@ function contentGroups(blocks: CaseBlock[]) {
 
 export function CaseHero({ project, preview = false }: { project: Project; preview?: boolean }) {
   const study = project.study;
+  const layered = Boolean(project.heroBackground && project.heroDevice);
 
   return (
-    <header className={styles.hero}>
+    <header
+      className={[styles.hero, layered ? styles.heroLayered : "", project.heroOnLight ? styles.heroOnLight : ""]
+        .filter(Boolean)
+        .join(" ")}
+      style={
+        layered
+          ? ({ "--hero-background": `url("${project.heroBackground}")` } as CSSProperties)
+          : undefined
+      }
+    >
       <div className={styles.heroCopy}>
         <p className={styles.meta}>{study.meta}</p>
         <h1 id={preview ? undefined : `project-${project.slug}-title`}>{study.title}</h1>
       </div>
       <figure className={styles.sizzle}>
-        {project.poster ? (
+        {layered ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img className={styles.heroDevice} src={project.heroDevice} alt="" draggable={false} />
+        ) : project.poster ? (
           <div
             className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
             data-gl={preview ? undefined : "simple"}

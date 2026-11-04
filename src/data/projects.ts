@@ -25,15 +25,26 @@ export type Project = {
   width: number;
   height: number;
   poster: string;
+  heroBackground?: string;
+  heroDevice?: string;
+  heroOnLight?: boolean;
   video: string;
   media: Media[];
   study: CaseStudy;
 };
 
+const lightHeroBackgrounds = new Set(["true-see", "square"]);
+
 export const projects = (featured as Omit<Project, "study">[]).map((project) => {
   const study = cases[project.slug];
   if (!study) throw new Error(`Missing case study for ${project.slug}`);
-  return { ...project, study };
+  return {
+    ...project,
+    heroBackground: `/projects/${project.slug}/background.png`,
+    heroDevice: `/projects/${project.slug}/hero.png`,
+    heroOnLight: lightHeroBackgrounds.has(project.slug),
+    study,
+  };
 });
 
 const aiStudy = cases["artificial-intelligence"];
@@ -49,6 +60,9 @@ export const aiProject: Project = {
   width: 1280,
   height: 720,
   poster: "",
+  heroBackground: "/projects/ai/background.png",
+  heroDevice: "/projects/ai/hero.png",
+  heroOnLight: true,
   video: "",
   media: [
     {
