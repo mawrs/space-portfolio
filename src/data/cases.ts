@@ -745,87 +745,232 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "Arcoscan had a biometric age check. It lived as a scan, not as a step a person could finish. Onboarding still needed someone to prove they were present, and old enough, without abandoning the flow to do it.",
+          text: "Arcoscan is a biometric age verification software that streamlines the age verification process through the use of facial recognition.",
         },
         {
           type: "p",
-          text: "I turned the scan into the prompt. A face outline, one instruction, open your mouth, and the check continues. Age and liveness are the same moment, so the person never leaves for a second verification site.",
+          text: "The scope of this particular project revolved around reducing abandonment rate for customers using the Arcoscan software as part of their onboarding experience.",
         },
         {
           type: "p",
-          text: "I owned the onboarding step around the existing scan: the prompt, the face guide, and the states that keep someone in the session. The scan itself came from Arcoscan's work with SRI. I designed the product surface that asks for it.",
+          text: "Arcoscan was born out of the demand from the market to rethink how we verify age online, especially for age-restricted products like alcohol and cigarettes.",
         },
         {
           type: "p",
-          text: "Age checks usually send a person away. A vendor site, a document, a wait. Arcoscan already had the scan. What it did not have was a moment someone could finish without feeling they had left the signup.",
+          text: "The problem we were solving was for these age-restricted companies that had long & tedious age-verification processes.",
         },
-      ],
-      [
-        { type: "h3", text: "A lab demo is not an onboarding step" },
         {
           type: "p",
-          text: "The technology could look at a face and judge age. What a person actually met was unclear: grant the camera, hold still, do something a photo of a face cannot do, wait, then land back in the product they were trying to join. Any one of those as a separate site is where people leave. A person joining a product does not want a tour of how the scan works. They want to know where to put their face, what to do, and that they can try again if it misses.",
+          text: "If a platform asked a customer to self-identify, they would almost say yes. There were no checks involved.",
         },
-        {
-          type: "stats",
-          items: [
-            { value: "1", label: "Instruction. Open your mouth. The prompt is the check." },
-            { value: "1", label: "Session. Camera, prompt, result, then the next screen." },
-            { value: "0", label: "Handoffs to a separate verification site." },
-          ],
-        },
-      ],
-      [
         {
           type: "p",
-          text: "The design question was how little chrome a liveness check needs. A dashboard of scan quality would have made people perform for the software. One sentence and an outline tell them what to do with their face.",
+          text: "And if the age verification process is too long, you're probably going to leave. Even if you are over 21.",
         },
-        { type: "h3", text: "The instruction is the interface" },
         {
           type: "p",
-          text: "Open your mouth is specific enough that a still photo fails it, and short enough that nobody needs a help doc. The outline shows where the face goes. Everything else, the age result, the retry, the return to onboarding, happens around that one action. The outline is doing the job a paragraph used to do. Retry stays on that same screen, because a second page is another place to abandon the signup.",
+          text: "I led the end-to-end of this project, from conceptualizing the ideas, prototyping a version, and eventually the final implementation.",
         },
         {
-          type: "media",
-          index: 0,
-          caption: "The check is the prompt. Open your mouth, hold still inside the outline, and continue.",
+          type: "p",
+          text: "There were 5 people on this project:",
         },
+        {
+          type: "ul",
+          items: ["CEO", "a product designer (me)", "a PM", "2x engineers"],
+        },
+        {
+          type: "p",
+          text: "By the end of our pilot program with one of our strategic partners, we were able to prove our product & reduce total abandonment rate for them from 51% to 20%.",
+        },
+        { type: "media", index: 1 },
       ],
       [
         {
           type: "p",
-          text: "The step that shipped in the prototype is the age check as a moment inside onboarding, not a product beside it. Nothing in the step explains biometrics. The camera opens, the outline appears, the person opens their mouth, and the flow they were already in continues.",
+          text: "The bottom line for retailers is that long & complicated age verification flows threaten revenue.",
+        },
+        {
+          type: "p",
+          text: "Some of these flows end up being 15-steps long, which causes a tremendous amount of users to drop off.",
+        },
+        {
+          type: "p",
+          text: "I think it's great to have full ID checks that truly verify who you are and your age, but they take much longer & end up having higher abandonment rates.",
+        },
+        {
+          type: "p",
+          text: "So these companies are really stuck between a rock & a hard place.",
+        },
+        { type: "media", index: 2 },
+      ],
+      [
+        {
+          type: "p",
+          text: "The market was ripe for disruption, and our team set out to build something different: a lightweight biometric system that used facial recognition and liveness detection to confirm a user’s age — no IDs, no friction. The underlying tech was solid, but the challenge was how to turn it into a product people would actually trust and use.",
+        },
+        {
+          type: "p",
+          text: "We built the underlying tech & were able to test it, but we really didn't have a product or an interface that users could use.",
+        },
+        {
+          type: "p",
+          text: "I was brought on shortly after the inception of Arcoscan to lead the UX and UI from the ground up. This meant turning a complex, backend-heavy system into an experience that felt simple, clear, and human.",
+        },
+        {
+          type: "p",
+          text: "This short video was my introduction to Arcoscan. And our goal was to somehow get large alcohol and tobacco companies using our product. So we had our work cut out for ourselves.",
         },
         {
           type: "ul",
           items: [
-            "Camera access, then the outline, without a detour to explain the technology.",
-            "One instruction: open your mouth, to prove a person is present.",
-            "Age and liveness resolved together, then the flow continues.",
-            "A retry that stays on the same screen when the scan does not catch.",
+            "Convenient – a frictionless process for customers",
+            "Speedy – a fast process that doesn’t waste customer’s time",
+            "Secure – protects and doesn’t hold or share customer data or ask for any more than is necessary",
+            "Reliable – an accurate process that will effectively prevent minors from accessing online age-restricted goods and services",
           ],
         },
+        { type: "media", index: 4 },
       ],
       [
         {
           type: "p",
-          text: "The scan can be asked for in the middle of onboarding. A person proves they are present without leaving the session they were already in. The check is still a prototype around a lab scan. What changed is where it lives.",
+          text: "To start, I spent time looking at how other biometric tools handled similar flows — tools like CLEAR at airports, ID.me, and even onboarding flows in fintech apps with selfie verification.",
         },
         {
-          type: "stats",
-          items: [
-            { value: "In flow", label: "The age check is a step, not a separate product." },
-            { value: "1 prompt", label: "Open your mouth. The outline does the rest of the explaining." },
-            { value: "Same session", label: "Camera, check, and the next screen stay together." },
-          ],
+          type: "p",
+          text: "Using this as inspiration along with others, I came up with UI components for each of the instructions we had to resolve during an age verification check.",
         },
+        { type: "media", index: 3 },
       ],
       [
         {
           type: "p",
-          text: "Biometric technology wants a screen that explains how clever it is. The person in onboarding wants to be done. The useful design was the sentence. The scan can stay in the lab. The prompt is the product. People were not stuck on the science. They were stuck on not knowing what the screen wanted.",
+          text: "To understand what our instructions might be on the screen, when trying to get a user to verify their age, I worked with our lead engineer to understand the possible instructions & error states we tracked.",
         },
+        {
+          type: "p",
+          text: "With this list, I had a better idea on the user experience we could provide for the user.",
+        },
+        { type: "media", index: 5 },
       ],
+      [
+        {
+          type: "p",
+          text: "After researching the market, it was clear that the first challenge was clarity with instructions. Users needed to grant camera access, center their face, perform a subtle gesture, and wait for a backend result — all in a few seconds.",
+        },
+        {
+          type: "p",
+          text: "I leaned into neutral, minimal UI — not only to avoid overwhelming the user, but to keep focus on the task. I prototyped motion cues for gestures, rewrote onboarding copy for calmness and clarity, and built error states that guided users back into the flow instead of locking them out.",
+        },
+        { type: "media", index: 6 },
+      ],
+    ).map((section) => {
+      if (section.id === "overview") return { ...section, label: "Delivering facial recognition using AI/ML" };
+      if (section.id === "background") return { ...section, label: "Complicated onboarding flows threaten revenue" };
+      if (section.id === "approach") return { ...section, label: "Liveness checks became key" };
+      if (section.id === "solution") return { ...section, label: "Studying the competition" };
+      if (section.id === "outcomes") return { ...section, label: "Accurate verification required lots of instructions" };
+      if (section.id === "reflection") return { ...section, label: "Translating tech into UI" };
+      return section;
+    }).concat(
+      {
+        id: "close",
+        label: "Refining to 95% accuracy",
+        blocks: [
+          {
+            type: "p",
+            text: "Once we had an idea as to what the anatomy of Arcoscan would be, I built a quick prototype in Webflow and added an iFrame for the actual age verification.",
+          },
+          {
+            type: "p",
+            text: "We built an early MVP through Webflow and embedded an iframe into the demo page to test it. Even during early internal testing, we saw how easy it was for people to fail — and how much design could help them succeed.",
+          },
+          {
+            type: "p",
+            text: "And we used this prototype interface until we got our Mean Average Error down to 5 or less.",
+          },
+          {
+            type: "p",
+            text: "With this prototype, we realized that we couldn't provide such a wide age range so we instead pivoted to providing a single number & then give our confidence interval with that number.",
+          },
+          {
+            type: "p",
+            text: "If users still came back as under 21, they would have to go through the backup flow of manually uploading their ID for review.",
+          },
+          {
+            type: "p",
+            text: "That's if the AI could not confidently put an age to them.",
+          },
+          { type: "media", index: 7 },
+        ],
+      },
+      {
+        id: "end",
+        label: "Partnering with JUUL",
+        blocks: [
+          {
+            type: "p",
+            text: "After months of trial & error. On both the UI and the backend technology, we were able to get our confidence score up to about 95%.",
+          },
+          {
+            type: "p",
+            text: "And with the new UI and confidence score, we started looking for strategic partners who might benefit from a tool like Arcoscan.",
+          },
+          {
+            type: "p",
+            text: "We talked to many large retailers, including those in the tobacco, cannabis, and gambling industries.",
+          },
+          {
+            type: "p",
+            text: "And we ended up landing a 3-month pilot with JUUL, which was a huge validation moment that also became a stress test.",
+          },
+          {
+            type: "p",
+            text: "The timing was perfect as we were looking for strategic partners to use our technology, and JUUL was looking to replace their existing age verification process.",
+          },
+          {
+            type: "p",
+            text: "After landing the pilot program with JUUL, I worked with their design team to clean up the UI and provide a new UI layout that could match the JUUL brand.",
+          },
+          {
+            type: "p",
+            text: "Working closely with JUUL’s product and engineering team, I redesigned key parts of the experience:",
+          },
+          {
+            type: "ul",
+            items: [
+              "Introduced a “Hold Still” visual cue that guided users into proper face alignment",
+              "Replaced static instructions with animated gesture guidance",
+              "Rewrote error handling and added real-time feedback to recover from failed scans",
+            ],
+          },
+          { type: "media", index: 8 },
+        ],
+      },
+      {
+        id: "follow",
+        label: "The experience got better & better",
+        blocks: [
+          {
+            type: "p",
+            text: "Over the course of the pilot, user success improved dramatically.",
+          },
+          {
+            type: "p",
+            text: "The abandonment rate dropped steadily as we refined the flow — especially on mobile — and JUUL’s own data confirmed the experience was smoother and more reliable than where we started.",
+          },
+          {
+            type: "p",
+            text: "By the end of the 3-month pilot, we had reduced total abandonment (including failed verifications) from 51% down to 20%. While that was a huge improvement, it wasn’t quite enough to secure a long-term partnership.",
+          },
+          {
+            type: "p",
+            text: "Ultimately, JUUL chose to move forward with a more established vendor that had already reached industry-leading benchmarks. As a small startup, we didn’t have the scale or maturity yet — but the pilot validated that our design held up under pressure and that we were solving real problems for real users.",
+          },
+          { type: "media", index: 9 },
+        ],
+      },
     ),
   },
   peridot: {

@@ -80,11 +80,12 @@ export function CaseBody({ project }: { project: Project }) {
       <article className={styles.article}>
         {study.sections.map((section) => {
           const media = visibleMedia(project, section.blocks);
+          const showOverviewList = project.slug === "true-see" || project.slug === "arcoscan";
           const blocks = section.blocks.filter(
             (block) =>
               block.type !== "stats" &&
               block.type !== "media" &&
-              !(section.id === "overview" && block.type === "ul" && project.slug !== "true-see"),
+              !(section.id === "overview" && block.type === "ul" && !showOverviewList),
           );
           const stats = section.blocks.filter((block) => block.type === "stats");
           const groups = contentGroups(blocks);
