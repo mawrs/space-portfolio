@@ -347,19 +347,15 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "The phone was the product. An agent spent about twenty minutes triaging a claim, choosing what kind of loss it was, and collecting the minimum Slide needed to start. The website could not do that. Anyone who wanted to file still had to reach a person.",
+          text: "Our team flew to Tampa, Florida to conduct a 5-day design sprint to understand Slide's business and design goals with their new app experience.",
         },
         {
           type: "p",
-          text: "After a week with agents in Tampa, I turned their triage into an online flow: first identify the claim type, then ask only for the information Slide needed to start it. The flow shipped. Six months later, 45% of claims started without a call.",
+          text: "After many deliberations, it became clear that the #1 goal was to deliver a self-service experience for all customers to interact digitally with Slide, and reduce the overhead of on-call insurance agents.",
         },
         {
           type: "p",
-          text: "I owned the service blueprint, the self-serve flow, prototypes, and handoff details for the intake experience. I worked with claims agents to turn their judgment into decision rules, then partnered with Slide's product and engineering teams to separate what a customer could answer alone from what still required an adjuster.",
-        },
-        {
-          type: "p",
-          text: "A claim is a bad day. The person filing it is often still in it. Twenty minutes on the phone was the price of a claim number, and most of those minutes were the same opening every time.",
+          text: "This includes the ability to file claims, track claims, make payments, view policies, and preview documents.",
         },
         {
           type: "stats",
@@ -369,75 +365,107 @@ export const cases: Record<string, CaseStudy> = {
             { value: "1 week", label: "In Tampa with agents, learning the triage before drawing the flow." },
           ],
         },
-      ],
-      [
-        { type: "h3", text: "The script lived with people, not in the interface" },
-        {
-          type: "p",
-          text: "Agents already knew how to sort a claim. They knew which question actually changed the path, and which details could wait until a person was on it. None of that was on the site. Customers who would have finished a short form were sitting in a queue for a twenty-minute conversation that mostly collected the same few facts.",
-        },
-        {
-          type: "p",
-          text: "The business cost was the queue. The customer cost was the wait, and the feeling that you could not start until someone picked up. Both of those are the same design problem: the judgment for \"what kind of claim is this, and what do you need from me\" had never been written down as a flow. The call was not twenty minutes of judgment. Most of it was what happened, what kind of loss it was, and the few facts Slide needed before anyone could be assigned.",
-        },
-      ],
-      [
-        { type: "h3", text: "Learn the triage before removing the agent" },
-        {
-          type: "p",
-          text: "A week in Tampa was the spec. We watched how agents decided what they were looking at, which branches were real, and where they stopped asking because Slide already had enough to open the claim. The temptation in a room like that is to transcribe the whole call. The useful edit is to find the minimum.",
-        },
-        {
-          type: "p",
-          text: "I owned that edit. Choosing the right claim online, and providing the smallest set of information for Slide to get started. Everything else could stay with a person, later, if the claim needed it. The useful moments in Tampa were the ones where an agent stopped asking. They had the claim type and enough to open a file. Everything after that was a different job, and it did not belong on the first form.",
-        },
-        {
-          type: "media",
-          index: 1,
-          caption: "Study of the self-serve intake: claim type first, then only the facts required to start.",
-        },
-        { type: "media", index: 0 },
+        { type: "media", index: 3 },
       ],
       [
         {
           type: "p",
-          text: "The web flow keeps the first part of the phone script: identify the claim type and collect only the facts a customer can provide without an agent. The site still hands a person to an adjuster when the claim needs one. It no longer makes them wait in a queue to say what happened and leave a phone number.",
+          text: "We followed the Google Ventures playbook of a 5-day sprint; starting with stakeholder interviews about their vision, and ending with user testing the prototype we built.",
         },
-        {
-          type: "ul",
-          items: [
-            "A first step that chooses the kind of claim, the same sort an agent made at the start of the call.",
-            "A short set of questions for the minimum Slide needs to open it.",
-            "A handoff that does not pretend the website replaced every later conversation, only the twenty minutes it took to begin.",
-          ],
-        },
-        {
-          type: "media",
-          index: 2,
-          caption: "Filing, tracking, payment, and the policy sit around the intake. The intake is the part that left the phone.",
-        },
+        { type: "media", index: 4 },
       ],
       [
         {
           type: "p",
-          text: "Within six months, 45% of claims started online without a phone call. The phone queue was no longer the only way to begin a claim. The phone did not go away. Eligible claims could start without it, and the agents who remained were on the part of the call that had always needed a person.",
+          text: "Together with the stakeholders in the room, we sketched out ideas we liked that could potentially be implemented in the UI. This is where everyone got creative and came up with some really cool ideas.",
         },
-        {
-          type: "stats",
-          items: [
-            { value: "45%", label: "Of claims started online without a phone call within six months." },
-            { value: "1", label: "Self-serve entry point added alongside the phone queue." },
-            { value: "20 min", label: "Average agent intake call replaced for eligible claims." },
-          ],
-        },
+        { type: "media", index: 5 },
       ],
       [
         {
           type: "p",
-          text: "Another round of screens would have guessed at the script. The flow worked because it followed how agents actually sorted a claim, then dropped everything a customer did not need to provide up front. The number that matters is the 45%. The reason it moved is the week in Tampa, and the decision to digitize the start of the claim instead of the entire phone call. The week in the room was short. The edit it produced was the product.",
+          text: "With sketches finalized, we started collaborating on a potential flow for the prototype on Friday. The finalized sketches represented the key moment in the workflow that mattered most to the stakeholders. My job was to fill in the gaps and create a cohesive end-to-end experience.",
         },
+        { type: "media", index: 6 },
+        { type: "media", index: 7 },
       ],
-    ),
+      [
+        {
+          type: "p",
+          text: "When coming up with the prototype, we also needed to come up with the design system as we went. All we had to work with were some brand styles in Canva, which we had to translate into Figma tokens to design in a much more future-proof way.",
+        },
+        {
+          type: "p",
+          text: "In one day, we designed 22 screens and stitched them all together to create the prototype we were going to test on Friday. This doesn't sound like much in the age of AI, but it was a lot of work to cram into one day.",
+        },
+        { type: "media", index: 8 },
+        { type: "media", index: 9 },
+        { type: "media", index: 10 },
+      ],
+      [
+        {
+          type: "p",
+          text: "We conducted five moderated and remote, hour-long interviews over the course of a single day. The sessions included context gathering and a prototype walkthrough.",
+        },
+        {
+          type: "p",
+          text: "A few opportunities came up:",
+        },
+        { type: "h3", text: "Insight" },
+        {
+          type: "p",
+          text: "After making a payment, there is no receipt displayed or shared with the user.",
+        },
+        { type: "h3", text: "Opportunity" },
+        {
+          type: "p",
+          text: "Show a confirmation number or downloadable receipt after the user completes a payment. If the user has opted into email, email the receipt.",
+        },
+        { type: "h3", text: "Insight" },
+        {
+          type: "p",
+          text: "Saving your process if you need to leave and come back.",
+        },
+        { type: "h3", text: "Opportunity" },
+        {
+          type: "p",
+          text: "Have a button/section that allows for progress to be saved. This saved process can generate a unique ID to come back to your spot later.",
+        },
+        { type: "h3", text: "Insight" },
+        {
+          type: "p",
+          text: "Testers felt confident doing standard insurance processes through the app. They didn't feel the need to call their agent.",
+        },
+        { type: "h3", text: "Opportunity" },
+        {
+          type: "p",
+          text: "Continue making the portal a fully self-service digital experience.",
+        },
+        { type: "media", index: 11 },
+      ],
+    ).map((section) => {
+      if (section.id === "overview") return { ...section, label: "Kicking off the sprint" };
+      if (section.id === "background") return { ...section, label: "Structuring our week" };
+      if (section.id === "approach") return { ...section, label: "Sketches the possibilities" };
+      if (section.id === "solution") return { ...section, label: "Deciding on a flow" };
+      if (section.id === "outcomes") return { ...section, label: "Designing the prototype" };
+      if (section.id === "reflection") return { ...section, label: "Opportunities arose during user interviews" };
+      return section;
+    }).concat({
+      id: "close",
+      label: "Our prototype landed us a huge contract",
+      blocks: [
+        {
+          type: "p",
+          text: "After presenting the results in a much more formal manner, including a roadmap of future features and changes to make, our agency landed a $300k deal to continue building out that roadmap.",
+        },
+        {
+          type: "p",
+          text: "As the design lead, I oversaw a design team of 4 that executed on this roadmap and made sure the client was happy with our engagement.",
+        },
+        { type: "media", index: 12 },
+      ],
+    }),
   },
   "true-see": {
     title: "From the chart to the camera",

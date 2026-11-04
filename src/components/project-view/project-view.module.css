@@ -217,7 +217,7 @@
   margin-top: var(--spacing-l);
 }
 
-.section > h3 {
+.slideCopy h3 {
   margin-top: var(--spacing-md);
   font-family: var(--font-family-ui);
   font-size: var(--font-size-body);
@@ -226,7 +226,7 @@
   line-height: var(--line-height-subheading);
 }
 
-.section > h3 + .blocks > :first-child {
+.slideCopy h3 + .blocks > :first-child {
   margin-top: var(--spacing-s);
 }
 

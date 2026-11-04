@@ -98,6 +98,7 @@ export function CaseBody({ project }: { project: Project }) {
                 {hasCopy ? (
                   groups.map((group, index) => (
                     <Fragment key={`${section.id}-${index}`}>
+                      {group.heading ? <h3>{group.heading}</h3> : null}
                       {group.items.length > 0 ? (
                         <div className={styles.blocks}>
                           {group.items.map((block, itemIndex) => (
