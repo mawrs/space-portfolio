@@ -1,5 +1,155 @@
 [
   {
+    "slug": "southeast-bank",
+    "title": "ELFI",
+    "summary": "Students were qualifying for an ELFI loan and leaving before the application. Pre-qualification to application start sat at about 40%. The rate view was the place to look: repayment plans, fixed and variable, and an APR, with the total behind a click.\n\nI tested the application with students, then tried the fixes as versions inside the product. What shipped puts repayment plans and interest rates on separate screens, the total in the table, and a plain explanation of APR.\n\nPre-qualification to signup moved from 40% to 67%.",
+    "year": "2025",
+    "awards": 0,
+    "credits": [],
+    "width": 1280,
+    "height": 720,
+    "poster": "/projects/southeast-bank/poster.png",
+    "video": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
+    "media": [
+      {
+        "src": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
+        "poster": "https://image.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/thumbnail.jpg?time=1",
+        "width": 1280,
+        "height": 720,
+        "video": true,
+        "caption": "How much to refinance, then the payment the calculator recommends, before the application is finished."
+      },
+      {
+        "src": "/projects/southeast-bank/steps.jpg",
+        "poster": "/projects/southeast-bank/steps.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "The old ELFI form asked for the whole refinance on one page, including income, a co-signer, and the loan amount. The new one is four steps, starting with the school, and a student can move between them."
+      },
+      {
+        "src": "/projects/southeast-bank/calculator.jpg",
+        "poster": "/projects/southeast-bank/calculator.jpg",
+        "width": 1600,
+        "height": 802,
+        "video": false,
+        "caption": "Amount and term on one side. Monthly payment, APR, total interest, and the payment timeline on the other, including a deferred grace period, before the application is finished."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-1.png",
+        "poster": "/projects/southeast-bank/slide-1.png",
+        "width": 1415,
+        "height": 1202,
+        "video": false,
+        "caption": "Example of an email from the Head of Product. Only 40% continue from the pre-qualification stage, which became my new initiative to improve."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-2.png",
+        "poster": "/projects/southeast-bank/slide-2.png",
+        "width": 831,
+        "height": 1080,
+        "video": false,
+        "caption": "The rate screen from the tests, marked where students got stuck."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-3.1.png",
+        "poster": "/projects/southeast-bank/slide-3.1.png",
+        "width": 857,
+        "height": 1114,
+        "video": false,
+        "caption": "A highlight reel from the usability tests, with the notes on what students said about the rates."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-3.0.png",
+        "poster": "/projects/southeast-bank/slide-3.0.png",
+        "width": 824,
+        "height": 715,
+        "video": false,
+        "caption": "A mid-week update to Tom, the CTO, and his reply."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-4.png",
+        "poster": "/projects/southeast-bank/slide-4.png",
+        "width": 1258,
+        "height": 1153,
+        "video": false,
+        "caption": "V1 through V4 lived in the product. What shipped was a combination of a couple of them."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-5.0.png",
+        "poster": "/projects/southeast-bank/slide-5.0.png",
+        "width": 847,
+        "height": 1012,
+        "video": false,
+        "caption": "Repayment plans, each one named and explained, before a student picks a rate."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-5.1.png",
+        "poster": "/projects/southeast-bank/slide-5.1.png",
+        "width": 1003,
+        "height": 1012,
+        "video": false,
+        "caption": "The grand total in the table, in the open."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-6.0.png",
+        "poster": "/projects/southeast-bank/slide-6.0.png",
+        "width": 836,
+        "height": 884,
+        "video": false,
+        "caption": "Part 1. The rate, with a note that the repayment plan comes next."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-6.1.png",
+        "poster": "/projects/southeast-bank/slide-6.1.png",
+        "width": 827,
+        "height": 884,
+        "video": false,
+        "caption": "Part 2. The repayment plan, with the rate they already chose still on screen."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-7.0.png",
+        "poster": "/projects/southeast-bank/slide-7.0.png",
+        "width": 593,
+        "height": 986,
+        "video": false,
+        "caption": "The thread with ChatGPT. Keep pasting the screens into Figma, including the components."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-7.1.png",
+        "poster": "/projects/southeast-bank/slide-7.1.png",
+        "width": 1337,
+        "height": 1332,
+        "video": false,
+        "caption": "The file after that pass. Users, email, configuration, authentication, and the component set."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-8.0.png",
+        "poster": "/projects/southeast-bank/slide-8.0.png",
+        "width": 755,
+        "height": 824,
+        "video": false,
+        "caption": "What shipped. The grand total sits in the table, and the summary along the bottom is a sentence."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-8.1.png",
+        "poster": "/projects/southeast-bank/slide-8.1.png",
+        "width": 757,
+        "height": 824,
+        "video": false,
+        "caption": "The next screen. The rate they already chose stays at the top, next to the repayment plan."
+      },
+      {
+        "src": "/projects/southeast-bank/slide-9.png",
+        "poster": "/projects/southeast-bank/slide-9.png",
+        "width": 1423,
+        "height": 281,
+        "video": false,
+        "caption": "Pre-qualification to signup after launch. The lift was 27%, across the changes as a whole."
+      }
+    ]
+  },
+  {
     "slug": "facebook",
     "title": "Facebook",
     "summary": "Checking a Page's activity meant switching into that Page, which kept admins from liking and commenting as themselves. I joined the work from Underbelly, on a project that was already underway.\n\nThe panel they already used became the place to look. All activity in one tab, a tab per Page beside it, and a dot instead of a count. Opening a tab changes the list. It does not change who is logged in. Settings, which I took on once that direction was set, decide which Pages can notify an admin and which categories.\n\nThis version did not reach a public launch. I was not in that decision.",
@@ -98,124 +248,6 @@
         "height": 824,
         "video": false,
         "caption": "The panel annotated for handoff. The header, the horizontal Page tabs, a notification row, and the selected Page."
-      }
-    ]
-  },
-  {
-    "slug": "square",
-    "title": "Square",
-    "summary": "A spike in seller-reported phishing traced back to Square's own email. Every department had built its own template, and no two messages looked alike, so a seller could not tell a real one from a fake.\n\nThose templates were componentized into seven thematic buckets with the design system team. The highest-volume emails moved first, so other teams adopted the system on their own. Sender rules cover dynamic content, plain-text fallbacks, and messages that still read as Square when images are blocked.",
-    "year": "2022",
-    "awards": 0,
-    "credits": [],
-    "width": 1280,
-    "height": 720,
-    "poster": "/projects/square/poster.png",
-    "video": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
-    "media": [
-      {
-        "src": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
-        "poster": "https://image.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/thumbnail.jpg?time=1",
-        "width": 1280,
-        "height": 720,
-        "video": true,
-        "caption": "A seller email in the inbox, then the same kind of message before and after the system. Recognition happens before anyone follows the link into the dashboard."
-      },
-      {
-        "src": "/projects/square/emails.jpg",
-        "poster": "/projects/square/emails.jpg",
-        "width": 1600,
-        "height": 802,
-        "video": false,
-        "caption": "Two templates from the seven buckets: a card added to a wallet, and a card on its way. Same sender, same structure, different job."
-      },
-      {
-        "src": "/projects/square/system.jpg",
-        "poster": "/projects/square/system.jpg",
-        "width": 1600,
-        "height": 802,
-        "video": false,
-        "caption": "Header, body, and footer as separate pieces. Seven buckets, one library, so every seller email can be recognized as Square, including the plain-text fallback and the version with images blocked."
-      },
-      {
-        "src": "/projects/square/before.jpg",
-        "poster": "/projects/square/before.jpg",
-        "width": 1600,
-        "height": 802,
-        "video": false,
-        "caption": "Seller mail before the system. A signup, an account notice, and a refund. Same company, three different senders."
-      },
-      {
-        "src": "/projects/square/square-1.png",
-        "poster": "/projects/square/square-1.png",
-        "width": 1080,
-        "height": 733,
-        "video": false,
-        "caption": "Emails sellers forwarded to Risk. A bank-account change, and a $1,200 refund Square never sent."
-      },
-      {
-        "src": "/projects/square/square-2.png",
-        "poster": "/projects/square/square-2.png",
-        "width": 1680,
-        "height": 715,
-        "video": false,
-        "caption": "Three templates from different teams. A bank-account change, an account hold, and a terms update."
-      },
-      {
-        "src": "/projects/square/square-3.png",
-        "poster": "/projects/square/square-3.png",
-        "width": 1680,
-        "height": 450,
-        "video": false,
-        "caption": "Five email buckets. Lead driver, instructional, transactional, letter, and operational."
-      },
-      {
-        "src": "/projects/square/square-4.png",
-        "poster": "/projects/square/square-4.png",
-        "width": 1748,
-        "height": 810,
-        "video": false,
-        "caption": "The email component library, grouped by bucket."
-      },
-      {
-        "src": "/projects/square/square-4.1.png",
-        "poster": "/projects/square/square-4.1.png",
-        "width": 1680,
-        "height": 613,
-        "video": false,
-        "caption": "Transactional components. Header and body pieces, and the old PAF email next to the new one."
-      },
-      {
-        "src": "/projects/square/square-5.png",
-        "poster": "/projects/square/square-5.png",
-        "width": 1331,
-        "height": 935,
-        "video": false,
-        "caption": "A savings email, before and after the new template."
-      },
-      {
-        "src": "/projects/square/square-5.1.png",
-        "poster": "/projects/square/square-5.1.png",
-        "width": 1328,
-        "height": 847,
-        "video": false,
-        "caption": "A signup email, before and after the new template."
-      },
-      {
-        "src": "/projects/square/square-5.2.png",
-        "poster": "/projects/square/square-5.2.png",
-        "width": 1305,
-        "height": 941,
-        "video": false,
-        "caption": "A card-arrival email, before and after the new template."
-      },
-      {
-        "src": "/projects/square/square-6.png",
-        "poster": "/projects/square/square-6.png",
-        "width": 589,
-        "height": 921,
-        "video": false,
-        "caption": "The finished card-arrival email."
       }
     ]
   },
@@ -332,6 +364,100 @@
         "poster": "/projects/slide/slide-8.png",
         "width": 670,
         "height": 192,
+        "video": false,
+        "caption": ""
+      }
+    ]
+  },
+  {
+    "slug": "arcoscan",
+    "title": "Arcoscan",
+    "summary": "Biometric age verification, productized as a step inside onboarding. A face outline and one instruction, open your mouth, prove a person is present, and the flow continues.\n\nThe scan had lived as a technology demo built with SRI. The product version keeps the person in the same session: camera access, the prompt, a result, then the next screen, instead of a handoff to a separate verification site.",
+    "year": "",
+    "awards": 0,
+    "credits": [],
+    "width": 1280,
+    "height": 720,
+    "poster": "/projects/arcoscan/poster.png",
+    "video": "",
+    "media": [
+      {
+        "src": "/projects/arcoscan/verification.jpg",
+        "poster": "/projects/arcoscan/verification.jpg",
+        "width": 1600,
+        "height": 1600,
+        "video": false,
+        "caption": "The check is the prompt. Open your mouth, hold still inside the outline, and continue. Age and liveness are the same step, so onboarding does not stop for a second vendor."
+      },
+      {
+        "src": "/projects/arcoscan/arc-1.png",
+        "poster": "/projects/arcoscan/arc-1.png",
+        "width": 981,
+        "height": 893,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-2.png",
+        "poster": "/projects/arcoscan/arc-2.png",
+        "width": 1920,
+        "height": 686,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-4.png",
+        "poster": "/projects/arcoscan/arc-4.png",
+        "width": 1225,
+        "height": 664,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-3.png",
+        "poster": "/projects/arcoscan/arc-3.png",
+        "width": 494,
+        "height": 946,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-5.png",
+        "poster": "/projects/arcoscan/arc-5.png",
+        "width": 1664,
+        "height": 433,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-6.png",
+        "poster": "/projects/arcoscan/arc-6.png",
+        "width": 1438,
+        "height": 770,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-7.png",
+        "poster": "/projects/arcoscan/arc-7.png",
+        "width": 1844,
+        "height": 418,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-8.png",
+        "poster": "/projects/arcoscan/arc-8.png",
+        "width": 1855,
+        "height": 391,
+        "video": false,
+        "caption": ""
+      },
+      {
+        "src": "/projects/arcoscan/arc-9.png",
+        "poster": "/projects/arcoscan/arc-9.png",
+        "width": 1835,
+        "height": 597,
         "video": false,
         "caption": ""
       }
@@ -480,246 +606,120 @@
     ]
   },
   {
-    "slug": "arcoscan",
-    "title": "Arcoscan",
-    "summary": "Biometric age verification, productized as a step inside onboarding. A face outline and one instruction, open your mouth, prove a person is present, and the flow continues.\n\nThe scan had lived as a technology demo built with SRI. The product version keeps the person in the same session: camera access, the prompt, a result, then the next screen, instead of a handoff to a separate verification site.",
-    "year": "",
+    "slug": "square",
+    "title": "Square",
+    "summary": "A spike in seller-reported phishing traced back to Square's own email. Every department had built its own template, and no two messages looked alike, so a seller could not tell a real one from a fake.\n\nThose templates were componentized into seven thematic buckets with the design system team. The highest-volume emails moved first, so other teams adopted the system on their own. Sender rules cover dynamic content, plain-text fallbacks, and messages that still read as Square when images are blocked.",
+    "year": "2022",
     "awards": 0,
     "credits": [],
     "width": 1280,
     "height": 720,
-    "poster": "/projects/arcoscan/poster.png",
-    "video": "",
+    "poster": "/projects/square/poster.png",
+    "video": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
     "media": [
       {
-        "src": "/projects/arcoscan/verification.jpg",
-        "poster": "/projects/arcoscan/verification.jpg",
-        "width": 1600,
-        "height": 1600,
-        "video": false,
-        "caption": "The check is the prompt. Open your mouth, hold still inside the outline, and continue. Age and liveness are the same step, so onboarding does not stop for a second vendor."
-      },
-      {
-        "src": "/projects/arcoscan/arc-1.png",
-        "poster": "/projects/arcoscan/arc-1.png",
-        "width": 981,
-        "height": 893,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-2.png",
-        "poster": "/projects/arcoscan/arc-2.png",
-        "width": 1920,
-        "height": 686,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-4.png",
-        "poster": "/projects/arcoscan/arc-4.png",
-        "width": 1225,
-        "height": 664,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-3.png",
-        "poster": "/projects/arcoscan/arc-3.png",
-        "width": 494,
-        "height": 946,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-5.png",
-        "poster": "/projects/arcoscan/arc-5.png",
-        "width": 1664,
-        "height": 433,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-6.png",
-        "poster": "/projects/arcoscan/arc-6.png",
-        "width": 1438,
-        "height": 770,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-7.png",
-        "poster": "/projects/arcoscan/arc-7.png",
-        "width": 1844,
-        "height": 418,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-8.png",
-        "poster": "/projects/arcoscan/arc-8.png",
-        "width": 1855,
-        "height": 391,
-        "video": false,
-        "caption": ""
-      },
-      {
-        "src": "/projects/arcoscan/arc-9.png",
-        "poster": "/projects/arcoscan/arc-9.png",
-        "width": 1835,
-        "height": 597,
-        "video": false,
-        "caption": ""
-      }
-    ]
-  },
-  {
-    "slug": "southeast-bank",
-    "title": "ELFI",
-    "summary": "Students were qualifying for an ELFI loan and leaving before the application. Pre-qualification to application start sat at about 40%. The rate view was the place to look: repayment plans, fixed and variable, and an APR, with the total behind a click.\n\nI tested the application with students, then tried the fixes as versions inside the product. What shipped puts repayment plans and interest rates on separate screens, the total in the table, and a plain explanation of APR.\n\nPre-qualification to signup moved from 40% to 67%.",
-    "year": "2025",
-    "awards": 0,
-    "credits": [],
-    "width": 1280,
-    "height": 720,
-    "poster": "/projects/southeast-bank/poster.png",
-    "video": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
-    "media": [
-      {
-        "src": "https://stream.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/720p.mp4",
-        "poster": "https://image.mux.com/wspkVqpp5kOlfEQh2UZn4u38uR00n01KLD6rDohaf5d7U/thumbnail.jpg?time=1",
+        "src": "https://stream.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/720p.mp4",
+        "poster": "https://image.mux.com/P017Id86T01YNMU9UMrpF8lx5U01DaBQMrltzMMANLjq8o/thumbnail.jpg?time=1",
         "width": 1280,
         "height": 720,
         "video": true,
-        "caption": "How much to refinance, then the payment the calculator recommends, before the application is finished."
+        "caption": "A seller email in the inbox, then the same kind of message before and after the system. Recognition happens before anyone follows the link into the dashboard."
       },
       {
-        "src": "/projects/southeast-bank/steps.jpg",
-        "poster": "/projects/southeast-bank/steps.jpg",
+        "src": "/projects/square/emails.jpg",
+        "poster": "/projects/square/emails.jpg",
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "The old ELFI form asked for the whole refinance on one page, including income, a co-signer, and the loan amount. The new one is four steps, starting with the school, and a student can move between them."
+        "caption": "Two templates from the seven buckets: a card added to a wallet, and a card on its way. Same sender, same structure, different job."
       },
       {
-        "src": "/projects/southeast-bank/calculator.jpg",
-        "poster": "/projects/southeast-bank/calculator.jpg",
+        "src": "/projects/square/system.jpg",
+        "poster": "/projects/square/system.jpg",
         "width": 1600,
         "height": 802,
         "video": false,
-        "caption": "Amount and term on one side. Monthly payment, APR, total interest, and the payment timeline on the other, including a deferred grace period, before the application is finished."
+        "caption": "Header, body, and footer as separate pieces. Seven buckets, one library, so every seller email can be recognized as Square, including the plain-text fallback and the version with images blocked."
       },
       {
-        "src": "/projects/southeast-bank/slide-1.png",
-        "poster": "/projects/southeast-bank/slide-1.png",
-        "width": 1415,
-        "height": 1202,
+        "src": "/projects/square/before.jpg",
+        "poster": "/projects/square/before.jpg",
+        "width": 1600,
+        "height": 802,
         "video": false,
-        "caption": "Example of an email from the Head of Product. Only 40% continue from the pre-qualification stage, which became my new initiative to improve."
+        "caption": "Seller mail before the system. A signup, an account notice, and a refund. Same company, three different senders."
       },
       {
-        "src": "/projects/southeast-bank/slide-2.png",
-        "poster": "/projects/southeast-bank/slide-2.png",
-        "width": 831,
-        "height": 1080,
+        "src": "/projects/square/square-1.png",
+        "poster": "/projects/square/square-1.png",
+        "width": 1080,
+        "height": 733,
         "video": false,
-        "caption": "The rate screen from the tests, marked where students got stuck."
+        "caption": "Emails sellers forwarded to Risk. A bank-account change, and a $1,200 refund Square never sent."
       },
       {
-        "src": "/projects/southeast-bank/slide-3.1.png",
-        "poster": "/projects/southeast-bank/slide-3.1.png",
-        "width": 857,
-        "height": 1114,
-        "video": false,
-        "caption": "A highlight reel from the usability tests, with the notes on what students said about the rates."
-      },
-      {
-        "src": "/projects/southeast-bank/slide-3.0.png",
-        "poster": "/projects/southeast-bank/slide-3.0.png",
-        "width": 824,
+        "src": "/projects/square/square-2.png",
+        "poster": "/projects/square/square-2.png",
+        "width": 1680,
         "height": 715,
         "video": false,
-        "caption": "A mid-week update to Tom, the CTO, and his reply."
+        "caption": "Three templates from different teams. A bank-account change, an account hold, and a terms update."
       },
       {
-        "src": "/projects/southeast-bank/slide-4.png",
-        "poster": "/projects/southeast-bank/slide-4.png",
-        "width": 1258,
-        "height": 1153,
+        "src": "/projects/square/square-3.png",
+        "poster": "/projects/square/square-3.png",
+        "width": 1680,
+        "height": 450,
         "video": false,
-        "caption": "V1 through V4 lived in the product. What shipped was a combination of a couple of them."
+        "caption": "Five email buckets. Lead driver, instructional, transactional, letter, and operational."
       },
       {
-        "src": "/projects/southeast-bank/slide-5.0.png",
-        "poster": "/projects/southeast-bank/slide-5.0.png",
-        "width": 847,
-        "height": 1012,
+        "src": "/projects/square/square-4.png",
+        "poster": "/projects/square/square-4.png",
+        "width": 1748,
+        "height": 810,
         "video": false,
-        "caption": "Repayment plans, each one named and explained, before a student picks a rate."
+        "caption": "The email component library, grouped by bucket."
       },
       {
-        "src": "/projects/southeast-bank/slide-5.1.png",
-        "poster": "/projects/southeast-bank/slide-5.1.png",
-        "width": 1003,
-        "height": 1012,
+        "src": "/projects/square/square-4.1.png",
+        "poster": "/projects/square/square-4.1.png",
+        "width": 1680,
+        "height": 613,
         "video": false,
-        "caption": "The grand total in the table, in the open."
+        "caption": "Transactional components. Header and body pieces, and the old PAF email next to the new one."
       },
       {
-        "src": "/projects/southeast-bank/slide-6.0.png",
-        "poster": "/projects/southeast-bank/slide-6.0.png",
-        "width": 836,
-        "height": 884,
+        "src": "/projects/square/square-5.png",
+        "poster": "/projects/square/square-5.png",
+        "width": 1331,
+        "height": 935,
         "video": false,
-        "caption": "Part 1. The rate, with a note that the repayment plan comes next."
+        "caption": "A savings email, before and after the new template."
       },
       {
-        "src": "/projects/southeast-bank/slide-6.1.png",
-        "poster": "/projects/southeast-bank/slide-6.1.png",
-        "width": 827,
-        "height": 884,
+        "src": "/projects/square/square-5.1.png",
+        "poster": "/projects/square/square-5.1.png",
+        "width": 1328,
+        "height": 847,
         "video": false,
-        "caption": "Part 2. The repayment plan, with the rate they already chose still on screen."
+        "caption": "A signup email, before and after the new template."
       },
       {
-        "src": "/projects/southeast-bank/slide-7.0.png",
-        "poster": "/projects/southeast-bank/slide-7.0.png",
-        "width": 593,
-        "height": 986,
+        "src": "/projects/square/square-5.2.png",
+        "poster": "/projects/square/square-5.2.png",
+        "width": 1305,
+        "height": 941,
         "video": false,
-        "caption": "The thread with ChatGPT. Keep pasting the screens into Figma, including the components."
+        "caption": "A card-arrival email, before and after the new template."
       },
       {
-        "src": "/projects/southeast-bank/slide-7.1.png",
-        "poster": "/projects/southeast-bank/slide-7.1.png",
-        "width": 1337,
-        "height": 1332,
+        "src": "/projects/square/square-6.png",
+        "poster": "/projects/square/square-6.png",
+        "width": 589,
+        "height": 921,
         "video": false,
-        "caption": "The file after that pass. Users, email, configuration, authentication, and the component set."
-      },
-      {
-        "src": "/projects/southeast-bank/slide-8.0.png",
-        "poster": "/projects/southeast-bank/slide-8.0.png",
-        "width": 755,
-        "height": 824,
-        "video": false,
-        "caption": "What shipped. The grand total sits in the table, and the summary along the bottom is a sentence."
-      },
-      {
-        "src": "/projects/southeast-bank/slide-8.1.png",
-        "poster": "/projects/southeast-bank/slide-8.1.png",
-        "width": 757,
-        "height": 824,
-        "video": false,
-        "caption": "The next screen. The rate they already chose stays at the top, next to the repayment plan."
-      },
-      {
-        "src": "/projects/southeast-bank/slide-9.png",
-        "poster": "/projects/southeast-bank/slide-9.png",
-        "width": 1423,
-        "height": 281,
-        "video": false,
-        "caption": "Pre-qualification to signup after launch. The lift was 27%, across the changes as a whole."
+        "caption": "The finished card-arrival email."
       }
     ]
   }

@@ -10,7 +10,7 @@ export const tokens = {
   depthMobile: 0.18,
   span: 1.15,
   shift: -0.2,
-  focusIndex: 1,
+  focusIndex: 0,
 };
 
 export const motion = {

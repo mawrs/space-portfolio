@@ -36,10 +36,10 @@
   border: var(--border-width-0);
   background: none;
   color: inherit;
-  font-size: var(--font-size-caption);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-caption);
-  letter-spacing: var(--tracking-caption);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--tracking-body);
   text-transform: uppercase;
   pointer-events: auto;
   transition: opacity var(--duration-base) var(--easing-fade);
