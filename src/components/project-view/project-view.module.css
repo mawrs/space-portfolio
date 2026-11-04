@@ -12,6 +12,7 @@
   right: 2rem;
   bottom: 1.5rem;
   left: 2rem;
+  z-index: calc(var(--layer-adjacent-sheet) + 1);
   overflow: hidden;
   isolation: isolate;
   opacity: var(--opacity-hidden);
@@ -568,44 +569,23 @@
 .prev button,
 .next button {
   position: fixed;
-  top: 50%;
+  top: 1.5rem;
+  bottom: 1.5rem;
   z-index: var(--layer-sheet-controls);
-  display: grid;
-  place-items: center;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 1.6rem;
+  margin: 0;
   padding: 0;
   cursor: pointer;
   background: transparent;
   border: var(--border-width-0);
-  transform: translateY(-50%);
-  transition: transform var(--duration-fast) var(--easing-standard);
 }
 
 .prev button {
-  left: 0.7rem;
+  left: 0;
 }
 
 .next button {
-  right: 0.7rem;
-}
-
-.prev button img,
-.next button img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.prev button:hover,
-.next button:hover {
-  transform: translateY(-50%) scale(1.06);
-}
-
-.prev button:active,
-.next button:active {
-  transform: translateY(-50%) scale(0.94);
+  right: 0;
 }
 
 .prev aside,
@@ -620,17 +600,25 @@
   color: var(--text-primary);
   background: var(--background-white);
   border-radius: var(--radius-lg);
-  opacity: var(--opacity-hidden);
+  opacity: 0.45;
   pointer-events: none;
+  transition: opacity var(--duration-base) var(--easing-fade);
   will-change: inset, transform, opacity;
 }
 
+.prev:hover aside,
+.prev:focus-within aside,
+.next:hover aside,
+.next:focus-within aside {
+  opacity: 1;
+}
+
 .prev aside {
-  transform: translateX(calc(-100% - 1.5rem));
+  transform: translateX(calc(-100% - 0.4rem));
 }
 
 .next aside {
-  transform: translateX(calc(100% + 1.5rem));
+  transform: translateX(calc(100% + 0.4rem));
 }
 
 @media (min-width: 640px) {
@@ -678,21 +666,28 @@
     font-size: var(--font-size-body);
   }
 
-  .prev button {
-    left: 0.8rem;
-  }
-
+  .prev button,
   .next button {
-    right: 0.8rem;
+    top: 4rem;
+    bottom: 4rem;
+    width: 3.5rem;
   }
 
   .prev aside,
   .next aside {
-    top: 2rem;
+    top: 4rem;
     right: 5rem;
-    bottom: 2rem;
+    bottom: 4rem;
     left: 5rem;
     border-radius: var(--radius-xl);
+  }
+
+  .prev aside {
+    transform: translateX(calc(-100% - 1.5rem));
+  }
+
+  .next aside {
+    transform: translateX(calc(100% + 1.5rem));
   }
 }
 

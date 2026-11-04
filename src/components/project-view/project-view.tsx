@@ -331,8 +331,19 @@ export function ProjectView({ project, previous, next }: ProjectViewProps) {
       );
       document.title = `${targetProject.study.headline} — ${site.name}`;
       stage.dataset.settling = "";
-      const { rest, center } = layoutFor(side, offset);
-      if (!active.style.width) setPreviewRect(active, rest, 0);
+      const { center } = layoutFor(side, offset);
+      const visible = active.getBoundingClientRect();
+      setPreviewRect(
+        active,
+        {
+          x: visible.x,
+          y: visible.y,
+          width: visible.width,
+          height: visible.height,
+          radius: readRadius(active),
+        },
+        readOpacity(active),
+      );
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         setPreviewRect(active, center, 1);
         go(targetProject.slug, side);
@@ -455,26 +466,18 @@ function Neighbor({
 }) {
   return (
     <div className={side === "prev" ? styles.prev : styles.next}>
-      <button
-        type="button"
-        data-neighbor-control={side}
-        onClick={onOpen}
-        aria-label={`${side === "prev" ? "Previous" : "Next"}: ${project.title}`}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={side === "prev" ? "/left-key.png" : "/right-key.png"}
-          alt=""
-          aria-hidden="true"
-          draggable={false}
-        />
-      </button>
       <aside data-neighbor={side} aria-hidden="true">
         <CaseBody project={project} preview />
         <div className={styles.close}>
           <span>×</span>
         </div>
       </aside>
+      <button
+        type="button"
+        data-neighbor-control={side}
+        onClick={onOpen}
+        aria-label={`${side === "prev" ? "Previous" : "Next"}: ${project.title}`}
+      />
     </div>
   );
 }
