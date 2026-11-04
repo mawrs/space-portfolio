@@ -5,7 +5,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
 import { Project } from "@/data/projects";
 import { site } from "@/data/site";
 import { flight } from "@/lib/flight";
-import { CaseBody, CaseHero } from "./case-body";
+import { CaseBody } from "./case-body";
 import styles from "./project-view.module.css";
 
 type ProjectViewProps = {
@@ -470,36 +470,11 @@ function Neighbor({
         />
       </button>
       <aside data-neighbor={side} aria-hidden="true">
-        <CasePreview project={project} />
+        <CaseBody project={project} preview />
         <div className={styles.close}>
           <span>×</span>
         </div>
       </aside>
-    </div>
-  );
-}
-
-function CasePreview({ project }: { project: Project }) {
-  const overview = project.study.sections[0];
-
-  return (
-    <div className={`${styles.case} ${styles.previewCase}`}>
-      <CaseHero project={project} preview />
-      <article className={styles.article}>
-        {overview ? (
-          <section className={styles.section}>
-            <div className={styles.slideCopy}>
-              <h2>{overview.label}</h2>
-              <div className={styles.blocks}>
-                {overview.blocks.map((block, index) =>
-                  block.type === "p" ? <p key={index}>{block.text}</p> : null,
-                )}
-              </div>
-            </div>
-            <div className={styles.placeholder} />
-          </section>
-        ) : null}
-      </article>
     </div>
   );
 }

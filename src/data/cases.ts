@@ -41,7 +41,7 @@ const sections = (
 
 export const cases: Record<string, CaseStudy> = {
   facebook: {
-    title: "Check, then switch",
+    title: "Cross-Profile Notifications",
     headline: "Page notifications",
     meta: "Facebook",
     role: "Product designer",
@@ -332,7 +332,7 @@ export const cases: Record<string, CaseStudy> = {
     }),
   },
   slide: {
-    title: "45% of claims, no call",
+    title: "Expedited insurance claims",
     headline: "Insurance claims intake",
     meta: "Slide",
     role: "Claims intake and service blueprint",
@@ -464,7 +464,7 @@ export const cases: Record<string, CaseStudy> = {
     }),
   },
   "true-see": {
-    title: "From the chart to the camera",
+    title: "EHR-Agnostic workflows",
     headline: "EHR-agnostic capture",
     meta: "TRUE-See",
     role: "Sole product designer",
@@ -758,7 +758,7 @@ export const cases: Record<string, CaseStudy> = {
     ),
   },
   arcoscan: {
-    title: "Open your mouth",
+    title: "Biometric age verification",
     headline: "Age verification",
     meta: "Arcoscan",
     role: "Onboarding liveness check",

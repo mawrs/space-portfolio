@@ -24,6 +24,12 @@ function contentGroups(blocks: CaseBlock[]) {
 export function CaseHero({ project, preview = false }: { project: Project; preview?: boolean }) {
   const study = project.study;
   const layered = Boolean(project.heroBackground && project.heroDevice);
+  const facts = [
+    { label: "Role", value: study.role },
+    { label: "Teams", value: study.team.join(", ") },
+    { label: "Timeline", value: study.timeline },
+    { label: "Skills", value: study.skills.join(", ") },
+  ];
 
   return (
     <header
@@ -39,6 +45,13 @@ export function CaseHero({ project, preview = false }: { project: Project; previ
       <div className={styles.heroCopy}>
         <p className={styles.meta}>{study.meta}</p>
         <h1 id={preview ? undefined : `project-${project.slug}-title`}>{study.title}</h1>
+        <ul className={styles.heroFacts}>
+          {facts.map((item) => (
+            <li key={item.label}>
+              <span className={styles.factLabel}>{item.label}:</span> {item.value}
+            </li>
+          ))}
+        </ul>
       </div>
       <figure className={styles.sizzle}>
         {layered ? (
@@ -73,12 +86,12 @@ function visibleMedia(project: Project, blocks: CaseBlock[]) {
   });
 }
 
-export function CaseBody({ project }: { project: Project }) {
+export function CaseBody({ project, preview = false }: { project: Project; preview?: boolean }) {
   const study = project.study;
 
   return (
     <div key={project.slug} className={styles.case}>
-      <CaseHero project={project} />
+      <CaseHero project={project} preview={preview} />
       <article className={styles.article}>
         {study.sections.map((section) => {
           const media = visibleMedia(project, section.blocks);
@@ -107,7 +120,12 @@ export function CaseBody({ project }: { project: Project }) {
                       {group.items.length > 0 ? (
                         <div className={styles.blocks}>
                           {group.items.map((block, itemIndex) => (
-                            <Block key={`${section.id}-${index}-${itemIndex}`} block={block} project={project} />
+                            <Block
+                              key={`${section.id}-${index}-${itemIndex}`}
+                              block={block}
+                              project={project}
+                              preview={preview}
+                            />
                           ))}
                         </div>
                       ) : null}
@@ -117,12 +135,14 @@ export function CaseBody({ project }: { project: Project }) {
                   <div className={styles.blocks} />
                 )}
                 {stats.map((block, index) => (
-                  <Block key={`${section.id}-stats-${index}`} block={block} project={project} />
+                  <Block key={`${section.id}-stats-${index}`} block={block} project={project} preview={preview} />
                 ))}
               </div>
               <div className={styles.slideMedia}>
                 {media.length > 0 ? (
-                  media.map((block) => <Block key={block.index} block={block} project={project} />)
+                  media.map((block) => (
+                    <Block key={block.index} block={block} project={project} preview={preview} />
+                  ))
                 ) : pendingMedia.length > 0 ? (
                   pendingMedia.map((block) => (
                     <figure key={`${section.id}-${block.index}`} className={styles.block}>
@@ -146,7 +166,7 @@ export function CaseBody({ project }: { project: Project }) {
   );
 }
 
-function Block({ block, project }: { block: CaseBlock; project: Project }) {
+function Block({ block, project, preview = false }: { block: CaseBlock; project: Project; preview?: boolean }) {
   if (block.type === "h3") return null;
   if (block.type === "p") return <p>{block.text}</p>;
   if (block.type === "ul") {
@@ -183,11 +203,11 @@ function Block({ block, project }: { block: CaseBlock; project: Project }) {
   return (
     <figure className={styles.block}>
       <div
-        className={styles.frame}
-        data-gl="simple"
-        data-id={`${project.slug}-${block.index}`}
-        data-project={project.slug}
-        data-stack-index={block.index}
+        className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
+        data-gl={preview ? undefined : "simple"}
+        data-id={preview ? undefined : `${project.slug}-${block.index}`}
+        data-project={preview ? undefined : project.slug}
+        data-stack-index={preview ? undefined : block.index}
         style={{ "--ratio": `${item.width} / ${item.height}` } as CSSProperties}
       >
         {item.video ? (
@@ -197,14 +217,15 @@ function Block({ block, project }: { block: CaseBlock; project: Project }) {
             muted
             loop
             playsInline
-            autoPlay
+            autoPlay={!preview}
+            preload="auto"
             crossOrigin="anonymous"
             draggable={false}
           />
         ) : (
           // Sampled by the shared plane. next/image would hide the source element.
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={item.src} alt="" crossOrigin="anonymous" draggable={false} />
+          <img src={item.src} alt="" loading="eager" crossOrigin="anonymous" draggable={false} />
         )}
       </div>
       {caption ? (
