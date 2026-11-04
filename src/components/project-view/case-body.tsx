@@ -84,6 +84,9 @@ export function CaseBody({ project }: { project: Project }) {
       <article className={styles.article}>
         {study.sections.map((section) => {
           const media = visibleMedia(project, section.blocks);
+          const pendingMedia = section.blocks.filter(
+            (block): block is Extract<CaseBlock, { type: "media" }> => block.type === "media" && !media.includes(block),
+          );
           const showOverviewList = project.slug === "true-see" || project.slug === "arcoscan";
           const blocks = section.blocks.filter(
             (block) =>
@@ -122,6 +125,17 @@ export function CaseBody({ project }: { project: Project }) {
               <div className={styles.slideMedia}>
                 {media.length > 0 ? (
                   media.map((block) => <Block key={block.index} block={block} project={project} />)
+                ) : pendingMedia.length > 0 ? (
+                  pendingMedia.map((block) => (
+                    <figure key={`${section.id}-${block.index}`} className={styles.block}>
+                      <div className={styles.placeholder} aria-hidden="true" />
+                      {block.caption ? (
+                        <figcaption>
+                          <p>{block.caption}</p>
+                        </figcaption>
+                      ) : null}
+                    </figure>
+                  ))
                 ) : (
                   <div className={styles.placeholder} aria-hidden="true" />
                 )}
