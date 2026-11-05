@@ -74,6 +74,7 @@ const fragmentShader = `
   uniform sampler2D uMap;
   uniform sampler2D uOverlay;
   uniform vec2 uCover;
+  uniform vec2 uFocus;
   uniform float uAspect;
   uniform float uRadius;
   uniform float uHover;
@@ -87,7 +88,7 @@ const fragmentShader = `
     if (uAlpha < 0.01) discard;
     float gravity = cardGravity(vUv, uPointer, uAspect);
     vec2 lensUv = vUv + (vUv - uPointer) * gravity * uHover * 0.16;
-    vec2 uv = (lensUv - 0.5) * uCover + 0.5;
+    vec2 uv = (lensUv - 0.5) * uCover + uFocus;
     vec4 media = texture2D(uMap, uv);
     vec4 overlay = texture2D(uOverlay, lensUv);
     vec3 color = mix(media.rgb, overlay.rgb, overlay.a);
@@ -246,6 +247,10 @@ export function PlaneStage() {
         clipOn: { value: number };
         pointer: InstanceType<typeof THREE.Vector2>;
         cover: InstanceType<typeof THREE.Vector2>;
+        focus: InstanceType<typeof THREE.Vector2>;
+        cropEnd: boolean;
+        cropStart: boolean;
+        layer: number;
         enteredAt: number;
         reveal: number;
       };
@@ -298,6 +303,8 @@ export function PlaneStage() {
         if (!width || !height) return;
         const scale = coverScale(width / height, record.aspect.value || 1);
         record.cover.set(scale.x, scale.y);
+        const focusY = record.cropEnd ? scale.y * 0.5 : record.cropStart ? 1 - scale.y * 0.5 : 0.5;
+        record.focus.set(0.5, focusY);
       };
 
       const ensure = (key: string, node: HTMLElement, role: string) => {
@@ -322,6 +329,7 @@ export function PlaneStage() {
         const overlay = new THREE.CanvasTexture(overlayCanvas);
         overlay.colorSpace = THREE.NoColorSpace;
         const cover = new THREE.Vector2(1, 1);
+        const focus = new THREE.Vector2(0.5, 0.5);
         const pointerUv = new THREE.Vector2(0.5, 0.5);
         const hover = { value: 0 };
         const alpha = { value: 1 };
@@ -335,6 +343,7 @@ export function PlaneStage() {
             uMap: { value: map },
             uOverlay: { value: overlay },
             uCover: { value: cover },
+            uFocus: { value: focus },
             uHalf: shared.uHalf,
             uDepth: shared.uDepth,
             uCurve: shared.uCurve,
@@ -373,6 +382,10 @@ export function PlaneStage() {
           clipOn,
           pointer: pointerUv,
           cover,
+          focus,
+          cropEnd: node.dataset.crop === "end",
+          cropStart: node.dataset.crop === "start",
+          layer: Number(node.dataset.layer) || 0,
           enteredAt:
             performance.now() +
             (role === "simple" ? 250 + (Number(node.dataset.stackIndex) || 0) * 100 : 0),
@@ -388,20 +401,30 @@ export function PlaneStage() {
         bounds: DOMRect,
         bend: number,
         radiusPx: number,
+        clip?: { top: number; height: number },
+        source?: { w: number; h: number },
       ) => {
         const width = Math.max(pose.w, 1);
         const height = Math.max(pose.h, 1);
+        const sourceWidth = Math.max(source?.w ?? width, 1);
+        const sourceHeight = Math.max(source?.h ?? height, 1);
+        record.mesh.renderOrder = record.layer;
         record.mesh.position.set(
           pose.x + width / 2 - bounds.left - bounds.width / 2,
           bounds.top + bounds.height / 2 - (pose.y + height / 2),
-          roleDepth(record.role),
+          roleDepth(record.role) + record.layer * 0.05,
         );
         record.mesh.scale.set(width, height, 1);
-        record.aspect.value = width / height;
+        record.aspect.value = sourceWidth / sourceHeight;
         record.cardH.value = height;
         record.bend.value = bend;
         record.radius.value = radiusPx / height;
         syncCover(record);
+        if (clip && clip.height < 0.999) {
+          const span = record.cover.y;
+          record.focus.y += span * (0.5 - clip.top - clip.height * 0.5);
+          record.cover.y = span * clip.height;
+        }
       };
 
       let frame = 0;
@@ -483,6 +506,19 @@ export function PlaneStage() {
           live.add(key);
           const current = { x: rect.left, y: rect.top, w: rect.width, h: rect.height };
           let pose = current;
+          let clip: { top: number; height: number } | undefined;
+          const clipHost = node.closest<HTMLElement>("[data-swap-clip]");
+          if (clipHost) {
+            const box = clipHost.getBoundingClientRect();
+            const top = Math.max(rect.top, box.top);
+            const bottom = Math.min(rect.bottom, box.bottom);
+            const visible = bottom - top;
+            if (visible < 2) record.alpha.value = 0;
+            else if (bottom < rect.bottom - 0.5 || top > rect.top + 0.5) {
+              clip = { top: (top - rect.top) / rect.height, height: visible / rect.height };
+              pose = { x: rect.left, y: top, w: rect.width, h: visible };
+            }
+          }
           let bend = role === "card" && !mobile ? 1 : 0;
           if (
             flight.mode === "return" &&
@@ -515,15 +551,23 @@ export function PlaneStage() {
               };
               record.alpha.value = record.reveal;
             }
+            const frameOpacity = Number.parseFloat(getComputedStyle(node).opacity);
+            if (Number.isFinite(frameOpacity)) record.alpha.value *= frameOpacity;
           } else if (role === "related") {
             const opacity = Number.parseFloat(getComputedStyle(node).opacity);
             record.alpha.value = Number.isFinite(opacity) ? opacity : 0.3;
           } else {
             record.alpha.value = 1;
           }
+          record.cropEnd = node.dataset.crop === "end";
+          record.cropStart = node.dataset.crop === "start";
+          record.layer = Number(node.dataset.layer) || 0;
           const parsedRadius = Number.parseFloat(getComputedStyle(node).borderTopLeftRadius);
           const radius = Number.isFinite(parsedRadius) ? parsedRadius : rem * 1.2;
-          place(record, pose, bounds, bend, radius);
+          place(record, pose, bounds, bend, radius, clip, clip ? { w: rect.width, h: rect.height } : undefined);
+          if (clipHost && Math.min(rect.bottom, clipHost.getBoundingClientRect().bottom) - Math.max(rect.top, clipHost.getBoundingClientRect().top) < 2) {
+            record.alpha.value = 0;
+          }
 
           if (
             (role === "card" || role === "simple") &&

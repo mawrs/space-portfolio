@@ -150,7 +150,11 @@
   align-content: start;
   align-items: start;
   gap: var(--spacing-xl);
-  padding: 8rem 4.8rem;
+  padding: 4rem 4.8rem;
+}
+
+.article > .section:first-child {
+  padding-top: 8rem;
 }
 
 .slideCopy,
@@ -168,6 +172,42 @@
 .slideMedia {
   align-content: start;
   gap: var(--spacing-l);
+}
+
+.mediaGallery {
+  gap: var(--spacing-s);
+}
+
+.mediaThumbnails {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.mediaThumbnail {
+  width: var(--spacing-xxxl);
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+  border: var(--border-width-default) solid transparent;
+  border-radius: var(--radius-base);
+  cursor: pointer;
+}
+
+.mediaThumbnail:focus-visible {
+  outline: var(--border-width-default) solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.mediaThumbnail img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.mediaThumbnailActive {
+  border-color: var(--text-primary);
 }
 
 .placeholder {
@@ -266,10 +306,16 @@
   margin-top: var(--spacing-s);
 }
 
-.blocks ul {
+.blocks ul,
+.blocks ol {
   display: grid;
   gap: var(--spacing-xs);
   padding-left: 1.6rem;
+}
+
+.blocks ol {
+  padding-left: 2.8rem;
+  list-style: decimal;
 }
 
 .slideCopy > .stats {
@@ -388,6 +434,29 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.marker {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--color-white);
+  background: var(--color-red-500);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: markerGlow calc(var(--duration-entrance) * 2) var(--easing-pulse) infinite;
+  box-shadow:
+    0 0 0.4rem var(--color-red-500),
+    0 0 1.2rem var(--color-red-400),
+    0 0 2.2rem var(--color-red-500);
 }
 
 :global(html.gl) .frame img,
@@ -650,7 +719,7 @@
   .section {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--spacing-xxl);
-    padding: 8rem;
+    padding: 4rem;
   }
 
   .facts {
@@ -694,6 +763,7 @@
   .heroCopy,
   .sizzle,
   .readingBar,
+  .marker,
   .prev aside,
   .next aside {
     animation: none;
@@ -702,6 +772,22 @@
 
   .sheet {
     opacity: var(--opacity-visible);
+  }
+}
+
+@keyframes markerGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0.25rem var(--color-red-500),
+      0 0 0.7rem var(--color-red-400),
+      0 0 1.2rem var(--color-red-500);
+  }
+  50% {
+    box-shadow:
+      0 0 0.6rem var(--color-red-500),
+      0 0 1.6rem var(--color-red-400),
+      0 0 2.8rem var(--color-red-500);
   }
 }
 

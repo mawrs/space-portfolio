@@ -2,9 +2,10 @@ export type CaseBlock =
   | { type: "p"; text: string }
   | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
+  | { type: "ol"; items: string[] }
   | { type: "stats"; items: Array<{ value: string; label: string }> }
   | { type: "link"; href: string; label: string }
-  | { type: "media"; index: number; caption?: string };
+  | { type: "media"; index: number; caption?: string; markers?: Array<{ label: string; x: number; y: number }> };
 
 export type CaseSection = {
   id: "overview" | "background" | "approach" | "solution" | "outcomes" | "reflection" | "close" | "end" | "follow" | "last";
@@ -1052,8 +1053,13 @@ export const cases: Record<string, CaseStudy> = {
           text: "What I found were much broader comprehension problems, and those were what led to the drop-off.",
         },
         {
-          type: "p",
-          text: "The repayment options up top were not clearly labeled. The fixed and variable rate tables were not easy to understand. APR was not universally understood. The grand total of a loan was hidden behind a click.",
+          type: "ol",
+          items: [
+            "The repayment options up top were not clearly labeled.",
+            "The fixed and variable rate tables were not easy to understand.",
+            "APR was not universally understood.",
+            "The grand total of a loan was hidden behind a click.",
+          ],
         },
         {
           type: "p",
@@ -1061,8 +1067,13 @@ export const cases: Record<string, CaseStudy> = {
         },
         {
           type: "media",
-          index: 4,
-          caption: "The rate screen from the tests, marked where students got stuck.",
+          index: 17,
+          caption: "The repayment options and fixed-rate table from the tests.",
+        },
+        {
+          type: "media",
+          index: 18,
+          caption: "The variable-rate table, with the grand total in the summary.",
         },
       ],
       [

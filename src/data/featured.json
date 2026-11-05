@@ -146,6 +146,22 @@
         "height": 281,
         "video": false,
         "caption": "Pre-qualification to signup after launch. The lift was 27%, across the changes as a whole."
+      },
+      {
+        "src": "/projects/southeast-bank/elfi-2.webp",
+        "poster": "/projects/southeast-bank/elfi-2.webp",
+        "width": 1187,
+        "height": 681,
+        "video": false,
+        "caption": "The repayment options and fixed-rate table from the tests."
+      },
+      {
+        "src": "/projects/southeast-bank/elfi-3.webp",
+        "poster": "/projects/southeast-bank/elfi-3.webp",
+        "width": 1187,
+        "height": 572,
+        "video": false,
+        "caption": "The variable-rate table, with the grand total in the summary."
       }
     ]
   },

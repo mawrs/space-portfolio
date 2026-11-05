@@ -1,4 +1,6 @@
-import { CSSProperties, Fragment } from "react";
+"use client";
+
+import { CSSProperties, Fragment, useState } from "react";
 import { CaseBlock } from "@/data/cases";
 import { Project } from "@/data/projects";
 import { ActionLink } from "@/components/ui/action-link";
@@ -108,74 +110,138 @@ export function CaseBody({ project, preview = false }: { project: Project; previ
           const stats = section.blocks.filter((block) => block.type === "stats");
           const groups = contentGroups(blocks);
           const hasCopy = groups.some((group) => group.items.length > 0);
+          const gallery = media.length > 1;
 
-          return (
-            <section key={section.id} id={`${project.slug}-${section.id}`} className={styles.section} data-section="">
-              <div className={styles.slideCopy}>
-                <h2>{section.label}</h2>
-                {hasCopy ? (
-                  groups.map((group, index) => (
-                    <Fragment key={`${section.id}-${index}`}>
-                      {group.heading ? <h3>{group.heading}</h3> : null}
-                      {group.items.length > 0 ? (
-                        <div className={styles.blocks}>
-                          {group.items.map((block, itemIndex) => (
-                            <Block
-                              key={`${section.id}-${index}-${itemIndex}`}
-                              block={block}
-                              project={project}
-                              preview={preview}
-                            />
-                          ))}
-                        </div>
-                      ) : null}
-                    </Fragment>
-                  ))
-                ) : (
-                  <div className={styles.blocks} />
-                )}
-                {stats.map((block, index) => (
-                  <Block key={`${section.id}-stats-${index}`} block={block} project={project} preview={preview} />
-                ))}
-              </div>
-              <div className={styles.slideMedia}>
-                {media.length > 0 ? (
-                  media.map((block) => (
-                    <Block key={block.index} block={block} project={project} preview={preview} />
-                  ))
-                ) : pendingMedia.length > 0 ? (
-                  pendingMedia.map((block) => (
-                    <figure key={`${section.id}-${block.index}`} className={styles.block}>
-                      <div className={styles.placeholder} aria-hidden="true" />
-                      {block.caption ? (
-                        <figcaption>
-                          <p>{block.caption}</p>
-                        </figcaption>
-                      ) : null}
-                    </figure>
-                  ))
-                ) : (
-                  <div className={styles.placeholder} aria-hidden="true" />
-                )}
-              </div>
+          const copy = (
+            <div className={styles.slideCopy}>
+              <h2>{section.label}</h2>
+              {hasCopy ? (
+                groups.map((group, index) => (
+                  <Fragment key={`${section.id}-${index}`}>
+                    {group.heading ? <h3>{group.heading}</h3> : null}
+                    {group.items.length > 0 ? (
+                      <div className={styles.blocks}>
+                        {group.items.map((block, itemIndex) => (
+                          <Block
+                            key={`${section.id}-${index}-${itemIndex}`}
+                            block={block}
+                            project={project}
+                            preview={preview}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
+                  </Fragment>
+                ))
+              ) : (
+                <div className={styles.blocks} />
+              )}
+              {stats.map((block, index) => (
+                <Block key={`${section.id}-stats-${index}`} block={block} project={project} preview={preview} />
+              ))}
+            </div>
+          );
+          const visuals = gallery ? (
+            <MediaGallery media={media} project={project} preview={preview} />
+          ) : (
+            <div className={styles.slideMedia}>
+              {media.length > 0 ? (
+                media.map((block) => (
+                  <Block key={block.index} block={block} project={project} preview={preview} />
+                ))
+              ) : pendingMedia.length > 0 ? (
+                pendingMedia.map((block) => (
+                  <figure key={`${section.id}-${block.index}`} className={styles.block}>
+                    <div className={styles.placeholder} aria-hidden="true" />
+                    {block.caption ? (
+                      <figcaption>
+                        <p>{block.caption}</p>
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                ))
+              ) : (
+                <div className={styles.placeholder} aria-hidden="true" />
+              )}
+            </div>
+          );
+
+          const content = (
+            <section
+              id={`${project.slug}-${section.id}`}
+              className={styles.section}
+              data-section=""
+            >
+              {copy}
+              {visuals}
             </section>
           );
+
+          return <Fragment key={section.id}>{content}</Fragment>;
         })}
       </article>
     </div>
   );
 }
 
-function Block({ block, project, preview = false }: { block: CaseBlock; project: Project; preview?: boolean }) {
+function MediaGallery({
+  media,
+  project,
+  preview,
+}: {
+  media: Array<Extract<CaseBlock, { type: "media" }>>;
+  project: Project;
+  preview: boolean;
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = media[activeIndex] ?? media[0];
+
+  return (
+    <div className={`${styles.slideMedia} ${styles.mediaGallery}`}>
+      <Block key={active.index} block={active} project={project} preview={preview} />
+      <div className={styles.mediaThumbnails} role="group" aria-label="Choose an image">
+        {media.map((block, index) => {
+          const item = project.media[block.index];
+          if (!item) return null;
+          const label = block.caption ?? item.caption ?? `Image ${index + 1}`;
+          return (
+            <button
+              key={block.index}
+              type="button"
+              className={`${styles.mediaThumbnail} ${index === activeIndex ? styles.mediaThumbnailActive : ""}`}
+              aria-label={`Show ${label}`}
+              aria-pressed={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={item.poster ?? item.src} alt="" draggable={false} />
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function Block({
+  block,
+  project,
+  preview = false,
+}: {
+  block: CaseBlock;
+  project: Project;
+  preview?: boolean;
+}) {
   if (block.type === "h3") return null;
   if (block.type === "p") return <p>{block.text}</p>;
-  if (block.type === "ul") {
+  if (block.type === "ul" || block.type === "ol") {
+    const List = block.type;
     return (
-      <ul>
+      <List>
         {block.items.map((item) => (
           <li key={item}>{item}</li>
         ))}
-      </ul>
+      </List>
     );
   }
   if (block.type === "stats") {
@@ -227,6 +293,16 @@ function Block({ block, project, preview = false }: { block: CaseBlock; project:
           // eslint-disable-next-line @next/next/no-img-element
           <img src={item.src} alt="" loading="eager" crossOrigin="anonymous" draggable={false} />
         )}
+        {block.markers?.map((marker) => (
+          <span
+            key={marker.label}
+            className={styles.marker}
+            style={{ left: `${marker.x}%`, top: `${marker.y}%` }}
+            aria-hidden="true"
+          >
+            {marker.label}
+          </span>
+        ))}
       </div>
       {caption ? (
         <figcaption>
