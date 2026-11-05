@@ -521,7 +521,8 @@ export function PlaneStage() {
           } else {
             record.alpha.value = 1;
           }
-          const radius = Number.parseFloat(getComputedStyle(node).borderTopLeftRadius) || rem * 1.2;
+          const parsedRadius = Number.parseFloat(getComputedStyle(node).borderTopLeftRadius);
+          const radius = Number.isFinite(parsedRadius) ? parsedRadius : rem * 1.2;
           place(record, pose, bounds, bend, radius);
 
           if (

@@ -1009,19 +1009,19 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "ELFI offered private student loans and student loan refinancing.",
+          text: "ELFI is a private student loan and student loan refinancing provider. As the sole designer on the company, I owned all-things research and design.",
         },
         {
           type: "p",
-          text: "As the sole designer, I owned all-things research and design.",
+          text: "New projects typically started with a phone call or an email from the Head of Product, describing their latest initiative and any other stakeholder I could talk to to kick off the new project.",
         },
         {
           type: "p",
-          text: "New projects typically started with a phone call with the CTO or an email with the Head of Product, describing their pain points and anyone I could talk to in order to kick off the new initiative.",
+          text: "For this particular project, my stakeholders flagged a low conversion of our pre-qualification application. Assuming the rates themselves were not the issue (because I could not control that), I started investigating with the main question being, “Did students understand the options well enough to continue?”",
         },
         {
           type: "p",
-          text: "For this particular project, a stakeholder flagged low pre-qualification rates on our student loan application. The question I could investigate became, “Did students understand the options well enough to continue?”",
+          text: "I call this the “Charlie’s Angels” approach because I receive an assignment out of the blue, and I have to figure out the rest myself.",
         },
         {
           type: "ul",
@@ -1186,7 +1186,7 @@ export const cases: Record<string, CaseStudy> = {
         },
       ],
     ).map((section) => {
-      if (section.id === "overview") return { ...section, label: "Business goals without a cause" };
+      if (section.id === "overview") return { ...section, label: "The “Charlie’s Angels” approach" };
       if (section.id === "background") return { ...section, label: "Fixed meant two different things" };
       if (section.id === "approach") return { ...section, label: "Continually getting buy-in" };
       if (section.id === "solution") return { ...section, label: "Using AI to explore alternatives" };

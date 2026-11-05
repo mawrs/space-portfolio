@@ -174,7 +174,6 @@
   width: 100%;
   aspect-ratio: 1;
   background: #d4d4d4;
-  border-radius: var(--radius-lg);
 }
 
 .heroPlaceholder {
@@ -215,9 +214,9 @@
 }
 
 .section h2 {
-  font-family: var(--font-family-ui);
+  font-family: var(--font-family-body);
   font-size: var(--font-size-heading);
-  font-weight: var(--font-weight-medium);
+  font-weight: 400;
   line-height: var(--line-height-heading);
   letter-spacing: var(--tracking-heading-sm);
 }
@@ -241,9 +240,9 @@
 
 .blocks p,
 .blocks li {
-  font-size: var(--font-size-body-lg);
+  font-size: var(--font-size-subheading);
   font-weight: 300;
-  line-height: var(--line-height-body-lg);
+  line-height: var(--line-height-subheading);
 }
 
 .blocks > * {
@@ -379,7 +378,7 @@
   aspect-ratio: var(--ratio);
   overflow: hidden;
   background: transparent;
-  border-radius: var(--radius-lg);
+  border-radius: 0;
 }
 
 .frame img,
