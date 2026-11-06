@@ -387,14 +387,15 @@ export const cases: Record<string, CaseStudy> = {
           text: "Together with the stakeholders in the room, we sketched out ideas we liked that could potentially be implemented in the UI. This is where everyone got creative and came up with some really cool ideas.",
         },
         { type: "media", index: 5 },
+        { type: "media", index: 6 },
       ],
       [
         {
           type: "p",
           text: "With sketches finalized, we started collaborating on a potential flow for the prototype on Friday. The finalized sketches represented the key moment in the workflow that mattered most to the stakeholders. My job was to fill in the gaps and create a cohesive end-to-end experience.",
         },
-        { type: "media", index: 6 },
         { type: "media", index: 7 },
+        { type: "media", index: 8 },
       ],
       [
         {
@@ -405,9 +406,11 @@ export const cases: Record<string, CaseStudy> = {
           type: "p",
           text: "In one day, we designed 22 screens and stitched them all together to create the prototype we were going to test on Friday. This doesn't sound like much in the age of AI, but it was a lot of work to cram into one day.",
         },
-        { type: "media", index: 8 },
         { type: "media", index: 9 },
         { type: "media", index: 10 },
+        { type: "media", index: 11 },
+        { type: "media", index: 12 },
+        { type: "media", index: 13 },
       ],
       [
         {
@@ -448,7 +451,7 @@ export const cases: Record<string, CaseStudy> = {
           type: "p",
           text: "Continue making the portal a fully self-service digital experience.",
         },
-        { type: "media", index: 11 },
+        { type: "media", index: 14 },
       ],
     ).map((section) => {
       if (section.id === "overview") return { ...section, label: "Kicking off the sprint" };
@@ -470,7 +473,7 @@ export const cases: Record<string, CaseStudy> = {
           type: "p",
           text: "As the design lead, I oversaw a design team of 4 that executed on this roadmap and made sure the client was happy with our engagement.",
         },
-        { type: "media", index: 12 },
+        { type: "media", index: 15 },
       ],
     }),
   },
