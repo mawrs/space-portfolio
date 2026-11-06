@@ -284,6 +284,7 @@ function Block({
       <div
         className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
         data-gl={preview ? undefined : "simple"}
+        data-shadow=""
         data-id={preview ? undefined : frameId ?? `${project.slug}-${block.index}`}
         data-project={preview ? undefined : project.slug}
         data-stack-index={preview ? undefined : block.index}

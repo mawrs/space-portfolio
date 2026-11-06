@@ -89,7 +89,12 @@ export const cases: Record<string, CaseStudy> = {
         {
           type: "media",
           index: 6,
-          caption: "The two concepts already outlined. The notification panel on the personal profile, and the same panel under Pages You Manage.",
+          caption: "The notification panel on the personal profile.",
+        },
+        {
+          type: "media",
+          index: 11,
+          caption: "The same panel under Pages You Manage.",
         },
       ],
       [
@@ -108,7 +113,12 @@ export const cases: Record<string, CaseStudy> = {
         {
           type: "media",
           index: 3,
-          caption: "States of the panel. A tab for every Page, and filters so comments, mentions, and shares can sit at the front of the list.",
+          caption: "States of the panel. A tab for every Page.",
+        },
+        {
+          type: "media",
+          index: 12,
+          caption: "Filters so comments, mentions, and shares can sit at the front of the list.",
         },
         {
           type: "p",

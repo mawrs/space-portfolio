@@ -460,6 +460,21 @@
   object-fit: contain;
 }
 
+.block .frame {
+  overflow: visible;
+  background: transparent;
+}
+
+.block .frame img,
+.block .frame video {
+  filter: drop-shadow(1px 1px 2px rgb(0 0 0 / 10%));
+}
+
+:global(html.gl:not([data-case-handoff])) .block .frame img,
+:global(html.gl:not([data-case-handoff])) .block .frame video {
+  filter: none;
+}
+
 .marker {
   position: absolute;
   z-index: 2;

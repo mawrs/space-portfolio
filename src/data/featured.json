@@ -39,7 +39,7 @@
         "src": "/projects/southeast-bank/elfi-1.webp",
         "poster": "/projects/southeast-bank/elfi-1.webp",
         "width": 1200,
-        "height": 800,
+        "height": 900,
         "video": false,
         "caption": "Example of an email from the Head of Product. Only 40% continue from the pre-qualification stage, which became my new initiative to improve."
       },
@@ -55,7 +55,7 @@
         "src": "/projects/southeast-bank/elfi-4.webp",
         "poster": "/projects/southeast-bank/elfi-4.webp",
         "width": 1200,
-        "height": 800,
+        "height": 900,
         "video": false,
         "caption": "A mid-week update to Tom, the CTO, and his reply."
       },
@@ -63,7 +63,7 @@
         "src": "/projects/southeast-bank/elfi-5.webp",
         "poster": "/projects/southeast-bank/elfi-5.webp",
         "width": 1200,
-        "height": 800,
+        "height": 900,
         "video": false,
         "caption": "A highlight reel from the usability tests, with the notes on what students said about the rates."
       },
@@ -151,7 +151,7 @@
         "src": "/projects/southeast-bank/elfi-2.webp",
         "poster": "/projects/southeast-bank/elfi-2.webp",
         "width": 1200,
-        "height": 800,
+        "height": 900,
         "video": false,
         "caption": "The repayment options and fixed-rate table from the tests."
       },
@@ -159,7 +159,7 @@
         "src": "/projects/southeast-bank/elfi-3.webp",
         "poster": "/projects/southeast-bank/elfi-3.webp",
         "width": 1200,
-        "height": 800,
+        "height": 900,
         "video": false,
         "caption": "The variable-rate table, with the grand total in the summary."
       }
@@ -202,12 +202,12 @@
         "caption": "Page notification settings. Which Pages can send notifications, and which categories for that Page."
       },
       {
-        "src": "/projects/facebook/fb-3.png",
-        "poster": "/projects/facebook/fb-3.png",
-        "width": 1909,
-        "height": 742,
+        "src": "/projects/facebook/facebook-4.webp",
+        "poster": "/projects/facebook/facebook-4.webp",
+        "width": 1200,
+        "height": 900,
         "video": false,
-        "caption": "States of the panel. A tab for every Page, and filters so comments, mentions, and shares can sit at the front of the list."
+        "caption": "States of the panel. A tab for every Page."
       },
       {
         "src": "/projects/facebook/suggested.jpg",
@@ -218,52 +218,68 @@
         "caption": "Suggested for You, in the feed and in notifications. Separate from the Page notification panel."
       },
       {
-        "src": "/projects/facebook/fb-1.png",
-        "poster": "/projects/facebook/fb-1.png",
-        "width": 582,
-        "height": 828,
+        "src": "/projects/facebook/facebook-1.webp",
+        "poster": "/projects/facebook/facebook-1.webp",
+        "width": 1200,
+        "height": 900,
         "video": false,
         "caption": "Select profile. A personal account, then each Page and how many notifications it has."
       },
       {
-        "src": "/projects/facebook/fb-2.png",
-        "poster": "/projects/facebook/fb-2.png",
-        "width": 1920,
-        "height": 740,
+        "src": "/projects/facebook/facebook-2.webp",
+        "poster": "/projects/facebook/facebook-2.webp",
+        "width": 1200,
+        "height": 900,
         "video": false,
-        "caption": "The two concepts already outlined. The notification panel on the personal profile, and the same panel under Pages You Manage."
+        "caption": "The notification panel on the personal profile."
       },
       {
-        "src": "/projects/facebook/fb-4.png",
-        "poster": "/projects/facebook/fb-4.png",
-        "width": 1164,
-        "height": 1189,
+        "src": "/projects/facebook/facebook-6.webp",
+        "poster": "/projects/facebook/facebook-6.webp",
+        "width": 1200,
+        "height": 900,
         "video": false,
         "caption": "Count badges on the filters, and a dot on the Page tab. The number competed with the name. The dot still showed which Page had something new."
       },
       {
-        "src": "/projects/facebook/fb-5.png",
-        "poster": "/projects/facebook/fb-5.png",
+        "src": "/projects/facebook/facebook-7.webp",
+        "poster": "/projects/facebook/facebook-7.webp",
         "width": 671,
         "height": 1236,
         "video": false,
         "caption": "All, then a tab for each Page. Will Smith's notifications, while she is still on Facebook as herself."
       },
       {
-        "src": "/projects/facebook/fb-6.png",
-        "poster": "/projects/facebook/fb-6.png",
-        "width": 1094,
-        "height": 824,
+        "src": "/projects/facebook/facebook-8.webp",
+        "poster": "/projects/facebook/facebook-8.webp",
+        "width": 1200,
+        "height": 900,
         "video": false,
         "caption": "Which Pages send notifications, and the categories for one Page. With Page Interactions off, that Page stays quiet."
       },
       {
-        "src": "/projects/facebook/fb-7.png",
-        "poster": "/projects/facebook/fb-7.png",
-        "width": 1141,
-        "height": 824,
+        "src": "/projects/facebook/facebook-9.webp",
+        "poster": "/projects/facebook/facebook-9.webp",
+        "width": 1200,
+        "height": 900,
         "video": false,
         "caption": "The panel annotated for handoff. The header, the horizontal Page tabs, a notification row, and the selected Page."
+      },
+      {
+        "src": "/projects/facebook/facebook-3.webp",
+        "poster": "/projects/facebook/facebook-3.webp",
+        "width": 1200,
+        "height": 900,
+        "video": false,
+        "caption": "The same panel under Pages You Manage."
+      },
+      {
+        "src": "/projects/facebook/facebook-5.webp",
+        "poster": "/projects/facebook/facebook-5.webp",
+        "width": 1200,
+        "height": 900,
+        "video": false,
+        "caption": "Filters so comments, mentions, and shares can sit at the front of the list."
       }
     ]
   },

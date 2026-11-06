@@ -31,11 +31,13 @@ const vertexShader = `
   uniform float uInteractive;
   uniform float uVelocity;
   uniform vec2 uPointer;
+  uniform vec2 uPad;
   ${gravityGlsl}
   void main() {
     vUv = uv;
+    vec2 imageUv = (uv - uPad) / max(vec2(1.0) - 2.0 * uPad, vec2(0.0001));
     vec3 bent = position;
-    float gravity = cardGravity(uv, uPointer, uAspect);
+    float gravity = cardGravity(imageUv, uPointer, uAspect);
     vec2 pointerLocal = uPointer - 0.5;
     bent.xy += (pointerLocal - bent.xy) * uHover * uInteractive * gravity * 0.16;
     bent.z -= uHover * uInteractive * 0.1 * uCardH * gravity;
@@ -83,33 +85,65 @@ const fragmentShader = `
   uniform vec4 uClip;
   uniform float uClipRadius;
   uniform float uClipOn;
+  uniform vec2 uPad;
+  uniform vec2 uTexel;
+  uniform float uShadow;
   ${gravityGlsl}
+  float rounded(vec2 uv) {
+    vec2 p = (uv - 0.5) * vec2(uAspect, 1.0);
+    vec2 box = vec2(uAspect, 1.0) * 0.5;
+    vec2 q = abs(p) - box + uRadius;
+    return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - uRadius;
+  }
+  float coverage(vec2 uv) {
+    if (uv.x < 0.0 || uv.y < 0.0 || uv.x > 1.0 || uv.y > 1.0) return 0.0;
+    if (rounded(uv) > 0.0) return 0.0;
+    return texture2D(uMap, (uv - 0.5) * uCover + uFocus).a;
+  }
+  float shadowCoverage(vec2 uv) {
+    vec2 o = uv + vec2(-uTexel.x, uTexel.y);
+    float sum = coverage(o) * 0.36;
+    sum += coverage(o + vec2(2.0 * uTexel.x, 0.0)) * 0.12;
+    sum += coverage(o + vec2(-2.0 * uTexel.x, 0.0)) * 0.12;
+    sum += coverage(o + vec2(0.0, 2.0 * uTexel.y)) * 0.12;
+    sum += coverage(o + vec2(0.0, -2.0 * uTexel.y)) * 0.12;
+    sum += coverage(o + vec2(2.0 * uTexel.x, 2.0 * uTexel.y)) * 0.04;
+    sum += coverage(o + vec2(-2.0 * uTexel.x, 2.0 * uTexel.y)) * 0.04;
+    sum += coverage(o + vec2(2.0 * uTexel.x, -2.0 * uTexel.y)) * 0.04;
+    sum += coverage(o + vec2(-2.0 * uTexel.x, -2.0 * uTexel.y)) * 0.04;
+    return sum;
+  }
   void main() {
     if (uAlpha < 0.01) discard;
-    float gravity = cardGravity(vUv, uPointer, uAspect);
-    vec2 lensUv = vUv + (vUv - uPointer) * gravity * uHover * 0.16;
+    vec2 suv = uShadow > 0.5 ? (vUv - uPad) / max(vec2(1.0) - 2.0 * uPad, vec2(0.0001)) : vUv;
+    float gravity = cardGravity(suv, uPointer, uAspect);
+    vec2 lensUv = suv + (suv - uPointer) * gravity * uHover * 0.16;
     vec2 uv = (lensUv - 0.5) * uCover + uFocus;
     vec4 media = texture2D(uMap, uv);
     vec4 overlay = texture2D(uOverlay, lensUv);
     vec3 color = mix(media.rgb, overlay.rgb, overlay.a);
-    vec2 field = (vUv - uPointer) * vec2(uAspect, 1.0);
+    vec2 field = (suv - uPointer) * vec2(uAspect, 1.0);
     float shade = dot(field, normalize(vec2(-0.3, 1.0))) * gravity * uHover;
     color *= 1.0 + clamp(shade * 0.65, -0.1, 0.1);
-    vec2 p = (vUv - 0.5) * vec2(uAspect, 1.0);
-    vec2 box = vec2(uAspect, 1.0) * 0.5;
-    vec2 q = abs(p) - box + uRadius;
-    float dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - uRadius;
-    if (dist > 0.0) discard;
-    float alpha = uAlpha;
+    float dist = rounded(suv);
+    float inside = step(0.0, suv.x) * step(suv.x, 1.0) * step(0.0, suv.y) * step(suv.y, 1.0);
+    float imageAlpha = uShadow > 0.5 ? media.a * inside * step(dist, 0.0) : 1.0;
+    if (uShadow < 0.5 && dist > 0.0) discard;
+    float alpha = uAlpha * imageAlpha;
+    float shadowAlpha = uShadow > 0.5 ? shadowCoverage(suv) * 0.10 * (1.0 - imageAlpha) : 0.0;
     if (uClipOn > 0.5) {
       vec2 clipPoint = abs(gl_FragCoord.xy - uClip.xy) - uClip.zw + uClipRadius;
       float clipDistance = length(max(clipPoint, 0.0))
         + min(max(clipPoint.x, clipPoint.y), 0.0)
         - uClipRadius;
-      alpha *= 1.0 - smoothstep(-1.5, 1.5, clipDistance);
+      float clipMask = 1.0 - smoothstep(-1.5, 1.5, clipDistance);
+      alpha *= clipMask;
+      shadowAlpha *= clipMask;
     }
-    if (alpha < 0.01) discard;
-    gl_FragColor = vec4(color, alpha);
+    float outAlpha = alpha + shadowAlpha * uAlpha;
+    if (outAlpha < 0.01) discard;
+    vec3 outColor = outAlpha > 0.0 ? color * (alpha / outAlpha) : color;
+    gl_FragColor = vec4(outColor, outAlpha);
   }
 `;
 
@@ -361,6 +395,9 @@ export function PlaneStage() {
             uClip: shared.uClip,
             uClipRadius: shared.uClipRadius,
             uClipOn: clipOn,
+            uPad: { value: new THREE.Vector2() },
+            uTexel: { value: new THREE.Vector2(1 / 1024, 1 / 1024) },
+            uShadow: { value: 0 },
           },
           vertexShader,
           fragmentShader,
@@ -407,18 +444,24 @@ export function PlaneStage() {
         radiusPx: number,
         clip?: { top: number; height: number },
         source?: { w: number; h: number },
+        pad = 0,
       ) => {
         const width = Math.max(pose.w, 1);
         const height = Math.max(pose.h, 1);
         const sourceWidth = Math.max(source?.w ?? width, 1);
         const sourceHeight = Math.max(source?.h ?? height, 1);
+        const drawWidth = width + pad * 2;
+        const drawHeight = height + pad * 2;
         record.mesh.renderOrder = record.layer;
         record.mesh.position.set(
           pose.x + width / 2 - bounds.left - bounds.width / 2,
           bounds.top + bounds.height / 2 - (pose.y + height / 2),
           roleDepth(record.role) + record.layer * 0.05,
         );
-        record.mesh.scale.set(width, height, 1);
+        record.mesh.scale.set(drawWidth, drawHeight, 1);
+        record.material.uniforms.uPad.value.set(pad / drawWidth, pad / drawHeight);
+        record.material.uniforms.uTexel.value.set(1 / width, 1 / height);
+        record.material.uniforms.uShadow.value = pad > 0 ? 1 : 0;
         record.aspect.value = sourceWidth / sourceHeight;
         record.cardH.value = height;
         record.bend.value = bend;
@@ -605,7 +648,17 @@ export function PlaneStage() {
           record.layer = Number(node.dataset.layer) || 0;
           const parsedRadius = Number.parseFloat(getComputedStyle(node).borderTopLeftRadius);
           const radius = Number.isFinite(parsedRadius) ? parsedRadius : rem * 1.2;
-          place(record, pose, bounds, bend, radius, clip, clip ? { w: rect.width, h: rect.height } : undefined);
+          const shadowPad = node.hasAttribute("data-shadow") ? 8 : 0;
+          place(
+            record,
+            pose,
+            bounds,
+            bend,
+            radius,
+            clip,
+            clip ? { w: rect.width, h: rect.height } : undefined,
+            shadowPad,
+          );
           if (clipHost && Math.min(rect.bottom, clipHost.getBoundingClientRect().bottom) - Math.max(rect.top, clipHost.getBoundingClientRect().top) < 2) {
             record.alpha.value = 0;
           }
