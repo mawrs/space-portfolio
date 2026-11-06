@@ -253,6 +253,8 @@ export function PlaneStage() {
         layer: number;
         enteredAt: number;
         reveal: number;
+        source: string;
+        pending: string;
       };
 
       const blackHole = createBlackHole(THREE, renderer);
@@ -390,6 +392,8 @@ export function PlaneStage() {
             performance.now() +
             (role === "simple" ? 250 + (Number(node.dataset.stackIndex) || 0) * 100 : 0),
           reveal: role === "simple" ? 0 : 1,
+          source: video?.currentSrc || video?.src || image?.src || "",
+          pending: "",
         };
         records.set(key, record);
         return record;
@@ -425,6 +429,42 @@ export function PlaneStage() {
           record.focus.y += span * (0.5 - clip.top - clip.height * 0.5);
           record.cover.y = span * clip.height;
         }
+      };
+
+      const applyMedia = (record: Record, image: HTMLImageElement, src: string) => {
+        if (image.src !== src || !image.complete || image.naturalWidth === 0) return;
+        const current = record.material.uniforms.uMap.value as {
+          image?: unknown;
+          needsUpdate?: boolean;
+          dispose?: () => void;
+        };
+        if (current?.image === image) current.needsUpdate = true;
+        else {
+          const map = new THREE.Texture(image);
+          map.colorSpace = THREE.NoColorSpace;
+          map.needsUpdate = true;
+          record.material.uniforms.uMap.value = map;
+          current?.dispose?.();
+        }
+        record.source = src;
+        record.pending = "";
+        syncCover(record);
+      };
+
+      const syncMedia = (record: Record, node: HTMLElement) => {
+        if (node.querySelector("video")) return;
+        const image = node.querySelector("img");
+        if (!image) return;
+        const src = image.src;
+        if (!src || src === record.source) return;
+        const ready = image.complete && image.naturalWidth > 0 && image.currentSrc === src;
+        if (ready) {
+          applyMedia(record, image, src);
+          return;
+        }
+        if (record.pending === src) return;
+        record.pending = src;
+        image.addEventListener("load", () => applyMedia(record, image, src), { once: true });
       };
 
       let frame = 0;
@@ -501,6 +541,7 @@ export function PlaneStage() {
           if (rect.width < 2 || rect.height < 2) return;
           const record = ensure(key, node, role);
           if (!record) return;
+          syncMedia(record, node);
           record.mesh.visible = true;
           record.clipOn.value = role === "simple" && sheetRect ? 1 : 0;
           live.add(key);

@@ -38,8 +38,8 @@
       {
         "src": "/projects/southeast-bank/elfi-1.webp",
         "poster": "/projects/southeast-bank/elfi-1.webp",
-        "width": 1187,
-        "height": 824,
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "Example of an email from the Head of Product. Only 40% continue from the pre-qualification stage, which became my new initiative to improve."
       },
@@ -52,42 +52,42 @@
         "caption": "The rate screen from the tests, marked where students got stuck."
       },
       {
-        "src": "/projects/southeast-bank/slide-3.1.png",
-        "poster": "/projects/southeast-bank/slide-3.1.png",
-        "width": 857,
-        "height": 1114,
-        "video": false,
-        "caption": "A highlight reel from the usability tests, with the notes on what students said about the rates."
-      },
-      {
-        "src": "/projects/southeast-bank/slide-3.0.png",
-        "poster": "/projects/southeast-bank/slide-3.0.png",
-        "width": 824,
-        "height": 715,
+        "src": "/projects/southeast-bank/elfi-4.webp",
+        "poster": "/projects/southeast-bank/elfi-4.webp",
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "A mid-week update to Tom, the CTO, and his reply."
       },
       {
-        "src": "/projects/southeast-bank/slide-4.png",
-        "poster": "/projects/southeast-bank/slide-4.png",
-        "width": 1258,
-        "height": 1153,
+        "src": "/projects/southeast-bank/elfi-5.webp",
+        "poster": "/projects/southeast-bank/elfi-5.webp",
+        "width": 1200,
+        "height": 800,
+        "video": false,
+        "caption": "A highlight reel from the usability tests, with the notes on what students said about the rates."
+      },
+      {
+        "src": "/projects/southeast-bank/elfi-6.webp",
+        "poster": "/projects/southeast-bank/elfi-6.webp",
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "V1 through V4 lived in the product. What shipped was a combination of a couple of them."
       },
       {
-        "src": "/projects/southeast-bank/slide-5.0.png",
-        "poster": "/projects/southeast-bank/slide-5.0.png",
-        "width": 847,
-        "height": 1012,
+        "src": "/projects/southeast-bank/elfi-7.webp",
+        "poster": "/projects/southeast-bank/elfi-7.webp",
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "Repayment plans, each one named and explained, before a student picks a rate."
       },
       {
-        "src": "/projects/southeast-bank/slide-5.1.png",
-        "poster": "/projects/southeast-bank/slide-5.1.png",
-        "width": 1003,
-        "height": 1012,
+        "src": "/projects/southeast-bank/elfi-8.webp",
+        "poster": "/projects/southeast-bank/elfi-8.webp",
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "The grand total in the table, in the open."
       },
@@ -150,16 +150,16 @@
       {
         "src": "/projects/southeast-bank/elfi-2.webp",
         "poster": "/projects/southeast-bank/elfi-2.webp",
-        "width": 1187,
-        "height": 681,
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "The repayment options and fixed-rate table from the tests."
       },
       {
         "src": "/projects/southeast-bank/elfi-3.webp",
         "poster": "/projects/southeast-bank/elfi-3.webp",
-        "width": 1187,
-        "height": 572,
+        "width": 1200,
+        "height": 800,
         "video": false,
         "caption": "The variable-rate table, with the grand total in the summary."
       }

@@ -1079,29 +1079,21 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "Took those findings and created a highlight reel based on the feedback I received.",
+          text: "I then took those findings and created a highlight reel based on the feedback I received.",
         },
         {
           type: "p",
-          text: "As part of my design process, something I do very frequently is provide updates to whoever needed them:",
-        },
-        {
-          type: "ul",
-          items: [
-            "I shared highlight reels from interviews.",
-            "I provided mid-week updates via email to stakeholders.",
-            "And shared demos via Loom based on whatever updates they might want to see.",
-          ],
+          text: "As part of my design process, something I like to do is provide updates to whoever needs them. I typically provide some variation of email updates to stakeholders, Loom videos with visual updates, or highlight reels from interviews.",
         },
         {
           type: "media",
           index: 5,
-          caption: "A highlight reel from the usability tests, with the notes on what students said about the rates.",
+          caption: "A mid-week update to Tom, the CTO, and his reply.",
         },
         {
           type: "media",
           index: 6,
-          caption: "A mid-week update to Tom, the CTO, and his reply.",
+          caption: "A highlight reel from the usability tests, with the notes on what students said about the rates.",
         },
       ],
       [
@@ -1111,23 +1103,23 @@ export const cases: Record<string, CaseStudy> = {
         },
         {
           type: "p",
-          text: "My process was as follows:",
-        },
-        {
-          type: "ul",
-          items: [
-            "My first step was to clone our demo environment and bring it down to Cursor (if I don't have it already).",
-            "I would then begin chatting with Cursor about the feedback I received from my interviews.",
-            "I would then create a space somewhere in the UI for the stakeholders to easily toggle between my design explorations.",
-          ],
+          text: "If I haven't already cloned our demo environment, I will do so and bring it down to Cursor, my IDE of choice.",
         },
         {
           type: "p",
-          text: "I like having this within the UI to have one central area to look at.",
+          text: "I'll then begin chatting with Cursor about the feedback from users and stakeholders.",
         },
         {
           type: "p",
-          text: "In this particular case, I added the versions to the top nav as \"V1\" \"V2\" \"V3\" \"V4\".",
+          text: "I'll then create an area directly within the prototype to showcase my explorations.",
+        },
+        {
+          type: "p",
+          text: "On this particular prototype, I added 4 versions to the top nav that stakeholders could easily navigate between to give me feedback.",
+        },
+        {
+          type: "p",
+          text: "I find that this keeps design explorations fairly centralized, and I typically get feedback on all versions I add to the prototype.",
         },
         {
           type: "media",
@@ -1138,20 +1130,15 @@ export const cases: Record<string, CaseStudy> = {
       [
         {
           type: "p",
-          text: "Once I have a place in the UI to showcase my design iterations, I'll:",
-        },
-        {
-          type: "ul",
-          items: [
-            "Articulate to Cursor what it is I'm thinking of building for each version.",
-            "Once I've exhausted ideas that I have, I'll let Cursor take the wheel for a minute to see what it can come up with.",
-            "Sometimes I'll end up with 8 different versions, but the chances of having 8 feasible versions is very low.",
-            "So I'll eliminate a few towards the end of the exploration process.",
-          ],
+          text: "I typically come up with three or four design iterations I find compelling, and then let Cursor come up with another four on its own to see what it can come up with.",
         },
         {
           type: "p",
-          text: "This approach let me explore a wide array of designs that I have thought of and have not thought of, which is fantastic.",
+          text: "Eight is far too many versions for a design. The chances of all eight being feasible is low, so I end up trimming them back down to the best four that I can find.",
+        },
+        {
+          type: "p",
+          text: "This approach lets me go very wide on my exploration, and it lets me explore a wide range of designs I have thought of and have NOT thought of, which is fantastic.",
         },
         {
           type: "p",
@@ -1280,7 +1267,7 @@ export const cases: Record<string, CaseStudy> = {
       blocks: [
         {
           type: "p",
-          text: "We kept a close eye on the numbers after launch, and what we observed was a 27% increase in conversion from the Pre-Qualification to Signup.",
+          text: "We kept a close eye on the numbers after launch, and what we observed was a 27% increase in conversion from the Pre-Qualification to Signup, from 40% to 67%.",
         },
         {
           type: "p",
@@ -1290,17 +1277,6 @@ export const cases: Record<string, CaseStudy> = {
           type: "p",
           text: "I just know the design changes as a whole created a much clearer experience that results in a 27% conversion increase.",
         },
-        {
-          type: "media",
-          index: 16,
-          caption: "Pre-qualification to signup after launch. The lift was 27%, across the changes as a whole.",
-        },
-      ],
-    },
-    {
-      id: "last",
-      label: "Key takeaways",
-      blocks: [
         {
           type: "p",
           text: "This is a project that I’m very proud of, because we made a very difficult life decision more understandable.",
@@ -1316,6 +1292,11 @@ export const cases: Record<string, CaseStudy> = {
         {
           type: "p",
           text: "Having been a student who didn’t fully understand my own loans, this felt like a very meaningful experience to contribute to.",
+        },
+        {
+          type: "media",
+          index: 16,
+          caption: "Pre-qualification to signup after launch. The lift was 27%, across the changes as a whole.",
         },
       ],
     }),

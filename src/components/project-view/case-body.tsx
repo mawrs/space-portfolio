@@ -1,6 +1,6 @@
 "use client";
 
-import { CSSProperties, Fragment, useState } from "react";
+import { CSSProperties, Fragment, useEffect, useState } from "react";
 import { CaseBlock } from "@/data/cases";
 import { Project } from "@/data/projects";
 import { ActionLink } from "@/components/ui/action-link";
@@ -195,10 +195,21 @@ function MediaGallery({
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = media[activeIndex] ?? media[0];
+  const frameId = `${project.slug}-gallery-${media.map((block) => block.index).join("-")}`;
+
+  useEffect(() => {
+    for (const block of media) {
+      const item = project.media[block.index];
+      if (!item || item.video) continue;
+      const image = new Image();
+      image.decoding = "async";
+      image.src = item.src;
+    }
+  }, [media, project]);
 
   return (
     <div className={`${styles.slideMedia} ${styles.mediaGallery}`}>
-      <Block key={active.index} block={active} project={project} preview={preview} />
+      <Block block={active} project={project} preview={preview} frameId={frameId} />
       <div className={styles.mediaThumbnails} role="group" aria-label="Choose an image">
         {media.map((block, index) => {
           const item = project.media[block.index];
@@ -227,10 +238,12 @@ function Block({
   block,
   project,
   preview = false,
+  frameId,
 }: {
   block: CaseBlock;
   project: Project;
   preview?: boolean;
+  frameId?: string;
 }) {
   if (block.type === "h3") return null;
   if (block.type === "p") return <p>{block.text}</p>;
@@ -271,7 +284,7 @@ function Block({
       <div
         className={preview ? `${styles.frame} ${styles.previewFrame}` : styles.frame}
         data-gl={preview ? undefined : "simple"}
-        data-id={preview ? undefined : `${project.slug}-${block.index}`}
+        data-id={preview ? undefined : frameId ?? `${project.slug}-${block.index}`}
         data-project={preview ? undefined : project.slug}
         data-stack-index={preview ? undefined : block.index}
         style={{ "--ratio": `${item.width} / ${item.height}` } as CSSProperties}
