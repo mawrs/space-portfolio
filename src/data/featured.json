@@ -706,26 +706,26 @@
         "caption": "Seller mail before the system. A signup, an account notice, and a refund. Same company, three different senders."
       },
       {
-        "src": "/projects/square/square-1.png",
-        "poster": "/projects/square/square-1.png",
-        "width": 1080,
-        "height": 733,
+        "src": "/projects/square/square-1.webp",
+        "poster": "/projects/square/square-1.webp",
+        "width": 1450,
+        "height": 788,
         "video": false,
         "caption": "Emails sellers forwarded to Risk. A bank-account change, and a $1,200 refund Square never sent."
       },
       {
-        "src": "/projects/square/square-2.png",
-        "poster": "/projects/square/square-2.png",
-        "width": 1680,
-        "height": 715,
+        "src": "/projects/square/square-2.webp",
+        "poster": "/projects/square/square-2.webp",
+        "width": 1738,
+        "height": 788,
         "video": false,
         "caption": "Three templates from different teams. A bank-account change, an account hold, and a terms update."
       },
       {
-        "src": "/projects/square/square-3.png",
-        "poster": "/projects/square/square-3.png",
-        "width": 1680,
-        "height": 450,
+        "src": "/projects/square/square-3.webp",
+        "poster": "/projects/square/square-3.webp",
+        "width": 1738,
+        "height": 535,
         "video": false,
         "caption": "Five email buckets. Lead driver, instructional, transactional, letter, and operational."
       },
@@ -738,42 +738,42 @@
         "caption": "The email component library, grouped by bucket."
       },
       {
-        "src": "/projects/square/square-4.1.png",
-        "poster": "/projects/square/square-4.1.png",
-        "width": 1680,
-        "height": 613,
+        "src": "/projects/square/square-5.webp",
+        "poster": "/projects/square/square-5.webp",
+        "width": 1731,
+        "height": 704,
         "video": false,
         "caption": "Transactional components. Header and body pieces, and the old PAF email next to the new one."
       },
       {
-        "src": "/projects/square/square-5.png",
-        "poster": "/projects/square/square-5.png",
-        "width": 1331,
-        "height": 935,
+        "src": "/projects/square/square-6.webp",
+        "poster": "/projects/square/square-6.webp",
+        "width": 1414,
+        "height": 1007,
         "video": false,
         "caption": "A savings email, before and after the new template."
       },
       {
-        "src": "/projects/square/square-5.1.png",
-        "poster": "/projects/square/square-5.1.png",
-        "width": 1328,
-        "height": 847,
+        "src": "/projects/square/square-7.webp",
+        "poster": "/projects/square/square-7.webp",
+        "width": 1414,
+        "height": 1007,
         "video": false,
         "caption": "A signup email, before and after the new template."
       },
       {
-        "src": "/projects/square/square-5.2.png",
-        "poster": "/projects/square/square-5.2.png",
-        "width": 1305,
-        "height": 941,
+        "src": "/projects/square/square-8.webp",
+        "poster": "/projects/square/square-8.webp",
+        "width": 1414,
+        "height": 1007,
         "video": false,
         "caption": "A card-arrival email, before and after the new template."
       },
       {
-        "src": "/projects/square/square-6.png",
-        "poster": "/projects/square/square-6.png",
-        "width": 589,
-        "height": 921,
+        "src": "/projects/square/square-9.webp",
+        "poster": "/projects/square/square-9.webp",
+        "width": 542,
+        "height": 920,
         "video": false,
         "caption": "The finished card-arrival email."
       }
