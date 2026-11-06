@@ -73,20 +73,6 @@
   gap: var(--spacing-xs) var(--spacing-l);
   margin-top: var(--spacing-md);
   list-style: none;
-  font-size: var(--font-size-caption);
-  letter-spacing: var(--tracking-caption);
-  text-transform: uppercase;
-}
-
-.copy a {
-  pointer-events: auto;
-}
-
-.copy a:hover,
-.copy a:focus-visible {
-  text-decoration: underline;
-  text-underline-offset: 0.28em;
-  text-decoration-thickness: 1px;
 }
 
 .hole .copy {

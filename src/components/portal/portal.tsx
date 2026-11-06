@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { site } from "@/data/site";
 import { motion } from "@/data/tokens";
+import chrome from "@/components/site-chrome/site-chrome.module.css";
 import styles from "./portal.module.css";
 
 type PortalProps = {
@@ -53,6 +54,7 @@ export function Portal({ kind, onClose }: PortalProps) {
               {site.socials.map((social) => (
                 <li key={social.label}>
                   <a
+                    className={chrome.label}
                     data-portal-control=""
                     href={social.href}
                     target={social.href.startsWith("mailto:") ? undefined : "_blank"}

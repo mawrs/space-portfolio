@@ -97,19 +97,11 @@ const gridShader = `
   }
 `;
 
-type AlpacaSlot = {
-  group: import("three").Group;
-  angle: number;
-  scale: number;
-  depth: number;
-};
-
 export function createBlackHole(
   THREE: typeof import("three"),
   renderer: WebGLRenderer,
 ) {
   const lensScene = new THREE.Scene();
-  const objectScene = new THREE.Scene();
   const lensCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   const resolution = new THREE.Vector2(1, 1);
   const state = {
@@ -180,21 +172,6 @@ export function createBlackHole(
   grid.position.z = -30;
   grid.visible = false;
 
-  const alpacaMaterial = new THREE.MeshStandardMaterial({
-    color: 0x111111,
-    roughness: 0.32,
-    metalness: 0.16,
-  });
-  const alpacas = placeAlpacas(THREE, alpacaMaterial);
-  alpacas.forEach((slot) => objectScene.add(slot.group));
-  objectScene.add(new THREE.AmbientLight(0xffffff, 0.35));
-  const key = new THREE.DirectionalLight(0xfff4e8, 2.7);
-  key.position.set(180, 260, 700);
-  objectScene.add(key);
-  const rim = new THREE.DirectionalLight(0x9ecbff, 1.7);
-  rim.position.set(-260, -80, 420);
-  objectScene.add(rim);
-
   const resize = () => {
     const drawing = renderer.getDrawingBufferSize(resolution);
     if (drawing.x < 2 || drawing.y < 2) return;
@@ -264,20 +241,6 @@ export function createBlackHole(
     material.uniforms.uProgress.value = state.progress;
     material.uniforms.uTime.value = state.time;
 
-    const width = renderer.domElement.clientWidth || window.innerWidth;
-    const horizon = width * material.uniforms.uRadius.value * state.progress;
-    alpacas.forEach((slot) => {
-      const angle = slot.angle + now * 0.00005;
-      const orbit = horizon * 0.72;
-      slot.group.position.set(
-        Math.cos(angle) * orbit,
-        Math.sin(angle) * orbit * 0.86,
-        slot.depth,
-      );
-      slot.group.scale.setScalar(slot.scale * state.progress);
-      slot.group.rotation.y = -angle + Math.PI;
-    });
-
     const previousTarget = renderer.getRenderTarget();
     const previousAlpha = renderer.getClearAlpha();
     renderer.setRenderTarget(target);
@@ -290,10 +253,6 @@ export function createBlackHole(
     renderer.setClearAlpha(previousAlpha);
     renderer.clear(true, true, true);
     renderer.render(lensScene, lensCamera);
-    renderer.clearDepth();
-    renderer.autoClear = false;
-    renderer.render(objectScene, camera);
-    renderer.autoClear = true;
     grid.visible = false;
     return true;
   };
@@ -304,64 +263,9 @@ export function createBlackHole(
     grid.geometry.dispose();
     gridMaterial.dispose();
     material.dispose();
-    alpacaMaterial.dispose();
     target.dispose();
     grid.removeFromParent();
   };
 
   return { render, dispose, grid };
-}
-
-function placeAlpacas(
-  THREE: typeof import("three"),
-  material: import("three").Material,
-): AlpacaSlot[] {
-  const layout = [
-    { angle: -0.2, scale: 78, depth: 36 },
-    { angle: 0.7, scale: 52, depth: 18 },
-    { angle: 1.55, scale: 96, depth: 70 },
-    { angle: 2.45, scale: 64, depth: 28 },
-    { angle: 3.5, scale: 118, depth: 90 },
-    { angle: 4.55, scale: 84, depth: 48 },
-    { angle: 5.4, scale: 58, depth: 22 },
-  ];
-  return layout.map((slot) => ({
-    ...slot,
-    group: createAlpaca(THREE, material),
-  }));
-}
-
-function createAlpaca(
-  THREE: typeof import("three"),
-  material: import("three").Material,
-) {
-  const group = new THREE.Group();
-  const sphere = new THREE.SphereGeometry(1, 18, 14);
-  const leg = new THREE.CylinderGeometry(0.11, 0.13, 1, 8);
-  const part = (
-    geometry: import("three").BufferGeometry,
-    x: number,
-    y: number,
-    z: number,
-    sx: number,
-    sy: number,
-    sz: number,
-  ) => {
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(x, y, z);
-    mesh.scale.set(sx, sy, sz);
-    mesh.frustumCulled = false;
-    group.add(mesh);
-  };
-  part(sphere, 0, 0.2, 0, 0.62, 0.4, 0.34);
-  part(sphere, 0.08, 0.62, 0.22, 0.16, 0.32, 0.16);
-  part(sphere, 0.1, 1.02, 0.36, 0.24, 0.22, 0.28);
-  part(sphere, 0, 1.24, 0.3, 0.06, 0.16, 0.05);
-  part(sphere, 0.2, 1.24, 0.3, 0.06, 0.16, 0.05);
-  part(sphere, 0.12, 0.94, 0.58, 0.1, 0.08, 0.14);
-  part(leg, -0.24, -0.28, 0.12, 1, 0.72, 1);
-  part(leg, 0.2, -0.28, 0.12, 1, 0.72, 1);
-  part(leg, -0.22, -0.24, -0.16, 1, 0.64, 1);
-  part(leg, 0.18, -0.24, -0.16, 1, 0.64, 1);
-  return group;
 }
